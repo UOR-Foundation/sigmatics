@@ -34,8 +34,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build library artifacts
-        run: npm run build
+      - name: Build core package
+        run: |
+          cd packages/core
+          npm run build
 
       - name: Configure Vite base path
         shell: bash
@@ -46,13 +48,15 @@ jobs:
             echo "BASE_PATH=/${{ github.event.repository.name }}/" >> "$GITHUB_ENV"
           fi
 
-      - name: Build web app
-        run: npm run build:site
+      - name: Build web playground
+        run: |
+          cd apps/playground-web
+          npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: apps/playground-web/dist
 
   deploy:
     needs: build

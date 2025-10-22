@@ -8,9 +8,9 @@
 declare const require: any;
 declare const module: any;
 
-import { Atlas } from './atlas';
-import { tokenize } from './atlas-lexer';
-import * as AtlasClass from './atlas-class';
+import { Atlas } from '../src/api';
+import { tokenize } from '../src/lexer';
+import * as AtlasClass from '../src/class-system';
 
 // ============================================================================
 // Test Utilities

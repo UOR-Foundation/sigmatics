@@ -3,7 +3,7 @@
  * Implements the authoritative ≡₉₆ mapping
  */
 
-import type { SigilComponents, ClassInfo, BeltAddress } from './atlas-types';
+import type { SigilComponents, ClassInfo, BeltAddress } from '../types';
 
 // ============================================================================
 // Authoritative Class Mapping (≡₉₆)

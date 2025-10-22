@@ -3,7 +3,7 @@
  * Practical usage patterns and demonstrations
  */
 
-import Atlas from './atlas';
+import Atlas from '@uor-foundation/sigmatics';
 
 console.log('='.repeat(70));
 console.log('Atlas Sigil Algebra - Examples');

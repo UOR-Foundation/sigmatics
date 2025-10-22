@@ -1,10 +1,10 @@
 #!/usr/bin/env ts-node
 /**
- * Atlas Playground
- * Interactive demonstration of Atlas features
+ * Atlas Interactive Playground
+ * Run sigil expressions and explore results
  */
 
-import Atlas from './atlas';
+import Atlas from '@uor-foundation/sigmatics';
 
 // Color helpers for terminal output
 const colors = {

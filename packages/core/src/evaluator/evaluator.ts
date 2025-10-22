@@ -12,13 +12,13 @@ import type {
   LiteralResult,
   OperationalResult,
   Transform,
-} from './atlas-types';
+} from '../types';
 import {
   decodeClassIndex,
   applyTransforms,
   encodeComponentsToByte,
   computeBeltAddress,
-} from './atlas-class';
+} from '../class-system';
 
 // ============================================================================
 // Literal Backend - Byte Semantics
@@ -44,7 +44,6 @@ interface CollectedLeaves {
 /**
  * Collect all leaf sigils, applying transforms and computing bytes
  */
-// FIX: The node type needs to include Sequential and ClassSigil to handle all parts of the AST recursively.
 function collectLiteralLeaves(
   node: Phrase | Term | Sequential | ClassSigil,
   outerTransform?: Transform,
@@ -180,7 +179,6 @@ export function evaluateOperational(phrase: Phrase): OperationalResult {
 /**
  * Lower AST to flat list of generator words
  */
-// FIX: The node type needs to include Sequential to handle all parts of the AST recursively.
 function lowerToWords(node: Phrase | Term | Sequential, outerTransform?: Transform): string[] {
   const result: string[] = [];
 

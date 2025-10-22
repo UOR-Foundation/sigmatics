@@ -4,24 +4,27 @@ A complete TypeScript implementation of the **Atlas Sigil Algebra** formal speci
 
 Sigmatics is stewarded by the [UOR Foundation](https://uor.foundation), a 501(c)(3) non-profit dedicated to advancing Universal Object Reference concepts.
 
-## Features
+## Repository Structure
 
-- ✨ **Dual Semantics**: Both literal (byte) and operational (word) backends
-- 🎯 **96-Class System**: Authoritative ≡₉₆ equivalence structure over 256 bytes
-- 🔄 **Transform Algebra**: Rotate (R), Twist (T), and Mirror (M) operations
-- 📐 **Formal Grammar**: Complete parser for sigil expressions
-- 🌐 **Belt Addressing**: Content-addressable 12,288-slot belt (48 pages × 256 bytes)
-- ✅ **Verified**: Includes all specification test vectors
-- 🚀 **Zero Dependencies**: Pure TypeScript implementation
+This is a **monorepo workspace** containing:
+
+- **`packages/core/`** - The core Atlas library (published as `@uor-foundation/sigmatics`)
+- **`apps/playground-web/`** - Interactive React playground for exploring Atlas
+- **`apps/playground-cli/`** - Command-line demonstration and exploration tool
+- **`examples/`** - Practical usage examples and patterns
+- **`tools/`** - Development utilities and validation tools
+- **`docs/`** - Comprehensive documentation and specifications
 
 ## Quick Start
+
+### For Library Users
 
 ```bash
 npm install @uor-foundation/sigmatics
 ```
 
 ```typescript
-import Atlas from '@uor-foundation/sigmatics';
+import { Atlas } from '@uor-foundation/sigmatics';
 
 // Parse and evaluate a sigil expression
 const result = Atlas.evaluate('evaluate@c21 . copy@c05');
@@ -33,7 +36,74 @@ console.log(result.operational.words); // ["phase[h₂=0]", "evaluate", ...]
 console.log(Atlas.prettyPrint('mark@c42^+3~@17'));
 ```
 
-## Core Concepts
+### For Contributors
+
+```bash
+# Clone the repository
+git clone https://github.com/UOR-Foundation/sigmatics.git
+cd sigmatics
+
+# Install all dependencies
+npm install
+
+# Build the core library
+cd packages/core && npm run build
+
+# Run tests
+npm test
+
+# Run examples
+cd ../../examples && npm start
+
+# Start the web playground
+cd ../apps/playground-web && npm run dev
+```
+
+## Features
+
+- ✨ **Dual Semantics**: Both literal (byte) and operational (word) backends
+- 🎯 **96-Class System**: Authoritative ≡₉₆ equivalence structure over 256 bytes
+- 🔄 **Transform Algebra**: Rotate (R), Twist (T), and Mirror (M) operations
+- 📐 **Formal Grammar**: Complete parser for sigil expressions
+- 🌐 **Belt Addressing**: Content-addressable 12,288-slot belt (48 pages × 256 bytes)
+- ✅ **Verified**: Includes all specification test vectors
+- 🚀 **Zero Dependencies**: Pure TypeScript implementation
+- 📦 **Modular Architecture**: Well-organized package structure for extensibility
+
+## Packages
+
+### Core Library (`packages/core/`)
+
+The main Atlas Sigil Algebra implementation. See [`packages/core/README.md`](packages/core/README.md) for detailed API documentation.
+
+```typescript
+// Main API
+import { Atlas } from '@uor-foundation/sigmatics';
+
+// Sub-module imports for advanced usage
+import { tokenize } from '@uor-foundation/sigmatics/lexer';
+import { Parser } from '@uor-foundation/sigmatics/parser';
+import { evaluateLiteral } from '@uor-foundation/sigmatics/evaluator';
+import type { Phrase } from '@uor-foundation/sigmatics/types';
+```
+
+**Module structure:**
+- `api/` - High-level Atlas class
+- `lexer/` - Tokenization
+- `parser/` - AST construction
+- `evaluator/` - Dual backends (literal/operational)
+- `class-system/` - 96-class equivalence and transforms
+- `types/` - TypeScript type definitions
+
+### Applications
+
+- **`apps/playground-web/`** - Interactive browser-based playground built with React and Vite
+- **`apps/playground-cli/`** - Command-line exploration tool
+
+### Examples & Tools
+
+- **`examples/`** - Practical usage demonstrations
+- **`tools/validate/`** - Quick validation utilities
 
 ### The Seven Generators
 
@@ -69,15 +139,13 @@ Formula: `class = 24*h₂ + 8*d + ℓ`
 
 ## Documentation Map
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — end-to-end overview of the lexer → parser → evaluator pipeline and how modules interact.
-- [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) — contributor workflow, coding conventions, testing strategy, and release checklist.
-- [`IMPLEMENTATION_SUMMARY.md`](IMPLEMENTATION_SUMMARY.md) — catalogue of shipped files, tests, and examples.
-- [`QUICKSTART.md`](QUICKSTART.md) — concise install/build instructions and transform usage cheatsheet.
-- [`docs/atlas_sigil_algebra_formal_specification_v_1.md`](docs/atlas_sigil_algebra_formal_specification_v_1.md) — upstream specification reference.
+- **[`packages/core/README.md`](packages/core/README.md)** - Core library API reference and usage
+- **[`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)** - System architecture and module interactions
+- **[`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md)** - Contributor workflow and coding conventions
+- **[`QUICKSTART.md`](QUICKSTART.md)** - Quick installation and usage guide
+- **[`docs/atlas_sigil_algebra_formal_specification_v_1.md`](docs/atlas_sigil_algebra_formal_specification_v_1.md)** - Formal specification reference
 
-Adopt a documentation-driven workflow: when behaviour or public APIs change, update the relevant guide(s) alongside code and tests so future contributors stay in sync.
-
-## API Reference
+## Core Concepts
 
 ### High-Level API
 

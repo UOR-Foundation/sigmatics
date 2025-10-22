@@ -6,7 +6,7 @@
 // FIX: Declare process for Node.js environment compatibility
 declare const process: any;
 
-import Atlas from './atlas';
+import Atlas from '@uor-foundation/sigmatics';
 
 console.log('Quick Validation Tests');
 console.log('='.repeat(50));

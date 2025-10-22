@@ -3,15 +3,15 @@
  * User-facing programming interface
  */
 
-import { tokenize } from './atlas-lexer';
-import { Parser } from './atlas-parser';
+import { tokenize } from '../lexer';
+import { Parser } from '../parser';
 import {
   evaluateLiteral,
   evaluateOperational,
   formatBytes,
   formatAddresses,
   formatWords,
-} from './atlas-evaluator';
+} from '../evaluator';
 import {
   byteToClassIndex,
   classIndexToCanonicalByte,
@@ -21,14 +21,14 @@ import {
   formatClassInfo,
   computeBeltAddress,
   decomposeBeltAddress,
-} from './atlas-class';
+} from '../class-system';
 import type {
   Phrase,
   LiteralResult,
   OperationalResult,
   ClassInfo,
   BeltAddress,
-} from './atlas-types';
+} from '../types';
 
 // ============================================================================
 // High-Level API
@@ -85,15 +85,12 @@ export class Atlas {
     let output = `Expression: ${source}\n\n`;
 
     output += `Literal Backend (Bytes):\n`;
-    // FIX: Use static method on Atlas class for consistency.
     output += `  ${this.formatBytes(literal.bytes)}\n`;
     if (literal.addresses) {
-      // FIX: Use static method on Atlas class for consistency.
       output += `  Addresses: ${this.formatAddresses(literal.addresses)}\n`;
     }
 
     output += `\nOperational Backend (Words):\n`;
-    // FIX: Use static method on Atlas class for consistency.
     output += this.formatWords(operational.words);
 
     return output;
@@ -103,7 +100,6 @@ export class Atlas {
   // Formatting Utilities
   // ==========================================================================
 
-  // FIX: Added static formatting methods to the Atlas class to resolve test suite errors.
   /**
    * Format bytes as hex string
    */
@@ -221,19 +217,5 @@ export class Atlas {
     return result;
   }
 }
-
-// ============================================================================
-// Export All Types
-// ============================================================================
-
-export * from './atlas-types';
-export * from './atlas-class';
-export * from './atlas-lexer';
-export * from './atlas-parser';
-export * from './atlas-evaluator';
-
-// ============================================================================
-// Default Export
-// ============================================================================
 
 export default Atlas;

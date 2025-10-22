@@ -1,83 +1,39 @@
 {
-  "name": "@uor-foundation/sigmatics",
-  "version": "0.1.0",
-  "description": "Sigmatics: the Atlas Sigil Algebra reference implementation from the UOR Foundation",
+  "name": "@uor-foundation/sigmatics-workspace",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Sigmatics workspace - Atlas Sigil Algebra reference implementation",
   "author": "UOR Foundation <info@uor.foundation> (https://uor.foundation)",
-  "homepage": "https://github.com/UOR-Foundation/sigmatics#readme",
-  "bugs": {
-    "url": "https://github.com/UOR-Foundation/sigmatics/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/UOR-Foundation/sigmatics.git"
-  },
-  "funding": {
-    "type": "foundation",
-    "url": "https://uor.foundation"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "sideEffects": false,
-  "main": "dist/atlas.js",
-  "types": "dist/atlas.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/atlas.d.ts",
-      "require": "./dist/atlas.js",
-      "default": "./dist/atlas.js"
-    },
-    "./package.json": "./package.json"
-  },
+  "license": "MIT",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "examples",
+    "tools/*"
+  ],
   "scripts": {
-    "build": "tsc",
-    "build:site": "vite build",
-    "dev": "vite",
-    "preview": "vite preview",
+    "build": "npm run build -w packages/core",
+    "build:core": "npm run build -w packages/core",
+    "build:web": "npm run build -w apps/playground-web",
+    "build:all": "npm run build --workspaces --if-present",
+    "test": "npm test -w packages/core",
+    "dev:web": "npm run dev -w apps/playground-web",
+    "dev:cli": "npm run dev -w apps/playground-cli",
+    "example": "npm run start -w examples",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "npm run lint -- --fix",
-    "test": "ts-node atlas-test.ts",
-    "example": "ts-node examples.ts",
-    "watch": "tsc --watch",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "clean": "rm -rf packages/*/dist apps/*/dist node_modules packages/*/node_modules apps/*/node_modules"
   },
-  "keywords": [
-    "sigmatics",
-    "atlas",
-    "sigil",
-    "algebra",
-    "symbolic-computation",
-    "formal-methods",
-    "verification",
-    "resonance",
-    "universal-language",
-    "uor"
-  ],
-  "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.2.47",
-    "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^8.12.0",
     "@typescript-eslint/parser": "^8.12.0",
-    "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^8.57.0",
     "prettier": "^3.3.3",
-    "ts-node": "^10.9.0",
-    "typescript": "^5.0.0",
-    "vite": "^7.1.11"
+    "typescript": "^5.0.0"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ]
+  "engines": {
+    "node": ">=18",
+    "npm": ">=9"
+  }
 }

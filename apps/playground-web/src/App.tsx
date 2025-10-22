@@ -1,7 +1,7 @@
 import React, { useState, useCallback, FC, PropsWithChildren } from 'react';
 import { createRoot } from 'react-dom/client';
-import { Atlas } from './atlas';
-import type { Phrase, ClassInfo } from './atlas-types';
+import { Atlas } from '@uor-foundation/sigmatics';
+import type { Phrase, ClassInfo } from '@uor-foundation/sigmatics';
 
 // Data for Docs component
 const README_CONTENT = `A complete TypeScript implementation of the **Atlas Sigil Algebra** formal specification v1.0 - a symbolic computation system built on 7 fundamental generators and a 96-class resonance structure (≡₉₆).`;
@@ -298,12 +298,4 @@ const App = () => {
   );
 };
 
-const container = document.getElementById('root');
-if (container) {
-  const root = createRoot(container);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-  );
-}
+export default App;

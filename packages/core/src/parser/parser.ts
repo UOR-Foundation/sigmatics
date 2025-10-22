@@ -11,8 +11,7 @@
  *   <transform>  ::= [ "R" ("+"|"-") <int> ] [ "T" ("+"|"-") <int> ] [ "~" ]
  */
 
-// FIX: Use ES6 import instead of require for module dependency.
-import { tokenize, type Token, type TokenType } from './atlas-lexer';
+import { tokenize, type Token, type TokenType } from '../lexer';
 import type {
   ClassSigil,
   Operation,
@@ -22,7 +21,7 @@ import type {
   Term,
   Phrase,
   GeneratorName,
-} from './atlas-types';
+} from '../types';
 
 export class Parser {
   private tokens: Token[];
