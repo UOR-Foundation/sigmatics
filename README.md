@@ -17,11 +17,11 @@ Sigmatics is stewarded by the [UOR Foundation](https://uor.foundation), a 501(c)
 ## Quick Start
 
 ```bash
-npm install sigmatics
+npm install @uor-foundation/sigmatics
 ```
 
 ```typescript
-import Atlas from 'sigmatics';
+import Atlas from '@uor-foundation/sigmatics';
 
 // Parse and evaluate a sigil expression
 const result = Atlas.evaluate('evaluate@c21 . copy@c05');
@@ -66,6 +66,16 @@ Formula: `class = 24*h₂ + 8*d + ℓ`
 <sigil>      ::= "c" <0..95> ["^" ("+"|"-") <k>] ["~"] ["@" <λ:0..47>]
 <transform>  ::= [ "R" ("+"|"-") <q> ] [ "T" ("+"|"-") <k> ] [ "~" ]
 ```
+
+## Documentation Map
+
+- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — end-to-end overview of the lexer → parser → evaluator pipeline and how modules interact.
+- [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) — contributor workflow, coding conventions, testing strategy, and release checklist.
+- [`IMPLEMENTATION_SUMMARY.md`](IMPLEMENTATION_SUMMARY.md) — catalogue of shipped files, tests, and examples.
+- [`QUICKSTART.md`](QUICKSTART.md) — concise install/build instructions and transform usage cheatsheet.
+- [`docs/atlas_sigil_algebra_formal_specification_v_1.md`](docs/atlas_sigil_algebra_formal_specification_v_1.md) — upstream specification reference.
+
+Adopt a documentation-driven workflow: when behaviour or public APIs change, update the relevant guide(s) alongside code and tests so future contributors stay in sync.
 
 ## API Reference
 
@@ -140,7 +150,7 @@ const mapping = Atlas.byteClassMapping();
 ### Example 1: Simple Operations
 
 ```typescript
-import Atlas from 'sigmatics';
+import Atlas from '@uor-foundation/sigmatics';
 
 // Single operation
 Atlas.evaluateBytes('mark@c00');

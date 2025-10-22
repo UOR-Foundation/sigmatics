@@ -1,6 +1,6 @@
 {
-  "name": "sigmatics",
-  "version": "1.0.0",
+  "name": "@uor-foundation/sigmatics",
+  "version": "0.1.1",
   "description": "Sigmatics: the Atlas Sigil Algebra reference implementation from the UOR Foundation",
   "author": "UOR Foundation <info@uor.foundation> (https://uor.foundation)",
   "homepage": "https://github.com/UOR-Foundation/sigmatics#readme",
@@ -9,14 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/UOR-Foundation/sigmatics.git"
+    "url": "git+https://github.com/UOR-Foundation/sigmatics.git"
   },
   "funding": {
     "type": "foundation",
     "url": "https://uor.foundation"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "engines": {
     "node": ">=18"

@@ -49,7 +49,7 @@ console.log(Atlas.prettyPrint('mark@c42'));
 ### 1. Parse and Evaluate
 
 ```typescript
-import Atlas from 'sigmatics';
+import Atlas from '@uor-foundation/sigmatics';
 
 // Simple evaluation
 const result = Atlas.evaluateBytes('mark@c21');

@@ -173,7 +173,7 @@ npm run example
 ### Quick API Usage
 
 ```typescript
-import Atlas from 'sigmatics';
+import Atlas from '@uor-foundation/sigmatics';
 
 // Evaluate expression
 const result = Atlas.evaluate('mark@c21 . copy@c05');
