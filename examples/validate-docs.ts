@@ -97,14 +97,15 @@ test('Class info structure', () => {
   if (info.classIndex !== 21) {
     throw new Error(`Wrong classIndex: ${info.classIndex}`);
   }
-  if (!info.components || typeof info.components.h2 !== 'number') {
-    throw new Error('Missing or invalid components.h2');
+  // SigilComponents: h2 (0-3), d (0-2), l (0-7)
+  if (!info.components || typeof info.components.h2 !== 'number' || info.components.h2 < 0 || info.components.h2 > 3) {
+    throw new Error('Missing or invalid components.h2 (must be 0-3)');
   }
-  if (typeof info.components.d !== 'number') {
-    throw new Error('Missing or invalid components.d');
+  if (typeof info.components.d !== 'number' || info.components.d < 0 || info.components.d > 2) {
+    throw new Error('Missing or invalid components.d (must be 0-2)');
   }
-  if (typeof info.components.l !== 'number') {
-    throw new Error('Missing or invalid components.l');
+  if (typeof info.components.l !== 'number' || info.components.l < 0 || info.components.l > 7) {
+    throw new Error('Missing or invalid components.l (must be 0-7)');
   }
   if (info.canonicalByte !== 0x2a) {
     throw new Error(`Wrong canonicalByte: ${info.canonicalByte}`);
@@ -133,8 +134,10 @@ test('Decode belt address', () => {
 
 test('All classes', () => {
   const classes = Atlas.allClasses();
-  if (classes.length !== 96) {
-    throw new Error(`Expected 96 classes, got ${classes.length}`);
+  // Atlas has exactly 96 equivalence classes (4 quadrants × 3 modalities × 8 context slots)
+  const TOTAL_CLASSES = 96;
+  if (classes.length !== TOTAL_CLASSES) {
+    throw new Error(`Expected ${TOTAL_CLASSES} classes, got ${classes.length}`);
   }
   if (typeof classes[0].index !== 'number' || typeof classes[0].byte !== 'number') {
     throw new Error('Invalid class structure');
@@ -143,8 +146,10 @@ test('All classes', () => {
 
 test('Byte class mapping', () => {
   const mapping = Atlas.byteClassMapping();
-  if (mapping.length !== 256) {
-    throw new Error(`Expected 256 mappings, got ${mapping.length}`);
+  // Map all 256 possible byte values (0x00 to 0xFF) to their classes
+  const TOTAL_BYTES = 256;
+  if (mapping.length !== TOTAL_BYTES) {
+    throw new Error(`Expected ${TOTAL_BYTES} mappings, got ${mapping.length}`);
   }
 });
 
