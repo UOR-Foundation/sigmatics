@@ -112,7 +112,8 @@ transform rules in one place.
 
 The high-level façade consumed by library users. The `Atlas` class orchestrates the
 entire pipeline (tokenize → parse → evaluate) and provides convenience methods for
-common operations like `evaluate()`, `parseOnly()`, and `formatResult()`.
+common operations like `parse()`, `evaluate()`, `evaluateBytes()`, `evaluateWords()`,
+`prettyPrint()`, and formatting utilities.
 
 **Location:** `packages/core/src/api/index.ts`
 
@@ -196,7 +197,7 @@ The test suite (`packages/core/test/index.ts`) covers:
 
 All tests use the `runTest` helper for consistent output formatting.
 
-- `npm test` executes `atlas-test.ts` via `ts-node`, printing sectioned output.
+- `npm test` executes `packages/core/test/index.ts` via `ts-node`, printing sectioned output.
 - Provisionary scripts: `npm run lint` (ESLint) and `npm run format` (Prettier).
 - CI relies on these being clean before publish; the GitHub Pages workflow will fail on
   build regressions.

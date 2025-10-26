@@ -3,7 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "start": "ts-node basic-usage.ts"
+    "start": "ts-node basic-usage.ts",
+    "validate-docs": "ts-node validate-docs.ts"
   },
   "dependencies": {
     "@uor-foundation/sigmatics": "*"

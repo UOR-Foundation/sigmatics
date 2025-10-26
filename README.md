@@ -186,7 +186,7 @@ const members = Atlas.equivalenceClass(0); // → [0x00, 0x01, 0x30, 0x31, ...]
 
 // Get class info
 const info = Atlas.classInfo(0x2a);
-// → { classIndex: 21, components: {h₂:0, d:2, ℓ:5}, canonicalByte: 0x2A }
+// → { classIndex: 21, components: {h2:0, d:2, l:5}, canonicalByte: 0x2A }
 ```
 
 ### Belt System API
@@ -307,13 +307,16 @@ Test coverage includes:
 
 ## Architecture
 
+The core library follows a modular architecture:
+
 ```
-atlas.ts              # Main API and exports
-├── atlas-types.ts    # Core type definitions
-├── atlas-class.ts    # Class system and ≡₉₆ structure
-├── atlas-lexer.ts    # Tokenizer
-├── atlas-parser.ts   # Parser (tokens → AST)
-└── atlas-evaluator.ts # Dual backends (literal + operational)
+packages/core/src/
+├── api/              # Main Atlas class and high-level API
+├── types/            # TypeScript type definitions
+├── class-system/     # Class system and ≡₉₆ structure
+├── lexer/            # Tokenizer
+├── parser/           # Parser (tokens → AST)
+└── evaluator/        # Dual backends (literal + operational)
 ```
 
 ## Specification Compliance
