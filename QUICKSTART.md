@@ -28,18 +28,18 @@ npm run example
 
 ## Instant Usage (No Build Required)
 
-You can use `ts-node` to run TypeScript directly:
+You can use `ts-node` to run TypeScript directly in the workspace:
 
 ```bash
-# Run tests
-npx ts-node atlas-test.ts
+# Run tests from core package
+cd packages/core && npx ts-node test/index.ts
 
 # Run examples
-npx ts-node examples.ts
+cd examples && npx ts-node basic-usage.ts
 
-# Try your own code
+# Try your own code (from root)
 npx ts-node -e "
-import Atlas from './atlas';
+import Atlas from '@uor-foundation/sigmatics';
 console.log(Atlas.prettyPrint('mark@c42'));
 "
 ```
@@ -117,14 +117,13 @@ Atlas.evaluateBytes('mark@c42@17');
 ## File Structure
 
 ```
-atlas-types.ts       # Core type definitions
-atlas-class.ts       # Class system (≡₉₆)
-atlas-lexer.ts       # Tokenizer
-atlas-parser.ts      # Parser (grammar → AST)
-atlas-evaluator.ts   # Dual backends
-atlas.ts             # Main API
-atlas-test.ts        # Test suite
-examples.ts          # Usage examples
+packages/core/src/
+├── api/              # Main Atlas class and high-level API
+├── types/            # TypeScript type definitions
+├── class-system/     # Class system and ≡₉₆ structure
+├── lexer/            # Tokenizer
+├── parser/           # Parser (tokens → AST)
+└── evaluator/        # Dual backends (literal + operational)
 ```
 
 ## Common Tasks
@@ -165,8 +164,8 @@ console.log(info);
 ## Next Steps
 
 1. Read `README.md` for comprehensive documentation
-2. Run `examples.ts` to see all patterns in action
-3. Check `atlas-test.ts` for test vectors
+2. Run `examples/basic-usage.ts` to see all patterns in action
+3. Check `packages/core/test/index.ts` for test vectors
 4. Start building your own expressions!
 
 ## Quick Reference

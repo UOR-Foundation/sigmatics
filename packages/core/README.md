@@ -83,11 +83,11 @@ Atlas.equivalenceClass(21); // → [0x2A, 0x2B]
 ```typescript
 // Compute belt address
 const addr = Atlas.beltAddress(17, 0x2A);
-// → { page: 17, byte: 0x2A, address: 4394 }
+// → { page: 17, byte: 42, address: 4394 }
 
 // Decode address
 Atlas.decodeBeltAddress(4394);
-// → { page: 17, byte: 0x2A, address: 4394 }
+// → { page: 17, byte: 42, address: 4394 }
 ```
 
 ## Features
