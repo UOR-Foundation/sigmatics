@@ -3,7 +3,13 @@
  * Implements the authoritative ≡₉₆ mapping
  */
 
-import type { SigilComponents, ClassInfo, BeltAddress, DTransformResult, TrialityOrbit } from '../types';
+import type {
+  SigilComponents,
+  ClassInfo,
+  BeltAddress,
+  DTransformResult,
+  TrialityOrbit,
+} from '../types';
 
 // ============================================================================
 // Authoritative Class Mapping (≡₉₆)
@@ -380,11 +386,7 @@ export function getAllTrialityOrbits(): TrialityOrbit[] {
           h2: h2 as 0 | 1 | 2 | 3,
           l: l as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7,
         },
-        classes: [
-          24 * h2 + 8 * 0 + l,
-          24 * h2 + 8 * 1 + l,
-          24 * h2 + 8 * 2 + l,
-        ],
+        classes: [24 * h2 + 8 * 0 + l, 24 * h2 + 8 * 1 + l, 24 * h2 + 8 * 2 + l],
       });
     }
   }

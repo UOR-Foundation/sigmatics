@@ -124,7 +124,12 @@ function evaluateSigil(
   let components = decodeClassIndex(sigil.classIndex);
 
   // Apply sigil's own transforms (postfix)
-  if (sigil.rotate !== undefined || sigil.triality !== undefined || sigil.twist !== undefined || sigil.mirror) {
+  if (
+    sigil.rotate !== undefined ||
+    sigil.triality !== undefined ||
+    sigil.twist !== undefined ||
+    sigil.mirror
+  ) {
     components = applyTransforms(components, {
       R: sigil.rotate,
       D: sigil.triality,
@@ -245,7 +250,12 @@ function lowerOperation(op: Operation, outerTransform?: Transform): string[] {
   // Compute effective components
   let components = decodeClassIndex(op.sigil.classIndex);
 
-  if (op.sigil.rotate !== undefined || op.sigil.triality !== undefined || op.sigil.twist !== undefined || op.sigil.mirror) {
+  if (
+    op.sigil.rotate !== undefined ||
+    op.sigil.triality !== undefined ||
+    op.sigil.twist !== undefined ||
+    op.sigil.mirror
+  ) {
     components = applyTransforms(components, {
       R: op.sigil.rotate,
       D: op.sigil.triality,

@@ -39,7 +39,12 @@ export class Parser {
     const currentType = this.current().type;
 
     // Use lookahead to decide whether to parse a transform prefix
-    if (currentType === 'ROTATE' || currentType === 'TRIALITY' || currentType === 'TWIST' || currentType === 'TILDE') {
+    if (
+      currentType === 'ROTATE' ||
+      currentType === 'TRIALITY' ||
+      currentType === 'TWIST' ||
+      currentType === 'TILDE'
+    ) {
       const transform = this.parseTransform();
       this.expect('AT');
       const body = this.parseParallel();
@@ -97,7 +102,12 @@ export class Parser {
     const currentType = this.current().type;
 
     // Allow transform prefixes within sequences or groups
-    if (currentType === 'ROTATE' || currentType === 'TRIALITY' || currentType === 'TWIST' || currentType === 'TILDE') {
+    if (
+      currentType === 'ROTATE' ||
+      currentType === 'TRIALITY' ||
+      currentType === 'TWIST' ||
+      currentType === 'TILDE'
+    ) {
       const transform = this.parseTransform();
       this.expect('AT');
       const body = this.parseParallel();

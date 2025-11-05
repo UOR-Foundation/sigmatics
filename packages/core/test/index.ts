@@ -876,11 +876,7 @@ function testDTransformBasics(): void {
       const info = Atlas.classInfo(Atlas.canonicalByte(c));
       const result = Atlas.applyDTransform(c, 1);
       const newInfo = Atlas.classInfo(Atlas.canonicalByte(result.newClass));
-      assertEqual(
-        newInfo.components.h2,
-        info.components.h2,
-        `h₂ should be preserved for c${c}`,
-      );
+      assertEqual(newInfo.components.h2, info.components.h2, `h₂ should be preserved for c${c}`);
     }
   });
 
@@ -889,11 +885,7 @@ function testDTransformBasics(): void {
       const info = Atlas.classInfo(Atlas.canonicalByte(c));
       const result = Atlas.applyDTransform(c, 1);
       const newInfo = Atlas.classInfo(Atlas.canonicalByte(result.newClass));
-      assertEqual(
-        newInfo.components.l,
-        info.components.l,
-        `ℓ should be preserved for c${c}`,
-      );
+      assertEqual(newInfo.components.l, info.components.l, `ℓ should be preserved for c${c}`);
     }
   });
 
@@ -929,16 +921,8 @@ function testTrialityOrbits(): void {
   runTest('base coordinates match class h₂ and ℓ', () => {
     const orbit = Atlas.getTrialityOrbit(21);
     const info = Atlas.classInfo(Atlas.canonicalByte(21));
-    assertEqual(
-      orbit.baseCoordinates.h2,
-      info.components.h2,
-      'h₂ should match',
-    );
-    assertEqual(
-      orbit.baseCoordinates.l,
-      info.components.l,
-      'ℓ should match',
-    );
+    assertEqual(orbit.baseCoordinates.h2, info.components.h2, 'h₂ should match');
+    assertEqual(orbit.baseCoordinates.l, info.components.l, 'ℓ should match');
   });
 
   runTest('all 32 orbits generated', () => {
@@ -1014,7 +998,11 @@ function testDTransformParsing(): void {
 
   runTest('parse D postfix syntax c21^D+1', () => {
     const ast = Atlas.parse('mark@c21^D+1');
-    if (ast.kind !== 'Par' || ast.branches[0].kind !== 'Seq' || ast.branches[0].items[0].kind !== 'Op') {
+    if (
+      ast.kind !== 'Par' ||
+      ast.branches[0].kind !== 'Seq' ||
+      ast.branches[0].items[0].kind !== 'Op'
+    ) {
       throw new Error('Expected operation node');
     }
     const sigil = ast.branches[0].items[0].sigil;

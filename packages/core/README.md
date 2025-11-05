@@ -68,11 +68,11 @@ const result = Atlas.evaluate('copy@c05');
 
 ```typescript
 // Get class information
-const info = Atlas.classInfo(0x2A);
+const info = Atlas.classInfo(0x2a);
 // → { classIndex: 21, components: {...}, canonicalByte: 0x2A }
 
 // Test equivalence
-Atlas.equivalent(0x2A, 0x2B); // → true (same class)
+Atlas.equivalent(0x2a, 0x2b); // → true (same class)
 
 // Get equivalence class
 Atlas.equivalenceClass(21); // → [0x2A, 0x2B]
@@ -82,7 +82,7 @@ Atlas.equivalenceClass(21); // → [0x2A, 0x2B]
 
 ```typescript
 // Compute belt address
-const addr = Atlas.beltAddress(17, 0x2A);
+const addr = Atlas.beltAddress(17, 0x2a);
 // → { page: 17, byte: 42, address: 4394 }
 
 // Decode address
@@ -114,17 +114,20 @@ console.log(orbits.length); // 32 orbits covering all 96 classes
 ```
 
 **Properties:**
+
 - Period 3: `D+3 = identity`
 - Preserves `h₂` and `ℓ`
 - Commutes with R and T
 - 32 triality orbits (96 classes / 3)
 
 **Grammar:**
+
 ```
 <transform> ::= [ R±q ] [ D±k ] [ T±m ] [ ~ ]
 ```
 
 **Examples:**
+
 ```typescript
 // Prefix transform
 Atlas.evaluateBytes('D+1@ mark@c21'); // → c5
