@@ -11,6 +11,8 @@ declare const module: any;
 import { Atlas } from '../src/api';
 import { tokenize } from '../src/lexer';
 import * as AtlasClass from '../src/class-system';
+import { runSgaLawsTests } from './sga/laws.test';
+import { runBridgeTests } from './sga/bridge.test';
 
 // ============================================================================
 // Test Utilities
@@ -1093,8 +1095,18 @@ function runAllTests(): void {
     testDTransformParsing();
     testDTransformEvaluation();
 
+    // v0.3.0: SGA Tests
+    console.log('\n');
     console.log('='.repeat(60));
-    console.log('✓ ALL TESTS PASSED');
+    console.log('v0.3.0: SGA (Sigmatics Geometric Algebra) Tests');
+    console.log('='.repeat(60));
+    console.log();
+
+    runSgaLawsTests();
+    runBridgeTests();
+
+    console.log('='.repeat(60));
+    console.log('✓ ALL TESTS PASSED (including v0.3.0 SGA tests)');
     console.log('='.repeat(60));
   } catch (error: any) {
     console.log('\n' + '='.repeat(60));
