@@ -211,6 +211,13 @@ export function octonionNorm(x: Cl07Element): number {
  * @param epsilon - Tolerance for floating-point comparison
  */
 export function verifyAlternativity(x: Cl07Element, y: Cl07Element, epsilon = 1e-10): boolean {
+  if (!x || typeof x !== 'object' || !x.grades) {
+    throw new Error('verifyAlternativity expects a Clifford element (octonion) as first argument');
+  }
+  if (!y || typeof y !== 'object' || !y.grades) {
+    throw new Error('verifyAlternativity expects a Clifford element (octonion) as second argument');
+  }
+
   // Compute (xy)y
   const xy = cayleyProduct(x, y);
   const xy_y = cayleyProduct(xy, y);
@@ -246,6 +253,13 @@ export function verifyNormMultiplicativity(
   y: Cl07Element,
   epsilon = 1e-10,
 ): boolean {
+  if (!x || typeof x !== 'object' || !x.grades) {
+    throw new Error('verifyNormMultiplicativity expects a Clifford element (octonion) as first argument');
+  }
+  if (!y || typeof y !== 'object' || !y.grades) {
+    throw new Error('verifyNormMultiplicativity expects a Clifford element (octonion) as second argument');
+  }
+
   const xy = cayleyProduct(x, y);
 
   const normXY = octonionNorm(xy);

@@ -46,6 +46,10 @@ export function z4Generator(): Z4Element {
  * @param k - Power of r (will be reduced mod 4)
  */
 export function z4Power(k: number): Z4Element {
+  if (typeof k !== 'number' || !Number.isFinite(k)) {
+    throw new Error(`z4Power expects a finite number, got: ${typeof k}`);
+  }
+
   const index = ((k % 4) + 4) % 4; // Ensure positive
   const coefficients: [number, number, number, number] = [0, 0, 0, 0];
   coefficients[index] = 1;
@@ -265,6 +269,10 @@ export function z3Generator(): Z3Element {
  * @param k - Power of τ (will be reduced mod 3)
  */
 export function z3Power(k: number): Z3Element {
+  if (typeof k !== 'number' || !Number.isFinite(k)) {
+    throw new Error(`z3Power expects a finite number, got: ${typeof k}`);
+  }
+
   const index = ((k % 3) + 3) % 3; // Ensure positive
   const coefficients: [number, number, number] = [0, 0, 0];
   coefficients[index] = 1;

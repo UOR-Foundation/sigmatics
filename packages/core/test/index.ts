@@ -14,6 +14,7 @@ import * as AtlasClass from '../src/class-system';
 import { runGroupAlgebraTests } from './sga/group-algebras.test';
 import { runSgaLawsTests } from './sga/laws.test';
 import { runBridgeTests } from './sga/bridge.test';
+import { runBugFixTests } from './sga/bug-fixes.test';
 
 // ============================================================================
 // Test Utilities
@@ -1106,9 +1107,10 @@ function runAllTests(): void {
     runGroupAlgebraTests();
     runSgaLawsTests();
     runBridgeTests();
+    runBugFixTests();
 
     console.log('='.repeat(60));
-    console.log('✓ ALL TESTS PASSED (including v0.3.0 SGA tests)');
+    console.log('✓ ALL TESTS PASSED (including v0.3.0 SGA tests and v0.3.1 bug fixes)');
     console.log('='.repeat(60));
   } catch (error: any) {
     console.log('\n' + '='.repeat(60));

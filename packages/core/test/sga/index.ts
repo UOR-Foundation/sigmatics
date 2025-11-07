@@ -10,6 +10,7 @@
 import { runGroupAlgebraTests } from './group-algebras.test';
 import { runSgaLawsTests } from './laws.test';
 import { runBridgeTests } from './bridge.test';
+import { runBugFixTests } from './bug-fixes.test';
 
 export function runAllSgaTests(): void {
   console.log('\n\n');
@@ -29,6 +30,9 @@ export function runAllSgaTests(): void {
 
     // Run bridge commutative diagram tests
     runBridgeTests();
+
+    // Run bug fix verification tests (v0.3.1)
+    runBugFixTests();
 
     console.log('\n\n');
     console.log('╔═══════════════════════════════════════════════════════════╗');

@@ -91,8 +91,24 @@ function validateLiftProjectForClass(classIndex: number): ValidationResult {
 /**
  * Validate lift-project round trip for all classes
  */
-export function validateLiftProject(): ValidationResult[] {
-  return Array.from({ length: 96 }, (_, i) => validateLiftProjectForClass(i));
+export function validateLiftProject(): {
+  allPassed: boolean;
+  results: ValidationResult[];
+  summary: { total: number; passed: number; failed: number };
+} {
+  const results = Array.from({ length: 96 }, (_, i) => validateLiftProjectForClass(i));
+  const passed = results.filter((r) => r.passed).length;
+  const failed = results.filter((r) => !r.passed).length;
+
+  return {
+    allPassed: failed === 0,
+    results,
+    summary: {
+      total: results.length,
+      passed,
+      failed,
+    },
+  };
 }
 
 /**
@@ -136,7 +152,11 @@ function validateRForClass(classIndex: number, k: number = 1): ValidationResult 
 /**
  * Validate R transform for all classes
  */
-export function validateR(): ValidationResult[] {
+export function validateR(): {
+  allPassed: boolean;
+  results: ValidationResult[];
+  summary: { total: number; passed: number; failed: number };
+} {
   const results: ValidationResult[] = [];
 
   // Test R^1, R^2, R^3 for all classes
@@ -146,7 +166,18 @@ export function validateR(): ValidationResult[] {
     }
   }
 
-  return results;
+  const passed = results.filter((r) => r.passed).length;
+  const failed = results.filter((r) => !r.passed).length;
+
+  return {
+    allPassed: failed === 0,
+    results,
+    summary: {
+      total: results.length,
+      passed,
+      failed,
+    },
+  };
 }
 
 /**
@@ -190,7 +221,11 @@ function validateDForClass(classIndex: number, k: number = 1): ValidationResult 
 /**
  * Validate D transform for all classes
  */
-export function validateD(): ValidationResult[] {
+export function validateD(): {
+  allPassed: boolean;
+  results: ValidationResult[];
+  summary: { total: number; passed: number; failed: number };
+} {
   const results: ValidationResult[] = [];
 
   // Test D^1, D^2 for all classes
@@ -200,7 +235,18 @@ export function validateD(): ValidationResult[] {
     }
   }
 
-  return results;
+  const passed = results.filter((r) => r.passed).length;
+  const failed = results.filter((r) => !r.passed).length;
+
+  return {
+    allPassed: failed === 0,
+    results,
+    summary: {
+      total: results.length,
+      passed,
+      failed,
+    },
+  };
 }
 
 /**
@@ -244,7 +290,11 @@ function validateTForClass(classIndex: number, k: number = 1): ValidationResult 
 /**
  * Validate T transform for all classes
  */
-export function validateT(): ValidationResult[] {
+export function validateT(): {
+  allPassed: boolean;
+  results: ValidationResult[];
+  summary: { total: number; passed: number; failed: number };
+} {
   const results: ValidationResult[] = [];
 
   // Test T^1 through T^7 for all classes
@@ -254,7 +304,18 @@ export function validateT(): ValidationResult[] {
     }
   }
 
-  return results;
+  const passed = results.filter((r) => r.passed).length;
+  const failed = results.filter((r) => !r.passed).length;
+
+  return {
+    allPassed: failed === 0,
+    results,
+    summary: {
+      total: results.length,
+      passed,
+      failed,
+    },
+  };
 }
 
 /**
@@ -298,8 +359,24 @@ function validateMForClass(classIndex: number): ValidationResult {
 /**
  * Validate M transform for all classes
  */
-export function validateM(): ValidationResult[] {
-  return Array.from({ length: 96 }, (_, i) => validateMForClass(i));
+export function validateM(): {
+  allPassed: boolean;
+  results: ValidationResult[];
+  summary: { total: number; passed: number; failed: number };
+} {
+  const results = Array.from({ length: 96 }, (_, i) => validateMForClass(i));
+  const passed = results.filter((r) => r.passed).length;
+  const failed = results.filter((r) => !r.passed).length;
+
+  return {
+    allPassed: failed === 0,
+    results,
+    summary: {
+      total: results.length,
+      passed,
+      failed,
+    },
+  };
 }
 
 /**
@@ -313,11 +390,11 @@ export function validateAll(): {
   summary: { total: number; passed: number; failed: number };
 } {
   const results: ValidationResult[] = [
-    ...validateLiftProject(),
-    ...validateR(),
-    ...validateD(),
-    ...validateT(),
-    ...validateM(),
+    ...validateLiftProject().results,
+    ...validateR().results,
+    ...validateD().results,
+    ...validateT().results,
+    ...validateM().results,
   ];
 
   const passed = results.filter((r) => r.passed).length;
