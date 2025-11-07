@@ -116,29 +116,96 @@ export function z4Scale(a: Z4Element, scalar: number): Z4Element {
 }
 
 /**
- * Invert an element r^k → r^(-k) = r^(4-k)
+ * Solve a 4×4 linear system using Gaussian elimination
+ * Returns null if the system is singular (no unique solution)
+ */
+function solveLinearSystem4x4(
+  matrix: number[][],
+  rhs: number[],
+): [number, number, number, number] | null {
+  // Create augmented matrix [A|b]
+  const aug: number[][] = matrix.map((row, i) => [...row, rhs[i]]);
+
+  // Forward elimination
+  for (let col = 0; col < 4; col++) {
+    // Find pivot
+    let maxRow = col;
+    for (let row = col + 1; row < 4; row++) {
+      if (Math.abs(aug[row][col]) > Math.abs(aug[maxRow][col])) {
+        maxRow = row;
+      }
+    }
+
+    // Check for singularity
+    if (Math.abs(aug[maxRow][col]) < EPSILON) {
+      return null; // Matrix is singular
+    }
+
+    // Swap rows
+    [aug[col], aug[maxRow]] = [aug[maxRow], aug[col]];
+
+    // Eliminate column
+    for (let row = col + 1; row < 4; row++) {
+      const factor = aug[row][col] / aug[col][col];
+      for (let j = col; j < 5; j++) {
+        aug[row][j] -= factor * aug[col][j];
+      }
+    }
+  }
+
+  // Back substitution
+  const solution: number[] = [0, 0, 0, 0];
+  for (let i = 3; i >= 0; i--) {
+    let sum = aug[i][4];
+    for (let j = i + 1; j < 4; j++) {
+      sum -= aug[i][j] * solution[j];
+    }
+    solution[i] = sum / aug[i][i];
+  }
+
+  return solution as [number, number, number, number];
+}
+
+/**
+ * Invert an element in ℝ[ℤ₄]
  *
- * Note: This only works for pure powers. General inversion would require
- * checking invertibility in the group algebra.
+ * For pure powers r^k, uses fast path: r^k → r^(-k) = r^(4-k)
+ * For general elements, solves the linear system ab = 1
+ *
+ * An element a = a₀ + a₁r + a₂r² + a₃r³ is invertible if and only if
+ * the circulant matrix corresponding to multiplication by a is invertible.
  */
 export function z4Invert(a: Z4Element): Z4Element {
-  // Check if this is a pure power (only one non-zero coefficient)
-  const nonZeroIndices = a.coefficients
-    .map((c, i) => ({ c, i }))
-    .filter(({ c }) => Math.abs(c) >= EPSILON);
-
-  if (nonZeroIndices.length !== 1) {
-    throw new Error('Can only invert pure powers in ℤ₄');
+  // Fast path: check if this is a pure power
+  const purePower = extractZ4Power(a);
+  if (purePower !== null) {
+    // r^k → r^(-k) = r^(4-k)
+    return z4Power((4 - purePower) % 4);
   }
 
-  const { i: k, c: coeff } = nonZeroIndices[0];
+  // General case: solve the linear system
+  // Multiplication by a = [a₀, a₁, a₂, a₃] gives the circulant matrix:
+  // [a₀ a₃ a₂ a₁]
+  // [a₁ a₀ a₃ a₂]
+  // [a₂ a₁ a₀ a₃]
+  // [a₃ a₂ a₁ a₀]
+  const [a0, a1, a2, a3] = a.coefficients;
+  const matrix = [
+    [a0, a3, a2, a1],
+    [a1, a0, a3, a2],
+    [a2, a1, a0, a3],
+    [a3, a2, a1, a0],
+  ];
 
-  if (Math.abs(coeff - 1) >= EPSILON) {
-    throw new Error('Can only invert unit coefficient powers');
+  const rhs = [1, 0, 0, 0]; // We want ab = 1 (identity)
+
+  const solution = solveLinearSystem4x4(matrix, rhs);
+
+  if (solution === null) {
+    throw new Error('Element is not invertible in ℝ[ℤ₄]');
   }
 
-  // r^k → r^(-k) = r^(4-k)
-  return z4Power((4 - k) % 4);
+  return { coefficients: solution };
 }
 
 /**
@@ -265,28 +332,91 @@ export function z3Scale(a: Z3Element, scalar: number): Z3Element {
 }
 
 /**
- * Invert an element τ^k → τ^(-k) = τ^(3-k)
+ * Solve a 3×3 linear system using Gaussian elimination
+ * Returns null if the system is singular (no unique solution)
+ */
+function solveLinearSystem3x3(matrix: number[][], rhs: number[]): [number, number, number] | null {
+  // Create augmented matrix [A|b]
+  const aug: number[][] = matrix.map((row, i) => [...row, rhs[i]]);
+
+  // Forward elimination
+  for (let col = 0; col < 3; col++) {
+    // Find pivot
+    let maxRow = col;
+    for (let row = col + 1; row < 3; row++) {
+      if (Math.abs(aug[row][col]) > Math.abs(aug[maxRow][col])) {
+        maxRow = row;
+      }
+    }
+
+    // Check for singularity
+    if (Math.abs(aug[maxRow][col]) < EPSILON) {
+      return null; // Matrix is singular
+    }
+
+    // Swap rows
+    [aug[col], aug[maxRow]] = [aug[maxRow], aug[col]];
+
+    // Eliminate column
+    for (let row = col + 1; row < 3; row++) {
+      const factor = aug[row][col] / aug[col][col];
+      for (let j = col; j < 4; j++) {
+        aug[row][j] -= factor * aug[col][j];
+      }
+    }
+  }
+
+  // Back substitution
+  const solution: number[] = [0, 0, 0];
+  for (let i = 2; i >= 0; i--) {
+    let sum = aug[i][3];
+    for (let j = i + 1; j < 3; j++) {
+      sum -= aug[i][j] * solution[j];
+    }
+    solution[i] = sum / aug[i][i];
+  }
+
+  return solution as [number, number, number];
+}
+
+/**
+ * Invert an element in ℝ[ℤ₃]
  *
- * Note: This only works for pure powers.
+ * For pure powers τ^k, uses fast path: τ^k → τ^(-k) = τ^(3-k)
+ * For general elements, solves the linear system ab = 1
+ *
+ * An element a = a₀ + a₁τ + a₂τ² is invertible if and only if
+ * the circulant matrix corresponding to multiplication by a is invertible.
  */
 export function z3Invert(a: Z3Element): Z3Element {
-  // Check if this is a pure power (only one non-zero coefficient)
-  const nonZeroIndices = a.coefficients
-    .map((c, i) => ({ c, i }))
-    .filter(({ c }) => Math.abs(c) >= EPSILON);
-
-  if (nonZeroIndices.length !== 1) {
-    throw new Error('Can only invert pure powers in ℤ₃');
+  // Fast path: check if this is a pure power
+  const purePower = extractZ3Power(a);
+  if (purePower !== null) {
+    // τ^k → τ^(-k) = τ^(3-k)
+    return z3Power((3 - purePower) % 3);
   }
 
-  const { i: k, c: coeff } = nonZeroIndices[0];
+  // General case: solve the linear system
+  // Multiplication by a = [a₀, a₁, a₂] gives the circulant matrix:
+  // [a₀ a₂ a₁]
+  // [a₁ a₀ a₂]
+  // [a₂ a₁ a₀]
+  const [a0, a1, a2] = a.coefficients;
+  const matrix = [
+    [a0, a2, a1],
+    [a1, a0, a2],
+    [a2, a1, a0],
+  ];
 
-  if (Math.abs(coeff - 1) >= EPSILON) {
-    throw new Error('Can only invert unit coefficient powers');
+  const rhs = [1, 0, 0]; // We want ab = 1 (identity)
+
+  const solution = solveLinearSystem3x3(matrix, rhs);
+
+  if (solution === null) {
+    throw new Error('Element is not invertible in ℝ[ℤ₃]');
   }
 
-  // τ^k → τ^(-k) = τ^(3-k)
-  return z3Power((3 - k) % 3);
+  return { coefficients: solution };
 }
 
 /**

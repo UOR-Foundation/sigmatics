@@ -2,10 +2,12 @@
  * SGA Test Suite Runner
  *
  * Runs all SGA tests including:
+ * - Group algebra inversions (ℝ[ℤ₄] and ℝ[ℤ₃])
  * - Algebraic laws (R⁴=id, D³=id, T⁸=id, M²=id, commutation, conjugation)
  * - Bridge commutative diagrams (1344 tests)
  */
 
+import { runGroupAlgebraTests } from './group-algebras.test';
 import { runSgaLawsTests } from './laws.test';
 import { runBridgeTests } from './bridge.test';
 
@@ -19,6 +21,9 @@ export function runAllSgaTests(): void {
   console.log('\n');
 
   try {
+    // Run group algebra inversion tests
+    runGroupAlgebraTests();
+
     // Run algebraic laws tests
     runSgaLawsTests();
 

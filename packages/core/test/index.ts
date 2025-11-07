@@ -11,6 +11,7 @@ declare const module: any;
 import { Atlas } from '../src/api';
 import { tokenize } from '../src/lexer';
 import * as AtlasClass from '../src/class-system';
+import { runGroupAlgebraTests } from './sga/group-algebras.test';
 import { runSgaLawsTests } from './sga/laws.test';
 import { runBridgeTests } from './sga/bridge.test';
 
@@ -1102,6 +1103,7 @@ function runAllTests(): void {
     console.log('='.repeat(60));
     console.log();
 
+    runGroupAlgebraTests();
     runSgaLawsTests();
     runBridgeTests();
 
