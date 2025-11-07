@@ -18,7 +18,7 @@
 declare const require: any;
 declare const module: any;
 
-import { lift } from '../../src/bridge/lift';
+import { lift } from '../../bridge/lift';
 import {
   transformR,
   transformD,
@@ -27,8 +27,8 @@ import {
   transformRPower,
   transformDPower,
   transformTPower,
-} from '../../src/sga/transforms';
-import { sgaEqual } from '../../src/sga/sga-element';
+} from '../../sga/transforms';
+import { sgaEqual } from '../../sga/sga-element';
 
 // Test utilities
 function assertEqual<T>(actual: T, expected: T, message: string): void {

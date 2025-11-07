@@ -38,47 +38,60 @@ function formatBlade(indices: number[]): Blade {
 }
 
 /**
- * Permute basis vector index for T transform
- *
- * T rotates the full context space ℤ₈: ℓ → (ℓ+k) mod 8
- *
- * For the 8-element context space {0,1,2,3,4,5,6,7}:
- * - ℓ=0 represents the scalar (Clifford identity)
- * - ℓ=1..7 represent basis vectors e₁..e₇
- *
- * The T transform rotates ALL 8 positions cyclically.
- * For k=1: 0→1→2→3→4→5→6→7→0
- *
- * @param index - Current ℓ value (0..7)
- * @param k - Rotation amount
- * @returns New ℓ value (0..7)
- */
-function permuteIndexT(index: number, k: number): number {
-  // Simple rotation through all 8 elements
-  return (index + k) % 8;
-}
-
-/**
- * Permute a blade for the T transform
- */
-function permuteBladeT(blade: Blade, k: number): Blade {
-  const indices = parseBlade(blade);
-  const permuted = indices.map((i) => permuteIndexT(i, k));
-  return formatBlade(permuted.sort((a, b) => a - b));
-}
-
-/**
  * Apply T transform to Clifford element
+ *
+ * For rank-1 elements, T rotates the 8-element context space:
+ *   ℓ=0 (scalar "1") → ℓ=1 (e₁) → ℓ=2 (e₂) → ... → ℓ=7 (e₇) → ℓ=0 (scalar)
+ *
+ * The key insight is that the scalar and basis vectors form an 8-element cycle,
+ * not just a 7-element cycle of basis vectors.
+ *
+ * @param clifford - Clifford element (should be rank-1 for class system)
+ * @param k - Rotation amount (mod 8)
+ * @returns Rotated Clifford element
  */
 function applyTToClifford(clifford: Cl07Element, k: number): Cl07Element {
-  const result = new Map<Blade, number>();
+  // Extract the entries
+  const entries = Array.from(clifford.grades.entries());
 
-  for (const [blade, coeff] of clifford.grades) {
-    const newBlade = permuteBladeT(blade, k);
-    result.set(newBlade, coeff);
+  // For rank-1 elements (the only case for the class system)
+  if (entries.length === 1) {
+    const [blade, coeff] = entries[0];
+
+    // Extract current ℓ value
+    let currentL: number;
+    if (blade === '1') {
+      // Scalar case
+      currentL = 0;
+    } else {
+      // Check if it's a single basis vector like "e1", "e2", etc.
+      const match = blade.match(/^e(\d)$/);
+      if (match) {
+        currentL = parseInt(match[1], 10);
+        if (currentL < 1 || currentL > 7) {
+          throw new Error(`Invalid basis vector index: ${currentL}`);
+        }
+      } else {
+        // Higher-grade blade - not a rank-1 element
+        throw new Error(`T-transform on higher-grade element not supported: ${blade}`);
+      }
+    }
+
+    // Apply rotation in the 8-element context space
+    const newL = (currentL + k) % 8;
+
+    // Create new Clifford element based on new ℓ value
+    if (newL === 0) {
+      // Scalar
+      return createCliffordElement(new Map([['1', coeff]]));
+    } else {
+      // Basis vector e₁..e₇
+      return createCliffordElement(new Map([[`e${newL}`, coeff]]));
+    }
   }
 
-  return createCliffordElement(result);
+  // For multi-grade elements (shouldn't happen in the class system)
+  throw new Error('T-transform requires rank-1 element (scalar or single basis vector)');
 }
 
 // ============================================================================
