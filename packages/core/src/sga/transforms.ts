@@ -15,7 +15,7 @@
  */
 
 import type { SgaElement, Cl07Element, Blade } from './types';
-import { createSgaElement, sgaMultiply, sgaIdentity } from './sga-element';
+import { createSgaElement, sgaMultiply, sgaIdentity, sgaEqual } from './sga-element';
 import { createCliffordElement, cliffordIdentity, countBasisVectors } from './clifford';
 import { z4Generator, z4Power, z4Invert, z3Generator, z3Power, z3Invert } from './group-algebras';
 
@@ -229,7 +229,7 @@ export function transformM(x: SgaElement): SgaElement {
  */
 export function verifyR4Identity(x: SgaElement): boolean {
   const result = transformRPower(x, 4);
-  return result.clifford === x.clifford && result.z4 === x.z4 && result.z3 === x.z3;
+  return sgaEqual(result, x);
 }
 
 /**
@@ -237,7 +237,7 @@ export function verifyR4Identity(x: SgaElement): boolean {
  */
 export function verifyD3Identity(x: SgaElement): boolean {
   const result = transformDPower(x, 3);
-  return result.clifford === x.clifford && result.z4 === x.z4 && result.z3 === x.z3;
+  return sgaEqual(result, x);
 }
 
 /**
@@ -245,7 +245,7 @@ export function verifyD3Identity(x: SgaElement): boolean {
  */
 export function verifyT8Identity(x: SgaElement): boolean {
   const result = transformTPower(x, 8);
-  return result.clifford === x.clifford && result.z4 === x.z4 && result.z3 === x.z3;
+  return sgaEqual(result, x);
 }
 
 /**
@@ -253,5 +253,5 @@ export function verifyT8Identity(x: SgaElement): boolean {
  */
 export function verifyM2Identity(x: SgaElement): boolean {
   const result = transformM(transformM(x));
-  return result.clifford === x.clifford && result.z4 === x.z4 && result.z3 === x.z3;
+  return sgaEqual(result, x);
 }
