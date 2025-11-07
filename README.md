@@ -88,6 +88,7 @@ import type { Phrase } from '@uor-foundation/sigmatics/types';
 ```
 
 **Module structure:**
+
 - `api/` - High-level Atlas class
 - `lexer/` - Tokenization
 - `parser/` - AST construction

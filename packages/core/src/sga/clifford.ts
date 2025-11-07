@@ -87,7 +87,7 @@ function simplifyBladeMerge(indices: number[]): [number[], number] {
  * @param grades - Map or record of blade → coefficient
  */
 export function createCliffordElement(
-  grades: Map<Blade, number> | Record<Blade, number>
+  grades: Map<Blade, number> | Record<Blade, number>,
 ): Cl07Element {
   const map = grades instanceof Map ? grades : new Map(Object.entries(grades));
 
@@ -298,11 +298,7 @@ export function cliffordConjugation(a: Cl07Element): Cl07Element {
  * @param b - Second element
  * @param epsilon - Tolerance for floating-point comparison
  */
-export function cliffordEqual(
-  a: Cl07Element,
-  b: Cl07Element,
-  epsilon = EPSILON
-): boolean {
+export function cliffordEqual(a: Cl07Element, b: Cl07Element, epsilon = EPSILON): boolean {
   // Get all blades from both elements
   const allBlades = new Set([...a.grades.keys(), ...b.grades.keys()]);
 

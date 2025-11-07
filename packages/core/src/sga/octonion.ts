@@ -168,10 +168,7 @@ export function octonionConjugate(x: Cl07Element): Cl07Element {
   const alpha = scalarPart(x);
   const u = gradeProject(x, 1);
 
-  return cliffordAdd(
-    createCliffordElement({ '1': alpha }),
-    cliffordScale(u, -1)
-  );
+  return cliffordAdd(createCliffordElement({ '1': alpha }), cliffordScale(u, -1));
 }
 
 /**
@@ -213,11 +210,7 @@ export function octonionNorm(x: Cl07Element): number {
  * @param y - Second octonion
  * @param epsilon - Tolerance for floating-point comparison
  */
-export function verifyAlternativity(
-  x: Cl07Element,
-  y: Cl07Element,
-  epsilon = 1e-10
-): boolean {
+export function verifyAlternativity(x: Cl07Element, y: Cl07Element, epsilon = 1e-10): boolean {
   // Compute (xy)y
   const xy = cayleyProduct(x, y);
   const xy_y = cayleyProduct(xy, y);
@@ -251,7 +244,7 @@ export function verifyAlternativity(
 export function verifyNormMultiplicativity(
   x: Cl07Element,
   y: Cl07Element,
-  epsilon = 1e-10
+  epsilon = 1e-10,
 ): boolean {
   const xy = cayleyProduct(x, y);
 

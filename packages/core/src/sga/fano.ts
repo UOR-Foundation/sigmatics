@@ -48,14 +48,14 @@ export const crossProductTable: ReadonlyArray<ReadonlyArray<number>> = (() => {
 
   // Populate from Fano lines
   for (const [i, j, k] of FANO_LINES) {
-    table[i][j] = k;   // eᵢ × eⱼ = eₖ
-    table[j][k] = i;   // eⱼ × eₖ = eᵢ (cyclic)
-    table[k][i] = j;   // eₖ × eᵢ = eⱼ (cyclic)
+    table[i][j] = k; // eᵢ × eⱼ = eₖ
+    table[j][k] = i; // eⱼ × eₖ = eᵢ (cyclic)
+    table[k][i] = j; // eₖ × eᵢ = eⱼ (cyclic)
 
     // Reverse orientation (anticommutative)
-    table[j][i] = -k;  // eⱼ × eᵢ = -eₖ
-    table[k][j] = -i;  // eₖ × eⱼ = -eᵢ
-    table[i][k] = -j;  // eᵢ × eₖ = -eⱼ
+    table[j][i] = -k; // eⱼ × eᵢ = -eₖ
+    table[k][j] = -i; // eₖ × eⱼ = -eᵢ
+    table[i][k] = -j; // eᵢ × eₖ = -eⱼ
   }
 
   return table;
@@ -70,10 +70,7 @@ export const crossProductTable: ReadonlyArray<ReadonlyArray<number>> = (() => {
  *   - index: The resulting basis vector index (1..7), or 0 if i = j
  *   - sign: +1 or -1 for orientation, or 0 if i = j
  */
-export function crossProduct(
-  i: number,
-  j: number
-): { index: number; sign: number } {
+export function crossProduct(i: number, j: number): { index: number; sign: number } {
   if (i < 1 || i > 7 || j < 1 || j > 7) {
     throw new Error(`Basis vector indices must be 1..7, got i=${i}, j=${j}`);
   }
@@ -129,9 +126,7 @@ export function verifyFanoPlane(): boolean {
  * @param index - Basis vector index (1..7)
  * @returns Array of lines (as triples)
  */
-export function getLinesContaining(
-  index: number
-): Array<readonly [number, number, number]> {
+export function getLinesContaining(index: number): Array<readonly [number, number, number]> {
   return FANO_LINES.filter((line) => line.includes(index));
 }
 
@@ -148,6 +143,6 @@ export function isFanoLine(i: number, j: number, k: number): boolean {
     ([a, b, c]) =>
       (a === i && b === j && c === k) ||
       (a === j && b === k && c === i) ||
-      (a === k && b === i && c === j)
+      (a === k && b === i && c === j),
   );
 }

@@ -27,10 +27,4 @@ export * as SGA from './sga';
 export * as Bridge from './bridge';
 
 // Re-export key SGA types
-export type {
-  SgaElement,
-  Cl07Element,
-  Z4Element,
-  Z3Element,
-  Rank1Basis,
-} from './sga/types';
+export type { SgaElement, Cl07Element, Z4Element, Z3Element, Rank1Basis } from './sga/types';

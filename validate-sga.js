@@ -83,7 +83,6 @@ try {
 
   console.log('Run full test suite with: npm test');
   console.log('\n');
-
 } catch (error) {
   console.error('\n✗ Validation failed!');
   console.error(error.message);

@@ -149,9 +149,7 @@ export function extractZ4Power(a: Z4Element): number | null {
   for (let i = 0; i < 4; i++) {
     if (Math.abs(a.coefficients[i] - 1) < EPSILON) {
       // Check that all others are 0
-      const allOthersZero = a.coefficients.every(
-        (c, j) => i === j || Math.abs(c) < EPSILON
-      );
+      const allOthersZero = a.coefficients.every((c, j) => i === j || Math.abs(c) < EPSILON);
       if (allOthersZero) return i;
     }
   }
@@ -299,9 +297,7 @@ export function extractZ3Power(a: Z3Element): number | null {
   for (let i = 0; i < 3; i++) {
     if (Math.abs(a.coefficients[i] - 1) < EPSILON) {
       // Check that all others are 0
-      const allOthersZero = a.coefficients.every(
-        (c, j) => i === j || Math.abs(c) < EPSILON
-      );
+      const allOthersZero = a.coefficients.every((c, j) => i === j || Math.abs(c) < EPSILON);
       if (allOthersZero) return i;
     }
   }

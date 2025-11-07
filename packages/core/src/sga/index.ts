@@ -17,14 +17,7 @@
  */
 
 // Types
-export type {
-  SgaElement,
-  Cl07Element,
-  Z4Element,
-  Z3Element,
-  Rank1Basis,
-  Blade,
-} from './types';
+export type { SgaElement, Cl07Element, Z4Element, Z3Element, Rank1Basis, Blade } from './types';
 
 export { EPSILON } from './types';
 

@@ -15,24 +15,9 @@
  */
 
 import type { SgaElement, Cl07Element, Blade } from './types';
-import {
-  createSgaElement,
-  sgaMultiply,
-  sgaIdentity,
-} from './sga-element';
-import {
-  createCliffordElement,
-  cliffordIdentity,
-  countBasisVectors,
-} from './clifford';
-import {
-  z4Generator,
-  z4Power,
-  z4Invert,
-  z3Generator,
-  z3Power,
-  z3Invert,
-} from './group-algebras';
+import { createSgaElement, sgaMultiply, sgaIdentity } from './sga-element';
+import { createCliffordElement, cliffordIdentity, countBasisVectors } from './clifford';
+import { z4Generator, z4Power, z4Invert, z3Generator, z3Power, z3Invert } from './group-algebras';
 
 /**
  * Parse blade to extract basis vector indices
@@ -55,30 +40,22 @@ function formatBlade(indices: number[]): Blade {
 /**
  * Permute basis vector index for T transform
  *
- * T rotates the context: eᵢ → e_{(i-1+k) mod 7 + 1}
- *
- * Note: We use 1-based indexing for basis vectors (e₁, e₂, ..., e₇)
- * The permutation cycles through these 7 vectors, but we also extend it
- * to handle the scalar (represented as ℓ=0, which maps to the identity).
+ * T rotates the full context space ℤ₈: ℓ → (ℓ+k) mod 8
  *
  * For the 8-element context space {0,1,2,3,4,5,6,7}:
  * - ℓ=0 represents the scalar (Clifford identity)
  * - ℓ=1..7 represent basis vectors e₁..e₇
  *
- * The T transform rotates ℓ by: ℓ → (ℓ+k) mod 8
+ * The T transform rotates ALL 8 positions cyclically.
+ * For k=1: 0→1→2→3→4→5→6→7→0
+ *
+ * @param index - Current ℓ value (0..7)
+ * @param k - Rotation amount
+ * @returns New ℓ value (0..7)
  */
 function permuteIndexT(index: number, k: number): number {
-  if (index === 0) {
-    // Scalar position: rotate through the 8-element cycle
-    // This will map 0 → k (mod 8)
-    const newIndex = k % 8;
-    return newIndex === 0 ? 0 : newIndex;
-  }
-
-  // For basis vectors e₁..e₇ (indices 1..7)
-  // We want: 1→2→3→4→5→6→7→1 (for k=1)
-  // Formula: i → ((i - 1 + k) mod 7) + 1
-  return ((index - 1 + k) % 7) + 1;
+  // Simple rotation through all 8 elements
+  return (index + k) % 8;
 }
 
 /**
@@ -228,9 +205,9 @@ export function transformM(x: SgaElement): SgaElement {
   // For M, we only invert τ (the d component)
   // The Clifford and r components remain unchanged
   return createSgaElement(
-    x.clifford,     // Clifford part unchanged
-    x.z4,           // r part unchanged
-    z3Invert(x.z3)  // Only invert τ: τ^d → τ^(-d)
+    x.clifford, // Clifford part unchanged
+    x.z4, // r part unchanged
+    z3Invert(x.z3), // Only invert τ: τ^d → τ^(-d)
   );
 }
 

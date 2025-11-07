@@ -47,11 +47,7 @@ import {
  * @param z4 - ℝ[ℤ₄] component
  * @param z3 - ℝ[ℤ₃] component
  */
-export function createSgaElement(
-  clifford: Cl07Element,
-  z4: Z4Element,
-  z3: Z3Element
-): SgaElement {
+export function createSgaElement(clifford: Cl07Element, z4: Z4Element, z3: Z3Element): SgaElement {
   return { clifford, z4, z3 };
 }
 
@@ -106,7 +102,7 @@ export function sgaMultiply(x: SgaElement, y: SgaElement): SgaElement {
   return createSgaElement(
     geometricProduct(x.clifford, y.clifford),
     z4Multiply(x.z4, y.z4),
-    z3Multiply(x.z3, y.z3)
+    z3Multiply(x.z3, y.z3),
   );
 }
 
@@ -117,7 +113,7 @@ export function sgaAdd(x: SgaElement, y: SgaElement): SgaElement {
   return createSgaElement(
     cliffordAdd(x.clifford, y.clifford),
     z4Add(x.z4, y.z4),
-    z3Add(x.z3, y.z3)
+    z3Add(x.z3, y.z3),
   );
 }
 
@@ -128,7 +124,7 @@ export function sgaScale(x: SgaElement, scalar: number): SgaElement {
   return createSgaElement(
     cliffordScale(x.clifford, scalar),
     z4Scale(x.z4, scalar),
-    z3Scale(x.z3, scalar)
+    z3Scale(x.z3, scalar),
   );
 }
 
