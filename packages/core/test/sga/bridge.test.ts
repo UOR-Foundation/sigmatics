@@ -10,7 +10,7 @@
  * implements the class transform semantics.
  */
 
-import { validateAll, summarizeResults } from '../../bridge/validation';
+import { validateAll, summarizeResults } from '../../src/bridge/validation';
 
 // ============================================================================
 // Main Test Runner

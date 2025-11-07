@@ -61,7 +61,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "ts-node test/index.ts",
+    "test": "ts-node --project tsconfig.test.json test/index.ts",
     "watch": "tsc --watch"
   },
   "keywords": [
