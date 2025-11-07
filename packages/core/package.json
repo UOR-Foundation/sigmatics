@@ -1,6 +1,6 @@
 {
   "name": "@uor-foundation/sigmatics",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Sigmatics: the Atlas Sigil Algebra reference implementation from the UOR Foundation",
   "author": "UOR Foundation <info@uor.foundation> (https://uor.foundation)",
   "homepage": "https://github.com/UOR-Foundation/sigmatics#readme",
