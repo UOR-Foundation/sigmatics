@@ -34,6 +34,8 @@ import type {
   DTransformResult,
   TrialityOrbit,
 } from '../types';
+import * as SGA from '../sga';
+import * as Bridge from '../bridge';
 
 // ============================================================================
 // High-Level API
@@ -268,6 +270,84 @@ export class Atlas {
     }
     return result;
   }
+
+  // ==========================================================================
+  // SGA (Sigmatics Geometric Algebra) - v0.3.0
+  // ==========================================================================
+
+  /**
+   * SGA namespace provides access to the Sigmatics Geometric Algebra
+   *
+   * SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
+   *
+   * This is the formal algebraic foundation beneath the 96-class system,
+   * enabling:
+   * - Verification of transform correctness via commutative diagrams
+   * - Extension to higher-grade elements (bivectors, trivectors)
+   * - Geometric semantics via the octonion channel
+   * - Complete algebraic automorphism implementations of R/D/T/M
+   *
+   * @example
+   * // Lift a class to SGA
+   * const element = Atlas.SGA.lift(21);
+   *
+   * // Apply transforms
+   * const transformed = Atlas.SGA.D(element);
+   *
+   * // Project back to class
+   * const newClass = Atlas.SGA.project(transformed);
+   * console.log(newClass); // 5
+   *
+   * // Octonion multiplication
+   * const u = Atlas.SGA.Octonion.randomOctonion();
+   * const v = Atlas.SGA.Octonion.randomOctonion();
+   * const product = Atlas.SGA.Octonion.cayleyProduct(u, v);
+   */
+  static SGA = {
+    // Core SGA operations
+    ...SGA,
+
+    // Bridge operations
+    lift: Bridge.lift,
+    liftAll: Bridge.liftAll,
+    project: Bridge.project,
+    isRank1: Bridge.isRank1,
+
+    // Validation
+    validate: Bridge.validateAll,
+    validateR: Bridge.validateR,
+    validateD: Bridge.validateD,
+    validateT: Bridge.validateT,
+    validateM: Bridge.validateM,
+
+    // Convenience wrappers for transforms
+    R: (element: SGA.SgaElement, k = 1) => SGA.transformRPower(element, k),
+    D: (element: SGA.SgaElement, k = 1) => SGA.transformDPower(element, k),
+    T: (element: SGA.SgaElement, k = 1) => SGA.transformTPower(element, k),
+    M: SGA.transformM,
+
+    // Octonion channel
+    Octonion: {
+      cayleyProduct: SGA.cayleyProduct,
+      innerProduct: SGA.octonionInnerProduct,
+      crossProduct: SGA.vectorCrossProduct,
+      conjugate: SGA.octonionConjugate,
+      norm: SGA.octonionNorm,
+      normSquared: SGA.octonionNormSquared,
+      verifyAlternativity: SGA.verifyAlternativity,
+      verifyNormMultiplicativity: SGA.verifyNormMultiplicativity,
+      randomOctonion: SGA.randomOctonion,
+    },
+
+    // Fano plane
+    Fano: {
+      lines: SGA.FANO_LINES,
+      crossProduct: SGA.crossProduct,
+      verify: SGA.verifyFanoPlane,
+      getLinesContaining: SGA.getLinesContaining,
+      isFanoLine: SGA.isFanoLine,
+    },
+  };
 }
 
 export default Atlas;
