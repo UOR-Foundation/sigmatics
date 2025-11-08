@@ -61,6 +61,16 @@ export function projectGrade(grade: number): IRNode {
 }
 
 /**
+ * Create a projectClass IR node (SGA element → class index)
+ */
+export function projectClass(child: IRNode): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'projectClass', child },
+  };
+}
+
+/**
  * Create an add96 IR node
  */
 export function add96(overflowMode: 'drop' | 'track' = 'drop'): IRNode {

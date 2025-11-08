@@ -22,28 +22,8 @@ import { lowerToSgaBackend, executeSgaPlan } from '../compiler/lowering/sga-back
 import * as IR from '../compiler/ir';
 import { project } from '../bridge/project';
 import { lift } from '../bridge/lift';
-import { validateDescriptor, getSchema, computeSchemaHash } from '../model/schema-loader';
-
-/**
- * Model cache for compiled artifacts
- */
-const modelCache = new Map<string, CompiledModel>();
-
-/**
- * Generate cache key from model descriptor
- * Includes namespace and schema content hash as required by spec
- */
-function getCacheKey(descriptor: ModelDescriptor): string {
-  const { name, version, namespace, compiled } = descriptor;
-  const compiledStr = JSON.stringify(compiled);
-
-  // Get schema and compute hash for cache invalidation
-  const schema = getSchema(name);
-  const schemaHash = schema ? computeSchemaHash(schema) : 'no-schema';
-
-  // Cache key: namespace/name@version#schemaHash:compiledParams
-  return `${namespace}/${name}@${version}#${schemaHash}:${compiledStr}`;
-}
+import { validateDescriptor } from '../model/schema-loader';
+import * as cache from './cache';
 
 /**
  * Compile a model descriptor to an executable plan
@@ -60,10 +40,9 @@ export function compileModel<T = unknown, R = unknown>(
   }
 
   // Check cache first
-  const cacheKey = getCacheKey(descriptor);
-  const cached = modelCache.get(cacheKey);
+  const cached = cache.get<T, R>(descriptor);
   if (cached) {
-    return cached as CompiledModel<T, R>;
+    return cached;
   }
 
   // Build IR from descriptor
@@ -126,7 +105,7 @@ export function compileModel<T = unknown, R = unknown>(
   };
 
   // Cache and return
-  modelCache.set(cacheKey, compiled);
+  cache.set(descriptor, compiled);
   return compiled;
 }
 
@@ -189,7 +168,7 @@ function buildIR(descriptor: ModelDescriptor): IRNode {
 
   if (name === 'projectClass') {
     // Project SGA element back to class index (runtime parameter)
-    return IR.param('x');
+    return IR.projectClass(IR.param('x'));
   }
 
   throw new Error(`Unknown model: ${name}`);
@@ -310,41 +289,28 @@ export const StdlibModels = {
       loweringHints: { prefer: 'auto' },
     }),
 
-  projectClass: () => {
-    // projectClass is a thin wrapper around the bridge project() function
-    // It validates and projects SGA elements to class indices
-    return {
-      descriptor: {
-        name: 'projectClass',
-        version: '1.0.0',
-        namespace: 'stdlib.bridge',
-        compiled: {},
-        runtime: { x: {} },
-        complexityHint: 'C1',
-        loweringHints: { prefer: 'sga' },
-      },
-      complexity: 'C1' as ComplexityClass,
-      plan: { backend: 'sga', plan: { kind: 'sga', operations: [] } },
-      run: (params: { x: SgaElement }): number | null => {
-        return project(params.x);
-      },
-    };
-  },
+  projectClass: () =>
+    compileModel<{ x: SgaElement }, number | null>({
+      name: 'projectClass',
+      version: '1.0.0',
+      namespace: 'stdlib.bridge',
+      compiled: {},
+      runtime: { x: {} },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'sga' },
+    }),
 };
 
 /**
  * Clear the model cache
  */
 export function clearCache(): void {
-  modelCache.clear();
+  cache.clear();
 }
 
 /**
  * Get cache statistics
  */
 export function getCacheStats(): { size: number; keys: string[] } {
-  return {
-    size: modelCache.size,
-    keys: Array.from(modelCache.keys()),
-  };
+  return cache.getStats();
 }

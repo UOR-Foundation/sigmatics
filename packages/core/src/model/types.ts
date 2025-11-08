@@ -75,6 +75,7 @@ export type AtomOp =
   | { type: 'param'; name: string } // Runtime parameter reference
   | { type: 'lift'; classIndex: number } // lift(i)
   | { type: 'project'; grade: number } // project(k) - Clifford grade projection
+  | { type: 'projectClass'; child: IRNode } // projectClass(x) - SGA → class index
   | { type: 'add96'; overflowMode: 'drop' | 'track' }
   | { type: 'sub96'; overflowMode: 'drop' | 'track' }
   | { type: 'mul96'; overflowMode: 'drop' | 'track' };

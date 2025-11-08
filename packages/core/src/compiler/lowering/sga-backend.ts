@@ -62,6 +62,11 @@ function collectSgaOperations(node: IRNode): SgaOperation[] {
           case 'project':
             ops.push({ type: 'projectGrade', grade: op.grade });
             break;
+          case 'projectClass':
+            // projectClass: SGA element → class index (handled via bridge function)
+            ops.push({ type: 'projectClass' });
+            if (op.child) visit(op.child);
+            break;
           case 'add96':
             // Ring ops use class-level mod-96 arithmetic
             ops.push({ type: 'add96', overflowMode: op.overflowMode });
@@ -250,8 +255,9 @@ export function executeSgaPlan(
       }
 
       case 'projectClass': {
-        if (!state) throw new Error('Project requires an SGA element');
-        const classIndex = project(state);
+        const element = (inputs.x as SgaElement) ?? state;
+        if (!element) throw new Error('projectClass requires an SGA element');
+        const classIndex = project(element);
         return classIndex; // Return class index or null
       }
     }
