@@ -36,6 +36,7 @@ import type {
 } from '../types';
 import * as SGA from '../sga';
 import * as Bridge from '../bridge';
+import { StdlibModels } from '../server/registry';
 
 // ============================================================================
 // High-Level API
@@ -270,6 +271,53 @@ export class Atlas {
     }
     return result;
   }
+
+  // ==========================================================================
+  // Declarative Model System - v0.4.0
+  // ==========================================================================
+
+  /**
+   * Model namespace provides access to compiled models from the registry
+   *
+   * All stdlib operations are available as compiled models with dual backends:
+   * - Class backend: Fast permutation path for rank-1 operations
+   * - SGA backend: Full algebraic semantics for general elements
+   *
+   * Models accept both number (class index) and SgaElement inputs,
+   * automatically dispatching to the appropriate backend.
+   *
+   * @example
+   * // Transform models
+   * const rModel = Atlas.Model.R(2);  // R² rotation
+   * const result1 = rModel.run({ x: 21 });  // Class backend
+   * const result2 = rModel.run({ x: Atlas.SGA.lift(21) });  // SGA backend
+   *
+   * // Ring operations
+   * const addModel = Atlas.Model.add96('track');
+   * const sum = addModel.run({ a: 50, b: 60 });  // { value: 14, overflow: true }
+   *
+   * // Bridge operations
+   * const liftModel = Atlas.Model.lift(42);
+   * const element = liftModel.run({});  // Lift class 42 to SGA
+   */
+  static Model = {
+    // Ring operations
+    add96: StdlibModels.add96,
+    sub96: StdlibModels.sub96,
+    mul96: StdlibModels.mul96,
+
+    // Transform models
+    R: StdlibModels.R,
+    D: StdlibModels.D,
+    T: StdlibModels.T,
+    M: StdlibModels.M,
+
+    // Grade operations
+    projectGrade: StdlibModels.projectGrade,
+
+    // Bridge operations
+    lift: StdlibModels.lift,
+  };
 
   // ==========================================================================
   // SGA (Sigmatics Geometric Algebra) - v0.3.0
