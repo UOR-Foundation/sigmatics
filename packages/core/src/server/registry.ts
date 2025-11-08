@@ -120,22 +120,24 @@ function buildIR(descriptor: ModelDescriptor): IRNode {
   // Transforms
   if (name === 'R') {
     const k = (compiled.k as number) ?? 1;
-    // R is applied to runtime input x
-    return IR.R(IR.classLiteral(0), k); // Placeholder, will use runtime x
+    const kNormalized = ((k % 4) + 4) % 4;
+    return IR.R(IR.param('x'), kNormalized);
   }
 
   if (name === 'D') {
     const k = (compiled.k as number) ?? 1;
-    return IR.D(IR.classLiteral(0), k);
+    const kNormalized = ((k % 3) + 3) % 3;
+    return IR.D(IR.param('x'), kNormalized);
   }
 
   if (name === 'T') {
     const k = (compiled.k as number) ?? 1;
-    return IR.T(IR.classLiteral(0), k);
+    const kNormalized = ((k % 8) + 8) % 8;
+    return IR.T(IR.param('x'), kNormalized);
   }
 
   if (name === 'M') {
-    return IR.M(IR.classLiteral(0));
+    return IR.M(IR.param('x'));
   }
 
   // Grade operations

@@ -220,6 +220,8 @@ function atomEqual(a: any, b: any): boolean {
   switch (a.type) {
     case 'classLiteral':
       return a.value === b.value;
+    case 'param':
+      return a.name === b.name;
     case 'lift':
       return a.classIndex === b.classIndex;
     case 'project':

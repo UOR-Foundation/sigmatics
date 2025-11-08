@@ -25,6 +25,16 @@ export function classLiteral(value: number): IRNode {
 }
 
 /**
+ * Create a runtime parameter reference IR node
+ */
+export function param(name: string): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'param', name },
+  };
+}
+
+/**
  * Create a lift IR node
  */
 export function lift(classIndex: number): IRNode {
@@ -156,6 +166,8 @@ export function prettyPrintIR(node: IRNode, indent = 0): string {
       switch (op.type) {
         case 'classLiteral':
           return `${spaces}ClassLiteral(${op.value})`;
+        case 'param':
+          return `${spaces}Param("${op.name}")`;
         case 'lift':
           return `${spaces}Lift(${op.classIndex})`;
         case 'project':

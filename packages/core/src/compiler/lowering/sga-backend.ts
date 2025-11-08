@@ -54,6 +54,9 @@ function collectSgaOperations(node: IRNode): SgaOperation[] {
             // Lift to SGA
             ops.push({ type: 'lift', classIndex: op.value });
             break;
+          case 'param':
+            // Runtime parameter - resolved at execution time from inputs
+            break;
           case 'lift':
             ops.push({ type: 'lift', classIndex: op.classIndex });
             break;

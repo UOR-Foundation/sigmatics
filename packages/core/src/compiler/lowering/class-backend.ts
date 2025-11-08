@@ -37,6 +37,9 @@ function collectClassOperations(node: IRNode): ClassOperation[] {
           case 'classLiteral':
             // No operation needed - value is directly available
             break;
+          case 'param':
+            // Runtime parameter - resolved at execution time from inputs
+            break;
           case 'lift':
             ops.push({ type: 'lift', classIndex: op.classIndex });
             break;

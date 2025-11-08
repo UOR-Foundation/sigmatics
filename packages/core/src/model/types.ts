@@ -72,6 +72,7 @@ export type IRNode =
  */
 export type AtomOp =
   | { type: 'classLiteral'; value: number } // c<i>
+  | { type: 'param'; name: string } // Runtime parameter reference
   | { type: 'lift'; classIndex: number } // lift(i)
   | { type: 'project'; grade: number } // project(k) - Clifford grade projection
   | { type: 'add96'; overflowMode: 'drop' | 'track' }
