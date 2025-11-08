@@ -20,7 +20,7 @@
  *
  * Each triple (i, j, k) means: eᵢ × eⱼ = eₖ
  */
-export const FANO_LINES: ReadonlyArray<readonly [number, number, number]> = [
+export const FANO_LINES: readonly (readonly [number, number, number])[] = [
   [1, 2, 4],
   [2, 3, 5],
   [3, 4, 6],
@@ -40,7 +40,7 @@ export const FANO_LINES: ReadonlyArray<readonly [number, number, number]> = [
  *   - k if eᵢ × eⱼ = eₖ (positive orientation)
  *   - -k if eᵢ × eⱼ = -eₖ (negative orientation)
  */
-export const crossProductTable: ReadonlyArray<ReadonlyArray<number>> = (() => {
+export const crossProductTable: readonly (readonly number[])[] = (() => {
   // Initialize 8x8 table (indices 0-7, where 0 is unused)
   const table: number[][] = Array(8)
     .fill(0)
@@ -126,7 +126,7 @@ export function verifyFanoPlane(): boolean {
  * @param index - Basis vector index (1..7)
  * @returns Array of lines (as triples)
  */
-export function getLinesContaining(index: number): Array<readonly [number, number, number]> {
+export function getLinesContaining(index: number): readonly (readonly [number, number, number])[] {
   return FANO_LINES.filter((line) => line.includes(index));
 }
 

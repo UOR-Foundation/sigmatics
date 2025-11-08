@@ -9,7 +9,6 @@
  */
 
 import { StdlibModels } from '../../src/server/registry';
-import { lift } from '../../src/bridge/lift';
 import { project } from '../../src/bridge/project';
 
 // Test helper

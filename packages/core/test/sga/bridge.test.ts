@@ -50,7 +50,7 @@ export function runBridgeTests(): void {
 if (require.main === module) {
   try {
     runBridgeTests();
-  } catch (error) {
+  } catch (_error) {
     console.error('Tests failed!');
     process.exit(1);
   }

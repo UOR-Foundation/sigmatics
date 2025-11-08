@@ -13,7 +13,6 @@ declare const module: any;
 
 import {
   z4Identity,
-  z4Generator,
   z4Power,
   z4Multiply,
   z4Add,
@@ -21,7 +20,6 @@ import {
   z4Invert,
   z4Equal,
   z3Identity,
-  z3Generator,
   z3Power,
   z3Multiply,
   z3Add,
@@ -31,17 +29,11 @@ import {
 } from '../../src/sga/group-algebras';
 
 // Test utilities
-function assertEqual<T>(actual: T, expected: T, message: string): void {
-  if (actual !== expected) {
-    throw new Error(`${message}\n  Expected: ${expected}\n  Actual: ${actual}`);
-  }
-}
-
 function assertThrows(fn: () => void, message: string): void {
   try {
     fn();
     throw new Error(`${message}: Expected function to throw, but it did not`);
-  } catch (error) {
+  } catch (_error) {
     // Expected to throw, test passes
   }
 }
