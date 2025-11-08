@@ -14,28 +14,10 @@
  * - MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹ (mirror conjugation)
  */
 
-import type { SgaElement, Cl07Element, Blade } from './types';
-import { createSgaElement, sgaMultiply, sgaIdentity, sgaEqual } from './sga-element';
-import { createCliffordElement, cliffordIdentity, countBasisVectors } from './clifford';
-import { z4Generator, z4Power, z4Invert, z3Generator, z3Power, z3Invert } from './group-algebras';
-
-/**
- * Parse blade to extract basis vector indices
- */
-function parseBlade(blade: Blade): number[] {
-  if (blade === '1') return [];
-  const matches = blade.match(/e(\d)/g);
-  if (!matches) return [];
-  return matches.map((m) => parseInt(m.substring(1), 10));
-}
-
-/**
- * Format basis vector indices as blade
- */
-function formatBlade(indices: number[]): Blade {
-  if (indices.length === 0) return '1';
-  return indices.map((i) => `e${i}`).join('');
-}
+import type { SgaElement, Cl07Element } from './types';
+import { createSgaElement, sgaMultiply, sgaEqual } from './sga-element';
+import { createCliffordElement, cliffordIdentity } from './clifford';
+import { z4Generator, z4Power, z3Generator, z3Power, z3Invert } from './group-algebras';
 
 /**
  * Apply T transform to Clifford element

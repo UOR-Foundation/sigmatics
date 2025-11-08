@@ -12,16 +12,7 @@
  * implements the class transform semantics.
  */
 
-import type { SgaElement } from '../sga/types';
-import {
-  transformR,
-  transformD,
-  transformT,
-  transformM,
-  transformRPower,
-  transformDPower,
-  transformTPower,
-} from '../sga/transforms';
+import { transformM, transformRPower, transformDPower, transformTPower } from '../sga/transforms';
 import { lift } from './lift';
 import { project } from './project';
 import {

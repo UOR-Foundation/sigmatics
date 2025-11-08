@@ -371,7 +371,13 @@ export class Atlas {
 
     // Convenience wrappers for transforms
     R: (element: SGA.SgaElement, k = 1) => {
-      if (!element || typeof element !== 'object' || !element.clifford || !element.z4 || !element.z3) {
+      if (
+        !element ||
+        typeof element !== 'object' ||
+        !element.clifford ||
+        !element.z4 ||
+        !element.z3
+      ) {
         throw new Error(
           'R transform expects an SGA element. Use Atlas.SGA.lift(classIndex) to create one, or Atlas.SGA.createSgaElement()',
         );
@@ -379,7 +385,13 @@ export class Atlas {
       return SGA.transformRPower(element, k);
     },
     D: (element: SGA.SgaElement, k = 1) => {
-      if (!element || typeof element !== 'object' || !element.clifford || !element.z4 || !element.z3) {
+      if (
+        !element ||
+        typeof element !== 'object' ||
+        !element.clifford ||
+        !element.z4 ||
+        !element.z3
+      ) {
         throw new Error(
           'D transform expects an SGA element. Use Atlas.SGA.lift(classIndex) to create one, or Atlas.SGA.createSgaElement()',
         );
@@ -387,7 +399,13 @@ export class Atlas {
       return SGA.transformDPower(element, k);
     },
     T: (element: SGA.SgaElement, k = 1) => {
-      if (!element || typeof element !== 'object' || !element.clifford || !element.z4 || !element.z3) {
+      if (
+        !element ||
+        typeof element !== 'object' ||
+        !element.clifford ||
+        !element.z4 ||
+        !element.z3
+      ) {
         throw new Error(
           'T transform expects an SGA element. Use Atlas.SGA.lift(classIndex) to create one, or Atlas.SGA.createSgaElement()',
         );
@@ -395,7 +413,13 @@ export class Atlas {
       return SGA.transformTPower(element, k);
     },
     M: (element: SGA.SgaElement) => {
-      if (!element || typeof element !== 'object' || !element.clifford || !element.z4 || !element.z3) {
+      if (
+        !element ||
+        typeof element !== 'object' ||
+        !element.clifford ||
+        !element.z4 ||
+        !element.z3
+      ) {
         throw new Error(
           'M transform expects an SGA element. Use Atlas.SGA.lift(classIndex) to create one, or Atlas.SGA.createSgaElement()',
         );

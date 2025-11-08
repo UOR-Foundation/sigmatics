@@ -91,9 +91,7 @@ export type TransformOp =
 /**
  * Backend execution plan
  */
-export type BackendPlan =
-  | { backend: 'class'; plan: ClassPlan }
-  | { backend: 'sga'; plan: SgaPlan };
+export type BackendPlan = { backend: 'class'; plan: ClassPlan } | { backend: 'sga'; plan: SgaPlan };
 
 /**
  * Class backend plan (permutation/rank-1 fast path)

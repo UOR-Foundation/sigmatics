@@ -16,7 +16,6 @@ import {
   sgaMultiply,
   sgaAdd,
   sgaScale,
-  createRank1Basis,
 } from '../../sga/sga-element';
 import {
   transformRPower,

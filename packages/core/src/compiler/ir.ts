@@ -9,7 +9,7 @@
  * The IR is the canonical representation before lowering to backends.
  */
 
-import type { IRNode, AtomOp, TransformOp } from '../model/types';
+import type { IRNode } from '../model/types';
 
 /**
  * Create a class literal IR node

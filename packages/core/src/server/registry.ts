@@ -11,21 +11,14 @@ import type {
   CompiledModel,
   ComplexityClass,
   BackendPlan,
-  ModelCacheKey,
   RingResult,
   IRNode,
 } from '../model/types';
 import type { SgaElement } from '../sga/types';
 import { normalize } from '../compiler/rewrites';
 import { analyzeComplexity, selectBackend } from '../compiler/fuser';
-import {
-  lowerToClassBackend,
-  executeClassPlan,
-} from '../compiler/lowering/class-backend';
-import {
-  lowerToSgaBackend,
-  executeSgaPlan,
-} from '../compiler/lowering/sga-backend';
+import { lowerToClassBackend, executeClassPlan } from '../compiler/lowering/class-backend';
+import { lowerToSgaBackend, executeSgaPlan } from '../compiler/lowering/sga-backend';
 import * as IR from '../compiler/ir';
 import { project } from '../bridge/project';
 import { lift } from '../bridge/lift';
@@ -83,10 +76,7 @@ export function compileModel<T = unknown, R = unknown>(
   const complexity = analyzeComplexity(normalized, descriptor.compiled);
 
   // Select backend
-  const backendType = selectBackend(
-    complexity,
-    descriptor.loweringHints?.prefer,
-  );
+  const backendType = selectBackend(complexity, descriptor.loweringHints?.prefer);
 
   // Lower to backend plan
   const plan: BackendPlan =

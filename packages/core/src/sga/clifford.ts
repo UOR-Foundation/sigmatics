@@ -56,7 +56,7 @@ function formatBlade(indices: number[]): Blade {
  * Returns: [simplified indices, sign]
  */
 function simplifyBladeMerge(indices: number[]): [number[], number] {
-  let result = [...indices];
+  const result = [...indices];
   let sign = 1;
 
   // Bubble sort to bring duplicates together

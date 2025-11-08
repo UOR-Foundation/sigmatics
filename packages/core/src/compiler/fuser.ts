@@ -67,11 +67,7 @@ function hasRuntimeDegrees(node: IRNode): boolean {
   switch (node.kind) {
     case 'atom':
       // Ring ops always have runtime inputs (a, b)
-      if (
-        node.op.type === 'add96' ||
-        node.op.type === 'sub96' ||
-        node.op.type === 'mul96'
-      ) {
+      if (node.op.type === 'add96' || node.op.type === 'sub96' || node.op.type === 'mul96') {
         return true;
       }
       // Lift with fixed class index has no runtime degrees

@@ -25,7 +25,6 @@ import {
   gradeProject,
   cliffordAdd,
   cliffordScale,
-  basisVector,
 } from './clifford';
 import { crossProduct } from './fano';
 
@@ -254,10 +253,14 @@ export function verifyNormMultiplicativity(
   epsilon = 1e-10,
 ): boolean {
   if (!x || typeof x !== 'object' || !x.grades) {
-    throw new Error('verifyNormMultiplicativity expects a Clifford element (octonion) as first argument');
+    throw new Error(
+      'verifyNormMultiplicativity expects a Clifford element (octonion) as first argument',
+    );
   }
   if (!y || typeof y !== 'object' || !y.grades) {
-    throw new Error('verifyNormMultiplicativity expects a Clifford element (octonion) as second argument');
+    throw new Error(
+      'verifyNormMultiplicativity expects a Clifford element (octonion) as second argument',
+    );
   }
 
   const xy = cayleyProduct(x, y);

@@ -66,7 +66,11 @@ function normalizeStep(node: IRNode): IRNode {
  *
  * Push transforms down to leaves and fold consecutive transforms
  */
-function normalizeTransform(node: { kind: 'transform'; transform: TransformOp; child: IRNode }): IRNode {
+function normalizeTransform(node: {
+  kind: 'transform';
+  transform: TransformOp;
+  child: IRNode;
+}): IRNode {
   const { transform, child } = node;
 
   // First, normalize the child
@@ -214,7 +218,10 @@ function irEqual(a: IRNode, b: IRNode): boolean {
 /**
  * Test if two atomic operations are equal
  */
-function atomEqual(a: any, b: any): boolean {
+function atomEqual(
+  a: { type: string; [key: string]: unknown },
+  b: { type: string; [key: string]: unknown },
+): boolean {
   if (a.type !== b.type) return false;
 
   switch (a.type) {
