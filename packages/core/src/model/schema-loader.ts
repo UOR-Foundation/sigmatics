@@ -61,10 +61,7 @@ export function validateDescriptor(descriptor: ModelDescriptor): {
   }
 
   // Validate complexityHint if present
-  if (
-    descriptor.complexityHint &&
-    !['C0', 'C1', 'C2', 'C3'].includes(descriptor.complexityHint)
-  ) {
+  if (descriptor.complexityHint && !['C0', 'C1', 'C2', 'C3'].includes(descriptor.complexityHint)) {
     errors.push(`Invalid complexityHint: ${descriptor.complexityHint}`);
   }
 

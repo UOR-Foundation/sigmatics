@@ -73,6 +73,12 @@ function normalizeTransform(node: {
 }): IRNode {
   const { transform, child } = node;
 
+  // Pure power folding: eliminate identity transforms
+  // R⁴ = D³ = T⁸ = M² = identity
+  if (transform.type === 'R' && transform.k === 0) return normalizeStep(child);
+  if (transform.type === 'D' && transform.k === 0) return normalizeStep(child);
+  if (transform.type === 'T' && transform.k === 0) return normalizeStep(child);
+
   // First, normalize the child
   const normalizedChild = normalizeStep(child);
 
@@ -233,6 +239,9 @@ function atomEqual(
       return a.classIndex === b.classIndex;
     case 'project':
       return a.grade === b.grade;
+    case 'projectClass':
+      // Compare child IR nodes
+      return irEqual(a.child as IRNode, b.child as IRNode);
     case 'add96':
     case 'sub96':
     case 'mul96':

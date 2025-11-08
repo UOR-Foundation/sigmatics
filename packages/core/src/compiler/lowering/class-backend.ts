@@ -216,6 +216,6 @@ function applyTTransform(classIndex: number, k: number): number {
 function applyMTransform(classIndex: number): number {
   const { h2, d, l } = decodeClassIndex(classIndex);
   // M inverts d: 0→0, 1→2, 2→1
-  const newD = d === 0 ? 0 : (3 - d) as 1 | 2;
+  const newD = d === 0 ? 0 : ((3 - d) as 1 | 2);
   return componentsToClassIndex({ h2, d: newD as 0 | 1 | 2, l });
 }

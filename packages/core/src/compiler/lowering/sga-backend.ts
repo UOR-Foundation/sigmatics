@@ -12,11 +12,7 @@
 
 import type { IRNode, SgaPlan, SgaOperation } from '../../model/types';
 import type { SgaElement } from '../../sga/types';
-import {
-  sgaMultiply,
-  sgaAdd,
-  sgaScale,
-} from '../../sga/sga-element';
+import { sgaMultiply, sgaAdd, sgaScale } from '../../sga/sga-element';
 import {
   transformRPower,
   transformDPower,
@@ -107,10 +103,7 @@ function collectSgaOperations(node: IRNode): SgaOperation[] {
 /**
  * Execute an SGA backend plan
  */
-export function executeSgaPlan(
-  plan: SgaPlan,
-  inputs: Record<string, unknown>,
-): unknown {
+export function executeSgaPlan(plan: SgaPlan, inputs: Record<string, unknown>): unknown {
   let state: SgaElement | undefined = undefined;
 
   for (const op of plan.operations) {

@@ -25,16 +25,19 @@ export function analyzeComplexity(
 
   // C1: Few runtime degrees - prefer class backend
   // If the operation is pure class-level (no grade projections)
-  if (isClassPure(node)) {
+  // and has shallow composition depth
+  const depth = computeCompositionDepth(node);
+  if (isClassPure(node) && depth.seqDepth <= 3 && depth.parDepth <= 2) {
     return 'C1';
   }
 
   // C2: Bounded mixed-grade/shape
-  if (hasBoundedGrades(node)) {
+  // Has grade projections but bounded complexity
+  if (hasBoundedGrades(node) && depth.seqDepth <= 5) {
     return 'C2';
   }
 
-  // C3: General case
+  // C3: General case (deep compositions or many grade projections)
   return 'C3';
 }
 
@@ -57,6 +60,46 @@ export function selectBackend(
     case 'C2':
     case 'C3':
       return 'sga'; // Full algebraic semantics
+  }
+}
+
+/**
+ * Compute composition depth metrics for an IR tree
+ *
+ * Tracks:
+ * - seqDepth: Maximum depth of sequential composition (f ∘ g)
+ * - parDepth: Maximum depth of parallel composition (f ⊗ g)
+ */
+function computeCompositionDepth(node: IRNode): {
+  seqDepth: number;
+  parDepth: number;
+} {
+  switch (node.kind) {
+    case 'atom':
+      return { seqDepth: 0, parDepth: 0 };
+
+    case 'seq': {
+      const left = computeCompositionDepth(node.left);
+      const right = computeCompositionDepth(node.right);
+      return {
+        seqDepth: 1 + Math.max(left.seqDepth, right.seqDepth),
+        parDepth: Math.max(left.parDepth, right.parDepth),
+      };
+    }
+
+    case 'par': {
+      const left = computeCompositionDepth(node.left);
+      const right = computeCompositionDepth(node.right);
+      return {
+        seqDepth: Math.max(left.seqDepth, right.seqDepth),
+        parDepth: 1 + Math.max(left.parDepth, right.parDepth),
+      };
+    }
+
+    case 'transform': {
+      // Transforms don't add to composition depth
+      return computeCompositionDepth(node.child);
+    }
   }
 }
 
@@ -93,13 +136,17 @@ function isFullyCompiled(compiledParams: Record<string, unknown>): boolean {
 }
 
 /**
- * Check if IR tree is class-pure (no grade projections)
+ * Check if IR tree is class-pure (no grade projections or SGA-only operations)
  */
 function isClassPure(node: IRNode): boolean {
   switch (node.kind) {
     case 'atom':
       // Grade projection requires SGA backend
       if (node.op.type === 'project') {
+        return false;
+      }
+      // projectClass requires SGA backend (bridge operation)
+      if (node.op.type === 'projectClass') {
         return false;
       }
       return true;
@@ -117,14 +164,17 @@ function isClassPure(node: IRNode): boolean {
  * Check if IR tree has bounded grades
  */
 function hasBoundedGrades(node: IRNode): boolean {
-  // Count number of grade projections
-  let gradeProjections = 0;
+  // Count number of grade-related operations
+  let gradeOps = 0;
 
   function count(n: IRNode): void {
     switch (n.kind) {
       case 'atom':
         if (n.op.type === 'project') {
-          gradeProjections++;
+          gradeOps++;
+        }
+        if (n.op.type === 'projectClass') {
+          gradeOps++;
         }
         break;
       case 'seq':
@@ -140,8 +190,8 @@ function hasBoundedGrades(node: IRNode): boolean {
 
   count(node);
 
-  // Bounded if <= 2 grade projections
-  return gradeProjections <= 2;
+  // Bounded if <= 2 grade-related operations
+  return gradeOps <= 2;
 }
 
 /**

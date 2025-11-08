@@ -9,7 +9,6 @@
 import type {
   ModelDescriptor,
   CompiledModel,
-  ComplexityClass,
   BackendPlan,
   RingResult,
   IRNode,
