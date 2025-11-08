@@ -13,11 +13,7 @@
     "src/types/**",
     "src/model/types.ts"
   ],
-  "reporter": [
-    "text",
-    "html",
-    "lcov"
-  ],
+  "reporter": ["text", "html", "lcov"],
   "check-coverage": true,
   "lines": 80,
   "functions": 75,

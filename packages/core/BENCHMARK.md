@@ -13,39 +13,39 @@ All performance acceptance criteria **PASSED** ✓
 
 ### Ring Operations (Class Backend)
 
-| Operation | Total Time | Per Operation | Throughput |
-|-----------|-----------|---------------|------------|
-| `add96` (compiled model) | 4.23ms | 0.042µs | **23.63M ops/sec** |
-| `mul96` (compiled model) | 4.57ms | 0.046µs | **21.87M ops/sec** |
+| Operation                | Total Time | Per Operation | Throughput         |
+| ------------------------ | ---------- | ------------- | ------------------ |
+| `add96` (compiled model) | 4.23ms     | 0.042µs       | **23.63M ops/sec** |
+| `mul96` (compiled model) | 4.57ms     | 0.046µs       | **21.87M ops/sec** |
 
 **Analysis**: Ring operations on the class system (ℤ₉₆) achieve >20M operations per second, meeting the >10M ops/sec target with 2x headroom.
 
 ### Transform Operations (Class Backend)
 
-| Transform | Total Time | Per Operation | Throughput |
-|-----------|-----------|---------------|------------|
-| `R` (quarter-turn) | 7.04ms | 0.070µs | **14.20M ops/sec** |
-| `D` (diagonal flip) | 6.54ms | 0.065µs | **15.29M ops/sec** |
-| `T` (time reversal) | 8.17ms | 0.082µs | **12.23M ops/sec** |
-| `M` (mirror) | 8.93ms | 0.089µs | **11.20M ops/sec** |
+| Transform           | Total Time | Per Operation | Throughput         |
+| ------------------- | ---------- | ------------- | ------------------ |
+| `R` (quarter-turn)  | 7.04ms     | 0.070µs       | **14.20M ops/sec** |
+| `D` (diagonal flip) | 6.54ms     | 0.065µs       | **15.29M ops/sec** |
+| `T` (time reversal) | 8.17ms     | 0.082µs       | **12.23M ops/sec** |
+| `M` (mirror)        | 8.93ms     | 0.089µs       | **11.20M ops/sec** |
 
 **Analysis**: All transform operations exceed 11M ops/sec, meeting the >1M ops/sec target with 11x+ headroom. Performance hierarchy: D > R > T > M matches expected complexity.
 
 ### Bridge Operations
 
-| Operation | Total Time | Per Operation | Throughput |
-|-----------|-----------|---------------|------------|
-| `lift` (compiled model) | 14.20ms | 1.420µs | **0.70M ops/sec** |
-| `project` (bridge function) | 19.61ms | 1.961µs | **0.51M ops/sec** |
+| Operation                   | Total Time | Per Operation | Throughput        |
+| --------------------------- | ---------- | ------------- | ----------------- |
+| `lift` (compiled model)     | 14.20ms    | 1.420µs       | **0.70M ops/sec** |
+| `project` (bridge function) | 19.61ms    | 1.961µs       | **0.51M ops/sec** |
 
 **Analysis**: Bridge operations (class ↔ SGA conversion) complete in <2µs per operation, well under the 1ms target. The 1000x performance headroom ensures bridge operations are never a bottleneck.
 
 ### Expression Evaluator
 
-| Expression Type | Total Time | Per Operation | Throughput |
-|-----------------|-----------|---------------|------------|
-| Simple sigil | 47.08ms | 0.942µs | **1.06M ops/sec** |
-| With transform | 72802.02ms | 1456.040µs | **0.00M ops/sec** |
+| Expression Type | Total Time | Per Operation | Throughput        |
+| --------------- | ---------- | ------------- | ----------------- |
+| Simple sigil    | 47.08ms    | 0.942µs       | **1.06M ops/sec** |
+| With transform  | 72802.02ms | 1456.040µs    | **0.00M ops/sec** |
 
 **Analysis**: Simple expression evaluation achieves >1M ops/sec. Complex expressions with transforms show significant overhead due to repeated compilation; this will be addressed in future caching optimizations.
 
@@ -121,6 +121,7 @@ npm run benchmark
 ```
 
 Expected output should show:
+
 - Ring operations: >20M ops/sec
 - Transforms: >10M ops/sec
 - Bridge: <10µs per operation

@@ -55,12 +55,14 @@ However, several **refinements and quality enhancements** remain to fully meet t
 #### Implementation Plan
 
 **Step 1:** Install JSON Schema validator
+
 ```bash
 npm install --save ajv
 npm install --save-dev @types/ajv
 ```
 
 **Step 2:** Update `src/model/schema-loader.ts`
+
 ```typescript
 import Ajv from 'ajv';
 import * as fs from 'fs';
@@ -104,7 +106,7 @@ export function validateDescriptor(descriptor: ModelDescriptor): {
     const validate = ajv.compile(schema);
     const valid = validate(descriptor);
     if (!valid && validate.errors) {
-      errors.push(...validate.errors.map(e => `Schema validation: ${e.message}`));
+      errors.push(...validate.errors.map((e) => `Schema validation: ${e.message}`));
     }
   }
 
@@ -113,6 +115,7 @@ export function validateDescriptor(descriptor: ModelDescriptor): {
 ```
 
 **Step 3:** Update `tsconfig.json` to allow Node.js modules
+
 ```json
 {
   "compilerOptions": {
@@ -122,6 +125,7 @@ export function validateDescriptor(descriptor: ModelDescriptor): {
 ```
 
 **Step 4:** Verify validation works
+
 ```bash
 npm test  # Should still pass with schema validation enabled
 ```
@@ -139,11 +143,13 @@ npm test  # Should still pass with schema validation enabled
 #### Implementation Plan
 
 **Step 1:** Install coverage tools
+
 ```bash
 npm install --save-dev nyc @types/node
 ```
 
 **Step 2:** Update `package.json`
+
 ```json
 {
   "scripts": {
@@ -163,12 +169,14 @@ npm install --save-dev nyc @types/node
 ```
 
 **Step 3:** Run coverage
+
 ```bash
 npm run test:coverage
 npm run coverage:check
 ```
 
 **Step 4:** Create coverage report
+
 ```bash
 npm run test:coverage > COVERAGE_REPORT.txt
 ```
@@ -186,11 +194,13 @@ npm run test:coverage > COVERAGE_REPORT.txt
 #### Implementation Plan
 
 **Step 1:** Run benchmarks and capture output
+
 ```bash
 npm run benchmark > BENCHMARK_RESULTS.txt 2>&1
 ```
 
 **Step 2:** Create `BENCHMARK.md`
+
 ```markdown
 # Sigmatics v0.4.0 Performance Benchmarks
 
@@ -200,14 +210,14 @@ npm run benchmark > BENCHMARK_RESULTS.txt 2>&1
 
 ## Results Summary
 
-| Operation | Throughput | Requirement | Status |
-|-----------|-----------|-------------|--------|
-| R transform | 13.13M ops/sec | >1M | ✅ PASS |
-| D transform | 15.48M ops/sec | >1M | ✅ PASS |
-| T transform | 16.77M ops/sec | >1M | ✅ PASS |
-| M transform | 17.20M ops/sec | >1M | ✅ PASS |
-| lift | 1.371µs/op | <1ms | ✅ PASS |
-| project | 2.032µs/op | <1ms | ✅ PASS |
+| Operation   | Throughput     | Requirement | Status  |
+| ----------- | -------------- | ----------- | ------- |
+| R transform | 13.13M ops/sec | >1M         | ✅ PASS |
+| D transform | 15.48M ops/sec | >1M         | ✅ PASS |
+| T transform | 16.77M ops/sec | >1M         | ✅ PASS |
+| M transform | 17.20M ops/sec | >1M         | ✅ PASS |
+| lift        | 1.371µs/op     | <1ms        | ✅ PASS |
+| project     | 2.032µs/op     | <1ms        | ✅ PASS |
 
 ## Analysis
 
@@ -236,6 +246,7 @@ npm run benchmark > BENCHMARK_RESULTS.txt 2>&1
 #### Implementation Plan
 
 **Step 1:** Create `src/server/cache.ts`
+
 ```typescript
 import type { CompiledModel, ModelDescriptor } from '../model/types';
 import { computeSchemaHash, getSchema } from '../model/schema-loader';
@@ -303,6 +314,7 @@ export const modelCache = new ModelCache();
 ```
 
 **Step 2:** Update `src/server/registry.ts`
+
 ```typescript
 import { modelCache } from './cache';
 
@@ -340,6 +352,7 @@ export function compileModel<T = unknown, R = unknown>(
 #### Implementation Plan
 
 **Step 1:** Update `src/server/registry.ts`
+
 ```typescript
 projectClass: (params?: {}) => {
   const descriptor: ModelDescriptor = {
@@ -354,10 +367,11 @@ projectClass: (params?: {}) => {
 
   // Use generic compilation path
   return compileModel<{ x: SgaElement }, number | null>(descriptor);
-}
+};
 ```
 
 **Step 2:** Update `buildIR()` in registry.ts
+
 ```typescript
 function buildIR(descriptor: ModelDescriptor): IRNode {
   // ... existing cases ...
@@ -374,6 +388,7 @@ function buildIR(descriptor: ModelDescriptor): IRNode {
 **Step 3:** Update backends to handle projectClass
 
 In `class-backend.ts`:
+
 ```typescript
 case 'projectClass': {
   const element = inputs.x as SgaElement;
@@ -399,6 +414,7 @@ case 'projectClass': {
 #### Implementation Plan
 
 **Step 1:** Extend IR to support power atoms
+
 ```typescript
 // src/compiler/ir.ts
 export function z4Power(k: number): IRNode {
@@ -417,6 +433,7 @@ export function z3Power(k: number): IRNode {
 ```
 
 **Step 2:** Add folding rules in `rewrites.ts`
+
 ```typescript
 function foldPurePowers(node: IRNode): IRNode {
   if (node.kind === 'seq') {
@@ -424,8 +441,12 @@ function foldPurePowers(node: IRNode): IRNode {
     const right = foldPurePowers(node.right);
 
     // Detect z4Power sequences
-    if (left.kind === 'atom' && left.op.type === 'z4Power' &&
-        right.kind === 'atom' && right.op.type === 'z4Power') {
+    if (
+      left.kind === 'atom' &&
+      left.op.type === 'z4Power' &&
+      right.kind === 'atom' &&
+      right.op.type === 'z4Power'
+    ) {
       const k = (left.op.k + right.op.k) % 4;
       if (k === 0) return identityNode;
       return z4Power(k);
@@ -459,6 +480,7 @@ function foldPurePowers(node: IRNode): IRNode {
 #### Implementation Plan
 
 **Step 1:** Add complexity metrics
+
 ```typescript
 // src/compiler/fuser.ts
 
@@ -539,12 +561,14 @@ export function analyzeComplexity(
 #### Implementation Plan
 
 **Step 1:** Extract spec from plan to `docs/MODEL_SPEC_v0.4.0.md`
+
 - Copy Model Spec section from transition plan
 - Format as proper Markdown documentation
 - Add cross-references to implementation
 - Include examples from MODEL_SYSTEM.md
 
 **Step 2:** Update README.md
+
 ```markdown
 ## Architecture
 
@@ -561,6 +585,7 @@ See [Architecture Guide](docs/ARCHITECTURE.md) for details.
 ```
 
 **Step 3:** Update ARCHITECTURE.md
+
 - Add Model Server/Registry section
 - Document complexity class policy
 - Explain rewrite determinism guarantees
@@ -579,6 +604,7 @@ See [Architecture Guide](docs/ARCHITECTURE.md) for details.
 #### Implementation Plan
 
 **Step 1:** Create `docs/BACKEND_SEMANTICS.md`
+
 ```markdown
 # Backend Execution Semantics
 
@@ -591,14 +617,16 @@ The class backend executes operations using integer arithmetic and permutations.
 Ring ops maintain an accumulator state:
 
 \`\`\`typescript
-state = (a + b) % 96  // add96
+state = (a + b) % 96 // add96
 \`\`\`
 
 **Overflow handling:**
+
 - `overflowMode: 'drop'`: Return final value only
 - `overflowMode: 'track'`: Return `{ value, overflow: boolean }`
 
 **State semantics:**
+
 - Single operation: Uses input parameters
 - Composite chain: Accumulates through operations
 - Early return: `overflowMode === 'track'` terminates chain
@@ -608,10 +636,10 @@ state = (a + b) % 96  // add96
 Transforms modify class indices via group algebra:
 
 \`\`\`typescript
-R^k: h₂ → (h₂ + k) % 4     // ℝ[ℤ₄] left multiply
-D^k: d  → (d + k) % 3       // ℝ[ℤ₃] right multiply
-T^k: ℓ  → (ℓ + k) % 8       // 8-cycle permutation
-M:   d  → (3 - d) % 3       // Modality inversion
+R^k: h₂ → (h₂ + k) % 4 // ℝ[ℤ₄] left multiply
+D^k: d → (d + k) % 3 // ℝ[ℤ₃] right multiply
+T^k: ℓ → (ℓ + k) % 8 // 8-cycle permutation
+M: d → (3 - d) % 3 // Modality inversion
 \`\`\`
 
 ## SGA Backend
@@ -622,9 +650,9 @@ The SGA backend uses full tensor product semantics.
 
 \`\`\`typescript
 SgaElement = {
-  clifford: Cl₀,₇ element (geometric product)
-  z4: ℝ[ℤ₄] element
-  z3: ℝ[ℤ₃] element
+clifford: Cl₀,₇ element (geometric product)
+z4: ℝ[ℤ₄] element
+z3: ℝ[ℤ₃] element
 }
 \`\`\`
 
@@ -639,17 +667,17 @@ All operations preserve tensor product structure...
 
 ## Remediation Priority Matrix
 
-| Gap | Priority | Effort | Impact | Order |
-|-----|----------|--------|--------|-------|
-| Schema Validation | P0 | M | Critical | 1 |
-| Coverage | P0 | S | Critical | 2 |
-| Benchmark MD | P0 | T | Critical | 3 |
-| Cache Module | P1 | S | Medium | 4 |
-| ProjectClass | P1 | M | Medium | 5 |
-| Spec Docs | P1 | M | Medium | 6 |
-| Backend Docs | P1 | S | Medium | 7 |
-| Pure Power Folding | P2 | M | Low | 8 |
-| Complexity Enhancement | P2 | M | Low | 9 |
+| Gap                    | Priority | Effort | Impact   | Order |
+| ---------------------- | -------- | ------ | -------- | ----- |
+| Schema Validation      | P0       | M      | Critical | 1     |
+| Coverage               | P0       | S      | Critical | 2     |
+| Benchmark MD           | P0       | T      | Critical | 3     |
+| Cache Module           | P1       | S      | Medium   | 4     |
+| ProjectClass           | P1       | M      | Medium   | 5     |
+| Spec Docs              | P1       | M      | Medium   | 6     |
+| Backend Docs           | P1       | S      | Medium   | 7     |
+| Pure Power Folding     | P2       | M      | Low      | 8     |
+| Complexity Enhancement | P2       | M      | Low      | 9     |
 
 **Legend:**
 P0=Critical, P1=Important, P2=Enhancement
@@ -660,17 +688,20 @@ T=Trivial, S=Small, M=Medium
 ## Estimated Completion Timeline
 
 **Phase 1 (Critical - 1 day):**
+
 - Schema Validation: 4-6 hours
 - Coverage: 1-2 hours
 - Benchmark MD: 30 minutes
 
 **Phase 2 (Important - 1 day):**
+
 - Cache Module: 1-2 hours
 - ProjectClass: 2-3 hours
 - Spec Docs: 2-3 hours
 - Backend Docs: 1-2 hours
 
 **Phase 3 (Enhancement - 1 day):**
+
 - Pure Power Folding: 3-4 hours
 - Complexity Enhancement: 3-4 hours
 
@@ -680,20 +711,20 @@ T=Trivial, S=Small, M=Medium
 
 ## Current Acceptance Status
 
-| Criterion | Status | Notes |
-|-----------|--------|-------|
-| Declarative Architecture | ✅ PASS | Complete |
-| Algebraic Correctness | ✅ PASS | 1976 tests |
-| No Legacy Paths | ✅ PASS | 100% through registry |
-| Performance Parity | ⚠️ PARTIAL | No BENCHMARK.md |
-| Schema Validation | ❌ FAIL | Not enforced |
-| Backend Selection | ✅ PASS | C0-C3 working |
-| Differential Tests | ✅ PASS | 456 tests |
-| Bridge Round-Trip | ✅ PASS | 96/96 |
-| Lint 0 Errors | ⚠️ PARTIAL | Core clean, tests have 5 |
-| TypeScript Clean | ✅ PASS | 0 errors |
-| Coverage ≥90% | ❌ FAIL | Not measured |
-| Docs Updated | ⚠️ PARTIAL | MODEL_SYSTEM.md exists |
+| Criterion                | Status     | Notes                    |
+| ------------------------ | ---------- | ------------------------ |
+| Declarative Architecture | ✅ PASS    | Complete                 |
+| Algebraic Correctness    | ✅ PASS    | 1976 tests               |
+| No Legacy Paths          | ✅ PASS    | 100% through registry    |
+| Performance Parity       | ⚠️ PARTIAL | No BENCHMARK.md          |
+| Schema Validation        | ❌ FAIL    | Not enforced             |
+| Backend Selection        | ✅ PASS    | C0-C3 working            |
+| Differential Tests       | ✅ PASS    | 456 tests                |
+| Bridge Round-Trip        | ✅ PASS    | 96/96                    |
+| Lint 0 Errors            | ⚠️ PARTIAL | Core clean, tests have 5 |
+| TypeScript Clean         | ✅ PASS    | 0 errors                 |
+| Coverage ≥90%            | ❌ FAIL    | Not measured             |
+| Docs Updated             | ⚠️ PARTIAL | MODEL_SYSTEM.md exists   |
 
 **Overall: 60% Complete** - Core infrastructure solid, refinements needed
 
@@ -704,6 +735,7 @@ T=Trivial, S=Small, M=Medium
 ### For Immediate Deployment
 
 If you need to deploy **now**, the current state is **functional and correct**:
+
 - ✅ All 1976 tests passing
 - ✅ No legacy paths
 - ✅ TypeScript clean
@@ -711,6 +743,7 @@ If you need to deploy **now**, the current state is **functional and correct**:
 - ✅ Performance validated
 
 **Known limitations:**
+
 - Schema validation structural only (no JSON-Schema enforcement)
 - Coverage not measured (likely >90% given test count)
 - No formal benchmark evidence document
@@ -719,6 +752,7 @@ If you need to deploy **now**, the current state is **functional and correct**:
 ### For Full Acceptance
 
 Complete **Phase 1** (Critical) items:
+
 1. Schema Validation (4-6 hours)
 2. Coverage Measurement (1-2 hours)
 3. BENCHMARK.md (30 minutes)

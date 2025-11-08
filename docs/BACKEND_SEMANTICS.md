@@ -14,17 +14,18 @@ This document specifies the precise execution semantics for both backends.
 ```typescript
 function selectBackend(
   complexity: ComplexityClass,
-  preference?: 'auto' | 'class' | 'sga'
+  preference?: 'auto' | 'class' | 'sga',
 ): 'class' | 'sga' {
   if (preference === 'class') return 'class';
   if (preference === 'sga') return 'sga';
 
   // Auto selection based on complexity
-  return (complexity === 'C0' || complexity === 'C1') ? 'class' : 'sga';
+  return complexity === 'C0' || complexity === 'C1' ? 'class' : 'sga';
 }
 ```
 
 **Auto Selection Rules:**
+
 - **C0** (constants): Class backend
 - **C1** (class-local): Class backend
 - **C2** (bridge required): SGA backend
@@ -35,6 +36,7 @@ function selectBackend(
 ### Overview
 
 The class backend operates directly on ℤ₉₆ class indices using:
+
 - Direct integer arithmetic (mod 96)
 - Pre-computed permutation tables for transforms
 - No algebraic operations
@@ -58,6 +60,7 @@ type ClassOperation =
 ```
 
 **State Management:**
+
 - No persistent state between operations
 - Each operation consumes inputs directly
 - Operations are stateless transformations
@@ -67,41 +70,38 @@ type ClassOperation =
 #### Ring Operations
 
 **add96:**
+
 ```typescript
 function add96(a: number, b: number, mode: 'drop' | 'track'): RingResult {
   const sum = a + b;
   const value = sum % 96;
   const overflow = sum >= 96;
 
-  return mode === 'track'
-    ? { value, overflow }
-    : { value };
+  return mode === 'track' ? { value, overflow } : { value };
 }
 ```
 
 **sub96:**
+
 ```typescript
 function sub96(a: number, b: number, mode: 'drop' | 'track'): RingResult {
   const diff = a - b;
   const value = ((diff % 96) + 96) % 96;
   const overflow = diff < 0;
 
-  return mode === 'track'
-    ? { value, overflow }
-    : { value };
+  return mode === 'track' ? { value, overflow } : { value };
 }
 ```
 
 **mul96:**
+
 ```typescript
 function mul96(a: number, b: number, mode: 'drop' | 'track'): RingResult {
   const prod = a * b;
   const value = prod % 96;
   const overflow = prod >= 96;
 
-  return mode === 'track'
-    ? { value, overflow }
-    : { value };
+  return mode === 'track' ? { value, overflow } : { value };
 }
 ```
 
@@ -136,6 +136,7 @@ function applyTransform(
 ```
 
 **Power Optimization:**
+
 - R^k: Apply k mod 4 times (R⁴ = identity)
 - D^k: Apply k mod 3 times (D³ = identity)
 - T^k: Apply k mod 8 times (T⁸ = identity)
@@ -159,12 +160,13 @@ if (plan.backend === 'class' && isSgaInput) {
 
 ### Performance Characteristics
 
-| Operation | Throughput | Latency |
-|-----------|-----------|---------|
+| Operation              | Throughput     | Latency  |
+| ---------------------- | -------------- | -------- |
 | Ring ops (add/sub/mul) | 21-23M ops/sec | ~0.045µs |
-| Transforms (R/D/T/M) | 11-15M ops/sec | ~0.070µs |
+| Transforms (R/D/T/M)   | 11-15M ops/sec | ~0.070µs |
 
 **Optimization Strategies:**
+
 - Table lookups for transforms (O(1))
 - Direct arithmetic for ring ops
 - No allocation/deallocation overhead
@@ -177,13 +179,14 @@ The SGA backend operates on full `SgaElement` structures:
 
 ```typescript
 interface SgaElement {
-  clifford: CliffordElement;  // Cl₀,₇
-  z4: Z4Element;              // ℤ₄
-  z3: Z3Element;              // ℤ₃
+  clifford: CliffordElement; // Cl₀,₇
+  z4: Z4Element; // ℤ₄
+  z3: Z3Element; // ℤ₃
 }
 ```
 
 Implements full tensor product algebra:
+
 ```
 SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
 ```
@@ -208,15 +211,13 @@ type SgaOperation =
 ```
 
 **State Management:**
+
 - Maintains `state: SgaElement | undefined`
 - Operations consume `inputs` or `state`
 - Final `state` returned as result
 
 ```typescript
-function executeSgaPlan(
-  plan: SgaPlan,
-  inputs: Record<string, unknown>
-): unknown {
+function executeSgaPlan(plan: SgaPlan, inputs: Record<string, unknown>): unknown {
   let state: SgaElement | undefined = undefined;
 
   for (const op of plan.operations) {
@@ -232,6 +233,7 @@ function executeSgaPlan(
 #### Tensor Product Operations
 
 **multiply:**
+
 ```typescript
 const a = inputs.a ?? state;
 const b = inputs.b ?? state;
@@ -240,6 +242,7 @@ state = sgaMultiply(a, b);
 ```
 
 **add:**
+
 ```typescript
 const a = inputs.a ?? state;
 const b = inputs.b ?? state;
@@ -248,6 +251,7 @@ state = sgaAdd(a, b);
 ```
 
 **scale:**
+
 ```typescript
 const element = inputs.x ?? state;
 state = sgaScale(element, scalar);
@@ -299,6 +303,7 @@ state = transformM(element);
 ```
 
 **Algebraic Properties:**
+
 ```
 R⁴ = D³ = T⁸ = M² = identity
 RD = DR, RT = TR, DT = TD  (commutations)
@@ -320,6 +325,7 @@ state = {
 ```
 
 **Grades:**
+
 - 0: Scalar
 - 1: Vector (e₀, ..., e₆)
 - 2: Bivector
@@ -329,6 +335,7 @@ state = {
 #### Bridge Operations
 
 **lift:**
+
 ```typescript
 state = lift(classIndex);
 // Maps ℤ₉₆ class index to rank-1 SGA element
@@ -336,6 +343,7 @@ state = lift(classIndex);
 ```
 
 **projectClass:**
+
 ```typescript
 const element = inputs.x ?? state;
 return project(element);
@@ -358,15 +366,16 @@ if (plan.backend === 'sga' && !isSgaInput) {
 
 ### Performance Characteristics
 
-| Operation | Throughput | Latency |
-|-----------|-----------|---------|
-| Tensor multiply | ~1M ops/sec | ~1µs |
-| Transforms | ~5-10M ops/sec | ~0.1-0.2µs |
-| Bridge (lift) | 0.7M ops/sec | ~1.4µs |
-| Bridge (project) | 0.5M ops/sec | ~2.0µs |
-| Grade projection | ~1-5M ops/sec | ~0.2-1µs |
+| Operation        | Throughput     | Latency    |
+| ---------------- | -------------- | ---------- |
+| Tensor multiply  | ~1M ops/sec    | ~1µs       |
+| Transforms       | ~5-10M ops/sec | ~0.1-0.2µs |
+| Bridge (lift)    | 0.7M ops/sec   | ~1.4µs     |
+| Bridge (project) | 0.5M ops/sec   | ~2.0µs     |
+| Grade projection | ~1-5M ops/sec  | ~0.2-1µs   |
 
 **Performance Notes:**
+
 - Slower than class backend due to algebraic operations
 - Necessary for correctness beyond rank-1 elements
 - Optimized for common patterns
@@ -379,7 +388,7 @@ Both backends support automatic type conversion:
 
 ```typescript
 // Example: Class backend called with SGA input
-const R = Atlas.Model.R(1);  // Compiles to class backend (C1)
+const R = Atlas.Model.R(1); // Compiles to class backend (C1)
 const sgaElement = lift(42);
 
 // Automatic bridge: project → class operation → lift
@@ -391,7 +400,7 @@ const result = R.run({ x: sgaElement });
 
 ```typescript
 // Example: SGA backend called with class input
-const projectGrade = Atlas.Model.projectGrade(1);  // SGA backend (C2)
+const projectGrade = Atlas.Model.projectGrade(1); // SGA backend (C2)
 const classIndex = 42;
 
 // Automatic bridge: lift → SGA operation → project?
@@ -413,10 +422,11 @@ const resultClass = R(1).run({ x: 42 });
 const resultSga = R(1).run({ x: lift(42) });
 const projected = project(resultSga);
 
-assert(resultClass === projected);  // ✓ Holds for rank-1
+assert(resultClass === projected); // ✓ Holds for rank-1
 ```
 
 **Non-rank-1 elements:**
+
 - Class backend cannot represent (throws error on projection)
 - SGA backend required for correctness
 
@@ -426,22 +436,22 @@ assert(resultClass === projected);  // ✓ Holds for rank-1
 
 ```typescript
 // Non-rank-1 input
-project(nonRank1Element)  // → null
+project(nonRank1Element); // → null
 // → Error: Cannot project non-rank-1 element to class backend
 
 // Invalid class index
-applyTransform(96, 'R', 1)  // → Error: Invalid class index
+applyTransform(96, 'R', 1); // → Error: Invalid class index
 ```
 
 ### SGA Backend Errors
 
 ```typescript
 // Missing required input
-executeSgaPlan(multiplyOp, {})
+executeSgaPlan(multiplyOp, {});
 // → Error: Multiply requires two SGA elements
 
 // Type mismatch
-ringOp(nonRank1_a, nonRank1_b)
+ringOp(nonRank1_a, nonRank1_b);
 // → Error: Ring op requires rank-1 elements
 ```
 
@@ -450,8 +460,8 @@ ringOp(nonRank1_a, nonRank1_b)
 ### Class Backend: Stateless
 
 ```typescript
-executeClassPlan(plan, { x: 5 })  // Independent
-executeClassPlan(plan, { x: 7 })  // Independent
+executeClassPlan(plan, { x: 5 }); // Independent
+executeClassPlan(plan, { x: 7 }); // Independent
 // No state carried between invocations
 ```
 
@@ -467,10 +477,11 @@ state = lift(42);
 state = transformR(state, 1);
 
 // Op 3: project(state)
-return project(state);  // Final result
+return project(state); // Final result
 ```
 
 **State Scope:**
+
 - State lives within single `executeSgaPlan()` call
 - Cleared at start of each invocation
 - Not persisted across model executions
@@ -494,30 +505,30 @@ return project(state);  // Final result
 
 ### Class Backend Operations
 
-| Operation | Input Types | Output Type | Complexity |
-|-----------|------------|-------------|-----------|
-| `add96` | `number, number` | `RingResult` | O(1) |
-| `sub96` | `number, number` | `RingResult` | O(1) |
-| `mul96` | `number, number` | `RingResult` | O(1) |
-| `R(k)` | `number` | `number` | O(k) table lookups |
-| `D(k)` | `number` | `number` | O(k) table lookups |
-| `T(k)` | `number` | `number` | O(k) table lookups |
-| `M` | `number` | `number` | O(1) table lookup |
+| Operation | Input Types      | Output Type  | Complexity         |
+| --------- | ---------------- | ------------ | ------------------ |
+| `add96`   | `number, number` | `RingResult` | O(1)               |
+| `sub96`   | `number, number` | `RingResult` | O(1)               |
+| `mul96`   | `number, number` | `RingResult` | O(1)               |
+| `R(k)`    | `number`         | `number`     | O(k) table lookups |
+| `D(k)`    | `number`         | `number`     | O(k) table lookups |
+| `T(k)`    | `number`         | `number`     | O(k) table lookups |
+| `M`       | `number`         | `number`     | O(1) table lookup  |
 
 ### SGA Backend Operations
 
-| Operation | Input Types | Output Type | Complexity |
-|-----------|------------|-------------|-----------|
-| `multiply` | `SgaElement, SgaElement` | `SgaElement` | O(1) tensor ops |
-| `add` | `SgaElement, SgaElement` | `SgaElement` | O(1) component-wise |
-| `scale` | `SgaElement, number` | `SgaElement` | O(1) scalar mult |
-| `R(k)` | `SgaElement` | `SgaElement` | O(k) automorphisms |
-| `D(k)` | `SgaElement` | `SgaElement` | O(k) automorphisms |
-| `T(k)` | `SgaElement` | `SgaElement` | O(k) automorphisms |
-| `M` | `SgaElement` | `SgaElement` | O(1) reflection |
-| `projectGrade(k)` | `SgaElement` | `SgaElement` | O(1) Clifford proj |
-| `lift(i)` | `number` | `SgaElement` | O(1) bridge |
-| `projectClass` | `SgaElement` | `number \| null` | O(1) bridge |
+| Operation         | Input Types              | Output Type      | Complexity          |
+| ----------------- | ------------------------ | ---------------- | ------------------- |
+| `multiply`        | `SgaElement, SgaElement` | `SgaElement`     | O(1) tensor ops     |
+| `add`             | `SgaElement, SgaElement` | `SgaElement`     | O(1) component-wise |
+| `scale`           | `SgaElement, number`     | `SgaElement`     | O(1) scalar mult    |
+| `R(k)`            | `SgaElement`             | `SgaElement`     | O(k) automorphisms  |
+| `D(k)`            | `SgaElement`             | `SgaElement`     | O(k) automorphisms  |
+| `T(k)`            | `SgaElement`             | `SgaElement`     | O(k) automorphisms  |
+| `M`               | `SgaElement`             | `SgaElement`     | O(1) reflection     |
+| `projectGrade(k)` | `SgaElement`             | `SgaElement`     | O(1) Clifford proj  |
+| `lift(i)`         | `number`                 | `SgaElement`     | O(1) bridge         |
+| `projectClass`    | `SgaElement`             | `number \| null` | O(1) bridge         |
 
 ---
 

@@ -56,8 +56,8 @@ Models accept both `number` (class index) and `SgaElement` inputs, automatically
 import { Atlas } from '@uor-foundation/sigmatics';
 
 // Transform models
-const rModel = Atlas.Model.R(2);  // Compile R² transform
-const result = rModel.run({ x: 21 });  // Execute: 21 → 69
+const rModel = Atlas.Model.R(2); // Compile R² transform
+const result = rModel.run({ x: 21 }); // Execute: 21 → 69
 
 // Ring operations
 const addModel = Atlas.Model.add96('track');
@@ -66,7 +66,7 @@ const sum = addModel.run({ a: 50, b: 60 });
 
 // Bridge operations
 const liftModel = Atlas.Model.lift(42);
-const element = liftModel.run({});  // Class 42 → SGA element
+const element = liftModel.run({}); // Class 42 → SGA element
 ```
 
 ### Dual Backend Dispatch
@@ -74,17 +74,17 @@ const element = liftModel.run({});  // Class 42 → SGA element
 Models automatically select the appropriate backend based on input type:
 
 ```typescript
-const dModel = Atlas.Model.D(1);  // Compile D¹ (triality) transform
+const dModel = Atlas.Model.D(1); // Compile D¹ (triality) transform
 
 // Class backend (fast path)
-const classResult = dModel.run({ x: 21 });  // number input → class backend
-console.log(classResult);  // 5
+const classResult = dModel.run({ x: 21 }); // number input → class backend
+console.log(classResult); // 5
 
 // SGA backend (full semantics)
 const sgaInput = Atlas.SGA.lift(21);
-const sgaResult = dModel.run({ x: sgaInput });  // SgaElement → SGA backend
+const sgaResult = dModel.run({ x: sgaInput }); // SgaElement → SGA backend
 const projected = Atlas.SGA.project(sgaResult);
-console.log(projected);  // 5 (same result, different execution path)
+console.log(projected); // 5 (same result, different execution path)
 ```
 
 ### Direct Registry Access
@@ -215,14 +215,16 @@ Models are classified into complexity classes:
 // Automatic selection
 if (preference === 'auto') {
   if (complexity === 'C0' || complexity === 'C1') {
-    return 'class';  // Fast path
+    return 'class'; // Fast path
   } else {
-    return 'sga';    // Correctness
+    return 'sga'; // Correctness
   }
 }
 
 // Explicit hints
-loweringHints: { prefer: 'class' | 'sga' | 'auto' }
+loweringHints: {
+  prefer: 'class' | 'sga' | 'auto';
+}
 ```
 
 ### 5. Lowering

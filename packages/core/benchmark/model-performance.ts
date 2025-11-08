@@ -24,7 +24,7 @@ function benchmark(name: string, fn: () => void, iterations: number = 100000): v
 
   console.log(`${name}:`);
   console.log(`  Total: ${elapsed.toFixed(2)}ms`);
-  console.log(`  Per op: ${(elapsed / iterations * 1000).toFixed(3)}µs`);
+  console.log(`  Per op: ${((elapsed / iterations) * 1000).toFixed(3)}µs`);
   console.log(`  Throughput: ${(opsPerSec / 1_000_000).toFixed(2)}M ops/sec\n`);
 }
 
@@ -75,26 +75,42 @@ console.log('Bridge Operations:');
 console.log('------------------------------------------------------------');
 
 const liftModel = Atlas.Model.lift(42);
-benchmark('lift (compiled model)', () => {
-  liftModel.run({});
-}, 10000); // Fewer iterations for SGA operations
+benchmark(
+  'lift (compiled model)',
+  () => {
+    liftModel.run({});
+  },
+  10000,
+); // Fewer iterations for SGA operations
 
-benchmark('project (bridge function)', () => {
-  const element = lift(42);
-  project(element);
-}, 10000);
+benchmark(
+  'project (bridge function)',
+  () => {
+    const element = lift(42);
+    project(element);
+  },
+  10000,
+);
 
 // Expression Evaluator (routes through models)
 console.log('Expression Evaluator:');
 console.log('------------------------------------------------------------');
 
-benchmark('evaluateBytes (simple)', () => {
-  Atlas.evaluateBytes('mark@c21');
-}, 50000);
+benchmark(
+  'evaluateBytes (simple)',
+  () => {
+    Atlas.evaluateBytes('mark@c21');
+  },
+  50000,
+);
 
-benchmark('evaluateBytes (with transform)', () => {
-  Atlas.evaluateBytes('R+2@ mark@c21');
-}, 50000);
+benchmark(
+  'evaluateBytes (with transform)',
+  () => {
+    Atlas.evaluateBytes('R+2@ mark@c21');
+  },
+  50000,
+);
 
 console.log('============================================================');
 console.log('Benchmark Complete');

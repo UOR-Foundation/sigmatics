@@ -55,7 +55,10 @@ try {
 
   const result = Atlas.SGA.sgaMultiply(r1, element);
   console.log('sgaMultiply result:', result ? 'OK' : 'UNDEFINED');
-  console.log('Result has grades:', result && result.clifford && result.clifford.grades ? 'YES' : 'NO');
+  console.log(
+    'Result has grades:',
+    result && result.clifford && result.clifford.grades ? 'YES' : 'NO',
+  );
 } catch (e) {
   console.log('ERROR:', e.message);
   console.log('Stack:', e.stack);
@@ -71,7 +74,10 @@ try {
   console.log('Has summary:', 'summary' in fullValidation);
 
   const rValidation = Atlas.SGA.validateR();
-  console.log('\nvalidateR() returns:', Array.isArray(rValidation) ? `Array[${rValidation.length}]` : typeof rValidation);
+  console.log(
+    '\nvalidateR() returns:',
+    Array.isArray(rValidation) ? `Array[${rValidation.length}]` : typeof rValidation,
+  );
   console.log('Has allPassed:', rValidation && 'allPassed' in rValidation);
   console.log('Has summary:', rValidation && 'summary' in rValidation);
 

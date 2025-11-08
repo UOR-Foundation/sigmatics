@@ -3,12 +3,14 @@
 ## Current Status (v0.4.0)
 
 **Overall Coverage**: 82.33%
+
 - Lines: 82.33%
 - Functions: 75.10%
 - Branches: 82.66%
 - Statements: 82.33%
 
 **Enforcement Thresholds** (configured in `.c8rc.json`):
+
 - Lines: 80%
 - Functions: 75%
 - Branches: 80%
@@ -17,6 +19,7 @@
 ## Coverage by Module
 
 ### High Coverage (≥90%)
+
 - **Lexer**: 100% - Tokenization and scanning
 - **Parser**: 93.86% - Sigil expression parsing
 - **Evaluator**: 98% - Expression evaluation engine
@@ -25,6 +28,7 @@
 - **Octonion**: 96.49% - Octonion algebra operations
 
 ### Moderate Coverage (70-90%)
+
 - **Server/Registry**: 82.85% - Model compilation and caching
 - **Clifford**: 80.7% - Cl₀,₇ Clifford algebra
 - **Transforms**: 89.53% - R, D, T, M automorphisms
@@ -36,6 +40,7 @@
 - **Model Registry**: 71.34% - Schema registry
 
 ### Low Coverage (<70%)
+
 - **SGA Backend**: 15.32% ⚠️ - Algebraic fallback path
 - **SGA Element**: 68.99% - Tensor product operations
 - **Rewrites**: 52.98% - IR optimization passes
@@ -44,6 +49,7 @@
 ## Path to 90% Coverage
 
 ### Priority 1: Critical Gaps
+
 1. **SGA Backend** (15.32% → 90%): Add integration tests for:
    - Complex sigil expressions requiring SGA semantics
    - Operations beyond class backend capabilities
@@ -58,6 +64,7 @@
    - Dead code elimination
 
 ### Priority 2: Moderate Improvements
+
 3. **SGA Element** (68.99% → 85%): Cover edge cases:
    - Grade projection boundary conditions
    - Tensor product associativity
@@ -74,6 +81,7 @@
    - Missing schema handling
 
 ### Priority 3: Branch Coverage
+
 6. **Class Backend**: Improve branch coverage from 55.17% → 80%
 7. **Schema Loader**: Improve branch coverage from 42.1% → 70%
 
@@ -94,6 +102,7 @@ npm run coverage
 ## Exclusions
 
 The following are excluded from coverage measurement:
+
 - `**/index.ts` - Re-export files
 - `**/types.ts` - Type definition files
 - `test/**` - Test files
