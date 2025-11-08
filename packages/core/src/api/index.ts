@@ -317,6 +317,7 @@ export class Atlas {
 
     // Bridge operations
     lift: StdlibModels.lift,
+    projectClass: StdlibModels.projectClass,
   };
 
   // ==========================================================================

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "projectClass",
+  "description": "Project SGA element back to class index (rank-1 only)",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "const": "projectClass" },
+    "version": { "type": "string", "pattern": "^1\\.0\\.0$" },
+    "namespace": { "type": "string", "const": "stdlib.bridge" },
+    "compiled": {
+      "type": "object",
+      "properties": {}
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "description": "SGA element to project (must be rank-1)"
+        }
+      },
+      "required": ["x"]
+    },
+    "complexityHint": { "type": "string", "const": "C1" },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": { "type": "string", "const": "sga" }
+      }
+    }
+  },
+  "required": ["name", "version", "namespace", "compiled", "runtime"]
+}
