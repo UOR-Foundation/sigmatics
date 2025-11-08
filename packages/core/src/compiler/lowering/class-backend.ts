@@ -11,6 +11,7 @@
 
 import type { IRNode, ClassPlan, ClassOperation, RingResult } from '../../model/types';
 import { decodeClassIndex, componentsToClassIndex } from '../../class-system/class';
+import { lift } from '../../bridge/lift';
 
 /**
  * Lower IR to class backend plan
@@ -164,8 +165,8 @@ export function executeClassPlan(plan: ClassPlan, inputs: Record<string, unknown
       }
 
       case 'lift': {
-        state = op.classIndex;
-        break;
+        // Lift operation: convert class index to SGA element
+        return lift(op.classIndex);
       }
 
       case 'projectClass': {

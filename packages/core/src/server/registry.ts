@@ -27,6 +27,8 @@ import {
   executeSgaPlan,
 } from '../compiler/lowering/sga-backend';
 import * as IR from '../compiler/ir';
+import { project } from '../bridge/project';
+import { lift } from '../bridge/lift';
 
 /**
  * Model cache for compiled artifacts
@@ -82,10 +84,37 @@ export function compileModel<T = unknown, R = unknown>(
     complexity,
     plan,
     run(params: T): R {
+      // For transforms, check if input type matches backend
+      // If class backend but SGA input, or vice versa, convert
+      const paramsRecord = params as Record<string, unknown>;
+
+      // Check if this is a transform with an 'x' parameter
+      if ('x' in paramsRecord && paramsRecord.x !== undefined) {
+        const input = paramsRecord.x;
+        const isSgaInput = typeof input === 'object' && input !== null;
+
+        if (plan.backend === 'class' && isSgaInput) {
+          // Class backend with SGA input: project → execute → lift
+          const classInput = project(input as SgaElement);
+          if (classInput === null) {
+            throw new Error('Cannot project non-rank-1 element to class backend');
+          }
+          const classResult = executeClassPlan(plan.plan, { ...paramsRecord, x: classInput });
+          return lift(classResult as number) as R;
+        } else if (plan.backend === 'sga' && !isSgaInput) {
+          // SGA backend with class input: lift → execute → project
+          const sgaInput = lift(input as number);
+          const sgaResult = executeSgaPlan(plan.plan, { ...paramsRecord, x: sgaInput });
+          const projected = project(sgaResult as SgaElement);
+          return (projected !== null ? projected : sgaResult) as R;
+        }
+      }
+
+      // Normal execution path
       if (plan.backend === 'class') {
-        return executeClassPlan(plan.plan, params as Record<string, unknown>) as R;
+        return executeClassPlan(plan.plan, paramsRecord) as R;
       } else {
-        return executeSgaPlan(plan.plan, params as Record<string, unknown>) as R;
+        return executeSgaPlan(plan.plan, paramsRecord) as R;
       }
     },
   };

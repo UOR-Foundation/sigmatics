@@ -15,6 +15,8 @@ import { runGroupAlgebraTests } from './sga/group-algebras.test';
 import { runSgaLawsTests } from './sga/laws.test';
 import { runBridgeTests } from './sga/bridge.test';
 import { runBugFixTests } from './sga/bug-fixes.test';
+import { runDifferentialTests } from './model/differential.test';
+import { runCompiledCorrectnessTests } from './model/compiled-correctness.test';
 
 // ============================================================================
 // Test Utilities
@@ -1109,8 +1111,18 @@ function runAllTests(): void {
     runBridgeTests();
     runBugFixTests();
 
+    // v0.4.0: Declarative Model Tests
+    console.log('\n');
     console.log('='.repeat(60));
-    console.log('✓ ALL TESTS PASSED (including v0.3.0 SGA tests and v0.3.1 bug fixes)');
+    console.log('v0.4.0: Declarative Model System Tests');
+    console.log('='.repeat(60));
+    console.log();
+
+    runDifferentialTests();
+    runCompiledCorrectnessTests();
+
+    console.log('='.repeat(60));
+    console.log('✓ ALL TESTS PASSED (including v0.3.0 SGA tests, v0.3.1 bug fixes, and v0.4.0 model tests)');
     console.log('='.repeat(60));
   } catch (error: any) {
     console.log('\n' + '='.repeat(60));
