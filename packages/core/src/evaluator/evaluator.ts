@@ -1,6 +1,8 @@
 /**
  * Atlas Evaluator
  * Implements both literal (byte) and operational (word) backends
+ *
+ * v0.4.0: Routes all transform operations through the declarative model registry
  */
 
 import type {
@@ -12,13 +14,58 @@ import type {
   LiteralResult,
   OperationalResult,
   Transform,
+  SigilComponents,
 } from '../types';
 import {
   decodeClassIndex,
-  applyTransforms,
+  componentsToClassIndex,
   encodeComponentsToByte,
   computeBeltAddress,
 } from '../class-system';
+import { StdlibModels } from '../server/registry';
+
+// ============================================================================
+// Transform Application via Model Registry
+// ============================================================================
+
+/**
+ * Apply transforms to class components via the model registry
+ * This routes all transform operations through compiled models (v0.4.0 requirement)
+ */
+function applyTransformsViaModels(
+  components: SigilComponents,
+  transform: Transform,
+): SigilComponents {
+  // Convert components to class index
+  let classIndex = componentsToClassIndex(components);
+
+  // Apply R transform if present
+  if (transform.R && transform.R !== 0) {
+    const model = StdlibModels.R(transform.R);
+    classIndex = model.run({ x: classIndex }) as number;
+  }
+
+  // Apply D transform if present
+  if (transform.D && transform.D !== 0) {
+    const model = StdlibModels.D(transform.D);
+    classIndex = model.run({ x: classIndex }) as number;
+  }
+
+  // Apply T transform if present
+  if (transform.T && transform.T !== 0) {
+    const model = StdlibModels.T(transform.T);
+    classIndex = model.run({ x: classIndex }) as number;
+  }
+
+  // Apply M transform if present
+  if (transform.M) {
+    const model = StdlibModels.M();
+    classIndex = model.run({ x: classIndex }) as number;
+  }
+
+  // Convert back to components
+  return decodeClassIndex(classIndex);
+}
 
 // ============================================================================
 // Literal Backend - Byte Semantics
@@ -123,14 +170,14 @@ function evaluateSigil(
   // Start with base components
   let components = decodeClassIndex(sigil.classIndex);
 
-  // Apply sigil's own transforms (postfix)
+  // Apply sigil's own transforms (postfix) via model registry
   if (
     sigil.rotate !== undefined ||
     sigil.triality !== undefined ||
     sigil.twist !== undefined ||
     sigil.mirror
   ) {
-    components = applyTransforms(components, {
+    components = applyTransformsViaModels(components, {
       R: sigil.rotate,
       D: sigil.triality,
       T: sigil.twist,
@@ -138,9 +185,9 @@ function evaluateSigil(
     });
   }
 
-  // Apply outer transforms (prefix)
+  // Apply outer transforms (prefix) via model registry
   if (outerTransform) {
-    components = applyTransforms(components, outerTransform);
+    components = applyTransformsViaModels(components, outerTransform);
   }
 
   // Encode to canonical byte
@@ -256,7 +303,7 @@ function lowerOperation(op: Operation, outerTransform?: Transform): string[] {
     op.sigil.twist !== undefined ||
     op.sigil.mirror
   ) {
-    components = applyTransforms(components, {
+    components = applyTransformsViaModels(components, {
       R: op.sigil.rotate,
       D: op.sigil.triality,
       T: op.sigil.twist,
@@ -265,7 +312,7 @@ function lowerOperation(op: Operation, outerTransform?: Transform): string[] {
   }
 
   if (outerTransform) {
-    components = applyTransforms(components, outerTransform);
+    components = applyTransformsViaModels(components, outerTransform);
   }
 
   // Format generator with parameters

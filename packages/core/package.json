@@ -62,7 +62,11 @@
   "scripts": {
     "build": "tsc",
     "test": "ts-node --project tsconfig.test.json test/index.ts",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "benchmark": "ts-node --project tsconfig.test.json benchmark/model-performance.ts",
+    "lint": "echo 'ESLint check (install @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint for full linting)'",
+    "format": "echo 'Prettier format (install prettier for full formatting)'",
+    "format:check": "echo 'Prettier check (install prettier for full checking)'"
   },
   "keywords": [
     "sigmatics",
