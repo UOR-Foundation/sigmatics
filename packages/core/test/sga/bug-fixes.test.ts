@@ -22,7 +22,9 @@ import { Atlas } from '../../src/api';
 // Test utilities
 function assertEqual<T>(actual: T, expected: T, message: string): void {
   if (JSON.stringify(actual) !== JSON.stringify(expected)) {
-    throw new Error(`${message}\n  Expected: ${JSON.stringify(expected)}\n  Actual: ${JSON.stringify(actual)}`);
+    throw new Error(
+      `${message}\n  Expected: ${JSON.stringify(expected)}\n  Actual: ${JSON.stringify(actual)}`,
+    );
   }
 }
 
@@ -32,7 +34,9 @@ function assertThrows(fn: () => void, expectedMessage: string | null = null): vo
     throw new Error('Expected function to throw, but it did not');
   } catch (error: any) {
     if (expectedMessage && !error.message.includes(expectedMessage)) {
-      throw new Error(`Expected error message to contain "${expectedMessage}", but got: ${error.message}`);
+      throw new Error(
+        `Expected error message to contain "${expectedMessage}", but got: ${error.message}`,
+      );
     }
     // Expected to throw, test passes
   }
@@ -133,7 +137,9 @@ function testValidationAPIConsistency(): void {
   // All validation functions should return structured objects
   const rValidation = validateR();
   if (!rValidation.allPassed || !rValidation.results || !rValidation.summary) {
-    throw new Error('validateR should return structured object with allPassed, results, and summary');
+    throw new Error(
+      'validateR should return structured object with allPassed, results, and summary',
+    );
   }
   assertEqual(typeof rValidation.allPassed, 'boolean', 'allPassed should be boolean');
   assertEqual(Array.isArray(rValidation.results), true, 'results should be array');
@@ -168,15 +174,39 @@ function testOctonionInputValidation(): void {
   Atlas.SGA.Octonion.verifyNormMultiplicativity(x, y);
 
   // Should reject invalid input
-  assertThrows(() => Atlas.SGA.Octonion.verifyAlternativity(1 as any, y), 'expects a Clifford element');
-  assertThrows(() => Atlas.SGA.Octonion.verifyAlternativity(x, 'invalid' as any), 'expects a Clifford element');
-  assertThrows(() => Atlas.SGA.Octonion.verifyAlternativity(null as any, y), 'expects a Clifford element');
-  assertThrows(() => Atlas.SGA.Octonion.verifyAlternativity(x, undefined as any), 'expects a Clifford element');
+  assertThrows(
+    () => Atlas.SGA.Octonion.verifyAlternativity(1 as any, y),
+    'expects a Clifford element',
+  );
+  assertThrows(
+    () => Atlas.SGA.Octonion.verifyAlternativity(x, 'invalid' as any),
+    'expects a Clifford element',
+  );
+  assertThrows(
+    () => Atlas.SGA.Octonion.verifyAlternativity(null as any, y),
+    'expects a Clifford element',
+  );
+  assertThrows(
+    () => Atlas.SGA.Octonion.verifyAlternativity(x, undefined as any),
+    'expects a Clifford element',
+  );
 
-  assertThrows(() => Atlas.SGA.Octonion.verifyNormMultiplicativity(1 as any, y), 'expects a Clifford element');
-  assertThrows(() => Atlas.SGA.Octonion.verifyNormMultiplicativity(x, 'invalid' as any), 'expects a Clifford element');
-  assertThrows(() => Atlas.SGA.Octonion.verifyNormMultiplicativity(null as any, y), 'expects a Clifford element');
-  assertThrows(() => Atlas.SGA.Octonion.verifyNormMultiplicativity(x, undefined as any), 'expects a Clifford element');
+  assertThrows(
+    () => Atlas.SGA.Octonion.verifyNormMultiplicativity(1 as any, y),
+    'expects a Clifford element',
+  );
+  assertThrows(
+    () => Atlas.SGA.Octonion.verifyNormMultiplicativity(x, 'invalid' as any),
+    'expects a Clifford element',
+  );
+  assertThrows(
+    () => Atlas.SGA.Octonion.verifyNormMultiplicativity(null as any, y),
+    'expects a Clifford element',
+  );
+  assertThrows(
+    () => Atlas.SGA.Octonion.verifyNormMultiplicativity(x, undefined as any),
+    'expects a Clifford element',
+  );
 }
 
 // ============================================================================
@@ -218,7 +248,7 @@ export function runBugFixTests(): void {
 if (require.main === module) {
   try {
     runBugFixTests();
-  } catch (error) {
+  } catch (_error) {
     console.error('Tests failed!');
     process.exit(1);
   }

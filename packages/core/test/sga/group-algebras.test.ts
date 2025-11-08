@@ -236,7 +236,7 @@ export function runGroupAlgebraTests(): void {
 if (require.main === module) {
   try {
     runGroupAlgebraTests();
-  } catch (error) {
+  } catch (_error) {
     console.error('Tests failed!');
     process.exit(1);
   }

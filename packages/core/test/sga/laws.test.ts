@@ -31,7 +31,7 @@ import {
 import { sgaEqual } from '../../src/sga/sga-element';
 
 // Test utilities
-function assertEqual<T>(actual: T, expected: T, message: string): void {
+function _assertEqual<T>(actual: T, expected: T, message: string): void {
   if (actual !== expected) {
     throw new Error(`${message}\n  Expected: ${expected}\n  Actual: ${actual}`);
   }
@@ -264,7 +264,7 @@ export function runSgaLawsTests(): void {
 if (require.main === module) {
   try {
     runSgaLawsTests();
-  } catch (error) {
+  } catch (_error) {
     console.error('Tests failed!');
     process.exit(1);
   }

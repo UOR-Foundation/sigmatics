@@ -130,7 +130,10 @@ export function runCompiledCorrectnessTests(): void {
   }
 
   console.log(`✓ Commutations: ${commutationPassed}/${commutationTests} passed\n`);
-  assert(commutationPassed === commutationTests, `Commutations: ${commutationPassed}/${commutationTests}`);
+  assert(
+    commutationPassed === commutationTests,
+    `Commutations: ${commutationPassed}/${commutationTests}`,
+  );
 
   // Test conjugations (MDM = D⁻¹)
   console.log('Testing mirror conjugations (MDM = D⁻¹)...');
@@ -159,7 +162,10 @@ export function runCompiledCorrectnessTests(): void {
   }
 
   console.log(`✓ Conjugations: ${conjugationPassed}/${conjugationTests} passed\n`);
-  assert(conjugationPassed === conjugationTests, `Conjugations: ${conjugationPassed}/${conjugationTests}`);
+  assert(
+    conjugationPassed === conjugationTests,
+    `Conjugations: ${conjugationPassed}/${conjugationTests}`,
+  );
 
   // Test bridge round-trip via compiled models
   console.log('Testing bridge round-trip (lift then project)...');

@@ -166,7 +166,10 @@ export function runDifferentialTests(): void {
   }
 
   console.log(`✓ Transforms: ${transformPassed}/${transformTests} passed\n`);
-  assert(transformPassed === transformTests, `Transform parity: ${transformPassed}/${transformTests}`);
+  assert(
+    transformPassed === transformTests,
+    `Transform parity: ${transformPassed}/${transformTests}`,
+  );
 
   console.log('═══════════════════════════════════════════════════════════');
   console.log(`  ✓ All differential tests passed!`);

@@ -1122,7 +1122,9 @@ function runAllTests(): void {
     runCompiledCorrectnessTests();
 
     console.log('='.repeat(60));
-    console.log('✓ ALL TESTS PASSED (including v0.3.0 SGA tests, v0.3.1 bug fixes, and v0.4.0 model tests)');
+    console.log(
+      '✓ ALL TESTS PASSED (including v0.3.0 SGA tests, v0.3.1 bug fixes, and v0.4.0 model tests)',
+    );
     console.log('='.repeat(60));
   } catch (error: any) {
     console.log('\n' + '='.repeat(60));

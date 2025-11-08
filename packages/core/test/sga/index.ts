@@ -46,7 +46,7 @@ export function runAllSgaTests(): void {
     console.log('║                                                           ║');
     console.log('╚═══════════════════════════════════════════════════════════╝');
     console.log('\n');
-  } catch (error) {
+  } catch (_error) {
     console.error('\n\n');
     console.error('╔═══════════════════════════════════════════════════════════╗');
     console.error('║                                                           ║');
@@ -62,7 +62,7 @@ export function runAllSgaTests(): void {
 if (require.main === module) {
   try {
     runAllSgaTests();
-  } catch (error) {
+  } catch (_error) {
     process.exit(1);
   }
 }
