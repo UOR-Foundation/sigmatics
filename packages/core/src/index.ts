@@ -28,3 +28,18 @@ export * as Bridge from './bridge';
 
 // Re-export key SGA types
 export type { SgaElement, Cl07Element, Z4Element, Z3Element, Rank1Basis } from './sga/types';
+
+// v0.4.0: Declarative Model System
+export * as Model from './model';
+export * as Compiler from './compiler';
+export * as Server from './server';
+
+// Re-export key model types
+export type {
+  ModelDescriptor,
+  CompiledModel,
+  ComplexityClass,
+  IRNode,
+  BackendPlan,
+  RingResult,
+} from './model/types';

@@ -1,0 +1,188 @@
+/**
+ * Intermediate Representation (IR)
+ *
+ * Tiny IR for Sigmatics operations:
+ * - Atoms: class literals, lift, project(k)
+ * - Combinators: ∘ (seq), ⊗ (par)
+ * - Transforms: R, D, T, M
+ *
+ * The IR is the canonical representation before lowering to backends.
+ */
+
+import type { IRNode, AtomOp, TransformOp } from '../model/types';
+
+/**
+ * Create a class literal IR node
+ */
+export function classLiteral(value: number): IRNode {
+  if (value < 0 || value >= 96) {
+    throw new Error(`Invalid class index: ${value}. Must be 0..95.`);
+  }
+  return {
+    kind: 'atom',
+    op: { type: 'classLiteral', value },
+  };
+}
+
+/**
+ * Create a lift IR node
+ */
+export function lift(classIndex: number): IRNode {
+  if (classIndex < 0 || classIndex >= 96) {
+    throw new Error(`Invalid class index: ${classIndex}. Must be 0..95.`);
+  }
+  return {
+    kind: 'atom',
+    op: { type: 'lift', classIndex },
+  };
+}
+
+/**
+ * Create a grade projection IR node
+ */
+export function projectGrade(grade: number): IRNode {
+  if (grade < 0 || grade > 7) {
+    throw new Error(`Invalid grade: ${grade}. Must be 0..7.`);
+  }
+  return {
+    kind: 'atom',
+    op: { type: 'project', grade },
+  };
+}
+
+/**
+ * Create an add96 IR node
+ */
+export function add96(overflowMode: 'drop' | 'track' = 'drop'): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'add96', overflowMode },
+  };
+}
+
+/**
+ * Create a sub96 IR node
+ */
+export function sub96(overflowMode: 'drop' | 'track' = 'drop'): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'sub96', overflowMode },
+  };
+}
+
+/**
+ * Create a mul96 IR node
+ */
+export function mul96(overflowMode: 'drop' | 'track' = 'drop'): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'mul96', overflowMode },
+  };
+}
+
+/**
+ * Sequential composition (∘)
+ */
+export function seq(left: IRNode, right: IRNode): IRNode {
+  return { kind: 'seq', left, right };
+}
+
+/**
+ * Parallel composition (⊗)
+ */
+export function par(left: IRNode, right: IRNode): IRNode {
+  return { kind: 'par', left, right };
+}
+
+/**
+ * R transform (quarter-turn rotation)
+ */
+export function R(child: IRNode, k = 1): IRNode {
+  const kMod = ((k % 4) + 4) % 4;
+  if (kMod === 0) return child; // R^0 = identity
+  return {
+    kind: 'transform',
+    transform: { type: 'R', k: kMod },
+    child,
+  };
+}
+
+/**
+ * D transform (triality rotation)
+ */
+export function D(child: IRNode, k = 1): IRNode {
+  const kMod = ((k % 3) + 3) % 3;
+  if (kMod === 0) return child; // D^0 = identity
+  return {
+    kind: 'transform',
+    transform: { type: 'D', k: kMod },
+    child,
+  };
+}
+
+/**
+ * T transform (context rotation)
+ */
+export function T(child: IRNode, k = 1): IRNode {
+  const kMod = ((k % 8) + 8) % 8;
+  if (kMod === 0) return child; // T^0 = identity
+  return {
+    kind: 'transform',
+    transform: { type: 'T', k: kMod },
+    child,
+  };
+}
+
+/**
+ * M transform (mirror)
+ */
+export function M(child: IRNode): IRNode {
+  return {
+    kind: 'transform',
+    transform: { type: 'M' },
+    child,
+  };
+}
+
+/**
+ * Pretty-print an IR node (for debugging)
+ */
+export function prettyPrintIR(node: IRNode, indent = 0): string {
+  const spaces = ' '.repeat(indent);
+
+  switch (node.kind) {
+    case 'atom': {
+      const op = node.op;
+      switch (op.type) {
+        case 'classLiteral':
+          return `${spaces}ClassLiteral(${op.value})`;
+        case 'lift':
+          return `${spaces}Lift(${op.classIndex})`;
+        case 'project':
+          return `${spaces}ProjectGrade(${op.grade})`;
+        case 'add96':
+          return `${spaces}Add96(${op.overflowMode})`;
+        case 'sub96':
+          return `${spaces}Sub96(${op.overflowMode})`;
+        case 'mul96':
+          return `${spaces}Mul96(${op.overflowMode})`;
+      }
+      break;
+    }
+    case 'seq':
+      return `${spaces}Seq(\n${prettyPrintIR(node.left, indent + 2)},\n${prettyPrintIR(node.right, indent + 2)}\n${spaces})`;
+    case 'par':
+      return `${spaces}Par(\n${prettyPrintIR(node.left, indent + 2)},\n${prettyPrintIR(node.right, indent + 2)}\n${spaces})`;
+    case 'transform': {
+      const t = node.transform;
+      let tName = '';
+      if (t.type === 'R') tName = `R^${t.k}`;
+      else if (t.type === 'D') tName = `D^${t.k}`;
+      else if (t.type === 'T') tName = `T^${t.k}`;
+      else if (t.type === 'M') tName = 'M';
+      return `${spaces}Transform(${tName},\n${prettyPrintIR(node.child, indent + 2)}\n${spaces})`;
+    }
+  }
+
+  return `${spaces}Unknown`;
+}
