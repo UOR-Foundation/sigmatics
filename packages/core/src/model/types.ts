@@ -125,6 +125,9 @@ export type SgaOperation =
   | { type: 'multiply' }
   | { type: 'add' }
   | { type: 'scale'; scalar: number }
+  | { type: 'add96'; overflowMode: 'drop' | 'track' }
+  | { type: 'sub96'; overflowMode: 'drop' | 'track' }
+  | { type: 'mul96'; overflowMode: 'drop' | 'track' }
   | { type: 'R'; k: number }
   | { type: 'D'; k: number }
   | { type: 'T'; k: number }

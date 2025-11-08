@@ -61,16 +61,14 @@ function collectSgaOperations(node: IRNode): SgaOperation[] {
             ops.push({ type: 'projectGrade', grade: op.grade });
             break;
           case 'add96':
-            // In SGA backend, add96 is implemented via class indices
-            // We lift, add, and project back
-            ops.push({ type: 'add' });
+            // Ring ops use class-level mod-96 arithmetic
+            ops.push({ type: 'add96', overflowMode: op.overflowMode });
             break;
           case 'sub96':
-            // Similar to add96
-            ops.push({ type: 'add' }); // Will need special handling
+            ops.push({ type: 'sub96', overflowMode: op.overflowMode });
             break;
           case 'mul96':
-            ops.push({ type: 'multiply' });
+            ops.push({ type: 'mul96', overflowMode: op.overflowMode });
             break;
         }
         break;
@@ -130,6 +128,76 @@ export function executeSgaPlan(
         const element = (inputs.x as SgaElement) ?? state;
         if (!element) throw new Error('Scale requires an SGA element');
         state = sgaScale(element, op.scalar);
+        break;
+      }
+
+      case 'add96': {
+        // Ring ops work at class level: project → arithmetic → lift
+        const aInput = inputs.a;
+        const bInput = inputs.b;
+
+        const aClass = typeof aInput === 'number' ? aInput : project(aInput as SgaElement);
+        const bClass = typeof bInput === 'number' ? bInput : project(bInput as SgaElement);
+
+        if (aClass === null || bClass === null) {
+          throw new Error('add96 requires rank-1 elements or class indices');
+        }
+
+        const sum = aClass + bClass;
+        const resultClass = sum % 96;
+        const overflow = sum >= 96;
+
+        state = lift(resultClass);
+
+        if (op.overflowMode === 'track') {
+          return { value: resultClass, overflow };
+        }
+        break;
+      }
+
+      case 'sub96': {
+        const aInput = inputs.a;
+        const bInput = inputs.b;
+
+        const aClass = typeof aInput === 'number' ? aInput : project(aInput as SgaElement);
+        const bClass = typeof bInput === 'number' ? bInput : project(bInput as SgaElement);
+
+        if (aClass === null || bClass === null) {
+          throw new Error('sub96 requires rank-1 elements or class indices');
+        }
+
+        const diff = aClass - bClass;
+        const resultClass = ((diff % 96) + 96) % 96;
+        const overflow = diff < 0;
+
+        state = lift(resultClass);
+
+        if (op.overflowMode === 'track') {
+          return { value: resultClass, overflow };
+        }
+        break;
+      }
+
+      case 'mul96': {
+        const aInput = inputs.a;
+        const bInput = inputs.b;
+
+        const aClass = typeof aInput === 'number' ? aInput : project(aInput as SgaElement);
+        const bClass = typeof bInput === 'number' ? bInput : project(bInput as SgaElement);
+
+        if (aClass === null || bClass === null) {
+          throw new Error('mul96 requires rank-1 elements or class indices');
+        }
+
+        const prod = aClass * bClass;
+        const resultClass = prod % 96;
+        const overflow = prod >= 96;
+
+        state = lift(resultClass);
+
+        if (op.overflowMode === 'track') {
+          return { value: resultClass, overflow };
+        }
         break;
       }
 

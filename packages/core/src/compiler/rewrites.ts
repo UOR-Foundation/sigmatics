@@ -158,8 +158,30 @@ function foldTransforms(outer: TransformOp, inner: TransformOp): TransformOp | n
     }
   }
 
-  // Different types: cannot fold (transforms commute but we keep them separate)
-  // This is correct because RD = DR, RT = TR, DT = TD
+  // Different types: check for mirror conjugation rules
+  // MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
+  if (outer.type === 'M') {
+    if (inner.type === 'R') {
+      // MRM = R⁻¹, so M(R^k) = R^(-k)M
+      const invK = (4 - inner.k) % 4;
+      if (invK === 0) return { type: 'M' }; // R^0M = M
+      return { type: 'R', k: invK };
+    }
+    if (inner.type === 'D') {
+      // MDM = D⁻¹, so M(D^k) = D^(-k)M
+      const invK = (3 - inner.k) % 3;
+      if (invK === 0) return { type: 'M' }; // D^0M = M
+      return { type: 'D', k: invK };
+    }
+    if (inner.type === 'T') {
+      // MTM = T⁻¹, so M(T^k) = T^(-k)M
+      const invK = (8 - inner.k) % 8;
+      if (invK === 0) return { type: 'M' }; // T^0M = M
+      return { type: 'T', k: invK };
+    }
+  }
+
+  // Other pairs commute (RD = DR, RT = TR, DT = TD)
   // We maintain the outer transform
   return outer;
 }

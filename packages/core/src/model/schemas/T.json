@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "T",
+  "description": "Context rotation transform (T^k with order 8)",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "const": "T" },
+    "version": { "type": "string", "pattern": "^1\\.0\\.0$" },
+    "namespace": { "type": "string", "const": "stdlib.transforms" },
+    "compiled": {
+      "type": "object",
+      "properties": {
+        "k": { "type": "integer", "description": "Power (reduced mod 8)" }
+      },
+      "required": ["k"]
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "x": { "description": "Class index or SGA element to transform" }
+      },
+      "required": ["x"]
+    },
+    "complexityHint": { "type": "string", "const": "C1" },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": { "type": "string", "const": "auto" }
+      }
+    }
+  },
+  "required": ["name", "version", "namespace", "compiled", "runtime"]
+}

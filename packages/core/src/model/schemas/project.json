@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "project",
+  "description": "Grade projection for Clifford algebra component",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "const": "project" },
+    "version": { "type": "string", "pattern": "^1\\.0\\.0$" },
+    "namespace": { "type": "string", "const": "stdlib.grade" },
+    "compiled": {
+      "type": "object",
+      "properties": {
+        "grade": { "type": "integer", "minimum": 0, "maximum": 7 }
+      },
+      "required": ["grade"]
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "x": { "description": "SGA element to project" }
+      },
+      "required": ["x"]
+    },
+    "complexityHint": { "type": "string", "const": "C2" },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": { "type": "string", "const": "sga" }
+      }
+    }
+  },
+  "required": ["name", "version", "namespace", "compiled", "runtime"]
+}

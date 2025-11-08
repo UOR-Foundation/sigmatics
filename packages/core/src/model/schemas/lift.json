@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "lift",
+  "description": "Lift class index to SGA rank-1 basis element",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "const": "lift" },
+    "version": { "type": "string", "pattern": "^1\\.0\\.0$" },
+    "namespace": { "type": "string", "const": "stdlib.bridge" },
+    "compiled": {
+      "type": "object",
+      "properties": {
+        "classIndex": { "type": "integer", "minimum": 0, "maximum": 95 }
+      },
+      "required": ["classIndex"]
+    },
+    "runtime": {
+      "type": "object"
+    },
+    "complexityHint": { "type": "string", "const": "C0" },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": { "type": "string", "const": "auto" }
+      }
+    }
+  },
+  "required": ["name", "version", "namespace", "compiled", "runtime"]
+}

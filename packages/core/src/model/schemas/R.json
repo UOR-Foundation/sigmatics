@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "R",
+  "description": "Quarter-turn rotation transform (R^k with order 4)",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "const": "R" },
+    "version": { "type": "string", "pattern": "^1\\.0\\.0$" },
+    "namespace": { "type": "string", "const": "stdlib.transforms" },
+    "compiled": {
+      "type": "object",
+      "properties": {
+        "k": { "type": "integer", "description": "Power (reduced mod 4)" }
+      },
+      "required": ["k"]
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "x": { "description": "Class index or SGA element to transform" }
+      },
+      "required": ["x"]
+    },
+    "complexityHint": { "type": "string", "const": "C1" },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": { "type": "string", "const": "auto" }
+      }
+    }
+  },
+  "required": ["name", "version", "namespace", "compiled", "runtime"]
+}
