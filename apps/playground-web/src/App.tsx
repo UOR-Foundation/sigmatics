@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useCallback, FC, PropsWithChildren } from 'react';
 import { Atlas } from '@uor-foundation/sigmatics';
 import type { Phrase, ClassInfo } from '@uor-foundation/sigmatics';

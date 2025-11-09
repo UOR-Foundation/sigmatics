@@ -26,7 +26,6 @@
     "clean": "rm -rf packages/*/dist apps/*/dist node_modules packages/*/node_modules apps/*/node_modules"
   },
   "devDependencies": {
-    "@types/ajv": "^0.0.5",
     "@typescript-eslint/eslint-plugin": "^8.46.3",
     "@typescript-eslint/parser": "^8.46.3",
     "eslint": "^8.57.1",

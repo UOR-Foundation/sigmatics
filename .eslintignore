@@ -1,3 +1,6 @@
 dist
 node_modules
 coverage
+packages/core/test
+packages/core/benchmark
+examples
