@@ -250,3 +250,61 @@ Formatting helpers in `evaluator/evaluator.ts` (`formatBytes`, `formatAddresses`
 
 Current branch: `claude/sigmatics-0.4.0-declarative-refactor-011CUvhgaoeGwi5EkjdPBUxu`
 Main branch: `main`
+
+## SGA as Universal Constraint Language
+
+**Key Insight:** SGA (Sigmatics Geometric Algebra) is not just for computing with the 96-class structure - it serves as a **universal constraint composition language** that generalizes to arbitrary taxonomies.
+
+### The Meta-Level Abstraction
+
+The 96-class structure (≡₉₆) is the **canonical instantiation** that Sigmatics uses internally, but the algebraic framework extends to any domain:
+
+**SGA provides:**
+- Universal composition operators: `∘` (sequential), `⊗` (parallel/tensor), `⊕` (merge)
+- Universal transforms: `R` (rotate scope), `D` (change modality), `T` (twist context), `M` (mirror)
+- Constraint propagation rules that work across taxonomies
+- A language for expressing compositional constraints without heuristics
+
+**Example taxonomies:**
+- **Factorization**: `model(integer) = ⊗(model(prime_i))` with constraint `product(primes) === integer`
+- **NLP**: `model(sentence) = ∘(model(word_i))` with constraint `meaning(sentence) ⊃ ⋃(meaning(word_i))`
+- **Program synthesis**: `model(program) = ∘(model(statement_i))` with constraint `spec(program) ⇒ ∀ invariant(statement_i)`
+
+### Models and Constraint-Driven Compilation
+
+**Models are arbitrary computational operations** compiled to SGA:
+
+1. User defines model schema with **rich constraints** (types, invariants, properties)
+2. Compiler uses constraints for **fusion optimization** - more constraints enable more fusion
+3. Models become **algebraic objects** that SGA can compose using `∘`, `⊗`, `R`, `D`, `T`, `M`
+4. Constraints fully specify the problem - **no heuristics needed**
+
+**Key principle:** Constraints are what the consumer (successor in pipeline) expects from the producer (predecessor). More constraints = tighter interface contract = more optimization opportunities.
+
+**Example constraint composition:**
+```typescript
+// Language model taxonomy
+[model(prompt) = model(message) ∘ model(user)] + model(language) = model(response)
+
+// Constraints fully specify:
+// - How user context composes with message
+// - How language rules combine with prompt
+// - What properties the response must satisfy
+// - All without heuristic search!
+```
+
+### SGA vs. Model System
+
+**SGA (Foundation Layer):**
+- Implements the mathematical structure that defines Sigmatics
+- Embodies the ≡₉₆ equivalence structure and formal specification
+- Provides canonical transforms (R, D, T, M) and algebraic operations
+- NOT arbitrary - this IS what Sigmatics is
+
+**Model System (Application Layer):**
+- Compiles arbitrary operations from declarative schemas
+- Can represent operations beyond Sigmatics-specific primitives
+- Uses SGA as the semantic backend when needed
+- Enables composition of arbitrary computational models via SGA algebra
+
+The model server **uses** SGA as the algebraic substrate for composing arbitrary models, but SGA itself remains the foundational algebra of Sigmatics.

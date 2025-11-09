@@ -60,6 +60,32 @@ import { tokenize } from '@uor-foundation/sigmatics/lexer';
 - `vite.config.ts` binds to port 3000 and uses path alias to resolve `@uor-foundation/sigmatics` to local core package.
 - Browser docs pull copy snippets from README/Quickstart constants—keep those strings short to avoid bloating the UI bundle.
 
+## SGA as Universal Constraint Language
+
+**Key Concept:** SGA (Sigmatics Geometric Algebra) serves dual roles:
+
+1. **Foundation for Sigmatics:** Implements the ≡₉₆ equivalence structure and canonical transforms (R, D, T, M) that define what Sigmatics IS
+2. **Universal Constraint Composition Language:** Generalizes to arbitrary taxonomies beyond the 96-class system
+
+**The Model System:**
+- Models are arbitrary computational operations compiled from declarative schemas
+- Rich constraints (types, invariants, properties) enable fusion optimization
+- Models become algebraic objects that SGA composes via `∘`, `⊗`, `R`, `D`, `T`, `M`
+- Constraints fully specify composition - no heuristics needed
+
+**Constraint-Driven Design:**
+- Constraints define what consumer expects from producer in a pipeline
+- More constraints = tighter contract = more fusion opportunities
+- Type safety enforced at composition boundaries
+- Incompatible models require explicit adapter insertion
+
+**Example taxonomies SGA can express:**
+- Factorization: `model(integer) = ⊗(model(prime_i))`
+- NLP: `model(sentence) = ∘(model(word_i))`
+- Any domain where composition preserves invariants
+
+When working with models, remember: SGA is the algebraic substrate, models are the objects being composed.
+
 ## Contribution Practices
 
 - Maintain the zero-runtime-dependency expectation for the core package; any new runtime helper should live in core modules without introducing third-party libs.
