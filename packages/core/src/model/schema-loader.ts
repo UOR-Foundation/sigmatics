@@ -9,8 +9,14 @@ import Ajv from 'ajv';
 import type { ModelDescriptor } from './types';
 import { getSchemaByName } from './schema-registry';
 
-// Initialize AJV validator
-const ajv = new Ajv({ strict: true, allErrors: true });
+// Initialize AJV validator (Ajv v8 ships its own types; be tolerant across versions)
+const ajv = new Ajv({
+  // In Ajv v8, `strict` is valid; if older types leak in, this object is still compatible at runtime
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  strict: true,
+  allErrors: true,
+});
 
 /**
  * Get schema for a model by name
@@ -80,8 +86,11 @@ export function validateDescriptor(descriptor: ModelDescriptor): {
 
       if (!valid && validate.errors) {
         for (const error of validate.errors) {
-          const path = error.instancePath || 'root';
-          const message = error.message || 'validation failed';
+          // Ajv v8: instancePath, older Ajv: dataPath
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const anyErr = error as any;
+          const path = (anyErr.instancePath as string) || (anyErr.dataPath as string) || 'root';
+          const message = (error as { message?: string }).message || 'validation failed';
           errors.push(`Schema validation at ${path}: ${message}`);
         }
       }

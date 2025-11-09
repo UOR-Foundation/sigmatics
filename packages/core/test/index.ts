@@ -17,6 +17,26 @@ import { runBridgeTests } from './sga/bridge.test';
 import { runBugFixTests } from './sga/bug-fixes.test';
 import { runDifferentialTests } from './model/differential.test';
 import { runCompiledCorrectnessTests } from './model/compiled-correctness.test';
+import { runRewritesTests } from './compiler/rewrites.test';
+import { runRewritesBranchTests } from './compiler/rewrites-branches.test';
+import { runFuserTests } from './compiler/fuser.test';
+import { runLoweringEdgeTests } from './compiler/lowering-edge.test';
+import { runSchemaValidationTests } from './model/schema-validation.test';
+import { runSgaBackendExtendedTests } from './backend/sga-backend.test';
+import { runFanoBranchTests } from './sga/fano-branches.test';
+import { runCacheTests } from './server/cache.test';
+import { runIRTests } from './compiler/ir.test';
+import { runClassBackendTests } from './backend/class-backend.test';
+import { runSgaBackendRingTests } from './backend/sga-backend-ring.test';
+import { runUtilityFunctionsTests } from './helpers/utility-functions.test';
+import { runFanoPlaneUtilityTests } from './helpers/fano-utils.test';
+import { runSgaElementUtilityTests } from './helpers/sga-element-utils.test';
+import { runBranchCoverageTests } from './coverage/branch-coverage.test';
+import { runClassBackendBranchTests } from './backend/class-backend-branches.test';
+import { runProjectBranchTests } from './bridge/project-branches.test';
+import { runRegistryBranchTests } from './server/registry-branches.test';
+import { runSchemaRegistryBranchTests } from './model/schema-registry-branches.test';
+import { runSgaBackendBranchTests } from './backend/sga-backend-branches.test';
 
 // ============================================================================
 // Test Utilities
@@ -1120,6 +1140,26 @@ function runAllTests(): void {
 
     runDifferentialTests();
     runCompiledCorrectnessTests();
+    runIRTests(runTest);
+    runRewritesTests(runTest);
+  runRewritesBranchTests(runTest);
+    runFuserTests(runTest);
+    runLoweringEdgeTests(runTest);
+    runSchemaValidationTests(runTest);
+    runSgaBackendExtendedTests(runTest);
+  runFanoBranchTests(runTest);
+    runClassBackendTests(runTest);
+    runSgaBackendRingTests(runTest);
+    runUtilityFunctionsTests(runTest);
+    runFanoPlaneUtilityTests(runTest);
+    runSgaElementUtilityTests(runTest);
+    runBranchCoverageTests(runTest);
+  runClassBackendBranchTests(runTest);
+  runProjectBranchTests(runTest);
+  runRegistryBranchTests(runTest);
+  runSchemaRegistryBranchTests(runTest);
+  runSgaBackendBranchTests(runTest);
+    runCacheTests(runTest);
 
     console.log('='.repeat(60));
     console.log(
