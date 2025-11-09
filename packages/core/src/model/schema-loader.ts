@@ -5,18 +5,15 @@
  * Uses AJV for full JSON-Schema compliance.
  */
 
-import Ajv from 'ajv';
+import Ajv, { Options as AjvOptions } from 'ajv';
 import type { ModelDescriptor } from './types';
 import { getSchemaByName } from './schema-registry';
 
-// Initialize AJV validator (Ajv v8 ships its own types; be tolerant across versions)
+// Initialize AJV validator (Ajv v8 ships its own types)
 const ajv = new Ajv({
-  // In Ajv v8, `strict` is valid; if older types leak in, this object is still compatible at runtime
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   strict: true,
   allErrors: true,
-});
+} as AjvOptions);
 
 /**
  * Get schema for a model by name

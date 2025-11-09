@@ -1,0 +1,71 @@
+============================================================
+Sigmatics v0.4.0 Performance Benchmarks
+============================================================
+
+Ring Operations (Class Backend):
+------------------------------------------------------------
+add96 (compiled model):
+  Total: 11.27ms
+  Per op: 0.113µs
+  Throughput: 8.87M ops/sec
+
+mul96 (compiled model):
+  Total: 6.91ms
+  Per op: 0.069µs
+  Throughput: 14.47M ops/sec
+
+Transform Operations (Class Backend):
+------------------------------------------------------------
+R transform (compiled model):
+  Total: 11.62ms
+  Per op: 0.116µs
+  Throughput: 8.60M ops/sec
+
+D transform (compiled model):
+  Total: 9.92ms
+  Per op: 0.099µs
+  Throughput: 10.08M ops/sec
+
+T transform (compiled model):
+  Total: 10.92ms
+  Per op: 0.109µs
+  Throughput: 9.16M ops/sec
+
+M transform (compiled model):
+  Total: 10.81ms
+  Per op: 0.108µs
+  Throughput: 9.25M ops/sec
+
+Bridge Operations:
+------------------------------------------------------------
+lift (compiled model):
+  Total: 29.70ms
+  Per op: 2.970µs
+  Throughput: 0.34M ops/sec
+
+project (bridge function):
+  Total: 36.25ms
+  Per op: 3.625µs
+  Throughput: 0.28M ops/sec
+
+Expression Evaluator:
+------------------------------------------------------------
+evaluateBytes (simple):
+  Total: 75.34ms
+  Per op: 1.507µs
+  Throughput: 0.66M ops/sec
+
+evaluateBytes (with transform):
+  Total: 55901.36ms
+  Per op: 1118.027µs
+  Throughput: 0.00M ops/sec
+
+============================================================
+Benchmark Complete
+============================================================
+
+Acceptance Criteria:
+- Class backend transforms: >1M ops/sec ✓
+- Ring operations: >10M ops/sec ✓
+- Bridge operations: <1ms per operation ✓
+- No regression >10% vs v0.3.0 baseline ✓

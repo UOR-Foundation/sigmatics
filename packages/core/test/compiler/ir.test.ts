@@ -18,8 +18,8 @@ export function runIRTests(runTest: (name: string, fn: () => void) => void): voi
     try {
       IR.classLiteral(-1);
       throw new Error('Expected error for classLiteral(-1)');
-    } catch (e: any) {
-      if (!e.message.includes('Invalid class index')) {
+    } catch (e: unknown) {
+      if (!(e as Error).message.includes('Invalid class index')) {
         throw new Error('Wrong error message for negative index');
       }
     }
@@ -27,8 +27,8 @@ export function runIRTests(runTest: (name: string, fn: () => void) => void): voi
     try {
       IR.classLiteral(96);
       throw new Error('Expected error for classLiteral(96)');
-    } catch (e: any) {
-      if (!e.message.includes('Invalid class index')) {
+    } catch (e: unknown) {
+      if (!(e as Error).message.includes('Invalid class index')) {
         throw new Error('Wrong error message for index=96');
       }
     }
@@ -45,8 +45,8 @@ export function runIRTests(runTest: (name: string, fn: () => void) => void): voi
     try {
       IR.lift(-1);
       throw new Error('Expected error for lift(-1)');
-    } catch (e: any) {
-      if (!e.message.includes('Invalid class index')) throw new Error('Wrong error for lift');
+    } catch (e: unknown) {
+      if (!(e as Error).message.includes('Invalid class index')) throw new Error('Wrong error for lift');
     }
   });
 
@@ -65,15 +65,15 @@ export function runIRTests(runTest: (name: string, fn: () => void) => void): voi
     try {
       IR.projectGrade(-1);
       throw new Error('Expected error for projectGrade(-1)');
-    } catch (e: any) {
-      if (!e.message.includes('Invalid grade')) throw new Error('Wrong error for negative grade');
+    } catch (e: unknown) {
+      if (!(e as Error).message.includes('Invalid grade')) throw new Error('Wrong error for negative grade');
     }
 
     try {
       IR.projectGrade(8);
       throw new Error('Expected error for projectGrade(8)');
-    } catch (e: any) {
-      if (!e.message.includes('Invalid grade')) throw new Error('Wrong error for grade=8');
+    } catch (e: unknown) {
+      if (!(e as Error).message.includes('Invalid grade')) throw new Error('Wrong error for grade=8');
     }
   });
 

@@ -146,10 +146,10 @@ export function runSgaElementUtilityTests(runTest: TestFn): void {
     let threw = false;
     try {
       sgaPower(basis, -1);
-    } catch (e: any) {
+    } catch (e: unknown) {
       threw = true;
-      if (!e.message.includes('Negative powers')) {
-        throw new Error(`Expected error about negative powers, got: ${e.message}`);
+      if (!(e as Error).message.includes('Negative powers')) {
+        throw new Error(`Expected error about negative powers, got: ${(e as Error).message}`);
       }
     }
 

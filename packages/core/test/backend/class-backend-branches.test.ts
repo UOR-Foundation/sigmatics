@@ -4,10 +4,11 @@
 import { executeClassPlan } from '../../src/compiler/lowering/class-backend';
 import { lowerToClassBackend } from '../../src/compiler/lowering/class-backend';
 import * as IR from '../../src/compiler/ir';
+import type { ClassOperation, ClassPlan, RingResult } from '../../src/model/types';
 
 // Local helper to build a plan with specific ops
-function plan(ops: any[]): any {
-  return { kind: 'class' as const, operations: ops };
+function plan(ops: ClassOperation[]): ClassPlan {
+  return { kind: 'class', operations: ops };
 }
 
 type TestFn = (name: string, fn: () => void) => void;
@@ -36,7 +37,7 @@ export function runClassBackendBranchTests(runTest: TestFn): void {
 
   // projectClass branch in switch
   runTest('Class Backend: projectClass is a no-op', () => {
-    const result = executeClassPlan(plan([{ type: 'projectClass' }]), { x: 5 }) as any;
+    const result = executeClassPlan(plan([{ type: 'projectClass' }]), { x: 5 });
     // No state established; function returns fallback object
     if (typeof result !== 'object') {
       throw new Error(`Expected fallback object, got ${result}`);
@@ -45,8 +46,8 @@ export function runClassBackendBranchTests(runTest: TestFn): void {
 
   // Empty plan return fallback branch
   runTest('Class Backend: empty plan returns fallback object', () => {
-    const result = executeClassPlan(plan([]), {}) as any;
-    if (typeof result !== 'object' || result.value !== 0) {
+    const result = executeClassPlan(plan([]), {});
+    if (typeof result !== 'object' || (result as RingResult).value !== 0) {
       throw new Error(`Expected fallback {value:0}, got ${JSON.stringify(result)}`);
     }
   });
@@ -76,13 +77,29 @@ export function runClassBackendBranchTests(runTest: TestFn): void {
     }
   });
 
+    runTest('Class Backend: transform followed by ring op order preserved', () => {
+      // R(add96) with track overflow should still produce R then add96 ops
+      const term = IR.R(IR.add96('track'), 2);
+      const plan = lowerToClassBackend(term);
+      const types = plan.operations.map((o) => o.type).join(',');
+      if (!types.includes('R') || !types.includes('add96')) {
+        throw new Error(`Expected both R and add96 in operations, got ${types}`);
+      }
+      // Execute with runtime params to ensure early return gives result
+      const out = executeClassPlan(plan, { a: 10, b: 90 });
+      if (typeof out !== 'object' || (out as RingResult).value === undefined) {
+        throw new Error('Expected ring result object from tracked add96');
+      }
+    });
+
   // add96 track: no overflow
   runTest('Class Backend: add96 track without overflow', () => {
     const result = executeClassPlan(
       plan([{ type: 'add96', overflowMode: 'track' }]),
       { a: 10, b: 20 },
-    ) as any;
-    if (result.value !== 30 || result.overflow !== false) {
+    );
+    const ring = result as RingResult;
+    if (ring.value !== 30 || ring.overflow !== false) {
       throw new Error(`Expected {value:30, overflow:false}, got ${JSON.stringify(result)}`);
     }
   });
@@ -92,8 +109,9 @@ export function runClassBackendBranchTests(runTest: TestFn): void {
     const result = executeClassPlan(
       plan([{ type: 'add96', overflowMode: 'track' }]),
       { a: 80, b: 30 },
-    ) as any;
-    if (result.value !== (110 % 96) || result.overflow !== true) {
+    );
+    const ring2 = result as RingResult;
+    if (ring2.value !== (110 % 96) || ring2.overflow !== true) {
       throw new Error(
         `Expected {value:${110 % 96}, overflow:true}, got ${JSON.stringify(result)}`,
       );

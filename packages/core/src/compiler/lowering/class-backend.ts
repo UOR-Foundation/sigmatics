@@ -87,6 +87,21 @@ function collectClassOperations(node: IRNode): ClassOperation[] {
 /**
  * Execute a class backend plan
  */
+/**
+ * Execute the class backend plan
+ *
+ * Invariants and fast-paths:
+ * - Ring operations (add96/sub96/mul96) with overflowMode='track' return a
+ *   RingResult immediately after computing the value. This "early return"
+ *   is intentional: ring ops are terminal in class plans produced by the
+ *   fuser for C0/C1 models (no subsequent transforms apply to RingResult).
+ * - Transform operations (R/D/T/M) act on a numeric class index in `state`.
+ * - lift is terminal as it switches to SGA domain; class plans only contain
+ *   a single lift at the tail when lowering a pure bridge model.
+ *
+ * The fuser guarantees plan shape so that no operation requiring a class
+ * index appears after a terminal RingResult or lift. See fuser.ts for details.
+ */
 export function executeClassPlan(plan: ClassPlan, inputs: Record<string, unknown>): unknown {
   let state: number | undefined = undefined;
 

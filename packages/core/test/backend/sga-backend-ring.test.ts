@@ -9,7 +9,7 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     const ir = IR.sub96('drop');
     const plan = lowerToSgaBackend(ir);
     const result = executeSgaPlan(plan, { a: 10, b: 15 });
-    if (!result || typeof result !== 'object' || !('clifford' in (result as any))) {
+    if (!result || typeof result !== 'object' || !('clifford' in result)) {
       throw new Error('Expected SGA element result');
     }
     // Value should be wrapped in lifted SGA element (state), extract isn't trivial
@@ -23,7 +23,8 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     if (typeof result !== 'object' || result === null || !('value' in result) || !('overflow' in result)) {
       throw new Error('Expected RingResult with overflow');
     }
-    if ((result as any).value !== 91 || !(result as any).overflow) {
+    const rr = result as { value: number; overflow: boolean };
+    if (rr.value !== 91 || !rr.overflow) {
       throw new Error('Expected value=91, overflow=true for 10-15');
     }
   });
@@ -31,7 +32,7 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
   runTest('SGA Backend: mul96 with drop overflow', () => {
     const ir = IR.mul96('drop');
     const plan = lowerToSgaBackend(ir);
-    const result = executeSgaPlan(plan, { a: 10, b: 10 });
+  const _result = executeSgaPlan(plan, { a: 10, b: 10 });
     // Should complete without error; exact result check depends on state handling
   });
 
@@ -42,7 +43,8 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     if (typeof result !== 'object' || result === null || !('value' in result) || !('overflow' in result)) {
       throw new Error('Expected RingResult with overflow');
     }
-    if ((result as any).value !== 4 || !(result as any).overflow) {
+    const rr2 = result as { value: number; overflow: boolean };
+    if (rr2.value !== 4 || !rr2.overflow) {
       throw new Error('Expected value=4, overflow=true for 10*10=100');
     }
   });
@@ -52,7 +54,7 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     const plan = lowerToSgaBackend(ir);
     const x = lift(5);
     const result = executeSgaPlan(plan, { x });
-    if (!result || typeof result !== 'object' || !('clifford' in (result as any))) {
+    if (!result || typeof result !== 'object' || !('clifford' in result)) {
       throw new Error('Expected SGA element result from D transform');
     }
   });
@@ -62,7 +64,7 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     const plan = lowerToSgaBackend(ir);
     const x = lift(7);
     const result = executeSgaPlan(plan, { x });
-    if (!result || typeof result !== 'object' || !('clifford' in (result as any))) {
+    if (!result || typeof result !== 'object' || !('clifford' in result)) {
       throw new Error('Expected SGA element result from T transform');
     }
   });
@@ -72,7 +74,7 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     const plan = lowerToSgaBackend(ir);
     const x = lift(9);
     const result = executeSgaPlan(plan, { x });
-    if (!result || typeof result !== 'object' || !('clifford' in (result as any))) {
+    if (!result || typeof result !== 'object' || !('clifford' in result)) {
       throw new Error('Expected SGA element result from M transform');
     }
   });
@@ -83,9 +85,10 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     try {
       executeSgaPlan(plan, {});
       throw new Error('Expected error for missing x param');
-    } catch (e: any) {
-      if (!e.message.includes('projectClass requires')) {
-        throw new Error('Wrong error message: ' + e.message);
+    } catch (e: unknown) {
+      const msg = (e as Error).message;
+      if (!msg.includes('projectClass requires')) {
+        throw new Error('Wrong error message: ' + msg);
       }
     }
   });
@@ -95,7 +98,7 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     const plan = lowerToSgaBackend(ir);
     const elem = lift(10);
     const result = executeSgaPlan(plan, { x: elem });
-    if (!result || typeof result !== 'object' || !('clifford' in (result as any))) {
+    if (!result || typeof result !== 'object' || !('clifford' in result)) {
       throw new Error('Expected SGA element after grade projection');
     }
   });

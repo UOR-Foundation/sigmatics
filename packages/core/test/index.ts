@@ -19,6 +19,8 @@ import { runDifferentialTests } from './model/differential.test';
 import { runCompiledCorrectnessTests } from './model/compiled-correctness.test';
 import { runRewritesTests } from './compiler/rewrites.test';
 import { runRewritesBranchTests } from './compiler/rewrites-branches.test';
+import { runRewritesExtraBranchTests } from './compiler/rewrites-extra-branches.test';
+import { runRewritesNonAdjacentFoldingTests } from './compiler/rewrites-non-adjacent-folding.test';
 import { runFuserTests } from './compiler/fuser.test';
 import { runLoweringEdgeTests } from './compiler/lowering-edge.test';
 import { runSchemaValidationTests } from './model/schema-validation.test';
@@ -68,10 +70,10 @@ function assertThrows(fn: () => void, message: string, expectedError: string) {
   try {
     fn();
     throw new Error(`Expected function to throw, but it did not. ${message}`);
-  } catch (e: any) {
-    if (!e.message.includes(expectedError)) {
+  } catch (e: unknown) {
+    if (!(e as Error).message.includes(expectedError)) {
       throw new Error(
-        `${message}\n  Expected error message to include: "${expectedError}"\n  Actual error: "${e.message}"`,
+        `${message}\n  Expected error message to include: "${expectedError}"\n  Actual error: "${(e as Error).message}"`,
       );
     }
   }
@@ -842,8 +844,8 @@ function runIntegrationTests(): void {
         true,
         'Kitchen sink operational evaluation has words',
       );
-    } catch (e: any) {
-      throw new Error(`Kitchen sink expression failed to evaluate: ${e.message}`);
+    } catch (e: unknown) {
+      throw new Error(`Kitchen sink expression failed to evaluate: ${(e as Error).message}`);
     }
   });
 
@@ -1142,7 +1144,9 @@ function runAllTests(): void {
     runCompiledCorrectnessTests();
     runIRTests(runTest);
     runRewritesTests(runTest);
-  runRewritesBranchTests(runTest);
+    runRewritesBranchTests(runTest);
+    runRewritesExtraBranchTests();
+    runRewritesNonAdjacentFoldingTests();
     runFuserTests(runTest);
     runLoweringEdgeTests(runTest);
     runSchemaValidationTests(runTest);
@@ -1154,8 +1158,8 @@ function runAllTests(): void {
     runFanoPlaneUtilityTests(runTest);
     runSgaElementUtilityTests(runTest);
     runBranchCoverageTests(runTest);
-  runClassBackendBranchTests(runTest);
-  runProjectBranchTests(runTest);
+    runClassBackendBranchTests(runTest);
+    runProjectBranchTests(runTest);
   runRegistryBranchTests(runTest);
   runSchemaRegistryBranchTests(runTest);
   runSgaBackendBranchTests(runTest);

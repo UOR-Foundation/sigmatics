@@ -12,6 +12,21 @@ import type { IRNode, ComplexityClass, BackendPreference } from '../model/types'
 /**
  * Analyze IR and determine complexity class
  */
+/**
+ * Determine ComplexityClass (C0–C3)
+ *
+ * Heuristic criteria:
+ * - C0: No runtime degrees (fully compiled params), no grade selectors
+ * - C1: Class-pure (no project/projectClass) and shallow: seqDepth <= 3, parDepth <= 2
+ * - C2: Contains limited grade selectors (<=2) with moderate depth (seqDepth <= 5)
+ * - C3: Deep compositions or many grade selectors (>2)
+ *
+ * Rationale:
+ * Shallow, class-pure graphs maximize permutation fusion (class backend).
+ * Grade selectors or large depth introduce algebraic semantics where SGA
+ * backend is more appropriate. This prevents over-fusing while preserving
+ * fast paths for common transform/ring chains.
+ */
 export function analyzeComplexity(
   node: IRNode,
   compiledParams: Record<string, unknown>,

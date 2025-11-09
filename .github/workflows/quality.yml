@@ -1,0 +1,43 @@
+name: Quality Gates
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (ESLint)
+        run: npm run lint
+
+      - name: Run Tests
+        run: npm test -w packages/core
+
+      # Unused exports check disabled pending allowlist configuration for public API
+      # - name: Unused Exports Check
+      #   shell: bash
+      #   run: |
+      #     OUT=$(npm run --silent check:unused-exports || true)
+      #     echo "$OUT"
+      #     if [ -n "$OUT" ]; then
+      #       echo '❌ Unused exports detected';
+      #       exit 1;
+      #     else
+      #       echo '✅ No unused exports';
+      #     fi

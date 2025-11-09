@@ -23,8 +23,8 @@ export * from './evaluator';
 export * from './class-system';
 
 // v0.3.0: SGA (Sigmatics Geometric Algebra)
+// Legacy Bridge namespace removed in v0.4.0 refactor (use Atlas.Model.lift/projectGrade or Atlas.SGA.lift/project)
 export * as SGA from './sga';
-export * as Bridge from './bridge';
 
 // Re-export key SGA types
 export type { SgaElement, Cl07Element, Z4Element, Z3Element, Rank1Basis } from './sga/types';

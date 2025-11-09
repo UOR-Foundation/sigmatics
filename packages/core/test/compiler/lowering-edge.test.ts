@@ -10,8 +10,8 @@ export function runLoweringEdgeTests(runTest: (name: string, fn: () => void) => 
     try {
       lowerToClassBackend(proj);
       throw new Error('Expected error for grade projection in class backend');
-    } catch (e: any) {
-      if (!e.message.includes('Grade projection requires SGA backend')) {
+    } catch (e: unknown) {
+      if (!(e as Error).message.includes('Grade projection requires SGA backend')) {
         throw new Error('Incorrect error message for grade projection');
       }
     }

@@ -12,10 +12,10 @@ export function runFanoBranchTests(runTest: TestFn): void {
     let threw = false;
     try {
       crossProduct(0, 1);
-    } catch (e: any) {
+    } catch (e: unknown) {
       threw = true;
-      if (!e.message.includes('1..7')) {
-        throw new Error(`Unexpected error message: ${e.message}`);
+      if (!(e as Error).message.includes('1..7')) {
+        throw new Error(`Unexpected error message: ${(e as Error).message}`);
       }
     }
     if (!threw) {
@@ -27,10 +27,10 @@ export function runFanoBranchTests(runTest: TestFn): void {
     let threw = false;
     try {
       crossProduct(1, 8);
-    } catch (e: any) {
+    } catch (e: unknown) {
       threw = true;
-      if (!e.message.includes('1..7')) {
-        throw new Error(`Unexpected error message: ${e.message}`);
+      if (!(e as Error).message.includes('1..7')) {
+        throw new Error(`Unexpected error message: ${(e as Error).message}`);
       }
     }
     if (!threw) {

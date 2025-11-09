@@ -199,6 +199,13 @@ Models are compiled to a tiny algebraic IR:
 - Fold consecutive transforms: R^a ∘ R^b → R^(a+b)
 - Apply mirror conjugation rules: MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 - Normalize transform powers: R^k mod 4, D^k mod 3, T^k mod 8
+- Canonicalize non-adjacent same-type transform chains post-normalization (v0.4.0 extension)
+
+Limitations:
+- Cross-type transform folding beyond mirror conjugation is intentionally avoided to preserve evaluation order semantics.
+- Power aggregation skips chains separated by parallel composition boundaries.
+- Mirror conjugation does not invert nested chains with intervening lift/project operations; those remain explicit for correctness.
+- Future pass may introduce dead transform elimination (e.g., R^0) after backend selection; currently retained for traceability.
 
 ### 3. Complexity Analysis
 
@@ -208,6 +215,12 @@ Models are classified into complexity classes:
 - **C1**: Few runtime degrees, class-pure → prefer class backend
 - **C2**: Bounded mixed-grade operations → prefer SGA backend
 - **C3**: General case → SGA backend
+
+Heuristic details used by the compiler:
+
+- Depth thresholds: shallow graphs (seqDepth ≤ 3, parDepth ≤ 2) stay in C1 when class-pure.
+- Grade selectors: the presence of project(k) or projectClass moves models to at least C2; more than two selectors or deep graphs escalate to C3.
+- Rationale: shallow, class-pure graphs maximize permutation fusion (class backend). Grade selectors or deep compositions require SGA’s grade semantics to preserve correctness without over-fusing.
 
 ### 4. Backend Selection
 

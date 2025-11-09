@@ -71,7 +71,7 @@ export function runUtilityFunctionsTests(runTest: TestFn): void {
   runTest('Utility: projectStrict throws on non-rank-1', () => {
     // Create a non-rank-1 element by multiplying two rank-1 elements
     const e1 = liftMultiple([1])[0]; // e1 basis vector
-    const e2 = liftMultiple([2])[0]; // e2 basis vector
+    const _e2 = liftMultiple([2])[0]; // e2 basis vector
     const product = {
       z4: e1.z4,
       z3: e1.z3,
@@ -85,10 +85,10 @@ export function runUtilityFunctionsTests(runTest: TestFn): void {
     let threw = false;
     try {
       projectStrict(product as any);
-    } catch (e: any) {
+    } catch (e: unknown) {
       threw = true;
-      if (!e.message.includes('non-rank-1')) {
-        throw new Error(`Expected error about non-rank-1, got: ${e.message}`);
+      if (!(e as Error).message.includes('non-rank-1')) {
+        throw new Error(`Expected error about non-rank-1, got: ${(e as Error).message}`);
       }
     }
 

@@ -2,6 +2,9 @@
  * SGA Backend Branch Tests
  */
 import { lowerToSgaBackend, executeSgaPlan } from '../../src/compiler/lowering/sga-backend';
+import { lift } from '../../src/bridge/lift';
+import { StdlibModels } from '../../src/server/registry';
+import type { SgaElement } from '../../src/sga/types';
 import * as IR from '../../src/compiler/ir';
 
  type TestFn = (name: string, fn: () => void) => void;
@@ -24,4 +27,15 @@ export function runSgaBackendBranchTests(runTest: TestFn): void {
       throw new Error(`Expected projectClass to return 7, got ${out}`);
     }
   });
+  
+    runTest('SGA Backend: projectClass null on non-rank-1 element', () => {
+      // Construct non-rank-1 element: scalar + e2
+      const scalar = lift(0) as SgaElement;
+      const grades = new Map(scalar.clifford.grades);
+      grades.set('e2', 1);
+      const combo: SgaElement = { clifford: { grades }, z4: scalar.z4, z3: scalar.z3 };
+      const model = StdlibModels.projectClass();
+      const out = model.run({ x: combo });
+      if (out !== null) throw new Error('Expected null for non-rank-1 composite element');
+    });
 }

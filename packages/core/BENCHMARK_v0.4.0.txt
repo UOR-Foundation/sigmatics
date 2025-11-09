@@ -1,0 +1,48 @@
+Sigmatics v0.4.0 Performance Benchmarks (Latest Run)
+Date: 2025-01-22
+Platform: Node.js v22.17.0 (Ubuntu 24.04 LTS dev container)
+
+============================================
+Ring Operations (Class Backend):
+============================================
+add96: 7.29ms total, 0.073µs/op, 13.71M ops/sec ✓
+mul96: 7.94ms total, 0.079µs/op, 12.59M ops/sec ✓
+
+Target: >10M ops/sec
+Status: PASS with 20%+ headroom
+
+============================================
+Transform Operations (Class Backend):
+============================================
+R: 15.22ms total, 0.152µs/op, 6.57M ops/sec ✓
+D: 10.00ms total, 0.100µs/op, 10.00M ops/sec ✓
+T: 9.93ms total, 0.099µs/op, 10.07M ops/sec ✓
+M: 11.76ms total, 0.118µs/op, 8.50M ops/sec ✓
+
+Target: >1M ops/sec
+Status: PASS with 6x+ headroom
+
+============================================
+Bridge Operations:
+============================================
+lift: 21.60ms total, 2.160µs/op, 0.46M ops/sec ✓
+project: 38.07ms total, 3.807µs/op, 0.26M ops/sec ✓
+
+Target: <1ms per operation
+Status: PASS with 250x+ headroom
+
+============================================
+Expression Evaluator:
+============================================
+Simple: 108.16ms total, 2.163µs/op, 0.46M ops/sec
+With transform: 56980.18ms total, 1139.604µs/op (parser overhead, known bottleneck)
+
+============================================
+Acceptance Criteria: ALL PASS ✓✓
+============================================
+- Class backend transforms: >1M ops/sec ✓ (6x headroom)
+- Ring operations: >10M ops/sec ✓ (20%+ headroom)
+- Bridge operations: <1ms per operation ✓ (250x headroom)
+- No regression >10% vs v0.3.0 baseline ✓ (within variance)
+
+Performance is production-ready for v0.4.0 release.

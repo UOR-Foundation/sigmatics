@@ -3,8 +3,8 @@
  * Tests core functionality without running full test suite
  */
 
-// FIX: Declare process for Node.js environment compatibility
-declare const process: any;
+// Minimal typing for Node.js process (avoid any)
+declare const process: { exit(code?: number): never };
 
 import Atlas from '@uor-foundation/sigmatics';
 
@@ -25,8 +25,9 @@ function test(name: string, fn: () => boolean): void {
       console.log(`✗ ${name} - assertion failed`);
       failed++;
     }
-  } catch (error: any) {
-    console.log(`✗ ${name} - ${error.message}`);
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.log(`✗ ${name} - ${message}`);
     failed++;
   }
 }

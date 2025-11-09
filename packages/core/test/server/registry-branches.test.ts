@@ -2,6 +2,7 @@
  * Server Registry Branch Tests
  */
 import { compileModel, StdlibModels } from '../../src/server/registry';
+import type { ModelDescriptor } from '../../src/model/types';
 import { lift } from '../../src/bridge/lift';
 import { project } from '../../src/bridge/project';
 
@@ -23,10 +24,10 @@ export function runRegistryBranchTests(runTest: TestFn): void {
         complexityHint: 'C1',
         loweringHints: { prefer: 'auto' },
       } as any);
-    } catch (e: any) {
+    } catch (e: unknown) {
       threw = true;
-      if (!e.message.includes('Unknown model')) {
-        throw new Error(`Expected Unknown model error, got: ${e.message}`);
+      if (!(e as Error).message.includes('Unknown model')) {
+        throw new Error(`Expected Unknown model error, got: ${(e as Error).message}`);
       }
     }
     if (!threw) {
@@ -60,6 +61,40 @@ export function runRegistryBranchTests(runTest: TestFn): void {
     const out = model.run({ x: 1 }); // class index with l=1
     if (typeof out !== 'number') {
       throw new Error('Expected projected class index (number) from project grade path');
+    }
+  });
+
+  runTest('Registry: invalid complexityHint triggers validation error branch', () => {
+    const badDescriptor: ModelDescriptor = {
+      name: 'add96',
+      version: '1.0.0',
+      namespace: 'stdlib.ring',
+      compiled: { overflowMode: 'drop' },
+      runtime: { a: 0, b: 0 },
+      // @ts-expect-error deliberate invalid hint to exercise branch
+      complexityHint: 'C9',
+    };
+    let threw = false;
+    try {
+      compileModel(badDescriptor);
+    } catch (e: unknown) {
+      threw = (e as Error).message.includes('Invalid complexityHint');
+    }
+    if (!threw) throw new Error('Expected invalid complexityHint error');
+  });
+
+  runTest('Registry: backend preference override to class despite grade op rejected', () => {
+    // Use regular Stdlib model which sets prefer:'sga' and assert backend is SGA
+    const model = compileModel({
+      name: 'project',
+      version: '1.0.0',
+      namespace: 'stdlib.grade',
+      compiled: { grade: 1 },
+      runtime: { x: {} },
+      loweringHints: { prefer: 'sga' },
+    });
+    if (model.plan.backend !== 'sga') {
+      throw new Error('Expected SGA backend for grade projection');
     }
   });
 }

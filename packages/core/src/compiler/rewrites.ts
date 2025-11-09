@@ -21,12 +21,24 @@ import type { IRNode, TransformOp } from '../model/types';
  */
 export function normalize(node: IRNode): IRNode {
   let current = node;
-  let changed = true;
+  // Phase 1: push transforms to leaves and fold adjacent powers until fixpoint
+  // eslint-disable-next-line no-constant-condition
+  while (true) {
+    let changed = true;
+    while (changed) {
+      const next = normalizeStep(current);
+      changed = !irEqual(current, next);
+      current = next;
+    }
 
-  while (changed) {
-    const next = normalizeStep(current);
-    changed = !irEqual(current, next);
-    current = next;
+    // Phase 2: canonicalize transform chains at leaves (non-adjacent power folding)
+    const canon = canonicalizeLeafChains(current);
+    if (!irEqual(current, canon)) {
+      current = canon;
+      // Loop to allow any further adjacent folds triggered by canonicalization
+      continue;
+    }
+    break;
   }
 
   return current;
@@ -82,17 +94,26 @@ function normalizeTransform(node: {
   // First, normalize the child
   const normalizedChild = normalizeStep(child);
 
-  // If child is also a transform, fold them
+  // If child is also a transform, attempt folding only when types match or mirror conjugation applies
   if (normalizedChild.kind === 'transform') {
-    const folded = foldTransforms(transform, normalizedChild.transform);
-    if (folded === null) {
-      // Transforms cancel out (e.g., M∘M = identity)
-      return normalizedChild.child;
+    const inner = normalizedChild.transform;
+    // Same type power folding
+    if (transform.type === inner.type) {
+      const folded = foldTransforms(transform, inner);
+      if (folded === null) return normalizedChild.child; // identity
+      return { kind: 'transform', transform: folded, child: normalizedChild.child };
     }
+    // Mirror conjugation (only apply when outer is M)
+    if (transform.type === 'M') {
+      const folded = foldTransforms(transform, inner);
+      if (folded === null) return normalizedChild.child; // M∘M cancels
+      return { kind: 'transform', transform: folded, child: normalizedChild.child };
+    }
+    // Different, commuting types: preserve both transforms (outer wrapping inner)
     return {
       kind: 'transform',
-      transform: folded,
-      child: normalizedChild.child,
+      transform,
+      child: normalizedChild,
     };
   }
 
@@ -263,6 +284,86 @@ function transformEqual(a: TransformOp, b: TransformOp): boolean {
   if (a.type === 'M' && b.type === 'M') return true;
 
   return false;
+}
+
+/**
+ * Canonicalize transform chains at leaves by applying commutation and
+ * conjugation laws to bring identical transform types together and fold powers.
+ *
+ * Canonical form per leaf path:
+ *   [M?] then R^r (mod 4), D^d (mod 3), T^t (mod 8), omitting identities.
+ *   An odd number of mirrors yields a leading M; even cancels to identity.
+ */
+function canonicalizeLeafChains(node: IRNode): IRNode {
+  function rebuild(child: IRNode, chain: TransformOp[]): IRNode {
+    let n: IRNode = child;
+    for (let i = chain.length - 1; i >= 0; i--) {
+      n = { kind: 'transform', transform: chain[i], child: n };
+    }
+    return n;
+  }
+
+  function canonicalizeChain(chain: TransformOp[]): TransformOp[] {
+    let mirrored = false;
+    let r = 0;
+    let d = 0;
+    let t = 0;
+
+    for (const tr of chain) {
+      switch (tr.type) {
+        case 'M':
+          mirrored = !mirrored;
+          break;
+        case 'R': {
+          const k = tr.k % 4;
+            r = ((r + k) % 4) as 0 | 1 | 2 | 3;
+          break;
+        }
+        case 'D': {
+          const k = tr.k % 3;
+            d = ((d + k) % 3) as 0 | 1 | 2;
+          break;
+        }
+        case 'T': {
+          const k = tr.k % 8;
+            t = ((t + k) % 8) as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+          break;
+        }
+      }
+    }
+
+    const result: TransformOp[] = [];
+    if (mirrored) result.push({ type: 'M' });
+    if (r !== 0) result.push({ type: 'R', k: r });
+    if (d !== 0) result.push({ type: 'D', k: d });
+    if (t !== 0) result.push({ type: 'T', k: t });
+    return result;
+  }
+
+  function visit(n: IRNode): IRNode {
+    switch (n.kind) {
+      case 'atom':
+        return n;
+      case 'seq':
+        return { kind: 'seq', left: visit(n.left), right: visit(n.right) };
+      case 'par':
+        return { kind: 'par', left: visit(n.left), right: visit(n.right) };
+      case 'transform': {
+        // Collect full chain to leaf
+        const chain: TransformOp[] = [];
+        let cur: IRNode = n;
+        while (cur.kind === 'transform') {
+          chain.push(cur.transform);
+          cur = cur.child;
+        }
+        const leaf = visit(cur); // leaf should be atom; visit in case nested structure
+        const canon = canonicalizeChain(chain);
+        return rebuild(leaf, canon);
+      }
+    }
+  }
+
+  return visit(node);
 }
 
 /**

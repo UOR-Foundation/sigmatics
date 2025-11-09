@@ -9,7 +9,7 @@ export function runClassBackendTests(runTest: (name: string, fn: () => void) => 
     const plan = lowerToClassBackend(ir);
     const result = executeClassPlan(plan, { a: 10, b: 15 });
     if (typeof result === 'object' && result !== null && 'value' in result) {
-      if ((result as any).value !== 91) throw new Error('Expected (10-15) mod 96 = 91');
+      if ((result as { value: number }).value !== 91) throw new Error('Expected (10-15) mod 96 = 91');
     } else if (result !== 91) {
       throw new Error('Expected result=91');
     }
@@ -22,7 +22,8 @@ export function runClassBackendTests(runTest: (name: string, fn: () => void) => 
     if (typeof result !== 'object' || result === null || !('value' in result) || !('overflow' in result)) {
       throw new Error('Expected RingResult with overflow');
     }
-    if ((result as any).value !== 91 || !(result as any).overflow) {
+    const rr = result as { value: number; overflow: boolean };
+    if (rr.value !== 91 || !rr.overflow) {
       throw new Error('Expected value=91, overflow=true');
     }
   });
@@ -32,7 +33,7 @@ export function runClassBackendTests(runTest: (name: string, fn: () => void) => 
     const plan = lowerToClassBackend(ir);
     const result = executeClassPlan(plan, { a: 10, b: 10 });
     if (typeof result === 'object' && result !== null && 'value' in result) {
-      if ((result as any).value !== 4) throw new Error('Expected (10*10) mod 96 = 4');
+      if ((result as { value: number }).value !== 4) throw new Error('Expected (10*10) mod 96 = 4');
     } else if (result !== 4) {
       throw new Error('Expected result=4');
     }
@@ -45,7 +46,8 @@ export function runClassBackendTests(runTest: (name: string, fn: () => void) => 
     if (typeof result !== 'object' || result === null || !('value' in result) || !('overflow' in result)) {
       throw new Error('Expected RingResult with overflow');
     }
-    if ((result as any).value !== 4 || !(result as any).overflow) {
+    const rr2 = result as { value: number; overflow: boolean };
+    if (rr2.value !== 4 || !rr2.overflow) {
       throw new Error('Expected value=4, overflow=true for 10*10=100');
     }
   });
@@ -65,7 +67,7 @@ export function runClassBackendTests(runTest: (name: string, fn: () => void) => 
     const plan = lowerToClassBackend(ir);
     const result = executeClassPlan(plan, { a: 10, b: 20 });
     if (typeof result === 'object' && result !== null && 'value' in result) {
-      if ((result as any).value !== 30) throw new Error('Expected 10+20=30');
+      if ((result as { value: number }).value !== 30) throw new Error('Expected 10+20=30');
     } else if (result !== 30) {
       throw new Error('Expected result=30');
     }
