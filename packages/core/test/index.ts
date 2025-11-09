@@ -1151,7 +1151,7 @@ function runAllTests(): void {
     runLoweringEdgeTests(runTest);
     runSchemaValidationTests(runTest);
     runSgaBackendExtendedTests(runTest);
-  runFanoBranchTests(runTest);
+    runFanoBranchTests(runTest);
     runClassBackendTests(runTest);
     runSgaBackendRingTests(runTest);
     runUtilityFunctionsTests(runTest);
@@ -1160,9 +1160,9 @@ function runAllTests(): void {
     runBranchCoverageTests(runTest);
     runClassBackendBranchTests(runTest);
     runProjectBranchTests(runTest);
-  runRegistryBranchTests(runTest);
-  runSchemaRegistryBranchTests(runTest);
-  runSgaBackendBranchTests(runTest);
+    runRegistryBranchTests(runTest);
+    runSchemaRegistryBranchTests(runTest);
+    runSgaBackendBranchTests(runTest);
     runCacheTests(runTest);
 
     console.log('='.repeat(60));

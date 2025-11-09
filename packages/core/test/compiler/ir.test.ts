@@ -46,7 +46,8 @@ export function runIRTests(runTest: (name: string, fn: () => void) => void): voi
       IR.lift(-1);
       throw new Error('Expected error for lift(-1)');
     } catch (e: unknown) {
-      if (!(e as Error).message.includes('Invalid class index')) throw new Error('Wrong error for lift');
+      if (!(e as Error).message.includes('Invalid class index'))
+        throw new Error('Wrong error for lift');
     }
   });
 
@@ -66,14 +67,16 @@ export function runIRTests(runTest: (name: string, fn: () => void) => void): voi
       IR.projectGrade(-1);
       throw new Error('Expected error for projectGrade(-1)');
     } catch (e: unknown) {
-      if (!(e as Error).message.includes('Invalid grade')) throw new Error('Wrong error for negative grade');
+      if (!(e as Error).message.includes('Invalid grade'))
+        throw new Error('Wrong error for negative grade');
     }
 
     try {
       IR.projectGrade(8);
       throw new Error('Expected error for projectGrade(8)');
     } catch (e: unknown) {
-      if (!(e as Error).message.includes('Invalid grade')) throw new Error('Wrong error for grade=8');
+      if (!(e as Error).message.includes('Invalid grade'))
+        throw new Error('Wrong error for grade=8');
     }
   });
 

@@ -31,7 +31,10 @@ export function runFuserTests(runTest: (name: string, fn: () => void) => void): 
         IR.classLiteral(2),
         IR.seq(
           IR.classLiteral(3),
-          IR.seq(IR.classLiteral(4), IR.seq(IR.classLiteral(5), IR.seq(IR.classLiteral(6), IR.classLiteral(7)))),
+          IR.seq(
+            IR.classLiteral(4),
+            IR.seq(IR.classLiteral(5), IR.seq(IR.classLiteral(6), IR.classLiteral(7))),
+          ),
         ),
       ),
     );
@@ -49,9 +52,11 @@ export function runFuserTests(runTest: (name: string, fn: () => void) => void): 
     const complex = IR.seq(IR.projectGrade(1), IR.classLiteral(2));
     const cComplex = analyzeComplexity(complex, {});
     const autoBackend2 = selectBackend(cComplex, 'auto');
-    if (autoBackend2 !== 'sga') throw new Error(`Auto backend should choose sga for C2/C3, got ${autoBackend2}`);
+    if (autoBackend2 !== 'sga')
+      throw new Error(`Auto backend should choose sga for C2/C3, got ${autoBackend2}`);
 
-    if (selectBackend(cComplex, 'class') !== 'class') throw new Error('Preference class should force class');
+    if (selectBackend(cComplex, 'class') !== 'class')
+      throw new Error('Preference class should force class');
     if (selectBackend(c0, 'sga') !== 'sga') throw new Error('Preference sga should force sga');
   });
 }

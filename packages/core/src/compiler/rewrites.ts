@@ -316,17 +316,17 @@ function canonicalizeLeafChains(node: IRNode): IRNode {
           break;
         case 'R': {
           const k = tr.k % 4;
-            r = ((r + k) % 4) as 0 | 1 | 2 | 3;
+          r = ((r + k) % 4) as 0 | 1 | 2 | 3;
           break;
         }
         case 'D': {
           const k = tr.k % 3;
-            d = ((d + k) % 3) as 0 | 1 | 2;
+          d = ((d + k) % 3) as 0 | 1 | 2;
           break;
         }
         case 'T': {
           const k = tr.k % 8;
-            t = ((t + k) % 8) as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+          t = ((t + k) % 8) as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
           break;
         }
       }

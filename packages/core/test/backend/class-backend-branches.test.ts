@@ -77,27 +77,27 @@ export function runClassBackendBranchTests(runTest: TestFn): void {
     }
   });
 
-    runTest('Class Backend: transform followed by ring op order preserved', () => {
-      // R(add96) with track overflow should still produce R then add96 ops
-      const term = IR.R(IR.add96('track'), 2);
-      const plan = lowerToClassBackend(term);
-      const types = plan.operations.map((o) => o.type).join(',');
-      if (!types.includes('R') || !types.includes('add96')) {
-        throw new Error(`Expected both R and add96 in operations, got ${types}`);
-      }
-      // Execute with runtime params to ensure early return gives result
-      const out = executeClassPlan(plan, { a: 10, b: 90 });
-      if (typeof out !== 'object' || (out as RingResult).value === undefined) {
-        throw new Error('Expected ring result object from tracked add96');
-      }
-    });
+  runTest('Class Backend: transform followed by ring op order preserved', () => {
+    // R(add96) with track overflow should still produce R then add96 ops
+    const term = IR.R(IR.add96('track'), 2);
+    const plan = lowerToClassBackend(term);
+    const types = plan.operations.map((o) => o.type).join(',');
+    if (!types.includes('R') || !types.includes('add96')) {
+      throw new Error(`Expected both R and add96 in operations, got ${types}`);
+    }
+    // Execute with runtime params to ensure early return gives result
+    const out = executeClassPlan(plan, { a: 10, b: 90 });
+    if (typeof out !== 'object' || (out as RingResult).value === undefined) {
+      throw new Error('Expected ring result object from tracked add96');
+    }
+  });
 
   // add96 track: no overflow
   runTest('Class Backend: add96 track without overflow', () => {
-    const result = executeClassPlan(
-      plan([{ type: 'add96', overflowMode: 'track' }]),
-      { a: 10, b: 20 },
-    );
+    const result = executeClassPlan(plan([{ type: 'add96', overflowMode: 'track' }]), {
+      a: 10,
+      b: 20,
+    });
     const ring = result as RingResult;
     if (ring.value !== 30 || ring.overflow !== false) {
       throw new Error(`Expected {value:30, overflow:false}, got ${JSON.stringify(result)}`);
@@ -106,15 +106,13 @@ export function runClassBackendBranchTests(runTest: TestFn): void {
 
   // add96 track: with overflow
   runTest('Class Backend: add96 track with overflow', () => {
-    const result = executeClassPlan(
-      plan([{ type: 'add96', overflowMode: 'track' }]),
-      { a: 80, b: 30 },
-    );
+    const result = executeClassPlan(plan([{ type: 'add96', overflowMode: 'track' }]), {
+      a: 80,
+      b: 30,
+    });
     const ring2 = result as RingResult;
-    if (ring2.value !== (110 % 96) || ring2.overflow !== true) {
-      throw new Error(
-        `Expected {value:${110 % 96}, overflow:true}, got ${JSON.stringify(result)}`,
-      );
+    if (ring2.value !== 110 % 96 || ring2.overflow !== true) {
+      throw new Error(`Expected {value:${110 % 96}, overflow:true}, got ${JSON.stringify(result)}`);
     }
   });
 

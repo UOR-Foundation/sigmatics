@@ -27,3 +27,10 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+# Temporary files
+*.tmp
+*.temp
+*-output.txt
+test-*.js
+validate-*.js
+

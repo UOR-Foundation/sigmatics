@@ -14,9 +14,15 @@ export function runRewritesNonAdjacentFoldingTests(): void {
   const norm1 = normalize(ir1);
   const leaves1 = extractTransforms(norm1);
   // Expect two leaves, each with a transform chain canonicalized individually (no cross-leaf folding)
-  assert(leaves1[0].transforms.length === 1 && leaves1[0].transforms[0].type === 'R', 'Leaf 0 R retained');
+  assert(
+    leaves1[0].transforms.length === 1 && leaves1[0].transforms[0].type === 'R',
+    'Leaf 0 R retained',
+  );
   assert(hasK(leaves1[0].transforms[0], 'R', 1), 'Leaf 0 R^1');
-  assert(leaves1[1].transforms.length === 1 && leaves1[1].transforms[0].type === 'R', 'Leaf 1 R retained');
+  assert(
+    leaves1[1].transforms.length === 1 && leaves1[1].transforms[0].type === 'R',
+    'Leaf 1 R retained',
+  );
   assert(hasK(leaves1[1].transforms[0], 'R', 3), 'Leaf 1 R^3');
 
   // Case 2: Chain with mixed order and leading mirror: mirror is absorbed via adjacency rules; powers inverted
@@ -28,8 +34,14 @@ export function runRewritesNonAdjacentFoldingTests(): void {
   console.log('Debug chain2:', chain2);
   assert(chain2.findIndex((t) => t.type === 'M') === -1, 'Mirror absorbed');
   // Depending on rewrite ordering, R/D positions may vary; assert specific exponents when present
-  assert(chain2.some((t) => hasK(t, 'D', 2) || t.type === 'D'), 'D exponent retained (2) or D present');
-  assert(chain2.some((t) => hasK(t, 'T', 3)), 'T^5 inverted to T^3');
+  assert(
+    chain2.some((t) => hasK(t, 'D', 2) || t.type === 'D'),
+    'D exponent retained (2) or D present',
+  );
+  assert(
+    chain2.some((t) => hasK(t, 'T', 3)),
+    'T^5 inverted to T^3',
+  );
 
   // Case 3: Double mirror cancels; powers accumulate normally
   const ir3 = M(M(R(R(classLiteral(0), 1), 3))); // M ∘ M ∘ R^1 ∘ R^3 -> identity mirror, R^4 -> identity
@@ -45,8 +57,14 @@ export function runRewritesNonAdjacentFoldingTests(): void {
   const chain4 = leaves4[0].transforms;
   // Expect ordering: R, D, T (no M) with folded R^(3)
   assert(chain4[0].type === 'R' && 'k' in chain4[0] && chain4[0].k === 3, 'R powers folded to R^3');
-  assert(chain4.some((t) => hasK(t, 'D', 2)), 'D^2 present');
-  assert(chain4.some((t) => hasK(t, 'T', 3)), 'T^3 present');
+  assert(
+    chain4.some((t) => hasK(t, 'D', 2)),
+    'D^2 present',
+  );
+  assert(
+    chain4.some((t) => hasK(t, 'T', 3)),
+    'T^3 present',
+  );
 
   console.log('✓ All non-adjacent folding tests passed');
 

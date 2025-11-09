@@ -43,7 +43,8 @@ export function runSgaBackendExtendedTests(runTest: (name: string, fn: () => voi
     const plan = lowerToSgaBackend(ir);
     const elem = lift(7); // rank-1 element
     const result = executeSgaPlan(plan, { x: elem });
-    if (!result || typeof result !== 'object') throw new Error('Expected SGA element after projection');
+    if (!result || typeof result !== 'object')
+      throw new Error('Expected SGA element after projection');
     // Clifford component after grade projection to 0 should retain same shape or shrink
     const originalScalar = (elem as any).clifford.scalar;
     const projectedScalar = (result as any).clifford.scalar;

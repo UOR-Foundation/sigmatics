@@ -4,12 +4,7 @@
  * Tests for Fano plane helper functions to improve function coverage.
  */
 
-import {
-  verifyFanoPlane,
-  getLinesContaining,
-  isFanoLine,
-  crossProduct,
-} from '../../src/sga/fano';
+import { verifyFanoPlane, getLinesContaining, isFanoLine, crossProduct } from '../../src/sga/fano';
 
 type TestFn = (name: string, fn: () => void) => void;
 
@@ -91,10 +86,10 @@ export function runFanoPlaneUtilityTests(runTest: TestFn): void {
 
   runTest('Fano: crossProduct(1, 1) = 0', () => {
     const result = crossProduct(1, 1);
-      if (result.index !== 0 || result.sign !== 0) {
-        throw new Error(
-          `Expected e1 × e1 = 0 with sign 0, got e${result.index} with sign ${result.sign}`,
-        );
+    if (result.index !== 0 || result.sign !== 0) {
+      throw new Error(
+        `Expected e1 × e1 = 0 with sign 0, got e${result.index} with sign ${result.sign}`,
+      );
     }
   });
 }

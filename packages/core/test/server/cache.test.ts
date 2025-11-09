@@ -18,7 +18,12 @@ export function runCacheTests(runTest: (name: string, fn: () => void) => void): 
   runTest('Cache: set/get/has/del basics', () => {
     Cache.clear();
     const d = desc();
-    const compiled: any = { descriptor: d, complexity: 'C0', plan: { backend: 'class', plan: { kind: 'class', operations: [] } }, run: () => ({}) };
+    const compiled: any = {
+      descriptor: d,
+      complexity: 'C0',
+      plan: { backend: 'class', plan: { kind: 'class', operations: [] } },
+      run: () => ({}),
+    };
     Cache.set(d, compiled);
     if (!Cache.has(d)) throw new Error('Cache should have entry after set');
     const got = Cache.get(d);
@@ -47,7 +52,12 @@ export function runCacheTests(runTest: (name: string, fn: () => void) => void): 
   runTest('Cache: stats reflect size and keys', () => {
     Cache.clear();
     const d = desc();
-    const compiled: any = { descriptor: d, complexity: 'C0', plan: { backend: 'class', plan: { kind: 'class', operations: [] } }, run: () => ({}) };
+    const compiled: any = {
+      descriptor: d,
+      complexity: 'C0',
+      plan: { backend: 'class', plan: { kind: 'class', operations: [] } },
+      run: () => ({}),
+    };
     Cache.set(d, compiled);
     const stats = Cache.getStats();
     if (stats.size !== 1) throw new Error('Cache size should be 1');

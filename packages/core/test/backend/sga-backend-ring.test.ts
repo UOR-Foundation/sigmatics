@@ -20,7 +20,12 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     const ir = IR.sub96('track');
     const plan = lowerToSgaBackend(ir);
     const result = executeSgaPlan(plan, { a: 10, b: 15 });
-    if (typeof result !== 'object' || result === null || !('value' in result) || !('overflow' in result)) {
+    if (
+      typeof result !== 'object' ||
+      result === null ||
+      !('value' in result) ||
+      !('overflow' in result)
+    ) {
       throw new Error('Expected RingResult with overflow');
     }
     const rr = result as { value: number; overflow: boolean };
@@ -32,7 +37,7 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
   runTest('SGA Backend: mul96 with drop overflow', () => {
     const ir = IR.mul96('drop');
     const plan = lowerToSgaBackend(ir);
-  const _result = executeSgaPlan(plan, { a: 10, b: 10 });
+    const _result = executeSgaPlan(plan, { a: 10, b: 10 });
     // Should complete without error; exact result check depends on state handling
   });
 
@@ -40,7 +45,12 @@ export function runSgaBackendRingTests(runTest: (name: string, fn: () => void) =
     const ir = IR.mul96('track');
     const plan = lowerToSgaBackend(ir);
     const result = executeSgaPlan(plan, { a: 10, b: 10 });
-    if (typeof result !== 'object' || result === null || !('value' in result) || !('overflow' in result)) {
+    if (
+      typeof result !== 'object' ||
+      result === null ||
+      !('value' in result) ||
+      !('overflow' in result)
+    ) {
       throw new Error('Expected RingResult with overflow');
     }
     const rr2 = result as { value: number; overflow: boolean };

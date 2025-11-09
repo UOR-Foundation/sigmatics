@@ -42,7 +42,8 @@ export function runSchemaValidationTests(runTest: (name: string, fn: () => void)
       runtime: { a: 1, b: 2 },
     } as any;
     const res = validateDescriptor(desc);
-    if (!res.valid) throw new Error('Valid descriptor should pass validation: ' + res.errors.join('; '));
+    if (!res.valid)
+      throw new Error('Valid descriptor should pass validation: ' + res.errors.join('; '));
   });
 
   runTest('Schema: missing required fields', () => {

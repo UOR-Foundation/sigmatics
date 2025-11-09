@@ -4,7 +4,15 @@
 import { project } from '../../src/bridge/project';
 import type { SgaElement } from '../../src/sga/types';
 
-function makeElement({ z4, z3, cliff }: { z4: number[]; z3: number[]; cliff: [string, number][] }): SgaElement {
+function makeElement({
+  z4,
+  z3,
+  cliff,
+}: {
+  z4: number[];
+  z3: number[];
+  cliff: [string, number][];
+}): SgaElement {
   return {
     z4: { coefficients: z4 as [number, number, number, number] },
     z3: { coefficients: z3 as [number, number, number] },
@@ -55,7 +63,14 @@ export function runProjectBranchTests(runTest: TestFn): void {
 
   // Multiple grades -> null
   runTest('Project: multiple Clifford grades returns null', () => {
-    const el = makeElement({ z4: [1, 0, 0, 0], z3: [1, 0, 0], cliff: [['e1', 1], ['e2', 1]] });
+    const el = makeElement({
+      z4: [1, 0, 0, 0],
+      z3: [1, 0, 0],
+      cliff: [
+        ['e1', 1],
+        ['e2', 1],
+      ],
+    });
     const result = project(el);
     if (result !== null) {
       throw new Error(`Expected null for multiple grades, got ${result}`);

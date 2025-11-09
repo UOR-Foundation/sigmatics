@@ -9,7 +9,8 @@ export function runClassBackendTests(runTest: (name: string, fn: () => void) => 
     const plan = lowerToClassBackend(ir);
     const result = executeClassPlan(plan, { a: 10, b: 15 });
     if (typeof result === 'object' && result !== null && 'value' in result) {
-      if ((result as { value: number }).value !== 91) throw new Error('Expected (10-15) mod 96 = 91');
+      if ((result as { value: number }).value !== 91)
+        throw new Error('Expected (10-15) mod 96 = 91');
     } else if (result !== 91) {
       throw new Error('Expected result=91');
     }
@@ -19,7 +20,12 @@ export function runClassBackendTests(runTest: (name: string, fn: () => void) => 
     const ir = IR.sub96('track');
     const plan = lowerToClassBackend(ir);
     const result = executeClassPlan(plan, { a: 10, b: 15 });
-    if (typeof result !== 'object' || result === null || !('value' in result) || !('overflow' in result)) {
+    if (
+      typeof result !== 'object' ||
+      result === null ||
+      !('value' in result) ||
+      !('overflow' in result)
+    ) {
       throw new Error('Expected RingResult with overflow');
     }
     const rr = result as { value: number; overflow: boolean };
@@ -43,7 +49,12 @@ export function runClassBackendTests(runTest: (name: string, fn: () => void) => 
     const ir = IR.mul96('track');
     const plan = lowerToClassBackend(ir);
     const result = executeClassPlan(plan, { a: 10, b: 10 });
-    if (typeof result !== 'object' || result === null || !('value' in result) || !('overflow' in result)) {
+    if (
+      typeof result !== 'object' ||
+      result === null ||
+      !('value' in result) ||
+      !('overflow' in result)
+    ) {
       throw new Error('Expected RingResult with overflow');
     }
     const rr2 = result as { value: number; overflow: boolean };
