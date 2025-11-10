@@ -73,6 +73,7 @@ export type IRNode =
 export type AtomOp =
   | { type: 'classLiteral'; value: number } // c<i>
   | { type: 'param'; name: string } // Runtime parameter reference
+  | { type: 'constantArray'; value: readonly number[] } // Precomputed array constant
   | { type: 'lift'; classIndex: number } // lift(i)
   | { type: 'project'; grade: number } // project(k) - Clifford grade projection
   | { type: 'projectClass'; child: IRNode } // projectClass(x) - SGA → class index

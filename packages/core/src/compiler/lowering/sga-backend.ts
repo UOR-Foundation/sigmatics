@@ -27,6 +27,16 @@ import { lift } from '../../bridge/lift';
  * Lower IR to SGA backend plan
  */
 export function lowerToSgaBackend(node: IRNode): SgaPlan {
+  // Check for constantArray fusion: if the IR is just a constant, store it
+  if (node.kind === 'atom' && node.op.type === 'constantArray') {
+    // Store the constant value directly in the plan
+    return {
+      kind: 'sga',
+      operations: [],
+      constantValue: node.op.value,
+    } as SgaPlan & { constantValue?: readonly number[] };
+  }
+
   const operations = collectSgaOperations(node);
   return {
     kind: 'sga',
@@ -51,6 +61,10 @@ function collectSgaOperations(node: IRNode): SgaOperation[] {
             break;
           case 'param':
             // Runtime parameter - resolved at execution time from inputs
+            break;
+          case 'constantArray':
+            // Compile-time constant array - no operation needed
+            // Value is returned directly during execution
             break;
           case 'lift':
             ops.push({ type: 'lift', classIndex: op.classIndex });
@@ -128,6 +142,13 @@ function collectSgaOperations(node: IRNode): SgaOperation[] {
  * Execute an SGA backend plan
  */
 export function executeSgaPlan(plan: SgaPlan, inputs: Record<string, unknown>): unknown {
+  // FUSION: Check for compile-time constant value
+  const planWithConstant = plan as SgaPlan & { constantValue?: readonly number[] };
+  if (planWithConstant.constantValue !== undefined) {
+    // Return precomputed constant directly - this is the fusion!
+    return planWithConstant.constantValue;
+  }
+
   let state: SgaElement | undefined = undefined;
 
   for (const op of plan.operations) {

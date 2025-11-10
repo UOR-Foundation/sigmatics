@@ -20,12 +20,16 @@
     },
     "compiled": {
       "type": "object",
-      "properties": {},
+      "properties": {
+        "n": {
+          "type": "number",
+          "description": "Optional compile-time constant for fusion"
+        }
+      },
       "additionalProperties": false
     },
     "runtime": {
       "type": "object",
-      "required": ["n"],
       "properties": {
         "n": {
           "type": "number"

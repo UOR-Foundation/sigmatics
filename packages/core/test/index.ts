@@ -28,6 +28,8 @@ import { runSgaBackendExtendedTests } from './backend/sga-backend.test';
 import { runFanoBranchTests } from './sga/fano-branches.test';
 import { runCacheTests } from './server/cache.test';
 import { runIRTests } from './compiler/ir.test';
+import { runFusionConstantTests } from './fusion-constant.test';
+import { runOrbitTableTests } from './orbit-tables.test';
 import { runClassBackendTests } from './backend/class-backend.test';
 import { runSgaBackendRingTests } from './backend/sga-backend-ring.test';
 import { runUtilityFunctionsTests } from './helpers/utility-functions.test';
@@ -1166,6 +1168,8 @@ function runAllTests(): void {
     runSgaBackendBranchTests(runTest);
     runCacheTests(runTest);
     runStdlibOperationsTests(runTest);
+    runFusionConstantTests();
+    runOrbitTableTests();
 
     console.log('='.repeat(60));
     console.log(

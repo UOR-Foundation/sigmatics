@@ -198,6 +198,19 @@ function buildIR(descriptor: ModelDescriptor): IRNode {
 
   // Factorization operations
   if (name === 'factor96') {
+    // FUSION: If 'n' is provided as compiled parameter, fold at compile time
+    if ('n' in compiled && typeof compiled.n === 'number') {
+      // Import from class-backend to get the factorization function
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const backend = require('../compiler/lowering/class-backend');
+      const nVal = (compiled.n as number) % 96;
+      const factors = backend.computeFactor96(nVal);
+
+      // Return constant array IR node - this is the fusion!
+      return IR.constantArray(factors);
+    }
+
+    // Fallback: runtime lookup
     return IR.factor96();
   }
 
@@ -409,8 +422,24 @@ export const StdlibModels = {
   /**
    * Factorization operations
    */
-  factor96: () =>
-    compileModel<{ n: number }, number[]>({
+  factor96: (n?: number) => {
+    if (n !== undefined) {
+      // Compile-time constant: FUSION enabled!
+      const fused = compileModel<Record<string, never>, number[]>({
+        name: 'factor96',
+        version: '1.0.0',
+        namespace: 'stdlib.factorization',
+        compiled: { n }, // ← Compile-time parameter
+        runtime: {}, // ← No runtime parameters!
+        complexityHint: 'C0', // ← Fully compiled!
+        loweringHints: { prefer: 'class' },
+      });
+      // Cast to compatible type for ease of use
+      return fused as unknown as CompiledModel<{ n: number }, number[]>;
+    }
+
+    // Runtime parameter: standard path
+    return compileModel<{ n: number }, number[]>({
       name: 'factor96',
       version: '1.0.0',
       namespace: 'stdlib.factorization',
@@ -418,7 +447,8 @@ export const StdlibModels = {
       runtime: { n: 0 },
       complexityHint: 'C1',
       loweringHints: { prefer: 'class' },
-    }),
+    });
+  },
 
   isPrime96: () =>
     compileModel<{ n: number }, boolean>({

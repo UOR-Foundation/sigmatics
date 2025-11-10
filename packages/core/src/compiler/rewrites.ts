@@ -256,6 +256,12 @@ function atomEqual(
       return a.value === b.value;
     case 'param':
       return a.name === b.name;
+    case 'constantArray':
+      // Compare array contents
+      if (b.type !== 'constantArray') return false;
+      const aVal = a.value as readonly number[];
+      const bVal = b.value as readonly number[];
+      return aVal.length === bVal.length && aVal.every((v, i) => v === bVal[i]);
     case 'lift':
       return a.classIndex === b.classIndex;
     case 'project':

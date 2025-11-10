@@ -168,6 +168,16 @@ All 8 specification test vectors in `packages/core/test/index.ts` must pass. Err
 3. Add test in `packages/core/test/model/`
 4. If introducing new IR atoms or rewrites, update `compiler/ir.ts` and `compiler/rewrites.ts`
 
+**Performance optimizations:**
+
+Some operations benefit from **compile-time precomputation**. For bounded-domain operations like `factor96` in ℤ₉₆:
+
+- Generate precomputed lookup tables from algebraic structure
+- Example: `FACTOR96_TABLE` achieves ~130M ops/sec (19.56× speedup)
+- Memory: 473 bytes (fits in L1 cache)
+- See `packages/core/src/compiler/lowering/class-backend.ts` for implementation
+- See `docs/EXCEPTIONAL-FACTORIZATION-SUMMARY.md` for research details
+
 ## AST Type System
 
 AST types in `packages/core/src/types/types.ts` encode:

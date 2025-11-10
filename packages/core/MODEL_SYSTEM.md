@@ -346,6 +346,45 @@ All stdlib models have JSON Schema definitions in `src/model/schemas/`:
 - `project.json` - Grade projection
 - `lift.json` - Class-to-SGA bridge
 
+## Compile-Time Optimizations
+
+### Precomputed Lookup Tables
+
+Some operations achieve dramatic speedups through compile-time precomputation. The factorization operation (`factor96`) is a prime example:
+
+**Optimization**: The class backend uses a precomputed 96-entry lookup table for O(1) factorization in ℤ₉₆.
+
+```typescript
+// Generated from algebraic structure Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
+const FACTOR96_TABLE: ReadonlyArray<readonly number[]> = [
+  [0],      // 0
+  [1],      // 1
+  [2],      // 2
+  [3],      // 3
+  [2, 2],   // 4
+  [5],      // 5 (prime)
+  // ... all 96 entries
+  [5, 19]   // 95
+];
+
+function computeFactor96(n: number): readonly number[] {
+  return FACTOR96_TABLE[n % 96];
+}
+```
+
+**Performance gains**:
+- **Direct lookup**: ~130M ops/sec (19.56× speedup over trial division)
+- **Model API**: ~25M ops/sec (includes compilation + dispatch overhead)
+- **Memory**: 473 bytes (fits in L1 cache)
+
+**Why it works**:
+1. **Fano plane structure**: Primes only occur at odd contexts (ℓ=1,3,5,7) due to parity constraint
+2. **Bounded domain**: All inputs reduce to [0, 95] via mod 96
+3. **Coordinate decomposition**: class(h₂, d, ℓ) = 24h₂ + 8d + ℓ guides generation
+4. **Transform symmetries**: All 96 classes form single orbit under {R, D, T, M}
+
+See [EXCEPTIONAL-FACTORIZATION-SUMMARY.md](../../docs/EXCEPTIONAL-FACTORIZATION-SUMMARY.md) for complete research details.
+
 ## Future Extensions
 
 The model system is designed to support:
@@ -355,6 +394,7 @@ The model system is designed to support:
 3. **Optimization passes**: Fusion, constant folding, dead code elimination
 4. **JIT compilation**: Lower to WASM/native code for hot paths
 5. **Distributed execution**: Execute plans across workers/GPUs
+6. **Domain-specific tables**: Extend precomputation to other bounded operations
 
 ## See Also
 

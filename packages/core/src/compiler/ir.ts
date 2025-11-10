@@ -35,6 +35,16 @@ export function param(name: string): IRNode {
 }
 
 /**
+ * Create a constant array IR node (for compile-time fusion)
+ */
+export function constantArray(value: readonly number[]): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'constantArray', value },
+  };
+}
+
+/**
  * Create a lift IR node
  */
 export function lift(classIndex: number): IRNode {
@@ -258,6 +268,8 @@ export function prettyPrintIR(node: IRNode, indent = 0): string {
           return `${spaces}ClassLiteral(${op.value})`;
         case 'param':
           return `${spaces}Param("${op.name}")`;
+        case 'constantArray':
+          return `${spaces}ConstantArray([${op.value.join(', ')}])`;
         case 'lift':
           return `${spaces}Lift(${op.classIndex})`;
         case 'project':
