@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigmatics.org/schemas/models/max.json",
+  "title": "Max Model",
+  "description": "Maximum reduction in ℤ₉₆",
+  "type": "object",
+  "required": ["name", "version", "namespace", "compiled", "runtime"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "max"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "namespace": {
+      "type": "string",
+      "const": "stdlib.reduction"
+    },
+    "compiled": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "required": ["values"],
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "complexityHint": {
+      "type": "string",
+      "enum": ["C0", "C1", "C2", "C3"]
+    },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": {
+          "type": "string",
+          "enum": ["class", "sga", "auto"]
+        }
+      }
+    }
+  }
+}

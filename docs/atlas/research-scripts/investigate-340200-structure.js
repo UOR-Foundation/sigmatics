@@ -44,10 +44,10 @@ console.log('N = 340,200\n');
 
 // Prime factorization: 2³ × 3⁵ × 5² × 7
 const primeFactors = {
-  2: 3,   // 2³ = 8
-  3: 5,   // 3⁵ = 243
-  5: 2,   // 5² = 25
-  7: 1    // 7¹ = 7
+  2: 3, // 2³ = 8
+  3: 5, // 3⁵ = 243
+  5: 2, // 5² = 25
+  7: 1, // 7¹ = 7
 };
 
 console.log('Prime factorization:');
@@ -121,7 +121,7 @@ const structures = {
   'Fano plane points': 7,
   'Fano plane lines': 7,
   'Octonion units': 8,
-  'Imaginary octonions': 7
+  'Imaginary octonions': 7,
 };
 
 console.log('Testing divisibility by Atlas structures:\n');
@@ -130,7 +130,9 @@ Object.entries(structures).forEach(([name, value]) => {
   const quotient = N / value;
   const isExact = Number.isInteger(quotient);
   const marker = isExact ? '✓' : '✗';
-  console.log(`  340,200 / ${value.toString().padEnd(5)} (${name.padEnd(30)}) = ${quotient.toFixed(4).padStart(12)} ${marker}`);
+  console.log(
+    `  340,200 / ${value.toString().padEnd(5)} (${name.padEnd(30)}) = ${quotient.toFixed(4).padStart(12)} ${marker}`,
+  );
 });
 
 console.log();
@@ -161,7 +163,7 @@ const exceptionalGroups = {
   'F₄': { dim: 52, weyl: 1152 },
   'E₆': { dim: 78, weyl: 51840 },
   'E₇': { dim: 133, weyl: 2903040 },
-  'E₈': { dim: 248, weyl: 696729600 }
+  'E₈': { dim: 248, weyl: 696729600 },
 };
 
 Object.entries(exceptionalGroups).forEach(([name, { dim, weyl }]) => {
@@ -244,7 +246,7 @@ console.log('1,417.5 = not exact ✗');
 console.log();
 
 // Try connections to octonion automorphisms
-const G2_order = 14;  // dim G₂ (automorphisms of octonions)
+const G2_order = 14; // dim G₂ (automorphisms of octonions)
 console.log('G₂ automorphisms of 𝕆:');
 console.log('  dim(G₂) = 14');
 console.log('  340,200 / 14 =', N / G2_order);
@@ -344,9 +346,9 @@ console.log('PART 11: REPRESENTATION THEORY CONNECTIONS\n');
 
 console.log('Smallest non-trivial representations of E₈:');
 const reps = {
-  'Adjoint': 248,
-  'Fundamental': 3875,
-  'Next': 147250,
+  Adjoint: 248,
+  Fundamental: 3875,
+  Next: 147250,
 };
 
 Object.entries(reps).forEach(([name, dim]) => {
@@ -425,7 +427,7 @@ console.log('══════════════════════�
 console.log('PART 14: MODULAR PROPERTIES\n');
 
 console.log('Modular residues:');
-[4, 3, 8, 7, 12, 24, 96].forEach(m => {
+[4, 3, 8, 7, 12, 24, 96].forEach((m) => {
   console.log(`  340,200 ≡ ${N % m} (mod ${m})`);
 });
 console.log();

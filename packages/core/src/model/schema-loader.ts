@@ -15,6 +15,9 @@ const ajv = new Ajv({
   allErrors: true,
 } as AjvOptions);
 
+// Cache of compiled schemas to avoid duplicate registration
+const compiledSchemas = new Map<string, ReturnType<typeof ajv.compile>>();
+
 /**
  * Get schema for a model by name
  */
@@ -78,7 +81,14 @@ export function validateDescriptor(descriptor: ModelDescriptor): {
       const schemaWithoutMeta = { ...(schema as any) };
       delete schemaWithoutMeta.$schema;
 
-      const validate = ajv.compile(schemaWithoutMeta);
+      // Check if schema is already compiled (to avoid duplicate registration errors)
+      const schemaKey = descriptor.name;
+      let validate = compiledSchemas.get(schemaKey);
+      if (!validate) {
+        validate = ajv.compile(schemaWithoutMeta);
+        compiledSchemas.set(schemaKey, validate);
+      }
+
       const valid = validate(descriptor);
 
       if (!valid && validate.errors) {

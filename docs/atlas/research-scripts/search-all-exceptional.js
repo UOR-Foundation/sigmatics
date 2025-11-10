@@ -66,7 +66,7 @@ const exceptionalGroups = [
 ];
 
 console.log('All 5 exceptional Lie groups:\n');
-exceptionalGroups.forEach(g => {
+exceptionalGroups.forEach((g) => {
   console.log(`${g.name}:`);
   console.log(`  Dimension: ${g.dimension}`);
   console.log(`  Rank: ${g.rank}`);
@@ -93,7 +93,7 @@ const atlasDimensions = {
   rank1_automorphisms: 192,
   full_automorphisms: 2048,
   sga_dimension: 1536,
-  belt_total: 12288,  // 96 × 128
+  belt_total: 12288, // 96 × 128
 };
 
 console.log('Atlas structural dimensions:');
@@ -285,7 +285,7 @@ const products = [
   { expr: '192 × 8', value: 192 * 8, note: 'Rank-1 autos × Octonions' },
 ];
 
-products.forEach(p => {
+products.forEach((p) => {
   console.log(`  ${p.expr.padEnd(12)} = ${p.value.toString().padStart(6)} - ${p.note}`);
 });
 console.log();
@@ -296,7 +296,7 @@ console.log('Checking products against exceptional dimensions:\n');
 const exceptional_dims = [14, 52, 78, 133, 248];
 const exceptional_weyls = [12, 1152, 51840, 2903040, 696729600];
 
-products.forEach(p => {
+products.forEach((p) => {
   exceptional_dims.forEach((dim, idx) => {
     const group_name = ['G₂', 'F₄', 'E₆', 'E₇', 'E₈'][idx];
     if (p.value === dim) {
@@ -327,7 +327,7 @@ const otherGroups = [
 ];
 
 console.log('Sporadic simple groups:\n');
-otherGroups.forEach(g => {
+otherGroups.forEach((g) => {
   console.log(`  ${g.name}: order ${g.order.toLocaleString()}`);
   if (g.order < 1000000) {
     // Check small ones against Atlas
@@ -372,7 +372,7 @@ console.log('WEAK/UNCERTAIN CONNECTIONS:\n');
 console.log('⚠ E₆ → Unknown');
 console.log('  E₆ Weyl / Rank-1 autos = 270 (interesting but unclear)');
 console.log('  No dimensional matches found');
-console.log('  27 (fund rep) doesn\'t match Atlas dimensions\n');
+console.log("  27 (fund rep) doesn't match Atlas dimensions\n");
 
 console.log('⚠ E₇ → Cl₀,₇ (weak)');
 console.log('  Dimension: 133 ≈ 128 (close but not exact)');
@@ -389,7 +389,7 @@ console.log('KEY DISCOVERIES:\n');
 
 console.log('1. 7 × 8 = 56 = E₇ fundamental representation');
 console.log('   The product of Fano points and octonion dimension');
-console.log('   gives E₇\'s fundamental rep EXACTLY\n');
+console.log("   gives E₇'s fundamental rep EXACTLY\n");
 
 console.log('2. E₆ Weyl / 192 = 270 = 27 × 10');
 console.log('   Factor 27 is E₆ fundamental representation');

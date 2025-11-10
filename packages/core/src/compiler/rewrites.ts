@@ -267,6 +267,16 @@ function atomEqual(
     case 'sub96':
     case 'mul96':
       return a.overflowMode === b.overflowMode;
+    case 'gcd96':
+    case 'lcm96':
+    case 'sum':
+    case 'product':
+    case 'max':
+    case 'min':
+    case 'factor96':
+    case 'isPrime96':
+      // These operations have no parameters beyond their type
+      return true;
   }
 
   return false;

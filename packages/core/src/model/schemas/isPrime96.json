@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigmatics.org/schemas/models/isPrime96.json",
+  "title": "IsPrime96 Model",
+  "description": "Primality test in ℤ₉₆",
+  "type": "object",
+  "required": ["name", "version", "namespace", "compiled", "runtime"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "isPrime96"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "namespace": {
+      "type": "string",
+      "const": "stdlib.factorization"
+    },
+    "compiled": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "required": ["n"],
+      "properties": {
+        "n": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "complexityHint": {
+      "type": "string",
+      "enum": ["C0", "C1", "C2", "C3"]
+    },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": {
+          "type": "string",
+          "enum": ["class", "sga", "auto"]
+        }
+      }
+    }
+  }
+}

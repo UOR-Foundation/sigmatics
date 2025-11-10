@@ -116,11 +116,11 @@ console.log();
 
 console.log('Testing other SO(n) Weyl groups:');
 const SOWeylOrders = {
-  'SO(8)': 2 ** 4 * factorial(4),   // 384
-  'SO(9)': 2 ** 4 * factorial(4),   // 384 (same as SO(8))
-  'SO(10)': 2 ** 4 * factorial(5),  // 1,920
-  'SO(11)': 2 ** 5 * factorial(5),  // 3,840
-  'SO(12)': 2 ** 5 * factorial(6),  // 23,040
+  'SO(8)': 2 ** 4 * factorial(4), // 384
+  'SO(9)': 2 ** 4 * factorial(4), // 384 (same as SO(8))
+  'SO(10)': 2 ** 4 * factorial(5), // 1,920
+  'SO(11)': 2 ** 5 * factorial(5), // 3,840
+  'SO(12)': 2 ** 5 * factorial(6), // 23,040
 };
 
 function factorial(n) {
@@ -244,7 +244,7 @@ for (let i = 0; i < pairs.length; i++) {
         factor1: `${name1} (${val1})`,
         factor2: `${name2} (${val2})`,
         product,
-        quotient
+        quotient,
       });
     }
   }
@@ -254,7 +254,9 @@ foundFactorizations.sort((a, b) => b.product - a.product);
 
 console.log('Factorizations found:');
 foundFactorizations.slice(0, 15).forEach(({ factor1, factor2, product, quotient }) => {
-  console.log(`  ${factor1.padEnd(25)} × ${factor2.padEnd(25)} = ${product.toString().padStart(6)}, remains: ${quotient.toLocaleString()}`);
+  console.log(
+    `  ${factor1.padEnd(25)} × ${factor2.padEnd(25)} = ${product.toString().padStart(6)}, remains: ${quotient.toLocaleString()}`,
+  );
 });
 console.log();
 
@@ -301,7 +303,7 @@ console.log('Testing SGA operations on sample elements:');
 const testClasses = [0, 1, 12, 42, 71, 95];
 console.log(`Sample class indices: ${testClasses.join(', ')}\n`);
 
-testClasses.forEach(classIdx => {
+testClasses.forEach((classIdx) => {
   try {
     const elem = Atlas.SGA.lift(classIdx);
     console.log(`Class ${classIdx}:`);

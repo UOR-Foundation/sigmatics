@@ -28,6 +28,7 @@ npm start  # Runs basic-usage.ts
 **Purpose:** Introduction to Sigmatics fundamentals
 
 **Covers:**
+
 - Basic operations (mark, copy, swap, etc.)
 - Transform operations (R, D, T, M)
 - Class system exploration
@@ -37,6 +38,7 @@ npm start  # Runs basic-usage.ts
 - Equivalence testing
 
 **Run:**
+
 ```bash
 npx ts-node basic-usage.ts
 ```
@@ -50,6 +52,7 @@ npx ts-node basic-usage.ts
 **Purpose:** Demonstrates the performance benefits of compiled models
 
 **Covers:**
+
 - Ring operations benchmarks (add96, mul96)
 - Transform operations benchmarks (R, D, T, M)
 - Class vs SGA backend comparison
@@ -58,11 +61,13 @@ npx ts-node basic-usage.ts
 - Real-world cryptographic patterns
 
 **Run:**
+
 ```bash
 npx ts-node fused-circuit-performance.ts
 ```
 
 **Key Insights:**
+
 - Compiled models eliminate interpretation overhead
 - Class backend is ~10-100x faster for rank-1 operations
 - High throughput enables cryptographic applications
@@ -76,6 +81,7 @@ npx ts-node fused-circuit-performance.ts
 **Purpose:** Verifies algebraic laws using fused circuits
 
 **Covers:**
+
 - Transform orders (R⁴ = D³ = T⁸ = M² = identity)
 - Commutation properties (RD = DR, etc.)
 - Mirror conjugation (MDM = D⁻¹)
@@ -84,11 +90,13 @@ npx ts-node fused-circuit-performance.ts
 - Bridge round-trip (lift/project)
 
 **Run:**
+
 ```bash
 npx ts-node algebraic-law-verification.ts
 ```
 
 **Key Insights:**
+
 - Compiled models make property verification efficient
 - All 96 classes verified in milliseconds
 - Enables property-based testing and formal verification
@@ -102,6 +110,7 @@ npx ts-node algebraic-law-verification.ts
 **Purpose:** Demonstrates automatic backend selection
 
 **Covers:**
+
 - Class backend (fast permutations for numbers)
 - SGA backend (full algebra for SgaElements)
 - Automatic dispatch based on input types
@@ -111,11 +120,13 @@ npx ts-node algebraic-law-verification.ts
 - Mixed-backend workflows
 
 **Run:**
+
 ```bash
 npx ts-node dual-backend-dispatch.ts
 ```
 
 **Key Insights:**
+
 - Same model works with both number and SgaElement inputs
 - Backend selection is transparent to the user
 - Optimal performance for each use case
@@ -130,6 +141,7 @@ npx ts-node dual-backend-dispatch.ts
 **Purpose:** Building complex operations from stdlib primitives
 
 **Covers:**
+
 - Custom transform composition
 - Cryptographic round functions
 - Batch operations
@@ -139,11 +151,13 @@ npx ts-node dual-backend-dispatch.ts
 - Composition performance
 
 **Run:**
+
 ```bash
 npx ts-node custom-composition.ts
 ```
 
 **Key Insights:**
+
 - Stdlib models are composable building blocks
 - Custom operations maintain high performance
 - Enables domain-specific abstractions
@@ -158,6 +172,7 @@ npx ts-node custom-composition.ts
 **Purpose:** Practical cryptographic application using Sigmatics
 
 **Covers:**
+
 - Complete hash function implementation
 - Compression function design
 - Message padding and finalization
@@ -167,11 +182,13 @@ npx ts-node custom-composition.ts
 - Output distribution analysis
 
 **Run:**
+
 ```bash
 npx ts-node cryptographic-hash.ts
 ```
 
 **Key Insights:**
+
 - Sigmatics transforms provide excellent diffusion
 - Good avalanche effect (small input changes → large output changes)
 - High throughput (thousands of hashes per second)
@@ -188,22 +205,26 @@ npx ts-node cryptographic-hash.ts
 **Purpose:** Demonstrates geometric pruning at scale with Sigmatics circuits
 
 **Covers:**
+
 - Multi-level pruning cascade (bounds + modular feasibility)
 - Materializing solutions as Sigmatics circuits (mark@c.. || ...)
 - Quick vs Full benchmark modes
 - Performance metrics and speedup vs 2^n space
 
 **Run (Quick mode):**
+
 ```bash
 npx ts-node extreme-scale-subset-sum.ts
 ```
 
 **Run (Full mode):**
+
 ```bash
 RUN_MODE=FULL npx ts-node extreme-scale-subset-sum.ts
 ```
 
 **Key Insights:**
+
 - Layered constraints dramatically cut the explored space
 - Modular filters are high-yield and fast
 - Found subsets can be rendered as actual Sigmatics circuits
@@ -217,11 +238,13 @@ RUN_MODE=FULL npx ts-node extreme-scale-subset-sum.ts
 **Purpose:** Validates that documentation examples are correct
 
 **Covers:**
+
 - Testing code snippets from README
 - Verifying QUICKSTART examples
 - Ensuring documentation stays up-to-date
 
 **Run:**
+
 ```bash
 npx ts-node validate-docs.ts
 ```
@@ -265,16 +288,19 @@ npx ts-node validate-docs.ts
 ### Key Concepts
 
 **Fused Circuits:**
+
 - Operations are pre-compiled into efficient execution plans
 - No interpretation overhead at runtime
 - Optimal for hot-path operations
 
 **Dual Backends:**
+
 - **Class Backend:** Fast permutation tables for rank-1 operations (input: `number`)
 - **SGA Backend:** Full Clifford algebra semantics (input: `SgaElement`)
 - Automatic selection based on input types
 
 **Stdlib Models:**
+
 - Pre-defined operations: `add96`, `sub96`, `mul96`, `R`, `D`, `T`, `M`, `lift`, `projectClass`, `projectGrade`
 - Available via `Atlas.Model.*`
 - Can be composed into custom operations
@@ -325,36 +351,40 @@ function roundFunction(state: number, key: number): number {
 
 ## Performance Characteristics
 
-| Operation | Backend | Throughput | Use Case |
-|-----------|---------|------------|----------|
-| R² transform | Class | ~1M ops/sec | Cryptographic mixing |
-| R² transform | SGA | ~100K ops/sec | Formal verification |
-| add96 | Class | ~2M ops/sec | Fast arithmetic |
+| Operation        | Backend  | Throughput    | Use Case              |
+| ---------------- | -------- | ------------- | --------------------- |
+| R² transform     | Class    | ~1M ops/sec   | Cryptographic mixing  |
+| R² transform     | SGA      | ~100K ops/sec | Formal verification   |
+| add96            | Class    | ~2M ops/sec   | Fast arithmetic       |
 | Grade projection | SGA only | ~100K ops/sec | Multi-grade filtering |
 
-*Benchmarks approximate, actual performance depends on hardware*
+_Benchmarks approximate, actual performance depends on hardware_
 
 ## Use Cases
 
 ### Cryptography
+
 - **Fast mixing functions** using class backend
 - **Feistel networks** with transform-based round functions
 - **Block ciphers** with custom S-boxes from Sigmatics transforms
 - **Hash functions** using orbit structures
 
 ### Formal Verification
+
 - **Property testing** of algebraic laws
 - **Commutative diagram** validation
 - **Invariant checking** at runtime
 - **Theorem proving** via SGA backend
 
 ### Symbolic Computation
+
 - **Expression simplification** using transform composition
 - **Orbit analysis** and cycle detection
 - **Equivalence class** exploration
 - **Permutation group** operations
 
 ### Geometric Algebra
+
 - **Clifford algebra** operations via SGA backend
 - **Grade projection** and filtering
 - **Octonion multiplication** through Fano plane
@@ -382,6 +412,7 @@ done
 ### Contributing
 
 Examples should:
+
 - ✅ Include clear documentation headers
 - ✅ Use descriptive variable names
 - ✅ Show both performance and correctness

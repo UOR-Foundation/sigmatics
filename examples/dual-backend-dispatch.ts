@@ -72,14 +72,12 @@ console.log();
 console.log('Example: R² transform on SGA elements');
 console.log();
 
-const sgaInputs = classInputs.map(c => Atlas.SGA.lift(c));
+const sgaInputs = classInputs.map((c) => Atlas.SGA.lift(c));
 console.log('Input: SGA elements (lifted from class indices)');
 for (let i = 0; i < sgaInputs.length; i++) {
   const result = r2Model.run({ x: sgaInputs[i] });
   const classResult = Atlas.SGA.project(result as SgaElement);
-  console.log(
-    `  R²(lift(${classInputs[i]})) → project = ${classResult} [SGA backend used]`,
-  );
+  console.log(`  R²(lift(${classInputs[i]})) → project = ${classResult} [SGA backend used]`);
 }
 console.log();
 

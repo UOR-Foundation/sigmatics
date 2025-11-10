@@ -38,10 +38,14 @@ function enumerateRank1Group() {
   const permutations = new Map();
   let count = 0;
 
-  for (let a = 0; a < 4; a++) {      // R powers
-    for (let b = 0; b < 3; b++) {    // D powers
-      for (let c = 0; c < 8; c++) {  // T powers
-        for (let e = 0; e < 2; e++) {  // M powers
+  for (let a = 0; a < 4; a++) {
+    // R powers
+    for (let b = 0; b < 3; b++) {
+      // D powers
+      for (let c = 0; c < 8; c++) {
+        // T powers
+        for (let e = 0; e < 2; e++) {
+          // M powers
           // Apply transformation to all 96 classes
           const perm = [];
           for (let classIdx = 0; classIdx < 96; classIdx++) {

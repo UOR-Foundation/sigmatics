@@ -15,10 +15,13 @@ After pulling latest changes and re-running checks:
 
 Recommended minimal fix:
 
-1) Remove the stale `@types/ajv` dependency (Ajv v8 ships its own types):
-  - In the workspace root `package.json`, remove `"@types/ajv"` and reinstall.
-2) Keep Ajv v8 usage in `schema-loader.ts` as-is, or make it tolerant to both shapes:
-  - Access error path with `(error as any).instancePath || (error as any).dataPath || 'root'`.
+1. Remove the stale `@types/ajv` dependency (Ajv v8 ships its own types):
+
+- In the workspace root `package.json`, remove `"@types/ajv"` and reinstall.
+
+2. Keep Ajv v8 usage in `schema-loader.ts` as-is, or make it tolerant to both shapes:
+
+- Access error path with `(error as any).instancePath || (error as any).dataPath || 'root'`.
 
 Once these are addressed, re-run tests to validate the 1,344 diagram suite and the compiled model tests.
 
@@ -36,6 +39,7 @@ The Sigmatics 0.4.0 refactor has **substantially implemented** the declarative m
 ### Progress Estimate: ~85% Complete
 
 **What's Working:**
+
 - ✅ Model layer architecture (types, schemas, registry)
 - ✅ Compiler pipeline (IR, rewrites, fuser, lowering)
 - ✅ Dual backends (class & SGA) implemented
@@ -43,6 +47,7 @@ The Sigmatics 0.4.0 refactor has **substantially implemented** the declarative m
 - ✅ Test suite structure exists for correctness validation
 
 **What's Broken/Missing:**
+
 - ❌ TypeScript compilation fails
 - ❌ Tests cannot run
 - ❌ No stdlib/ directory per spec
@@ -60,6 +65,7 @@ The Sigmatics 0.4.0 refactor has **substantially implemented** the declarative m
 **Status: IMPLEMENTED**
 
 Evidence:
+
 - `packages/core/src/model/` contains complete model abstraction:
   - `types.ts`: ComplexityClass, ModelDescriptor, IRNode, BackendPlan
   - `schema-registry.ts`: Schema resolution
@@ -92,6 +98,7 @@ All required operations are declared in `StdlibModels` export (lines 179-316 of 
 - **Bridge:** lift (class→SGA)
 
 Each model specifies:
+
 - Compiled parameters (frozen at compile time)
 - Runtime parameters (supplied at invocation)
 - ComplexityHint (C0-C3)
@@ -106,6 +113,7 @@ Each model specifies:
 **Status: IMPLEMENTED**
 
 `compiler/fuser.ts`:
+
 ```typescript
 export function selectBackend(complexity, preference) {
   switch (complexity) {
@@ -114,12 +122,13 @@ export function selectBackend(complexity, preference) {
       return 'class'; // Fast path
     case 'C2':
     case 'C3':
-      return 'sga';   // Full algebraic semantics
+      return 'sga'; // Full algebraic semantics
   }
 }
 ```
 
 **Class Backend** (`lowering/class-backend.ts`):
+
 - Integer arithmetic mod 96 for ring ops
 - R/D via ℝ[ℤ₄]/ℝ[ℤ₃] powers (matches kernels)
 - T via ℓ-permutation on rank-1
@@ -127,6 +136,7 @@ export function selectBackend(complexity, preference) {
 - Throws error if grade projection requested
 
 **SGA Backend** (`lowering/sga-backend.ts`):
+
 - Invokes `sgaMultiply`, `sgaAdd`, `sgaScale` from `../sga/sga-element`
 - Transform powers via `transformRPower`, `transformDPower`, `transformTPower`, `transformM` from `../sga/transforms`
 - Grade projection via `gradeProject` from `../sga/clifford`
@@ -139,18 +149,20 @@ export function selectBackend(complexity, preference) {
 **Status: TEST SUITE EXISTS BUT CANNOT VERIFY**
 
 Test files present:
+
 - `test/model/compiled-correctness.test.ts`: Tests R⁴, D³, T⁸, M², commutations (RD=DR, RT=TR, DT=TD), conjugations
 - `test/model/differential.test.ts`: Class vs SGA backend parity tests
 - `test/sga/bridge.test.ts`: 1,344 diagram tests (lift/project round-trip + transform commutations)
 - `test/sga/laws.test.ts`: Group algebra laws
 
 **⚠️ Critical Issue:** Tests **CANNOT RUN** due to TypeScript compilation errors:
+
 ```
-src/model/schema-loader.ts(13,23): error TS2353: 
-  Object literal may only specify known properties, 
+src/model/schema-loader.ts(13,23): error TS2353:
+  Object literal may only specify known properties,
   and 'strict' does not exist in type 'Options'.
 
-src/model/schema-loader.ts(83,30): error TS2339: 
+src/model/schema-loader.ts(83,30): error TS2339:
   Property 'instancePath' does not exist on type 'ErrorObject'.
 ```
 
@@ -165,6 +177,7 @@ src/model/schema-loader.ts(83,30): error TS2339:
 **❌ Evaluator Module Still Exists:**
 
 The `packages/core/src/evaluator/evaluator.ts` module is **still present and exported**:
+
 - Still implements `evaluateLiteral()` and `evaluateOperational()`
 - **Does use the model registry** for transforms (lines 36-54):
   ```typescript
@@ -184,6 +197,7 @@ The `packages/core/src/evaluator/evaluator.ts` module is **still present and exp
 **Clarification Needed:** The plan says "No legacy evaluators" but the sigil expression parser/evaluator is **legitimate** and routes through the model registry. This is likely not a violation.
 
 **✅ SGA Module Usage:** `sga/` exports are only invoked by:
+
 1. SGA backend (`lowering/sga-backend.ts`)
 2. Bridge module (`bridge/`)
 3. Tests
@@ -197,6 +211,7 @@ No feature-level code directly calls SGA primitives without going through backen
 **Status: CANNOT VERIFY - TESTS DO NOT RUN**
 
 The class backend uses the same permutation logic as v0.3.0:
+
 - `applyRTransform()`, `applyDTransform()`, `applyTTransform()`, `applyMTransform()` in `class-backend.ts`
 - These delegate to `class-system/class.ts` functions
 
@@ -211,12 +226,14 @@ The class backend uses the same permutation logic as v0.3.0:
 **Status: TEST SUITE WRITTEN BUT CANNOT RUN**
 
 Test coverage exists for:
+
 - ✅ Compiled model correctness (`test/model/compiled-correctness.test.ts`)
 - ✅ Backend differential tests (`test/model/differential.test.ts`)
 - ✅ Bridge round-trip (`test/sga/bridge.test.ts`)
 - ✅ Group algebra laws (`test/sga/group-algebras.test.ts`)
 
 **❌ Critical Blocker:** Compilation errors prevent test execution:
+
 ```
 npm test → TSError: ⨯ Unable to compile TypeScript
 ```
@@ -256,10 +273,12 @@ Cannot generate coverage report until code compiles.
 **Critical Errors:**
 
 1. **schema-loader.ts line 13:** AJV options type mismatch
+
    ```typescript
    const ajv = new Ajv({ strict: true, allErrors: true });
    // Error: 'strict' does not exist in type 'Options'
    ```
+
    **Root Cause:** AJV version mismatch or incorrect import. The `strict` option may be `strictTypes` or not available in the installed AJV version.
 
 2. **schema-loader.ts line 83:** ErrorObject property access
@@ -270,6 +289,7 @@ Cannot generate coverage report until code compiles.
    **Root Cause:** AJV version difference. Older versions use `dataPath`, newer versions use `instancePath`.
 
 **Recommended Fix:**
+
 ```typescript
 // Check AJV version in package.json
 // If using AJV v6-7: use dataPath
@@ -284,11 +304,13 @@ const path = (error as any).instancePath || (error as any).dataPath || 'root';
 Cannot run linters until TypeScript compilation succeeds.
 
 **No unused exports detected** by manual inspection:
+
 - `grep` search for unused functions found no obvious candidates
 - All stdlib models consumed via `StdlibModels` export
 - SGA primitives used by backends
 
 **No deprecated flags found:**
+
 - No `TODO` comments
 - No `deprecated` annotations
 
@@ -297,11 +319,13 @@ Cannot run linters until TypeScript compilation succeeds.
 **Status: PARTIAL REVIEW - NO OBVIOUS VIOLATIONS**
 
 **Not Dead (Legitimate):**
+
 - `evaluator/evaluator.ts`: Sigil expression parser (legitimate, uses registry)
 - `class-system/class.ts`: Used by class backend and evaluator
 - `sga/` modules: Used by SGA backend
 
 **Missing per Spec:**
+
 - `src/stdlib/` directory (spec says it should exist with `ring/`, `transforms/`, `grade/`, `bridge/` subdirectories)
 - Models are defined in `registry.ts` instead, which is functionally equivalent but structurally different
 
@@ -314,6 +338,7 @@ Cannot run linters until TypeScript compilation succeeds.
 **Spec Present:** `MODEL_SPEC_v0.4.0.md` exists in `docs/` (referenced in refactor.tmp.txt)
 
 **Module Documentation:**
+
 - ✅ `model/types.ts`: Extensive TSDoc comments
 - ✅ `compiler/ir.ts`: TSDoc for each IR constructor
 - ✅ `compiler/rewrites.ts`: Explains normalization algorithm
@@ -332,37 +357,37 @@ Cannot run linters until TypeScript compilation succeeds.
 
 ## Definition of Done (DoD) Checklist
 
-| Criterion | Status | Evidence |
-|-----------|--------|----------|
-| **Architecture** | | |
-| Model server/registry exists | ✅ | `server/registry.ts` |
-| Compiler pipeline exists | ✅ | `compiler/ir.ts`, `rewrites.ts`, `fuser.ts` |
-| Class & SGA backends exist | ✅ | `lowering/class-backend.ts`, `lowering/sga-backend.ts` |
-| Stdlib ops via registry | ✅ | `StdlibModels` export |
-| **Functionality** | | |
-| All stdlib ops work | ⚠️ | Cannot test - compilation errors |
-| Backend selection obeys rules | ✅ | `fuser.ts` complexity→backend mapping |
-| SGA only via backend | ✅ | No direct SGA calls in features |
-| **Correctness** | | |
-| Algebraic identities pass | ❌ | Tests cannot run |
-| 1,344 diagram tests pass | ❌ | Tests cannot run |
-| Bridge commutation holds | ❌ | Tests cannot run |
-| **Performance** | | |
-| No permutation regression | ⚠️ | Cannot benchmark |
-| lift/project latency | ⚠️ | Cannot benchmark |
-| **Quality Bar** | | |
-| Type-check clean | ❌ | **2 compilation errors** |
-| ESLint clean | ⚠️ | Cannot run linter |
-| Prettier formatted | ⚠️ | Cannot verify |
-| Tests green | ❌ | Tests cannot run |
-| ≥90% coverage | ❌ | Cannot measure |
-| **Hygiene** | | |
-| Dead code removed | ✅ | Manual inspection clean |
-| No legacy paths | ⚠️ | Evaluator exists but routes through registry |
-| **Docs** | | |
-| Model Spec exists | ✅ | Referenced in plan |
-| Module docs present | ✅ | TSDoc throughout |
-| Examples compile/run | ⚠️ | Cannot verify |
+| Criterion                     | Status | Evidence                                               |
+| ----------------------------- | ------ | ------------------------------------------------------ |
+| **Architecture**              |        |                                                        |
+| Model server/registry exists  | ✅     | `server/registry.ts`                                   |
+| Compiler pipeline exists      | ✅     | `compiler/ir.ts`, `rewrites.ts`, `fuser.ts`            |
+| Class & SGA backends exist    | ✅     | `lowering/class-backend.ts`, `lowering/sga-backend.ts` |
+| Stdlib ops via registry       | ✅     | `StdlibModels` export                                  |
+| **Functionality**             |        |                                                        |
+| All stdlib ops work           | ⚠️     | Cannot test - compilation errors                       |
+| Backend selection obeys rules | ✅     | `fuser.ts` complexity→backend mapping                  |
+| SGA only via backend          | ✅     | No direct SGA calls in features                        |
+| **Correctness**               |        |                                                        |
+| Algebraic identities pass     | ❌     | Tests cannot run                                       |
+| 1,344 diagram tests pass      | ❌     | Tests cannot run                                       |
+| Bridge commutation holds      | ❌     | Tests cannot run                                       |
+| **Performance**               |        |                                                        |
+| No permutation regression     | ⚠️     | Cannot benchmark                                       |
+| lift/project latency          | ⚠️     | Cannot benchmark                                       |
+| **Quality Bar**               |        |                                                        |
+| Type-check clean              | ❌     | **2 compilation errors**                               |
+| ESLint clean                  | ⚠️     | Cannot run linter                                      |
+| Prettier formatted            | ⚠️     | Cannot verify                                          |
+| Tests green                   | ❌     | Tests cannot run                                       |
+| ≥90% coverage                 | ❌     | Cannot measure                                         |
+| **Hygiene**                   |        |                                                        |
+| Dead code removed             | ✅     | Manual inspection clean                                |
+| No legacy paths               | ⚠️     | Evaluator exists but routes through registry           |
+| **Docs**                      |        |                                                        |
+| Model Spec exists             | ✅     | Referenced in plan                                     |
+| Module docs present           | ✅     | TSDoc throughout                                       |
+| Examples compile/run          | ⚠️     | Cannot verify                                          |
 
 **DoD Met:** ❌ **NO** - Critical compilation errors block testing and verification.
 
@@ -375,6 +400,7 @@ Cannot run linters until TypeScript compilation succeeds.
 **File:** `packages/core/src/model/schema-loader.ts`
 
 **Error 1:** Line 13
+
 ```typescript
 // Current (BROKEN):
 const ajv = new Ajv({ strict: true, allErrors: true });
@@ -387,6 +413,7 @@ const ajv = new Ajv({ allErrors: true });
 ```
 
 **Error 2:** Line 83
+
 ```typescript
 // Current (BROKEN):
 const path = error.instancePath || 'root';
@@ -400,6 +427,7 @@ const path = (error as any).instancePath || (error as any).dataPath || 'root';
 ### 🔧 Priority 2: Run Full Test Suite
 
 Once compilation succeeds:
+
 1. Run `npm test` in `packages/core`
 2. Verify 1,344 bridge tests pass
 3. Verify transform orders (R⁴, D³, T⁸, M²)
@@ -409,6 +437,7 @@ Once compilation succeeds:
 ### 📊 Priority 3: Generate Coverage Report
 
 After tests pass:
+
 1. Run coverage tool
 2. Verify ≥90% coverage on model/, compiler/, server/, backends/
 3. Document any gaps
@@ -467,6 +496,7 @@ B. **Create `stdlib/` structure** (ring/, transforms/, grade/, bridge/) - matche
 ### ✅ Test Coverage Intent
 
 The test suite **design** is excellent:
+
 - Parametric tests over all 96 classes
 - Transform order tests for each transform
 - Pairwise commutation tests (RD, RT, DT)
@@ -489,12 +519,13 @@ The test suite **design** is excellent:
 ### Optional Enhancements
 
 1. **Add examples/** demonstrating model usage:
+
    ```typescript
    import { StdlibModels } from '@uor-foundation/sigmatics';
-   
+
    // Ring operation
    const sum = StdlibModels.add96('drop').run({ a: 42, b: 99 });
-   
+
    // Transform
    const rotated = StdlibModels.R(2).run({ x: 21 });
    ```
@@ -544,6 +575,7 @@ The Sigmatics 0.4.0 refactor is **well-architected and substantially complete** 
 **DO NOT MERGE YET.**
 
 **Next Steps:**
+
 1. Fix the 2 TypeScript errors in `schema-loader.ts`
 2. Run full test suite and verify all 1,344 bridge tests + correctness tests pass
 3. Generate coverage report and verify ≥90%

@@ -194,9 +194,11 @@ console.log('  Semidirect: pairs with multiplication rule');
 console.log();
 
 console.log('Memory estimate:');
-const bytesPerElement = 4 * 4;  // 4x4 matrix of 4-byte ints
+const bytesPerElement = 4 * 4; // 4x4 matrix of 4-byte ints
 const totalBytes = TARGET * bytesPerElement;
-console.log(`  ${TARGET.toLocaleString()} elements × ${bytesPerElement} bytes = ${(totalBytes / 1024 / 1024).toFixed(1)} MB`);
+console.log(
+  `  ${TARGET.toLocaleString()} elements × ${bytesPerElement} bytes = ${(totalBytes / 1024 / 1024).toFixed(1)} MB`,
+);
 console.log('  This is tractable for modern computers!\n');
 
 // ============================================================================
@@ -297,7 +299,7 @@ console.log(`  Expected: 336 / 2 = 168\n`);
 
 // Normalize matrices to quotient by scalars
 const PSL2_7 = new Map();
-SL2_7.forEach(M => {
+SL2_7.forEach((M) => {
   const normalized = M.normalize();
   const sig = normalized.signature();
   if (!PSL2_7.has(sig)) {

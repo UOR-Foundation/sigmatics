@@ -29,11 +29,13 @@ Through programmatic exploration ([discover-exceptional-structures.js](../../dis
 **Location**: Octonion/Fano plane structure (7 basis vectors)
 
 **Embedding**:
+
 ```
 PSL(2,7) = 168 = 14 × 12 = (dim G₂) × (Weyl G₂)
 ```
 
 **What it constrains**:
+
 - Octonion multiplication rules
 - Fano plane incidence relations
 - 7-dimensional imaginary octonion automorphisms
@@ -47,11 +49,13 @@ PSL(2,7) = 168 = 14 × 12 = (dim G₂) × (Weyl G₂)
 **Location**: Rank-1 automorphism group (192 elements)
 
 **Embedding**:
+
 ```
 F₄ Weyl = 1,152 = 192 × 6 = (rank-1 group) × (ℤ₂ × ℤ₃)
 ```
 
 **What it constrains**:
+
 - Jordan algebra of 3×3 octonionic matrices
 - Rank-1 tensor product structure
 - Quadrant (ℤ₄) × Modality (ℤ₃) × Context (ℤ₈) factorization
@@ -65,12 +69,14 @@ F₄ Weyl = 1,152 = 192 × 6 = (rank-1 group) × (ℤ₂ × ℤ₃)
 **Location**: Full Clifford automorphism group (2048 elements)
 
 **Embedding**:
+
 ```
 E₇ dimension = 133 ≈ 128 + 5 (Cl₀,₇ dimension + ???)
 E₇ Weyl ≈ 2048 × 1417.5 (not exact integer ratio)
 ```
 
 **What it constrains**:
+
 - Full 128-dimensional Clifford algebra structure
 - All grade levels (0-7)
 - Sign changes, involutions, Fano permutations
@@ -84,23 +90,27 @@ E₇ Weyl ≈ 2048 × 1417.5 (not exact integer ratio)
 ### Example: Factorization Constraint
 
 **At G₂ level** (7 dimensions):
+
 ```
 7 = prime (cannot factor further)
 Fano plane: 7 points, 7 lines
 ```
 
 **Propagates to rank-1 level** (96 classes):
+
 ```
 96 = 4 × 3 × 8
 where 8 = 7 octonion units + 1 scalar
 ```
 
 **Propagates to full level** (128 dimensions):
+
 ```
 128 = 2⁷ (all k-vectors over 7 basis vectors)
 ```
 
 **Propagates to SGA** (1,536 dimensions):
+
 ```
 1,536 = 128 × 4 × 3
 ```
@@ -110,12 +120,14 @@ The "7-ness" (from G₂/octonions) **cascades through all levels automatically**
 ### Example: Klein 4-Group Constraint
 
 **At Clifford level**:
+
 ```
 Klein-4: {I, ˆ, ~, ¯} (involutions)
 Order: 4
 ```
 
 **Propagates to 2048 group**:
+
 ```
 2048 = 128 × 16 = 128 × (4 × 4)
         ↑        ↑      ↑   ↑
@@ -124,6 +136,7 @@ Order: 4
 ```
 
 **Propagates to rank-1 level**:
+
 ```
 192 = (ℤ₄ × ℤ₃ × ℤ₈) ⋊ ℤ₂
        ↑               ↑
@@ -146,6 +159,7 @@ The Klein structure **appears at every level** because it's a built-in constrain
 ### 2. Multi-Level Consistency
 
 Every projection of SGA to a lower level:
+
 - **Preserves constraint satisfaction**
 - **Inherits invariants automatically**
 - **Maintains exceptional structure embeddings**
@@ -215,10 +229,11 @@ This is why the v0.4.0 declarative model system works:
 ### Models are Constraint Compositions
 
 ```typescript
-model(task) = constraints + domain_interpretation
+model(task) = constraints + domain_interpretation;
 ```
 
 Where:
+
 - **Constraints** come from SGA (universal, fixed)
 - **Interpretation** is domain-specific (flexible)
 
@@ -227,18 +242,22 @@ Where:
 The compiler can optimize by recognizing which constraint sets are active:
 
 **C0 (Fully compiled)**:
+
 - Only G₂ constraints (7-dimensional structure)
 - Maximum fusion possible
 
 **C1 (Class backend)**:
+
 - F₄ constraints (rank-1 projection)
 - Permutation-based optimization
 
 **C2 (Mixed-grade)**:
+
 - E₇ constraints (some grade mixing)
 - Selective SGA backend
 
 **C3 (Full SGA)**:
+
 - ALL constraint sets active
 - Full generality, less optimization
 

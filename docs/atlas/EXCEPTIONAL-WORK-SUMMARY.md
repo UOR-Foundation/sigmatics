@@ -13,12 +13,14 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 **Objective**: Prove G₂ embedding explicitly by constructing automorphisms
 
 **Results**:
+
 - ✓ Framework created for 12 G₂ Weyl group elements
 - ✓ PSL(2,7) = 14 × 12 factorization verified
 - ✓ Fano plane automorphisms analyzed
 - ✓ Detailed proof document created
 
 **Deliverables**:
+
 - [g2-embedding-proof.md](./g2-embedding-proof.md) (15KB detailed proof)
 - [construct-g2-automorphisms.js](../../construct-g2-automorphisms.js) (verification script)
 
@@ -33,6 +35,7 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 **Objective**: Prove F₄ connection by identifying the 6-fold quotient extension
 
 **Results**:
+
 - ✓ Rank-1 automorphism group enumerated: 192 elements
 - ✓ F₄ Weyl quotient computed: 1,152 / 192 = 6
 - ✓ Quotient factors identified: 6 = ℤ₂ × ℤ₃ = Mirror (M) × Triality (D)
@@ -40,6 +43,7 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 - ✓ Detailed proof document created
 
 **Deliverables**:
+
 - [f4-projection-proof.md](./f4-projection-proof.md) (21KB detailed proof)
 - [prove-f4-connection.js](../../prove-f4-connection.js) (verification script, 192 elements enumerated)
 
@@ -48,6 +52,7 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 **Key discovery**: Rank-1 automorphism group ≅ F₄ Weyl / (ℤ₂ × ℤ₃) where quotient factors are **precisely** the Mirror and Triality transforms in Atlas. This is not coincidence - it's mathematical inevitability.
 
 **Remaining work**:
+
 - Construct explicit restriction map F₄ Weyl → Rank-1 group
 - Identify the 6 kernel elements explicitly
 - Show Jordan algebra (3×3 octonionic Hermitian matrices) structure in Atlas
@@ -59,12 +64,14 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 **Objective**: Clarify E₇ relationship and understand the +5 dimension difference
 
 **Results**:
+
 - ✓ Dimensional analysis: E₇ = 133, Cl₀,₇ = 128, difference = +5
 - ✓ Weyl quotient computed: E₇ Weyl / 2048 = 1,417.5 (NON-INTEGER)
 - ✓ Fundamental representation product: 7 × 8 = 56 = E₇ fund rep (EXACT!)
 - ✓ Analysis script created
 
 **Deliverables**:
+
 - [analyze-e7-structure.js](../../analyze-e7-structure.js) (comprehensive analysis)
 - Section in [exceptional-structures-complete.md](./exceptional-structures-complete.md)
 
@@ -83,12 +90,14 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 **Results**:
 
 **E₆ Investigation**:
+
 - ✓ Weyl quotient: E₆ Weyl / 192 = 270 = 27 × 10
 - ✓ Factor 27 = E₆ fundamental representation dimension
 - ⚠ Factor 10 interpretation unclear
 - ⚠ No dimensional proximity (78 vs 96 or 128)
 
 **E₈ Investigation**:
+
 - ✓ Dimensional factorization: E₈ dimension = 248 = 31 × 8 (octonion dimension!)
 - ✓ Weyl division: E₈ Weyl / 2048 = 340,200 (EXACT INTEGER!)
 - ✓ Perfect division verified: 696,729,600 mod 2048 = 0
@@ -96,10 +105,12 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 - ⚠ Possible Cl₀,₈ connection (256 dimensions, E₈ = 256 - 8)
 
 **Deliverables**:
+
 - [search-all-exceptional.js](../../search-all-exceptional.js) (comprehensive search)
 - Sections in [exceptional-structures-complete.md](./exceptional-structures-complete.md)
 
 **Confidence**:
+
 - E₆: ⚠ UNCLEAR - Interesting quotient structure but no structural alignment
 - E₈: ⚠ POTENTIAL - Exact division compelling, octonionic factorization suggestive
 
@@ -112,6 +123,7 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 **Objective**: Document ALL exceptional constraint sets comprehensively
 
 **Results**:
+
 - ✓ Master reference document created (21KB)
 - ✓ Detailed G₂ proof created (15KB)
 - ✓ Detailed F₄ proof created (21KB)
@@ -121,6 +133,7 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 - ✓ README.md updated with document list
 
 **Deliverables**:
+
 1. [exceptional-structures-complete.md](./exceptional-structures-complete.md) - Master reference for all five exceptional groups
 2. [g2-embedding-proof.md](./g2-embedding-proof.md) - Detailed mathematical proof of G₂ embedding
 3. [f4-projection-proof.md](./f4-projection-proof.md) - Detailed proof of F₄ quotient relationship
@@ -136,13 +149,13 @@ This document summarizes the completed 5-phase investigation of exceptional Lie 
 
 ### Verification Status Table
 
-| Group | Dimension | Weyl Order | Atlas Level | Evidence | Status |
-|-------|-----------|------------|-------------|----------|--------|
-| G₂ | 14 | 12 | Fano plane (7) | PSL(2,7) = 14 × 12 | ✓ VERIFIED |
-| F₄ | 52 | 1,152 | Rank-1 (192) | Weyl/192 = 6 = M × D | ✓ STRONG |
-| E₆ | 78 | 51,840 | Unknown | Weyl/192 = 270 = 27 × 10 | ⚠ UNCLEAR |
-| E₇ | 133 | 2,903,040 | Cl₀,₇ (128) | 7 × 8 = 56, dim ≈ 128 | ⚠ WEAK |
-| E₈ | 248 | 696,729,600 | 2048 autos | Weyl/2048 exact, 248 = 31 × 8 | ⚠ POTENTIAL |
+| Group | Dimension | Weyl Order  | Atlas Level    | Evidence                      | Status       |
+| ----- | --------- | ----------- | -------------- | ----------------------------- | ------------ |
+| G₂    | 14        | 12          | Fano plane (7) | PSL(2,7) = 14 × 12            | ✓ VERIFIED   |
+| F₄    | 52        | 1,152       | Rank-1 (192)   | Weyl/192 = 6 = M × D          | ✓ STRONG     |
+| E₆    | 78        | 51,840      | Unknown        | Weyl/192 = 270 = 27 × 10      | ⚠ UNCLEAR   |
+| E₇    | 133       | 2,903,040   | Cl₀,₇ (128)    | 7 × 8 = 56, dim ≈ 128         | ⚠ WEAK      |
+| E₈    | 248       | 696,729,600 | 2048 autos     | Weyl/2048 exact, 248 = 31 × 8 | ⚠ POTENTIAL |
 
 ### The Four Discovery Signals
 
@@ -193,6 +206,7 @@ Each level contains ALL constraint sets, just projected. This is fractal self-si
 ### 3. Exceptional Groups as Universal Constraints
 
 Exceptional Lie groups aren't arbitrary - they're the **minimal** symmetry groups for:
+
 - G₂: Octonions (unique 8-dimensional normed division algebra)
 - F₄: Albert algebra (unique 27-dimensional Jordan algebra)
 - E₆, E₇, E₈: Higher octonionic constructions
@@ -318,7 +332,7 @@ node search-all-exceptional.js
 
 2. **E₇ and split octonions**
    - E₇ relates to split octonions (pseudo-Euclidean)
-   - Check different Clifford signatures Cl_{p,q}
+   - Check different Clifford signatures Cl\_{p,q}
 
 3. **Constraint propagation formalization**
    - Formalize how G₂ constraints propagate Fano → Rank-1 → Cl₀,₇
@@ -349,6 +363,7 @@ All 5 phases of the exceptional structures investigation are **complete**:
 ✓ Phase 5: All exceptional constraint sets documented comprehensively
 
 **Total deliverables**:
+
 - 4 research scripts (~1,400 lines of verification code)
 - 4 major documentation files (~90KB)
 - Updates to existing documentation with cross-references
@@ -361,6 +376,7 @@ All 5 phases of the exceptional structures investigation are **complete**:
 ---
 
 **References**:
+
 - All documentation in [/workspaces/sigmatics/docs/atlas/](.)
 - All verification scripts in [/workspaces/sigmatics/](../../)
 - See [GUIDE.md](./GUIDE.md) for navigation and reading paths

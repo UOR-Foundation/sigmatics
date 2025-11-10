@@ -88,7 +88,9 @@ testTriples.forEach(([a, b, c]) => {
   const right = { index: a_bc.index, sign: bc.sign * a_bc.sign };
 
   const match = left.index === right.index && left.sign === right.sign;
-  console.log(`  (e${a}×e${b})×e${c} ${match ? '=' : '≠'} e${a}×(e${b}×e${c}) ${match ? '✓' : '✗'}`);
+  console.log(
+    `  (e${a}×e${b})×e${c} ${match ? '=' : '≠'} e${a}×(e${b}×e${c}) ${match ? '✓' : '✗'}`,
+  );
   if (!match) associative = false;
 });
 
@@ -130,8 +132,8 @@ console.log('All 12 G₂ Weyl group elements:\n');
 g2Elements.push({
   id: 1,
   name: 'Identity',
-  permutation: [0,1,2,3,4,5,6,7],
-  signs: [1,1,1,1,1,1,1,1],
+  permutation: [0, 1, 2, 3, 4, 5, 6, 7],
+  signs: [1, 1, 1, 1, 1, 1, 1, 1],
 });
 
 // Order-3 rotations (and their powers)
@@ -140,14 +142,14 @@ g2Elements.push({
   id: 2,
   name: 'Rotate (1→2→4→1)',
   permutation: [0, 2, 4, 3, 1, 5, 6, 7],
-  signs: [1,1,1,1,1,1,1,1],
+  signs: [1, 1, 1, 1, 1, 1, 1, 1],
 });
 
 g2Elements.push({
   id: 3,
   name: 'Rotate² (1→4→2→1)',
   permutation: [0, 4, 1, 3, 2, 5, 6, 7],
-  signs: [1,1,1,1,1,1,1,1],
+  signs: [1, 1, 1, 1, 1, 1, 1, 1],
 });
 
 // Order-3 rotations of another triangle {e₂, e₃, e₅}
@@ -155,14 +157,14 @@ g2Elements.push({
   id: 4,
   name: 'Rotate (2→3→5→2)',
   permutation: [0, 1, 3, 5, 4, 2, 6, 7],
-  signs: [1,1,1,1,1,1,1,1],
+  signs: [1, 1, 1, 1, 1, 1, 1, 1],
 });
 
 g2Elements.push({
   id: 5,
   name: 'Rotate² (2→5→3→2)',
   permutation: [0, 1, 5, 2, 4, 3, 6, 7],
-  signs: [1,1,1,1,1,1,1,1],
+  signs: [1, 1, 1, 1, 1, 1, 1, 1],
 });
 
 // Order-2 reflections
@@ -246,7 +248,12 @@ function applyAutomorphism(elem, index) {
 
 function testAutomorphism(elem) {
   // Test on sample products
-  const testPairs = [[1,2], [2,3], [3,4], [4,5]];
+  const testPairs = [
+    [1, 2],
+    [2, 3],
+    [3, 4],
+    [4, 5],
+  ];
 
   for (const [a, b] of testPairs) {
     // Direct product: e_a × e_b = e_c
@@ -260,10 +267,9 @@ function testAutomorphism(elem) {
     // Should equal φ(e_c)
     const phi_c = applyAutomorphism(elem, directProduct.index);
 
-    const preserves = (
+    const preserves =
       autProduct.index === phi_c.index &&
-      autProduct.sign * phi_a.sign * phi_b.sign === phi_c.sign * directProduct.sign
-    );
+      autProduct.sign * phi_a.sign * phi_b.sign === phi_c.sign * directProduct.sign;
 
     if (!preserves) {
       return false;
@@ -274,7 +280,7 @@ function testAutomorphism(elem) {
 }
 
 let allValid = true;
-g2Elements.forEach(elem => {
+g2Elements.forEach((elem) => {
   const valid = testAutomorphism(elem);
   const status = valid ? '✓' : '✗';
   console.log(`  ${status} Element ${elem.id}: ${elem.name}`);

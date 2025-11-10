@@ -44,9 +44,13 @@ console.log('------------------------------------------------------------\n');
 const z4a = z4Power(1); // r^1
 const z4b = z4Power(2); // r^2
 
-benchmark('z4Multiply (optimized, unrolled)', () => {
-  z4Multiply(z4a, z4b);
-}, 500000);
+benchmark(
+  'z4Multiply (optimized, unrolled)',
+  () => {
+    z4Multiply(z4a, z4b);
+  },
+  500000,
+);
 
 console.log('Baseline (nested loops): ~1-2M ops/sec');
 console.log('Optimized (unrolled):    ~8-10M ops/sec');
@@ -63,9 +67,13 @@ console.log('------------------------------------------------------------\n');
 const z3a = z3Power(1); // τ^1
 const z3b = z3Power(2); // τ^2
 
-benchmark('z3Multiply (optimized, unrolled)', () => {
-  z3Multiply(z3a, z3b);
-}, 500000);
+benchmark(
+  'z3Multiply (optimized, unrolled)',
+  () => {
+    z3Multiply(z3a, z3b);
+  },
+  500000,
+);
 
 console.log('Baseline (nested loops): ~3-5M ops/sec');
 console.log('Optimized (unrolled):    ~20-25M ops/sec');
@@ -79,12 +87,16 @@ console.log('------------------------------------------------------------');
 console.log('Mixed Workload (simulates transform chains)');
 console.log('------------------------------------------------------------\n');
 
-benchmark('Mixed z4/z3 operations', () => {
-  const r1 = z4Multiply(z4a, z4b);
-  const t1 = z3Multiply(z3a, z3b);
-  z4Multiply(r1, z4a);
-  z3Multiply(t1, z3a);
-}, 250000);
+benchmark(
+  'Mixed z4/z3 operations',
+  () => {
+    const r1 = z4Multiply(z4a, z4b);
+    const t1 = z3Multiply(z3a, z3b);
+    z4Multiply(r1, z4a);
+    z3Multiply(t1, z3a);
+  },
+  250000,
+);
 
 console.log('============================================================');
 console.log('Summary');

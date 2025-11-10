@@ -110,19 +110,19 @@ const niemeier_lattices = [
   'Leech (no roots)',
   'A₂₄',
   'A₁₂²',
-  'A₈³',  // ← Three copies of A₈!
+  'A₈³', // ← Three copies of A₈!
   'A₆D₄',
   'A₄⁶',
   'D₄⁶',
   'D₂₄',
   'D₁₆E₈',
-  'E₈³',  // ← Three copies of E₈!!! This is critical!
+  'E₈³', // ← Three copies of E₈!!! This is critical!
   // ... and 14 more
 ];
 
 console.log('Niemeier lattices (selection):');
 niemeier_lattices.forEach((lattice, i) => {
-  console.log(`  ${(i+1).toString().padStart(2)}. ${lattice}`);
+  console.log(`  ${(i + 1).toString().padStart(2)}. ${lattice}`);
 });
 console.log('  ... (14 more lattices)');
 console.log();
@@ -130,7 +130,7 @@ console.log();
 console.log('✓✓✓ CRITICAL: E₈³ is a Niemeier lattice!');
 console.log('  This means E₈ ⊗ E₈ ⊗ E₈ IS a valid 24-dimensional lattice!');
 console.log('  It is NOT the Leech lattice (which has no roots)');
-console.log('  But it\'s closely related!');
+console.log("  But it's closely related!");
 console.log();
 
 console.log('E₈³ lattice properties:');
@@ -275,7 +275,7 @@ function factorize(n) {
 
 function formatFactors(factors) {
   return Object.entries(factors)
-    .map(([p, e]) => e === 1 ? p : `${p}^${e}`)
+    .map(([p, e]) => (e === 1 ? p : `${p}^${e}`))
     .join(' × ');
 }
 

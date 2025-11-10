@@ -242,7 +242,7 @@ console.log('  Corresponds EXACTLY to division algebra dimensions: 1, 2, 4, 8!\\
 console.log('Part 4: Mapping to SGA Universal Constraint Structure');
 console.log('----------------------------------------------------------------\n');
 
-console.log('User\'s proposed correspondence table:\n');
+console.log("User's proposed correspondence table:\n");
 console.log('Algebraic structure          →  Concrete meaning');
 console.log('─────────────────────────────────────────────────────');
 console.log('• Elements (h, d, ℓ)         →  Domain-specific objects');
@@ -496,7 +496,7 @@ console.log('Atlas IS the realization of primitive topological/algebraic structu
 console.log('Exceptional groups appear because they MUST - they are the constraints');
 console.log('that define what it means to be a minimal, non-decomposable structure.\\n');
 
-console.log('The user\'s conjecture is CORRECT:');
+console.log("The user's conjecture is CORRECT:");
 console.log('  Exceptional mathematics ↔ Primitive topological/geometric spaces');
 console.log('  Both are ATOMS that cannot be decomposed');
 console.log('  Both propagate constraints universally');

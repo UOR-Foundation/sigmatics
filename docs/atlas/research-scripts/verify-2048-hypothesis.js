@@ -166,15 +166,19 @@ const verifications = [
   { name: 'Klein 4-group from involutions', status: '✓', method: 'Group theory' },
   { name: 'Fano group = PSL(2,7) order 168', status: '✓', method: 'Known result' },
   { name: 'Overcounting factor = 42', status: overcount === 42 ? '✓' : '✗', method: 'Computation' },
-  { name: 'Reduction to 4 permutations', status: reduction === 4 ? '✓' : '✗', method: 'Arithmetic' },
+  {
+    name: 'Reduction to 4 permutations',
+    status: reduction === 4 ? '✓' : '✗',
+    method: 'Arithmetic',
+  },
 ];
 
-verifications.forEach(v => {
+verifications.forEach((v) => {
   console.log(`${v.status} ${v.name.padEnd(40)} [${v.method}]`);
 });
 console.log();
 
-const allPassed = verifications.every(v => v.status === '✓');
+const allPassed = verifications.every((v) => v.status === '✓');
 
 if (allPassed) {
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');

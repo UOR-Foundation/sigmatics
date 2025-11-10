@@ -68,7 +68,7 @@ const grades = [
   { k: 7, name: 'pseudoscalar', count: 1 },
 ];
 
-grades.forEach(g => {
+grades.forEach((g) => {
   console.log(`  Grade ${g.k} (${g.name}): ${g.count}`);
 });
 console.log(`  Total: ${cl07_dimension}\n`);
@@ -95,7 +95,7 @@ console.log('The +5 Dimension Mystery:\n');
 
 console.log('Hypothesis 1: Cartan subalgebra dimension');
 console.log('  E₇ rank = 7 (Cartan subalgebra is 7-dimensional)');
-console.log('  But 7 ≠ 5, so this doesn\'t explain it\n');
+console.log("  But 7 ≠ 5, so this doesn't explain it\n");
 
 console.log('Hypothesis 2: Root space structure');
 console.log('  E₇ has 126 roots');
@@ -198,9 +198,9 @@ const e7_fund_rep = 56;
 console.log(`E₇ fundamental representation: ${e7_fund_rep} dimensions\n`);
 
 console.log('Comparing to Atlas:');
-console.log(`  56 vs 96 (rank-1 classes): ratio = ${96/56} ≈ 1.71`);
-console.log(`  56 vs 128 (Cl₀,₇): ratio = ${128/56} ≈ 2.29`);
-console.log(`  56 vs 192 (rank-1 autos): ratio = ${192/56} ≈ 3.43\n`);
+console.log(`  56 vs 96 (rank-1 classes): ratio = ${96 / 56} ≈ 1.71`);
+console.log(`  56 vs 128 (Cl₀,₇): ratio = ${128 / 56} ≈ 2.29`);
+console.log(`  56 vs 192 (rank-1 autos): ratio = ${192 / 56} ≈ 3.43\n`);
 
 console.log('None of these are clean integer ratios.\n');
 

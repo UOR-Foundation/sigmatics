@@ -318,6 +318,20 @@ export class Atlas {
     // Bridge operations
     lift: StdlibModels.lift,
     projectClass: StdlibModels.projectClass,
+
+    // Arithmetic operations (Phase 1)
+    gcd96: StdlibModels.gcd96,
+    lcm96: StdlibModels.lcm96,
+
+    // Reduction operations (Phase 1)
+    sum: StdlibModels.sum,
+    product: StdlibModels.product,
+    max: StdlibModels.max,
+    min: StdlibModels.min,
+
+    // Factorization operations (Phase 2)
+    factor96: StdlibModels.factor96,
+    isPrime96: StdlibModels.isPrime96,
   };
 
   // ==========================================================================

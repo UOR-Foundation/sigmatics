@@ -17,6 +17,7 @@ W(E₈) = 340,200 × 2,048
 ```
 
 This document presents the complete mathematical investigation of this structure, including:
+
 - Exact factorization and group-theoretic identification
 - Connection to Atlas SGA and exceptional mathematics
 - Computational construction of all 340,200 elements
@@ -49,6 +50,7 @@ The Weyl group of E₈ has order 696,729,600. This factors **exactly** as:
 ```
 
 where:
+
 - **2,048 = 2¹¹** is precisely the order of **Aut(Cl₀,₇)**, the automorphism group of Atlas's underlying Clifford algebra
 - **340,200 = 2³ × 3⁵ × 5² × 7** contains **all the non-2¹¹ structure** of E₈
 
@@ -82,6 +84,7 @@ This exact factorization reveals:
 ```
 
 This factorization reveals:
+
 - **All 3-power structure**: 3⁵ = 243 (triality extended!)
 - **All 5-power structure**: 5² = 25 (mysterious, not in current Atlas)
 - **All 7-power structure**: 7¹ = 7 (Fano plane / octonions)
@@ -90,11 +93,13 @@ This factorization reveals:
 ### E₈ Weyl Group Split
 
 The Weyl group of E₈:
+
 ```
 |W(E₈)| = 696,729,600 = 2¹⁴ × 3⁵ × 5² × 7
 ```
 
 splits into:
+
 ```
 340,200 = 2³ × 3⁵ × 5² × 7  (all non-2¹¹ factors)
   2,048 = 2¹¹               (pure 2-power = Aut(Cl₀,₇))
@@ -103,6 +108,7 @@ Product = 2¹⁴ × 3⁵ × 5² × 7 = W(E₈) ✓
 ```
 
 **Interpretation**: The 2-power structure of E₈ splits into:
+
 - **2¹¹ → Aut(Cl₀,₇)**: Clifford algebra signs (2⁷) + RDTM (2⁴)
 - **2³ → 340,200**: Residual structure (ℤ₈ context ring?)
 
@@ -129,6 +135,7 @@ The most revealing factorization is:
 - **Octonion link**: Fano plane encodes octonion multiplication
 
 The Fano plane has:
+
 - 7 points (imaginary octonions i, j, k, ℓ, iℓ, jℓ, kℓ)
 - 7 lines (3 points each, encode multiplication rules)
 - PSL(2,7) permutes these while preserving structure
@@ -142,6 +149,7 @@ The Fano plane has:
 - **Exceptional**: SO(10) is maximal subgroup of E₆
 
 **Mystery**: What does 45² = 2,025 represent?
+
 - Could be Λ²(ℝ¹⁰) ⊗ Λ²(ℝ¹⁰) (tensor square)
 - Could be 45 × 45 matrix structure
 - Could relate to E₆ ⊃ SO(10) × U(1) subgroup structure
@@ -180,6 +188,7 @@ This is a **coset space** or **quotient structure**, not a simple group.
 Systematic search through Lie theory reveals:
 
 ✗ **Not found as**:
+
 - PSL(n, q) for any small n, q (closest: PSL(2,70) = 342,930)
 - PSL(3,8) = 342,144 (off by 1,944)
 - Any exceptional Weyl group
@@ -187,6 +196,7 @@ Systematic search through Lie theory reveals:
 - Any classical Weyl group (SO(n), SU(n), Sp(n))
 
 ✓ **Identified as**:
+
 - Quotient: W(E₈) / Aut(Cl₀,₇)
 - Product structure: PSL(2,7) × (ℤ₈₁ × ℤ₂₅)
 
@@ -199,16 +209,19 @@ G₃₄₀,₂₀₀ ≅ PSL(2,7) × ℤ₈₁ × ℤ₂₅
 ```
 
 where:
+
 - **PSL(2,7)**: Non-abelian simple group (168 elements)
 - **ℤ₈₁ = ℤ₃⁴**: Cyclic group of order 81
 - **ℤ₂₅ = ℤ₅²**: Cyclic group of order 25
 
 **Elements**: Triples (M, a, b) where:
+
 - M ∈ PSL(2,7) — 2×2 matrix over ℤ₇ (168 choices)
 - a ∈ ℤ₈₁ — integer mod 81 (81 choices)
 - b ∈ ℤ₂₅ — integer mod 25 (25 choices)
 
 **Verification**:
+
 ```
 |G| = 168 × 81 × 25 = 340,200 ✓✓✓
 ```
@@ -216,6 +229,7 @@ where:
 ### Group Operation
 
 If direct product (simplest assumption):
+
 ```
 (M₁, a₁, b₁) · (M₂, a₂, b₂) = (M₁ · M₂, a₁ + a₂ mod 81, b₁ + b₂ mod 25)
 ```
@@ -229,6 +243,7 @@ If direct product (simplest assumption):
 ### E₈ Structure
 
 The exceptional Lie group E₈:
+
 - **Dimension**: 248
 - **Rank**: 8
 - **Root system**: 240 roots
@@ -241,6 +256,7 @@ W(E₈) ≅ G₃₄₀,₂₀₀ ⋊ Aut(Cl₀,₇)
 ```
 
 where:
+
 - **G₃₄₀,₂₀₀** = External symmetries (compositional structure beyond Cl₀,₇)
 - **Aut(Cl₀,₇)** = Internal symmetries (Atlas RDTM transforms)
 - **⋊** = Semidirect product (G₃₄₀,₂₀₀ acts on Aut(Cl₀,₇))
@@ -258,6 +274,7 @@ G₃₄₀,₂₀₀ (external structure)
 ### Maximal Subgroups
 
 E₈ has maximal subgroups including:
+
 - **A₈ = SU(9)** — Weyl order 9! = 362,880
 - **D₈ = SO(16)** — Weyl order 2⁸ × 8! = 10,321,920
 - **E₇ × A₁** — Product structure
@@ -286,6 +303,7 @@ Clifford sign group (2⁷ = 128 elements)
 ```
 
 The **340,200 structure represents**:
+
 - Symmetries **beyond** the Clifford algebra level
 - Compositional/external transformations
 - Higher-order constraint propagation (in model system?)
@@ -304,6 +322,7 @@ The **340,200 structure represents**:
 ```
 
 **Interpretation**:
+
 - **168 (PSL(2,7))**: Comes from octonion structure (Fano plane), already partially present in Atlas via ℤ₈ context ring
 - **81 (ℤ₃⁴)**: Extended triality — Atlas has ℤ₃, but full E₈ needs ℤ₈₁ = 3⁴
 - **25 (ℤ₅²)**: Mysterious! Not present in current Atlas. Related to SO(10)? E₆ connection?
@@ -372,10 +391,13 @@ console.log(|G_340200| = 168 × 81 × 25 = 340,200); // ✓✓✓
 ### 1. Direct vs. Semidirect Product?
 
 Is the structure:
+
 ```
 G₃₄₀,₂₀₀ ≅ PSL(2,7) × ℤ₈₁ × ℤ₂₅  (direct product)
 ```
+
 or
+
 ```
 G₃₄₀,₂₀₀ ≅ PSL(2,7) ⋊ (ℤ₈₁ × ℤ₂₅)  (semidirect product)
 ```
@@ -385,11 +407,13 @@ G₃₄₀,₂₀₀ ≅ PSL(2,7) ⋊ (ℤ₈₁ × ℤ₂₅)  (semidirect prod
 ### 2. What is the ℤ₂₅ = 5² Factor?
 
 Current analysis shows:
+
 - 45 = dim(SO(10))
 - 45² = 2,025 = ℤ₈₁ × ℤ₂₅
 - SO(10) ⊂ E₆ as maximal subgroup
 
 **Questions**:
+
 - Does ℤ₂₅ relate to SO(10) pentagonal structure?
 - Is there a 5-fold symmetry in E₆ or E₈ we're missing?
 - Could it relate to a 5-element Dynkin diagram symmetry?
@@ -401,6 +425,7 @@ The decomposition W(E₈) = G₃₄₀,₂₀₀ ⋊ Aut(Cl₀,₇) suggests:
 **Question**: How does G₃₄₀,₂₀₀ act on the E₈ root system (240 roots)?
 
 **To explore**:
+
 - Does PSL(2,7) permute a subset of 7 roots?
 - Does ℤ₈₁ relate to 3³ = 27 dimensional subspaces?
 - Does ℤ₂₅ relate to 5-fold root subsystems?
@@ -410,6 +435,7 @@ The decomposition W(E₈) = G₃₄₀,₂₀₀ ⋊ Aut(Cl₀,₇) suggests:
 **Hypothesis**: 340,200 represents symmetries of constraint composition in Atlas v0.4.0 declarative models.
 
 **Questions**:
+
 - Can we realize G₃₄₀,₂₀₀ as transformations on model schemas?
 - Does constraint fusion optimization reveal this structure?
 - Are there 340,200 equivalence classes of model compositions?
@@ -420,6 +446,7 @@ Atlas uses Cl₀,₇ with 2,048 automorphisms.
 E₈ has dimension 248 and Weyl group 696,729,600.
 
 **Questions**:
+
 - Is there a Cl₀,₇.₅ or intermediate structure?
 - Would Cl₀,₈ have automorphisms related to 340,200?
   - Expected: Aut(Cl₀,₈) = 2⁸ × 2⁴ = 4,096
@@ -439,6 +466,7 @@ The magic square shows exceptional groups from division algebra tensor products:
 ```
 
 **Question**: Does 340,200 = 168 × 2,025 correspond to a row/column factorization?
+
 - 168 relates to G₂ (𝕆 automorphisms)
 - 2,025 = 45² where 45 = dim(SO(10)) ⊂ E₆
 - Could this be ℍ ⊗ 𝕆 → E₇ or ℂ ⊗ 𝕆 → E₆ connection?
@@ -488,6 +516,7 @@ W(E₈) = 340,200 × 2,048
 This structure reveals that **Atlas captures the Cl₀,₇ layer of E₈**, and the 340,200-element group represents the "missing piece" — higher-order structure beyond geometric algebra, likely related to compositional constraint propagation.
 
 The discovery opens profound questions about:
+
 - How constraint composition realizes exceptional symmetries
 - Whether Atlas's model system can be extended to capture full E₈ structure
 - The geometric/topological meaning of the ℤ₂₅ = 5² factor

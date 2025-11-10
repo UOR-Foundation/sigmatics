@@ -78,7 +78,15 @@ export type AtomOp =
   | { type: 'projectClass'; child: IRNode } // projectClass(x) - SGA → class index
   | { type: 'add96'; overflowMode: 'drop' | 'track' }
   | { type: 'sub96'; overflowMode: 'drop' | 'track' }
-  | { type: 'mul96'; overflowMode: 'drop' | 'track' };
+  | { type: 'mul96'; overflowMode: 'drop' | 'track' }
+  | { type: 'gcd96' } // GCD in ≡₉₆
+  | { type: 'lcm96' } // LCM in ≡₉₆
+  | { type: 'sum' } // Sum reduction
+  | { type: 'product' } // Product reduction
+  | { type: 'max' } // Maximum in ≡₉₆
+  | { type: 'min' } // Minimum in ≡₉₆
+  | { type: 'factor96' } // Prime factorization in ≡₉₆
+  | { type: 'isPrime96' }; // Primality test in ≡₉₆
 
 /**
  * Transform operations with compiled powers
@@ -111,7 +119,15 @@ export type ClassOperation =
   | { type: 'T'; k: number }
   | { type: 'M' }
   | { type: 'lift'; classIndex: number }
-  | { type: 'projectClass' };
+  | { type: 'projectClass' }
+  | { type: 'gcd96' }
+  | { type: 'lcm96' }
+  | { type: 'sum' }
+  | { type: 'product' }
+  | { type: 'max' }
+  | { type: 'min' }
+  | { type: 'factor96' }
+  | { type: 'isPrime96' };
 
 /**
  * SGA backend plan (algebraic foundation)
@@ -134,7 +150,15 @@ export type SgaOperation =
   | { type: 'M' }
   | { type: 'projectGrade'; grade: number }
   | { type: 'lift'; classIndex: number }
-  | { type: 'projectClass' };
+  | { type: 'projectClass' }
+  | { type: 'gcd96' }
+  | { type: 'lcm96' }
+  | { type: 'sum' }
+  | { type: 'product' }
+  | { type: 'max' }
+  | { type: 'min' }
+  | { type: 'factor96' }
+  | { type: 'isPrime96' };
 
 /**
  * Compiled model artifact

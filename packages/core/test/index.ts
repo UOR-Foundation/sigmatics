@@ -39,6 +39,7 @@ import { runProjectBranchTests } from './bridge/project-branches.test';
 import { runRegistryBranchTests } from './server/registry-branches.test';
 import { runSchemaRegistryBranchTests } from './model/schema-registry-branches.test';
 import { runSgaBackendBranchTests } from './backend/sga-backend-branches.test';
+import { runStdlibOperationsTests } from './stdlib-operations.test';
 
 // ============================================================================
 // Test Utilities
@@ -1164,6 +1165,7 @@ function runAllTests(): void {
     runSchemaRegistryBranchTests(runTest);
     runSgaBackendBranchTests(runTest);
     runCacheTests(runTest);
+    runStdlibOperationsTests(runTest);
 
     console.log('='.repeat(60));
     console.log(

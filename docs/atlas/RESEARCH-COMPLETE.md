@@ -15,6 +15,7 @@ This document summarizes the completed research investigating exceptional Lie gr
 **Exceptional mathematics and primitive topological spaces are the same thing** - both represent atomic structures that cannot be decomposed further.
 
 **The Atoms of Mathematics**:
+
 - **4 normed division algebras**: ℝ, ℂ, ℍ, 𝕆 (Hurwitz's theorem - ONLY these exist)
 - **5 exceptional Lie groups**: G₂, F₄, E₆, E₇, E₈ (all built from octonions)
 - **4 parallelizable spheres**: S⁰, S¹, S³, S⁷ (ONLY these have global tangent frames)
@@ -30,11 +31,13 @@ This document summarizes the completed research investigating exceptional Lie gr
 **Objective**: Prove G₂ embeds through Fano plane
 
 **Key Results**:
+
 - PSL(2,7) = 168 = 14 × 12 = (dim G₂) × (Weyl G₂) ✓ EXACT
 - Fano plane encodes octonion multiplication
 - G₂ = Aut(𝕆) necessarily embedded in Atlas
 
 **Deliverables**:
+
 - [g2-embedding-proof.md](./g2-embedding-proof.md) (15KB)
 - [construct-g2-automorphisms.js](./research-scripts/construct-g2-automorphisms.js) (346 lines)
 
@@ -47,12 +50,14 @@ This document summarizes the completed research investigating exceptional Lie gr
 **Objective**: Prove F₄ quotient relationship
 
 **Key Results**:
+
 - F₄ Weyl / Rank-1 = 1,152 / 192 = 6 ✓ EXACT INTEGER
 - 6 = ℤ₂ × ℤ₃ = M (Mirror) × D (Triality) ✓ PERFECT MATCH
 - 192 elements enumerated programmatically ✓ VERIFIED
 - Quotient factors correspond to 3×3 Albert algebra structure
 
 **Deliverables**:
+
 - [f4-projection-proof.md](./f4-projection-proof.md) (21KB)
 - [prove-f4-connection.js](./research-scripts/prove-f4-connection.js) (281 lines)
 
@@ -65,12 +70,14 @@ This document summarizes the completed research investigating exceptional Lie gr
 **Objective**: Understand E₇ connection and +5 dimension
 
 **Key Results**:
+
 - E₇ dimension = 133 vs Cl₀,₇ = 128 (+5 unexplained)
 - E₇ Weyl / 2048 = 1,417.5 ✗ NON-INTEGER (not direct subgroup)
 - **7 × 8 = 56 = E₇ fundamental representation** ✓ EXACT!
 - Dimensional proximity suggestive but inconclusive
 
 **Deliverables**:
+
 - Section in [exceptional-structures-complete.md](./exceptional-structures-complete.md)
 - [analyze-e7-structure.js](./research-scripts/analyze-e7-structure.js) (287 lines)
 
@@ -83,22 +90,26 @@ This document summarizes the completed research investigating exceptional Lie gr
 **Objective**: Search for E₆, E₈ in other Atlas levels
 
 **E₆ Results**:
+
 - E₆ Weyl / 192 = 270 = 27 × 10
 - Factor 27 = E₆ fundamental representation ✓
 - Factor 10 interpretation unclear
 - No dimensional proximity
 
 **E₈ Results**:
+
 - **E₈ Weyl / 2048 = 340,200** ✓ EXACT INTEGER DIVISION!
 - **E₈ dimension = 248 = 31 × 8** ✓ OCTONIONIC FACTORIZATION!
 - Possible Cl₀,₈ connection (256 - 8 = 248)
 - Factor 31 interpretation unclear
 
 **Deliverables**:
+
 - Sections in [exceptional-structures-complete.md](./exceptional-structures-complete.md)
 - [search-all-exceptional.js](./research-scripts/search-all-exceptional.js) (500+ lines)
 
 **Evidence Quality**:
+
 - E₆: ⚠ UNCLEAR (interesting quotient, no structural alignment)
 - E₈: ⚠ POTENTIAL (exact division compelling, dimensional factorization suggestive)
 
@@ -153,15 +164,16 @@ This document summarizes the completed research investigating exceptional Lie gr
 
 **1. Exceptional = Primitive (Identity, Not Analogy)**
 
-| Primitive Type | Count | Uniqueness Theorem | Atlas Embedding |
-|----------------|-------|-------------------|-----------------|
-| Normed division algebras | 4 | Hurwitz (1898) | Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃] |
-| Exceptional Lie groups | 5 | Classification | G₂, F₄, E₆, E₇, E₈ |
-| Parallelizable spheres | 4 | Bott-Milnor-Kervaire (1958) | S⁰, S¹, S³, S⁷ |
+| Primitive Type           | Count | Uniqueness Theorem          | Atlas Embedding       |
+| ------------------------ | ----- | --------------------------- | --------------------- |
+| Normed division algebras | 4     | Hurwitz (1898)              | Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃] |
+| Exceptional Lie groups   | 5     | Classification              | G₂, F₄, E₆, E₇, E₈    |
+| Parallelizable spheres   | 4     | Bott-Milnor-Kervaire (1958) | S⁰, S¹, S³, S⁷        |
 
 **2. ℝ[ℤ₄] = Abelianized Quaternions** ✓ VERIFIED
 
 Key findings:
+
 - ℝ[ℤ₄] ≅ ℝ[⟨i⟩] where ⟨i⟩ = {1, i, -1, -i} ⊂ Q₈ ⊂ ℍ
 - "Minimal 4-fold structure" - one cyclic ℤ₄ component of quaternions
 - Atlas uses ℝ[ℤ₄] not ℍ because:
@@ -174,6 +186,7 @@ Key findings:
 **3. ℝ[ℤ₃] = Exceptional Triality** ✓ VERIFIED
 
 Key findings:
+
 - Triality is 3-fold symmetry appearing ONLY in octonionic structures
 - SO(8), E₆, E₇, E₈ all have triality (from dimension 8 = 𝕆)
 - ℝ[ℤ₃] is minimal encoding of triality
@@ -197,16 +210,16 @@ This is **exactly** the pattern that builds exceptional groups!
 
 Not analogy - **literal identity**:
 
-| SGA Structure | Primitive Meaning |
-|---------------|-------------------|
-| Elements (h, d, ℓ) | ℍ-like × Triality × 𝕆 |
-| R (order 4) | ℍ quaternion symmetry (abelianized) |
-| D (order 3) | Exceptional triality (E₆, E₇, E₈) |
-| T (order 8) | 𝕆 octonionic symmetry |
-| M (order 2) | ℂ complex conjugation |
+| SGA Structure        | Primitive Meaning                          |
+| -------------------- | ------------------------------------------ |
+| Elements (h, d, ℓ)   | ℍ-like × Triality × 𝕆                      |
+| R (order 4)          | ℍ quaternion symmetry (abelianized)        |
+| D (order 3)          | Exceptional triality (E₆, E₇, E₈)          |
+| T (order 8)          | 𝕆 octonionic symmetry                      |
+| M (order 2)          | ℂ complex conjugation                      |
 | Operations (∘, ⊗, ⊕) | Algebraic operations building exceptionals |
-| Constraints | G₂, F₄ automatic propagation |
-| Equivalence (≡₉₆) | Quotient by exceptional automorphisms |
+| Constraints          | G₂, F₄ automatic propagation               |
+| Equivalence (≡₉₆)    | Quotient by exceptional automorphisms      |
 
 ### Deliverables
 
@@ -236,24 +249,25 @@ Not analogy - **literal identity**:
 
 ### Documentation (10 Major Files)
 
-| File | Size | Purpose | Status |
-|------|------|---------|--------|
-| exceptional-structures-complete.md | 21KB | Master reference | ✓ Complete |
-| g2-embedding-proof.md | 15KB | G₂ detailed proof | ✓ Complete |
-| f4-projection-proof.md | 21KB | F₄ detailed proof | ✓ Complete |
-| exceptional-discovery-guide.md | 15KB | Discovery methodology | ✓ Complete |
-| primitive-correspondence.md | 27KB | Exceptional = Primitive | ✓ Complete |
-| EXCEPTIONAL-WORK-SUMMARY.md | 15KB | Complete work summary | ✓ Complete |
-| research-scripts/README.md | 5KB | Scripts documentation | ✓ Complete |
-| Updated README.md | - | Overview with discoveries | ✓ Updated |
-| Updated GUIDE.md | - | Navigation + FAQ | ✓ Updated |
-| Updated exceptional-structures-complete.md | - | Cross-references | ✓ Updated |
+| File                                       | Size | Purpose                   | Status     |
+| ------------------------------------------ | ---- | ------------------------- | ---------- |
+| exceptional-structures-complete.md         | 21KB | Master reference          | ✓ Complete |
+| g2-embedding-proof.md                      | 15KB | G₂ detailed proof         | ✓ Complete |
+| f4-projection-proof.md                     | 21KB | F₄ detailed proof         | ✓ Complete |
+| exceptional-discovery-guide.md             | 15KB | Discovery methodology     | ✓ Complete |
+| primitive-correspondence.md                | 27KB | Exceptional = Primitive   | ✓ Complete |
+| EXCEPTIONAL-WORK-SUMMARY.md                | 15KB | Complete work summary     | ✓ Complete |
+| research-scripts/README.md                 | 5KB  | Scripts documentation     | ✓ Complete |
+| Updated README.md                          | -    | Overview with discoveries | ✓ Updated  |
+| Updated GUIDE.md                           | -    | Navigation + FAQ          | ✓ Updated  |
+| Updated exceptional-structures-complete.md | -    | Cross-references          | ✓ Updated  |
 
 **Total**: ~120KB comprehensive documentation
 
 ### Research Scripts (15 Files)
 
 **Core Verification Scripts** (7):
+
 1. `construct-g2-automorphisms.js` (346 lines) - G₂ Weyl group
 2. `prove-f4-connection.js` (281 lines) - F₄ quotient
 3. `analyze-e7-structure.js` (287 lines) - E₇ analysis
@@ -263,6 +277,7 @@ Not analogy - **literal identity**:
 7. `investigate-z3-triality-connection.js` - ℝ[ℤ₃] = triality
 
 **Exploration Scripts** (8):
+
 - `explore-2048.js`, `deep-dive-2048.js`, `enumerate-2048.js`
 - `analyze-2048-structure.js`, `verify-2048-hypothesis.js`
 - `debug-fano-signs.js`, `discover-exceptional-structures.js`
@@ -274,18 +289,18 @@ Not analogy - **literal identity**:
 
 ## Key Results Table
 
-| Structure | Dimension | Weyl Order | Atlas Level | Connection | Evidence |
-|-----------|-----------|------------|-------------|------------|----------|
-| **G₂** | 14 | 12 | Fano plane | PSL(2,7) = 14 × 12 | ✓ VERIFIED |
-| **F₄** | 52 | 1,152 | Rank-1 | Weyl/192 = 6 = M×D | ✓ STRONG |
-| **E₆** | 78 | 51,840 | ? | Weyl/192 = 270 = 27×10 | ⚠ UNCLEAR |
-| **E₇** | 133 | 2,903,040 | Cl₀,₇ | 7×8=56, dim≈128 | ⚠ WEAK |
-| **E₈** | 248 | 696,729,600 | 2048 autos | Weyl/2048 exact, 248=31×8 | ⚠ POTENTIAL |
-| **ℝ** | 1 | - | Scalar | Real numbers | ✓ VERIFIED |
-| **ℂ** | 2 | - | Mirror (M) | Complex conjugation | ✓ VERIFIED |
-| **ℍ** | 4 | - | ℝ[ℤ₄] | Abelianized quaternions | ✓ VERIFIED |
-| **𝕆** | 8 | - | Cl₀,₇ | Octonions via Fano | ✓ VERIFIED |
-| **Triality** | 3 | - | ℝ[ℤ₃] | Exceptional 3-fold | ✓ VERIFIED |
+| Structure    | Dimension | Weyl Order  | Atlas Level | Connection                | Evidence     |
+| ------------ | --------- | ----------- | ----------- | ------------------------- | ------------ |
+| **G₂**       | 14        | 12          | Fano plane  | PSL(2,7) = 14 × 12        | ✓ VERIFIED   |
+| **F₄**       | 52        | 1,152       | Rank-1      | Weyl/192 = 6 = M×D        | ✓ STRONG     |
+| **E₆**       | 78        | 51,840      | ?           | Weyl/192 = 270 = 27×10    | ⚠ UNCLEAR   |
+| **E₇**       | 133       | 2,903,040   | Cl₀,₇       | 7×8=56, dim≈128           | ⚠ WEAK      |
+| **E₈**       | 248       | 696,729,600 | 2048 autos  | Weyl/2048 exact, 248=31×8 | ⚠ POTENTIAL |
+| **ℝ**        | 1         | -           | Scalar      | Real numbers              | ✓ VERIFIED   |
+| **ℂ**        | 2         | -           | Mirror (M)  | Complex conjugation       | ✓ VERIFIED   |
+| **ℍ**        | 4         | -           | ℝ[ℤ₄]       | Abelianized quaternions   | ✓ VERIFIED   |
+| **𝕆**        | 8         | -           | Cl₀,₇       | Octonions via Fano        | ✓ VERIFIED   |
+| **Triality** | 3         | -           | ℝ[ℤ₃]       | Exceptional 3-fold        | ✓ VERIFIED   |
 
 ---
 
@@ -294,6 +309,7 @@ Not analogy - **literal identity**:
 ### 1. Atlas Is Built from Atoms
 
 Every component is forced by uniqueness theorems:
+
 - **Hurwitz**: ONLY 4 division algebras exist
 - **Classification**: ONLY 5 exceptional groups exist
 - **Bott-Milnor-Kervaire**: ONLY 4 parallelizable spheres exist
@@ -305,6 +321,7 @@ No choice. Structure was inevitable.
 ### 2. Why Atlas Is Platonic
 
 **Platonic** means:
+
 1. **Unique**: Only one way to build from primitives
 2. **Inevitable**: Constraints propagate automatically
 3. **Complete**: Contains all constraint sets
@@ -315,6 +332,7 @@ No choice. Structure was inevitable.
 ### 3. Why Atlas Appears "Initial to Everything"
 
 **Built from primitives that all other structures must use**:
+
 - To build 8-dimensional structure → must use 𝕆 (ONLY normed division algebra at dim 8)
 - To build rotation groups → must use ℍ (ONLY 4-dim normed division algebra)
 - To build complex analysis → must use ℂ (ONLY 2-dim normed division algebra)
@@ -407,18 +425,21 @@ docs/atlas/
 ## Statistics
 
 ### Documentation
+
 - **Files created**: 10 major documents
 - **Total size**: ~120KB comprehensive documentation
 - **Cross-references**: All documents fully linked
 - **Reading paths**: 5 different paths for different audiences
 
 ### Code
+
 - **Scripts created**: 15 total
 - **Core verification**: 7 scripts, ~2,500 lines
 - **Exploration**: 8 scripts, ~1,500 lines
 - **Total code**: ~4,000 lines programmatic verification
 
 ### Research Time
+
 - **Phases completed**: 5 (all phases)
 - **Primitive correspondence**: Deep dive with 3 investigation scripts
 - **Status**: ✓ ALL RESEARCH COMPLETE
@@ -436,6 +457,7 @@ docs/atlas/
 Both exceptional structures and primitive topological spaces are **atomic** - irreducible, unique, and forced by mathematical necessity.
 
 **Atlas is the realization of this primitive structure**:
+
 - Built from the ONLY 4 normed division algebras (Hurwitz)
 - Embeds all 5 exceptional Lie groups (Classification)
 - Corresponds to the ONLY 4 parallelizable spheres (Bott-Milnor-Kervaire)

@@ -202,6 +202,7 @@ Models are compiled to a tiny algebraic IR:
 - Canonicalize non-adjacent same-type transform chains post-normalization (v0.4.0 extension)
 
 Limitations:
+
 - Cross-type transform folding beyond mirror conjugation is intentionally avoided to preserve evaluation order semantics.
 - Power aggregation skips chains separated by parallel composition boundaries.
 - Mirror conjugation does not invert nested chains with intervening lift/project operations; those remain explicit for correctness.

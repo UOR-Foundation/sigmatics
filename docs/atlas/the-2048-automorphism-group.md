@@ -11,6 +11,7 @@ This document reveals that Atlas possesses **two distinct automorphism groups** 
 **What it is**: The automorphism group of the computationally tractable 96-class system.
 
 **Structure**:
+
 ```
 (ℤ₄ × ℤ₃ × ℤ₈) ⋊ ℤ₂
 ```
@@ -18,6 +19,7 @@ This document reveals that Atlas possesses **two distinct automorphism groups** 
 **Order**: 4 × 3 × 8 × 2 = **192**
 
 **Generators**:
+
 - **R**: Quadrant rotation (order 4)
 - **D**: Triality/modality rotation (order 3)
 - **T**: Context twist (order 8)
@@ -28,6 +30,7 @@ This document reveals that Atlas possesses **two distinct automorphism groups** 
 **Verified**: ✓ All 192 elements enumerated programmatically ([explore-2048.js:219](../../explore-2048.js))
 
 **Implementation**:
+
 - Class backend: [class-system/class.ts](../../packages/core/src/class-system/class.ts)
 - SGA backend: [sga/transforms.ts](../../packages/core/src/sga/transforms.ts)
 - Bridge verification: [bridge/validation.ts](../../packages/core/src/bridge/validation.ts) (1,248 tests)
@@ -37,14 +40,17 @@ This document reveals that Atlas possesses **two distinct automorphism groups** 
 **What it is**: The complete automorphism group of the full 128-dimensional Clifford algebra Cl₀,₇.
 
 **Structure** (hypothesis):
+
 ```
 2⁷ × 2⁴ = 128 × 16
 ```
+
 or possibly a discrete subgroup of Pin(7)
 
 **Order**: 2¹¹ = **2048**
 
 **Generators** (conjectured):
+
 - **Sign changes**: e_i ↦ ±e_i (2⁷ = 128 possibilities)
 - **Grade involution**: α ↦ α̂ (changes sign of odd grades)
 - **Reversion**: α ↦ α̃ (reverses product order)
@@ -76,6 +82,7 @@ This prime factorization indicates a **2-group** - all elements have power-of-2 
 **Total possibilities**: 2⁷ = 128
 
 **Why automorphisms?**
+
 - Preserves anticommutation: e_i e_j + e_j e_i = 0
 - Preserves Euclidean norm: e_i² = 1
 - Preserves geometric product structure
@@ -93,6 +100,7 @@ Sign changes on basis vectors ARE automorphisms because **signs commute with the
 ### The 16 Factor: Extended Involutions
 
 **Clifford involutions** (order 2):
+
 1. **Grade involution** (ˆ): Grade k → (-1)^k × Grade k
 2. **Reversion** (~): e_i₁...e_iₖ → e_iₖ...e_i₁
 3. **Clifford conjugate** (¯): ¯ = ~ˆ
@@ -104,6 +112,7 @@ Sign changes on basis vectors ARE automorphisms because **signs commute with the
 ### The Overcounting Problem
 
 **Naive calculation** ([analyze-2048-structure.js:53](../../analyze-2048-structure.js)):
+
 ```
 4 (involutions) × 128 (sign changes) × 168 (Fano permutations) = 86,016
 ```
@@ -123,6 +132,7 @@ The PSL(2,7) Fano automorphism group (order 168) already includes symmetries tha
 This suggests **only 4 "orthogonal" Fano automorphisms** combine independently with involutions and sign changes.
 
 **Revised structure**: 2048 = 128 × 16 where:
+
 - **128** = All sign changes (2⁷)
 - **16** = 4 (Klein involutions) × 4 (special Fano permutations)
 
@@ -134,17 +144,17 @@ This suggests **only 4 "orthogonal" Fano automorphisms** combine independently w
 
 **Graded structure**:
 
-| Grade | Name | Basis Count | Binomial |
-|-------|------|-------------|----------|
-| 0 | Scalar | 1 | (₇C₀) |
-| 1 | Vectors | 7 | (₇C₁) |
-| 2 | Bivectors | 21 | (₇C₂) |
-| 3 | Trivectors | 35 | (₇C₃) |
-| 4 | 4-vectors | 35 | (₇C₄) |
-| 5 | 5-vectors | 21 | (₇C₅) |
-| 6 | 6-vectors | 7 | (₇C₆) |
-| 7 | Pseudoscalar | 1 | (₇C₇) |
-| **Total** | | **128** | **2⁷** |
+| Grade     | Name         | Basis Count | Binomial |
+| --------- | ------------ | ----------- | -------- |
+| 0         | Scalar       | 1           | (₇C₀)    |
+| 1         | Vectors      | 7           | (₇C₁)    |
+| 2         | Bivectors    | 21          | (₇C₂)    |
+| 3         | Trivectors   | 35          | (₇C₃)    |
+| 4         | 4-vectors    | 35          | (₇C₄)    |
+| 5         | 5-vectors    | 21          | (₇C₅)    |
+| 6         | 6-vectors    | 7           | (₇C₆)    |
+| 7         | Pseudoscalar | 1           | (₇C₇)    |
+| **Total** |              | **128**     | **2⁷**   |
 
 **Rank-1 restriction**: The 96-class system uses only **grade 0 (scalar) + grade 1 (7 vectors) = 8 elements** per (h₂, d) pair.
 
@@ -155,11 +165,13 @@ This suggests **only 4 "orthogonal" Fano automorphisms** combine independently w
 **Geometric product**: e_i · e_j creates **bivectors** (grade 2) when i ≠ j
 
 **Example**:
+
 ```
 e₁ · e₂ = e₁ ∧ e₂  (bivector, grade 2)
 ```
 
 **Automorphisms can mix grades**:
+
 - Grade involution: Maps grade 1 → -grade 1 (sign change, but stays grade 1)
 - Products: Can create higher grades from lower grades
 - Some automorphisms **do not preserve rank-1 property**
@@ -169,6 +181,7 @@ e₁ · e₂ = e₁ ∧ e₂  (bivector, grade 2)
 ### The Restriction Map
 
 **Conceptual relationship**:
+
 ```
 Aut(Cl₀,₇) --restrict--> Aut(rank-1 subspace)
   2048 elements              ??? elements
@@ -183,17 +196,20 @@ Aut(Cl₀,₇) --restrict--> Aut(rank-1 subspace)
 **Many automorphisms of Cl₀,₇ do NOT preserve rank-1**:
 
 **Grade-mixing example**:
+
 ```
 Automorphism φ: e_i ↦ e_i + e_j
 ```
 
 This maps:
+
 - **Rank-1 element**: e_i (grade 1)
 - **Non-rank-1 result**: e_i + e_j (still grade 1, but **sum** of two basis vectors)
 
 While this is still grade 1, it's no longer a **single basis vector**, so it's not rank-1 in the tensor product sense.
 
 **More severe**:
+
 ```
 Automorphism ψ involving products: e_i ↦ (e_i + e_j e_k)
 ```
@@ -203,15 +219,18 @@ This creates a **grade mixture** (grades 1 and 2), completely leaving rank-1 spa
 ### Which Automorphisms Preserve Rank-1?
 
 **Rank-1 preservation requires**:
+
 - Scalar → scalar
 - Single vector e_i → single vector e_j (or ±e_j)
 
 **Automorphisms that preserve**:
+
 - ✓ **Sign changes**: e_i ↦ ±e_i
-- ✓ **Permutations**: e_i ↦ e_{π(i)}
-- ✓ **Combinations**: e_i ↦ ±e_{π(i)}
+- ✓ **Permutations**: e*i ↦ e*{π(i)}
+- ✓ **Combinations**: e*i ↦ ±e*{π(i)}
 
 **Automorphisms that do NOT preserve**:
+
 - ✗ **Grade involution** (on odd grades): Maps grade 1 → -grade 1 (sign, but breaks structure)
 - ✗ **Products**: e_i → e_i e_j (creates bivector, grade 2)
 - ✗ **Linear combinations**: e_i → e_i + e_j (sum, not single basis)
@@ -221,11 +240,13 @@ This creates a **grade mixture** (grades 1 and 2), completely leaving rank-1 spa
 **Important discovery**: Not all 192 rank-1 automorphisms are restrictions of 2048 full automorphisms!
 
 **Why**:
+
 - The 192 group includes transformations on the **ℝ[ℤ₄] and ℝ[ℤ₃] factors**
 - These act on the **quadrant (h₂) and modality (d)** components
 - These are **external to Cl₀,₇** - they're part of the tensor product structure
 
 **Full SGA structure**:
+
 ```
 SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
 ```
@@ -241,14 +262,17 @@ SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
 ### Refined Understanding
 
 **The 2048 automorphism group**: Aut(Cl₀,₇)
+
 - Acts on 128-dimensional Clifford algebra
 - Includes sign changes, involutions, permutations
 
 **The 192 automorphism group**: Aut(rank-1 tensor product)
+
 - Acts on r^h ⊗ e_ℓ ⊗ τ^d (96 classes)
 - Includes quadrant rotations (R), modality rotations (D), context twists (T), mirror (M)
 
 **Relationship**:
+
 ```
 Aut(Cl₀,₇) ⊗ Aut(ℝ[ℤ₄]) ⊗ Aut(ℝ[ℤ₃])
    (2048?)         (8)          (6)
@@ -259,6 +283,7 @@ Restricted to rank-1 subspace → 192 elements
 **Hypothesis**: The full automorphism group of the tensor product is even larger than 2048!
 
 **Possible structure**:
+
 ```
 Aut(SGA) ⊇ Aut(Cl₀,₇) × Aut(ℝ[ℤ₄]) × Aut(ℝ[ℤ₃])
          ⊇ 2048 × 8 × 6 = 98,304 (too large!)
@@ -271,23 +296,27 @@ Aut(SGA) ⊇ Aut(Cl₀,₇) × Aut(ℝ[ℤ₄]) × Aut(ℝ[ℤ₃])
 ### The 96-Class System is a Projection
 
 **What we've documented**:
+
 - 96 classes
 - 192 automorphisms
 - Rank-1 restriction
 - Computational tractability
 
 **What exists beneath**:
+
 - 128 dimensions (full Cl₀,₇)
 - 2048 automorphisms (full symmetry group)
 - All grades (0 through 7)
 - Complete algebraic structure
 
 **Analogy**: The 96-class system is to the full Atlas what:
+
 - A 2D shadow is to a 3D object
 - A cross-section is to a solid
 - A projection is to a higher-dimensional space
 
 **The rank-1 restriction makes Atlas computationally tractable** by reducing:
+
 - 128 dimensions → 8 elements per (h₂, d) → 96 classes total
 - ∞ possible elements (linear combinations) → 96 discrete states
 - Full automorphism group → 192 computational transformations
@@ -315,6 +344,7 @@ It's that the **entire 96-class system** is itself a projection of a deeper stru
 **4. Future extensions**
 
 Understanding the 2048 group opens possibilities:
+
 - Operations on higher-grade elements (bivectors, trivectors, etc.)
 - Fuller use of Clifford algebra capabilities
 - Deeper connections to geometry and physics
@@ -329,6 +359,7 @@ Understanding the 2048 group opens possibilities:
 **Hypothesis**: 2⁷ × 2⁴ = 128 × 16
 
 **Unknown**:
+
 - What is the precise 16-fold structure?
 - Is it extended Klein group?
 - Is it grade-dependent involutions?
@@ -363,6 +394,7 @@ Understanding the 2048 group opens possibilities:
 **If 2048 acts on Cl₀,₇**, and **192 acts on full SGA**, what is the relationship?
 
 **Possible resolution**:
+
 - The 192 group includes automorphisms of ℝ[ℤ₄] (dihedral D₄, order 8) and ℝ[ℤ₃] (dihedral D₃, order 6)
 - Total: 2048 × 8 × 6 = 98,304 (impossible - way too large)
 - Constraint: Only compatible combinations count
@@ -375,6 +407,7 @@ Understanding the 2048 group opens possibilities:
 **Not all 192 rank-1 automorphisms** are restrictions of 2048 full automorphisms.
 
 **R, D, T operate on different factors**:
+
 - R: Acts on ℝ[ℤ₄] (quadrant)
 - D: Acts on ℝ[ℤ₃] (modality)
 - T: Acts on Cl₀,₇ (context/basis permutation)
@@ -425,23 +458,25 @@ Understanding the 2048 group opens possibilities:
 
 **Atlas has (at least) two automorphism groups**:
 
-| Property | Rank-1 Group | Full Group |
-|----------|--------------|------------|
-| **Order** | 192 | 2048 |
-| **Structure** | (ℤ₄ × ℤ₃ × ℤ₈) ⋊ ℤ₂ | 2⁷ × 2⁴ (hypothesis) |
-| **Generators** | R, D, T, M | Signs, involutions, permutations |
-| **Acts on** | 96 classes (rank-1) | 128 basis blades (all grades) |
-| **Space** | r^h ⊗ e_ℓ ⊗ τ^d | Full Cl₀,₇ |
-| **Verified** | ✓ Enumerated | ✗ Needs verification |
-| **Documented** | ✓ Complete | This document |
+| Property       | Rank-1 Group        | Full Group                       |
+| -------------- | ------------------- | -------------------------------- |
+| **Order**      | 192                 | 2048                             |
+| **Structure**  | (ℤ₄ × ℤ₃ × ℤ₈) ⋊ ℤ₂ | 2⁷ × 2⁴ (hypothesis)             |
+| **Generators** | R, D, T, M          | Signs, involutions, permutations |
+| **Acts on**    | 96 classes (rank-1) | 128 basis blades (all grades)    |
+| **Space**      | r^h ⊗ e_ℓ ⊗ τ^d     | Full Cl₀,₇                       |
+| **Verified**   | ✓ Enumerated        | ✗ Needs verification             |
+| **Documented** | ✓ Complete          | This document                    |
 
 **The correspondence**:
+
 - **NOT a subgroup relationship** (2048/192 ≠ integer)
 - **Different action spaces** (full algebra vs. rank-1 tensor product)
 - **Restriction map exists** but is neither injective nor surjective
 - **Both are valid views** of Atlas's symmetry
 
 **This reveals**:
+
 - The 96-class system is a **computationally tractable projection**
 - The full structure is **vastly deeper** (128 dimensions, 2048 symmetries)
 - Atlas exhibits **stratified depth**: multiple levels of structure, each with its own automorphism group

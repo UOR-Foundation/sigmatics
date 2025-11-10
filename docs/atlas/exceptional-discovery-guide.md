@@ -26,6 +26,7 @@ Exceptional structures reveal themselves through four characteristic patterns:
 **Pattern**: Atlas dimensions ≈ Exceptional group dimensions
 
 **Examples**:
+
 - E₇ dimension = 133 ≈ 128 = Cl₀,₇ dimension (difference: +5)
 - E₈ dimension = 248 ≈ 256 = Cl₀,₈ dimension (difference: -8)
 - F₄ dimension = 52 relates to 4 × 3 × 8 = 96 rank-1 structure
@@ -39,6 +40,7 @@ Exceptional structures reveal themselves through four characteristic patterns:
 **Pattern**: Exceptional Weyl order / Atlas group = small meaningful integer
 
 **Examples**:
+
 - F₄ Weyl / Rank-1 autos = 1,152 / 192 = **6 = 2 × 3** = ℤ₂ × ℤ₃
 - E₆ Weyl / Rank-1 autos = 51,840 / 192 = **270 = 27 × 10**
 - E₈ Weyl / 2048 autos = 696,729,600 / 2048 = **340,200** (exact!)
@@ -52,6 +54,7 @@ Exceptional structures reveal themselves through four characteristic patterns:
 **Pattern**: Naive product / Target = exceptional number
 
 **Examples**:
+
 - 2048 automorphisms: 4 × 128 × 168 = 86,016 → factor **42 = 2 × 3 × 7**
 - The factor 7 appears because only **4 orthogonal Fano permutations** combine independently
 - The factor 2 × 3 = 6 mirrors F₄ quotient structure
@@ -65,6 +68,7 @@ Exceptional structures reveal themselves through four characteristic patterns:
 **Pattern**: Quotient factors match Atlas symmetries exactly
 
 **Examples**:
+
 - F₄ quotient: 6 = **ℤ₂ × ℤ₃** = **Mirror (M) × Triality (D)** ✓ EXACT MATCH
 - E₇ fundamental: **56 = 7 × 8** = Fano dimension × Octonion dimension ✓ PERFECT PRODUCT
 - E₈ dimension: **248 = 31 × 8** = ? × Octonion dimension
@@ -80,25 +84,30 @@ Exceptional structures reveal themselves through four characteristic patterns:
 ### The Discovery Process
 
 **Step 1: Identify the foundation**
+
 - Atlas uses 7 basis vectors (imaginary octonion units: e₁, e₂, ..., e₇)
 - Octonion multiplication defined by Fano plane (7 points, 7 lines)
 
 **Step 2: Find the automorphism group**
+
 - PSL(2,7) = automorphisms of Fano plane = 168 elements
 - This is implemented in Atlas as Fano plane symmetries
 
 **Step 3: Look for factorization**
+
 - PSL(2,7) = 168 = 14 × 12
 - G₂ Lie algebra dimension = **14**
 - G₂ Weyl group order = **12**
 - **Perfect factorization!**
 
 **Step 4: Verify structural connection**
+
 - G₂ = Aut(𝕆) = automorphisms preserving octonion multiplication
 - W(G₂) = 12 elements form subgroup of PSL(2,7)
 - Factor 14 represents G₂ acting on 7-dimensional imaginary octonions
 
 **Step 5: Programmatic verification**
+
 ```javascript
 // See: construct-g2-automorphisms.js
 const g2_weyl = 12;
@@ -120,31 +129,52 @@ console.log('PSL(2,7) = (dim G₂) × (Weyl G₂)');
 ### The Discovery Process
 
 **Step 1: Count rank-1 automorphisms**
+
 - Rank-1 elements: r^h ⊗ e_ℓ ⊗ τ^d (96 classes)
 - Automorphism group: (ℤ₄ × ℤ₃ × ℤ₈) ⋊ ℤ₂ = 4 × 3 × 8 × 2 = **192 elements**
 
 **Step 2: Look for exceptional Weyl relationship**
+
 - F₄ Weyl group order = 1,152
 - Compute quotient: 1,152 / 192 = **6**
 
 **Step 3: Factor the quotient** (Signal 2)
+
 - 6 = 2 × 3 = **ℤ₂ × ℤ₃**
 - This is a small, meaningful group-theoretic factorization
 
 **Step 4: Identify factors in Atlas** (Signal 4 - CRITICAL!)
+
 - ℤ₂ = **M** (Mirror transform, order 2)
 - ℤ₃ = **D** (Triality/modality rotation, order 3)
 - **EXACT STRUCTURAL MATCH!**
 
 **Step 5: Verify with code**
+
 ```javascript
 // See: prove-f4-connection.js
 function enumerateRank1Group() {
   let count = 0;
-  for (let a = 0; a < 4; a++)      // R^a
-    for (let b = 0; b < 3; b++)    // D^b
-      for (let c = 0; c < 8; c++)  // T^c
-        for (let e = 0; e < 2; e++)  // M^e
+  for (
+    let a = 0;
+    a < 4;
+    a++ // R^a
+  )
+    for (
+      let b = 0;
+      b < 3;
+      b++ // D^b
+    )
+      for (
+        let c = 0;
+        c < 8;
+        c++ // T^c
+      )
+        for (
+          let e = 0;
+          e < 2;
+          e++ // M^e
+        )
           count++; // ... (distinct permutations)
   return count;
 }
@@ -155,6 +185,7 @@ console.log('6 = ℤ₂ × ℤ₃ = M × D'); // EXACT!
 ```
 
 **Step 6: Understand the quotient structure**
+
 - Kernel of projection: {I, M, D, D², MD, MD²} = 6 elements
 - These are "pure" Mirror and Triality operations
 - They quotient out to give rank-1 automorphisms
@@ -170,15 +201,18 @@ console.log('6 = ℤ₂ × ℤ₃ = M × D'); // EXACT!
 ### E₇ Investigation (Weak Connection)
 
 **Dimensional signal**:
+
 - E₇ dimension = 133
 - Cl₀,₇ dimension = 128
 - Difference = +5 (unexplained)
 
 **Weyl group signal**:
+
 - E₇ Weyl / 2048 = 2,903,040 / 2048 = **1,417.5** (NON-INTEGER!)
 - This argues **against** direct subgroup relationship
 
 **BUT - Fundamental representation signal**:
+
 - E₇ fundamental rep = 56 dimensions
 - **7 × 8 = 56** ✓ EXACT!
 - 7 = Fano plane dimension
@@ -191,11 +225,13 @@ console.log('6 = ℤ₂ × ℤ₃ = M × D'); // EXACT!
 ### E₆ Investigation (Unclear)
 
 **Weyl quotient signal**:
+
 - E₆ Weyl / 192 = 51,840 / 192 = **270**
 - Factor: 270 = 27 × 10
 - 27 = E₆ fundamental representation dimension ✓
 
 **BUT**:
+
 - No clear Atlas structural interpretation of factor 10
 - No dimensional proximity (78 vs 96 or 128)
 - Relationship unclear
@@ -207,16 +243,19 @@ console.log('6 = ℤ₂ × ℤ₃ = M × D'); // EXACT!
 ### E₈ Investigation (Potential)
 
 **Dimensional signal**:
+
 - E₈ dimension = 248 = **31 × 8**
 - 8 = Octonion dimension ✓
 - 31 = ? (unclear)
 
 **Weyl division signal** (STRONG!):
+
 - E₈ Weyl = 696,729,600
 - 696,729,600 / 2048 = **340,200** (EXACT INTEGER!)
 - 340,200 mod 2048 = 0 ✓ PERFECT DIVISION
 
 **Potential Cl₀,₈ connection**:
+
 - Cl₀,₈ dimension = 256 = 2⁸
 - E₈ dimension = 248 = 256 - 8
 - Difference: -8 (one octonion?)
@@ -230,6 +269,7 @@ console.log('6 = ℤ₂ × ℤ₃ = M × D'); // EXACT!
 ### 1. Start with Atlas Structure
 
 Identify the level you're investigating:
+
 - **Fano plane** (7 dimensions)
 - **Rank-1** (96 classes, 192 automorphisms)
 - **Cl₀,₇** (128 dimensions, 2048 automorphisms)
@@ -238,12 +278,13 @@ Identify the level you're investigating:
 ### 2. Compute Group Orders
 
 Enumerate or calculate automorphism group sizes:
+
 ```javascript
 // Example: Rank-1 automorphisms
-const r_order = 4;  // R: rotate quadrants
-const d_order = 3;  // D: triality/modality
-const t_order = 8;  // T: twist context
-const m_order = 2;  // M: mirror
+const r_order = 4; // R: rotate quadrants
+const d_order = 3; // D: triality/modality
+const t_order = 8; // T: twist context
+const m_order = 2; // M: mirror
 
 const group_size = r_order * d_order * t_order * m_order;
 console.log(group_size); // 192
@@ -252,13 +293,14 @@ console.log(group_size); // 192
 ### 3. Check Exceptional Weyl Quotients
 
 For each exceptional group, compute:
+
 ```javascript
 const exceptional_weyl = {
   G2: 12,
   F4: 1152,
   E6: 51840,
   E7: 2903040,
-  E8: 696729600
+  E8: 696729600,
 };
 
 for (const [name, weyl] of Object.entries(exceptional_weyl)) {
@@ -277,6 +319,7 @@ for (const [name, weyl] of Object.entries(exceptional_weyl)) {
 ### 4. Factor Quotients for Structural Meaning
 
 When you find integer quotients, factor them:
+
 ```javascript
 function primeFactorization(n) {
   const factors = [];
@@ -298,6 +341,7 @@ console.log(`ℤ₂ × ℤ₃ structure`);
 ### 5. Match Factors to Atlas Symmetries
 
 Check if quotient factors correspond to Atlas transforms:
+
 - **ℤ₂**: M (Mirror), or sign changes, or involutions
 - **ℤ₃**: D (Triality/modality rotation)
 - **ℤ₄**: R (Quadrant rotation)
@@ -308,6 +352,7 @@ Check if quotient factors correspond to Atlas transforms:
 ### 6. Look for Dimensional Relationships
 
 Check products and quotients:
+
 ```javascript
 const atlas_dims = [7, 8, 96, 128, 192, 2048];
 const exceptional_dims = [14, 52, 78, 133, 248];
@@ -330,6 +375,7 @@ for (const atlas_dim of atlas_dims) {
 ### 7. Verify with Programmatic Enumeration
 
 Write verification scripts:
+
 ```javascript
 // Enumerate all distinct automorphisms
 const seen = new Set();
@@ -350,6 +396,7 @@ console.log(`Distinct automorphisms: ${seen.size}`);
 ### 8. Document Your Findings
 
 Create analysis files:
+
 - **Verified**: Programmatic proof + structural alignment
 - **Strong**: Perfect quotient + factor match + no counterexamples
 - **Potential**: Exact division or product + dimensional proximity
@@ -389,6 +436,7 @@ Create analysis files:
 ### Verified (G₂ level)
 
 **Requirements**:
+
 1. ✓ Explicit construction of all automorphisms
 2. ✓ Programmatic verification (all tests pass)
 3. ✓ Perfect factorization with structural meaning
@@ -400,6 +448,7 @@ Create analysis files:
 ### Strong Hypothesis (F₄ level)
 
 **Requirements**:
+
 1. ✓ Perfect integer quotient
 2. ✓ Factor matches Atlas symmetries **exactly**
 3. ✓ Programmatic enumeration confirms group size
@@ -411,6 +460,7 @@ Create analysis files:
 ### Potential (E₈ level)
 
 **Requirements**:
+
 1. ✓ Exact division (Weyl / Atlas = integer)
 2. ✓ Dimensional factorization (248 = 31 × 8)
 3. ⚠ Factor interpretation unclear (what is 31?)
@@ -421,6 +471,7 @@ Create analysis files:
 ### Weak (E₇ level)
 
 **Requirements**:
+
 1. ⚠ Dimensional proximity (133 ≈ 128)
 2. ✗ Non-integer Weyl quotient (1417.5)
 3. ✓ Fundamental rep product (7 × 8 = 56)
@@ -460,7 +511,7 @@ Create analysis files:
 
 3. **E₇ and split octonions**
    - E₇ relates to split octonions (pseudo-Euclidean signature)
-   - Check if different Clifford signature Cl_{p,q} relates to E₇
+   - Check if different Clifford signature Cl\_{p,q} relates to E₇
 
 ### Programmatic Verification
 
@@ -493,6 +544,7 @@ This is what makes Atlas Platonic. We **discovered** these exceptional embedding
 ---
 
 **References**:
+
 - [exceptional-structures-complete.md](./exceptional-structures-complete.md) - Master reference
 - [g2-embedding-proof.md](./g2-embedding-proof.md) - G₂ detailed proof
 - [f4-projection-proof.md](./f4-projection-proof.md) - F₄ detailed proof

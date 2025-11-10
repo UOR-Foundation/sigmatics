@@ -129,10 +129,7 @@ console.log();
 /**
  * Apply a transform to a batch of classes efficiently
  */
-function batchTransform(
-  classes: number[],
-  transform: (c: number) => number,
-): number[] {
+function batchTransform(classes: number[], transform: (c: number) => number): number[] {
   return classes.map(transform);
 }
 
@@ -281,10 +278,7 @@ console.log();
 /**
  * Find the orbit of a class under repeated application of a transform
  */
-function findOrbit(
-  initialClass: number,
-  transform: (c: number) => number,
-): number[] {
+function findOrbit(initialClass: number, transform: (c: number) => number): number[] {
   const orbit: number[] = [initialClass];
   const seen = new Set<number>([initialClass]);
 
@@ -309,9 +303,7 @@ console.log();
 // Verify the orbit closes
 const nextClass = spiral(orbit[orbit.length - 1]);
 console.log(`Orbit closure: spiral(${orbit[orbit.length - 1]}) = ${nextClass}`);
-console.log(
-  nextClass === orbit[0] ? '✓ Orbit closes correctly' : '✗ Orbit does not close',
-);
+console.log(nextClass === orbit[0] ? '✓ Orbit closes correctly' : '✗ Orbit does not close');
 console.log();
 
 // ============================================================================

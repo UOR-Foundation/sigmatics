@@ -55,12 +55,12 @@ The model system (`packages/core/src/model/*`, `compiler/*`, `server/*`):
 
 Both systems handle **transforms** (R, D, T, M):
 
-| Feature | Evaluator | Model System |
-|---------|-----------|--------------|
-| **Input** | Sigil expression strings | Numeric class indices |
+| Feature                   | Evaluator                        | Model System             |
+| ------------------------- | -------------------------------- | ------------------------ |
+| **Input**                 | Sigil expression strings         | Numeric class indices    |
 | **Transform application** | Via `applyTransformsViaModels()` | Direct backend execution |
-| **Output** | Canonical bytes | Transformed class index |
-| **Performance** | Parse + walk AST + dispatch | Compiled plan execution |
+| **Output**                | Canonical bytes                  | Transformed class index  |
+| **Performance**           | Parse + walk AST + dispatch      | Compiled plan execution  |
 
 **Key Insight**: The evaluator **already routes** transform application through the model registry (`StdlibModels.R/D/T/M`), so it's v0.4.0 compliant.
 
@@ -187,9 +187,11 @@ The evaluator is a **consumer** of the model system, not a competing implementat
 ### 1. Expand Model Coverage
 
 Currently **not modeled** as declarative operations:
+
 - mark, copy, swap, merge, split, quote, evaluate
 
 Could be modeled, but would require:
+
 - Defining semantics in IR
 - Backend implementations
 - Significant work for unclear benefit (already working)
@@ -197,11 +199,13 @@ Could be modeled, but would require:
 ### 2. Performance Optimization
 
 The evaluator has higher overhead than direct model calls because:
+
 - Parses expression string every time
 - Walks AST to collect leaves
 - Dispatches to models for each transform
 
 Could optimize:
+
 - Cache parsed ASTs
 - Pre-compile hot expressions
 - Direct lower to backend plans
@@ -211,6 +215,7 @@ But current performance is acceptable (benchmarks show 0.46M ops/sec for simple 
 ### 3. Documentation Clarity
 
 Could improve docs to clarify:
+
 - When to use evaluator vs. direct model calls
 - Evaluator is for DSL expressions
 - Models are for programmatic operations
@@ -244,6 +249,7 @@ The evaluator is a **first-class citizen** of the v0.4.0 architecture, not techn
 ## Conclusion
 
 The evaluator provides essential functionality that the model system doesn't replace:
+
 - Sigil expression DSL parsing
 - Generator operations (mark, copy, swap, etc.)
 - Operational backend (word emission)

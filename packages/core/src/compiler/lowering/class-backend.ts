@@ -53,6 +53,30 @@ function collectClassOperations(node: IRNode): ClassOperation[] {
           case 'mul96':
             ops.push({ type: 'mul96', overflowMode: op.overflowMode });
             break;
+          case 'gcd96':
+            ops.push({ type: 'gcd96' });
+            break;
+          case 'lcm96':
+            ops.push({ type: 'lcm96' });
+            break;
+          case 'sum':
+            ops.push({ type: 'sum' });
+            break;
+          case 'product':
+            ops.push({ type: 'product' });
+            break;
+          case 'max':
+            ops.push({ type: 'max' });
+            break;
+          case 'min':
+            ops.push({ type: 'min' });
+            break;
+          case 'factor96':
+            ops.push({ type: 'factor96' });
+            break;
+          case 'isPrime96':
+            ops.push({ type: 'isPrime96' });
+            break;
           case 'project':
             // Grade projection not supported in class backend
             // This should have been caught by backend selection
@@ -188,6 +212,62 @@ export function executeClassPlan(plan: ClassPlan, inputs: Record<string, unknown
         // Already in class form
         break;
       }
+
+      case 'gcd96': {
+        const aVal: number = (inputs.a as number) ?? state ?? 0;
+        const bVal: number = (inputs.b as number) ?? 0;
+        state = computeGcd96(aVal % 96, bVal % 96);
+        break;
+      }
+
+      case 'lcm96': {
+        const aVal: number = (inputs.a as number) ?? state ?? 0;
+        const bVal: number = (inputs.b as number) ?? 0;
+        state = computeLcm96(aVal % 96, bVal % 96);
+        break;
+      }
+
+      case 'sum': {
+        const values: number[] = (inputs.values as number[]) ?? [];
+        state = values.reduce((acc, v) => (acc + v) % 96, 0);
+        break;
+      }
+
+      case 'product': {
+        const values: number[] = (inputs.values as number[]) ?? [];
+        state = values.reduce((acc, v) => (acc * v) % 96, 1);
+        break;
+      }
+
+      case 'max': {
+        const values: number[] = (inputs.values as number[]) ?? [];
+        if (values.length === 0) {
+          state = 0;
+        } else {
+          state = Math.max(...values.map((v) => v % 96));
+        }
+        break;
+      }
+
+      case 'min': {
+        const values: number[] = (inputs.values as number[]) ?? [];
+        if (values.length === 0) {
+          state = 0;
+        } else {
+          state = Math.min(...values.map((v) => v % 96));
+        }
+        break;
+      }
+
+      case 'factor96': {
+        const nVal: number = ((inputs.n as number) ?? state ?? 0) % 96;
+        return computeFactor96(nVal);
+      }
+
+      case 'isPrime96': {
+        const nVal: number = ((inputs.n as number) ?? state ?? 0) % 96;
+        return computeIsPrime96(nVal);
+      }
     }
   }
 
@@ -233,4 +313,105 @@ function applyMTransform(classIndex: number): number {
   // M inverts d: 0→0, 1→2, 2→1
   const newD = d === 0 ? 0 : ((3 - d) as 1 | 2);
   return componentsToClassIndex({ h2, d: newD as 0 | 1 | 2, l });
+}
+
+/**
+ * Compute GCD in ℤ₉₆
+ * Uses Euclidean algorithm mod 96
+ */
+function computeGcd96(a: number, b: number): number {
+  let x = a % 96;
+  let y = b % 96;
+
+  while (y !== 0) {
+    const temp = y;
+    y = x % y;
+    x = temp;
+  }
+
+  return x;
+}
+
+/**
+ * Compute LCM in ℤ₉₆
+ * LCM(a, b) = (a * b) / GCD(a, b)
+ */
+function computeLcm96(a: number, b: number): number {
+  const aVal = a % 96;
+  const bVal = b % 96;
+
+  if (aVal === 0 || bVal === 0) {
+    return 0;
+  }
+
+  const gcd = computeGcd96(aVal, bVal);
+  return ((aVal * bVal) / gcd) % 96;
+}
+
+/**
+ * Primes in ℤ₉₆
+ * Since 96 = 2^5 × 3, only numbers coprime to 96 can be considered "prime"
+ * in this ring. These are numbers whose GCD with 96 is 1.
+ */
+const PRIMES_96 = [
+  1, 5, 7, 11, 13, 17, 19, 23, 25, 29, 31, 35, 37, 41, 43, 47, 49, 53, 55, 59, 61, 65, 67, 71, 73,
+  77, 79, 83, 85, 89, 91, 95,
+];
+
+/**
+ * Check if a number is prime in ℤ₉₆
+ * A number is "prime" in ℤ₉₆ if it's coprime to 96 (i.e., GCD(n, 96) = 1)
+ */
+function computeIsPrime96(n: number): boolean {
+  const nVal = n % 96;
+  return PRIMES_96.includes(nVal);
+}
+
+/**
+ * Factor a number in ℤ₉₆
+ * This finds the prime factorization using primes that are coprime to 96
+ *
+ * Note: In ℤ₉₆, factorization is not unique for all elements.
+ * We return the "standard" factorization using the smallest primes.
+ */
+function computeFactor96(n: number): number[] {
+  const nVal = n % 96;
+
+  if (nVal === 0) {
+    return [0];
+  }
+
+  if (nVal === 1) {
+    return [1];
+  }
+
+  // For perfect factorization, we use trial division with primes coprime to 96
+  const factors: number[] = [];
+  let remaining = nVal;
+
+  // Try each prime in ℤ₉₆
+  for (const p of PRIMES_96) {
+    if (p === 1) continue; // Skip 1
+
+    while (remaining % p === 0 && remaining > 1) {
+      factors.push(p);
+      remaining = (remaining / p) % 96;
+
+      // Avoid infinite loops
+      if (factors.length > 100) {
+        break;
+      }
+    }
+
+    if (remaining === 1) {
+      break;
+    }
+  }
+
+  // If we couldn't factor it completely, return what we have
+  if (remaining > 1 && factors.length === 0) {
+    return [nVal];
+  }
+
+  return factors.length > 0 ? factors : [nVal];
 }

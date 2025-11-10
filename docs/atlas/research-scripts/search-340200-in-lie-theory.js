@@ -81,7 +81,9 @@ for (let q = 2; q <= 200; q++) {
 if (psl2_results.length > 0) {
   console.log('Close matches for PSL(2, q):');
   psl2_results.forEach(({ q, order, diff }) => {
-    console.log(`  PSL(2, ${q.toString().padStart(3)}) = ${order.toLocaleString().padStart(12)} (diff: ${diff.toLocaleString().padStart(8)})`);
+    console.log(
+      `  PSL(2, ${q.toString().padStart(3)}) = ${order.toLocaleString().padStart(12)} (diff: ${diff.toLocaleString().padStart(8)})`,
+    );
   });
 } else {
   console.log('No close matches found in PSL(2, q) for q ≤ 200');
@@ -101,7 +103,9 @@ for (let q = 2; q <= 50; q++) {
 if (psl3_results.length > 0) {
   console.log('Close matches for PSL(3, q):');
   psl3_results.forEach(({ q, order, diff }) => {
-    console.log(`  PSL(3, ${q.toString().padStart(3)}) = ${order.toLocaleString().padStart(12)} (diff: ${diff.toLocaleString().padStart(8)})`);
+    console.log(
+      `  PSL(3, ${q.toString().padStart(3)}) = ${order.toLocaleString().padStart(12)} (diff: ${diff.toLocaleString().padStart(8)})`,
+    );
   });
 } else {
   console.log('No close matches found in PSL(3, q) for q ≤ 50');
@@ -120,7 +124,7 @@ const exceptional = {
   'F₄': 1152,
   'E₆': 51840,
   'E₇': 2903040,
-  'E₈': 696729600
+  'E₈': 696729600,
 };
 
 console.log('Testing quotients of exceptional Weyl groups:\n');
@@ -261,13 +265,13 @@ Object.entries(e8_subgroups).forEach(([root, name]) => {
 
 console.log();
 console.log('Checking D₈ = SO(16):');
-const D8_weyl = 2 ** 8 * factorial(8);  // 10,321,920
+const D8_weyl = 2 ** 8 * factorial(8); // 10,321,920
 console.log(`  |W(D₈)| = 2⁸ × 8! = ${D8_weyl.toLocaleString()}`);
 console.log(`  340,200 / |W(D₈)| = ${(TARGET / D8_weyl).toFixed(6)}`);
 console.log();
 
 console.log('Checking A₈ = SU(9):');
-const A8_weyl = factorial(9);  // 362,880
+const A8_weyl = factorial(9); // 362,880
 console.log(`  |W(A₈)| = 9! = ${A8_weyl.toLocaleString()}`);
 console.log(`  340,200 / |W(A₈)| = ${(TARGET / A8_weyl).toFixed(6)}`);
 console.log();

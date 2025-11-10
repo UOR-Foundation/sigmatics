@@ -68,18 +68,21 @@ import { tokenize } from '@uor-foundation/sigmatics/lexer';
 2. **Universal Constraint Composition Language:** Generalizes to arbitrary taxonomies beyond the 96-class system
 
 **The Model System:**
+
 - Models are arbitrary computational operations compiled from declarative schemas
 - Rich constraints (types, invariants, properties) enable fusion optimization
 - Models become algebraic objects that SGA composes via `∘`, `⊗`, `R`, `D`, `T`, `M`
 - Constraints fully specify composition - no heuristics needed
 
 **Constraint-Driven Design:**
+
 - Constraints define what consumer expects from producer in a pipeline
 - More constraints = tighter contract = more fusion opportunities
 - Type safety enforced at composition boundaries
 - Incompatible models require explicit adapter insertion
 
 **Example taxonomies SGA can express:**
+
 - Factorization: `model(integer) = ⊗(model(prime_i))`
 - NLP: `model(sentence) = ∘(model(word_i))`
 - Any domain where composition preserves invariants

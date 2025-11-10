@@ -5,11 +5,13 @@ This guide helps you navigate the Atlas documentation and understand the discove
 ## Start Here
 
 **New to Atlas?** Begin with:
+
 1. [README.md](./README.md) - Overview and warning about modal fixation
 2. [atlas-defined.md](./atlas-defined.md) - Comprehensive definition of Atlas
 3. [universal-properties.md](./universal-properties.md) - Why Atlas is inevitable
 
 **Want mathematical foundations?** Read:
+
 1. [algebraic-foundations.md](./algebraic-foundations.md) - The tensor product structure
 2. [96-class-system.md](./96-class-system.md) - How 96 classes emerge
 3. [implementation-as-proof.md](./implementation-as-proof.md) - Executable verification
@@ -18,7 +20,8 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 ### Core Definitions
 
-**[atlas-defined.md](./atlas-defined.md)** - *Start here for complete picture*
+**[atlas-defined.md](./atlas-defined.md)** - _Start here for complete picture_
+
 - What Atlas is (mathematically, computationally, categorically)
 - Why Atlas is inevitable (universal properties)
 - Multi-modal nature (super-symmetry)
@@ -32,7 +35,8 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 ### Foundational Mathematics
 
-**[algebraic-foundations.md](./algebraic-foundations.md)** - *The tensor product structure*
+**[algebraic-foundations.md](./algebraic-foundations.md)** - _The tensor product structure_
+
 - Clifford algebra Cl₀,₇ (geometric product, 7 dimensions)
 - Group algebras ℝ[ℤ₄], ℝ[ℤ₃] (quadrants, triality)
 - SGA tensor product (full 1,536 dimensions)
@@ -43,7 +47,8 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 **Best for**: Mathematicians wanting rigorous foundations
 
-**[universal-properties.md](./universal-properties.md)** - *Why Atlas is inevitable*
+**[universal-properties.md](./universal-properties.md)** - _Why Atlas is inevitable_
+
 - Universal Property 1: Minimal tensor product
 - Universal Property 2: Complete generators (why 7?)
 - Universal Property 3: Transform automorphisms (why 4?)
@@ -56,7 +61,8 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 ### The 96-Class System
 
-**[96-class-system.md](./96-class-system.md)** - *How classes emerge from structure*
+**[96-class-system.md](./96-class-system.md)** - _How classes emerge from structure_
+
 - Emergence from 4×3×8 factorization
 - Class index formula: 24h + 8d + ℓ
 - Byte encoding and equivalence relation (≡₉₆)
@@ -72,7 +78,8 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 ### Verification and Proof
 
-**[implementation-as-proof.md](./implementation-as-proof.md)** - *The codebase as theorem*
+**[implementation-as-proof.md](./implementation-as-proof.md)** - _The codebase as theorem_
+
 - Theorem 1: Bijective encoding
 - Theorem 2: Transform commutativity
 - Theorem 3: Transform orders (R⁴=D³=T⁸=M²=id)
@@ -157,6 +164,7 @@ This guide helps you navigate the Atlas documentation and understand the discove
 **Critical**: Do not view Atlas through only one lens.
 
 **Common traps**:
+
 - "Atlas is just a Clifford algebra" (misses group algebras, generators, semantics)
 - "Atlas is just a programming language" (misses algebraic foundations)
 - "Atlas is based on octonions" (confuses one component with the whole)
@@ -170,9 +178,10 @@ This guide helps you navigate the Atlas documentation and understand the discove
 **Atlas is discovered, not designed.**
 
 **Evidence**:
+
 - Every component (Cl₀,₇, ℤ₄, ℤ₃, 𝕆) is unique and inevitable
 - All "design choices" are actually mathematical necessities
-- >2,000 verification tests pass (exhaustive for finite structure)
+- > 2,000 verification tests pass (exhaustive for finite structure)
 - No counterexamples found in any domain
 
 **Implication**: The implementation **reveals** Atlas rather than constructs it.
@@ -184,6 +193,7 @@ This guide helps you navigate the Atlas documentation and understand the discove
 **Most important proof**: Class permutations ≅ SGA automorphisms
 
 **Statement**:
+
 ```
 ∀g ∈ {R,D,T,M}, ∀c ∈ {0..95}:
   project(g_SGA(lift(c))) = g_class(c)
@@ -236,9 +246,10 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 ### Master Reference
 
-**[exceptional-structures-complete.md](./exceptional-structures-complete.md)** - *Complete analysis of all five exceptional Lie groups*
+**[exceptional-structures-complete.md](./exceptional-structures-complete.md)** - _Complete analysis of all five exceptional Lie groups_
 
 **Coverage**:
+
 - G₂: PSL(2,7) = 14 × 12 factorization through Fano plane (✓ VERIFIED)
 - F₄: Rank-1 group as quotient F₄ Weyl / (ℤ₂ × ℤ₃) (✓ STRONG HYPOTHESIS)
 - E₆: Weyl / 192 = 270 relationship (⚠ UNCLEAR)
@@ -251,7 +262,7 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 ### Detailed Proofs
 
-**[g2-embedding-proof.md](./g2-embedding-proof.md)** - *G₂ through Fano plane*
+**[g2-embedding-proof.md](./g2-embedding-proof.md)** - _G₂ through Fano plane_
 
 **Key theorem**: G₂ is naturally embedded in Atlas through the 7-dimensional imaginary octonion structure, with PSL(2,7) = (dim G₂) × (Weyl G₂) = 14 × 12.
 
@@ -259,7 +270,7 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 **Length**: ~15KB
 
-**[f4-projection-proof.md](./f4-projection-proof.md)** - *F₄ quotient by Mirror × Triality*
+**[f4-projection-proof.md](./f4-projection-proof.md)** - _F₄ quotient by Mirror × Triality_
 
 **Key theorem**: Rank-1 automorphism group (192 elements) ≅ F₄ Weyl / (ℤ₂ × ℤ₃), where quotient factors are precisely Mirror (M) and Triality (D) transforms.
 
@@ -269,11 +280,12 @@ This guide helps you navigate the Atlas documentation and understand the discove
 
 ### Discovery Guide
 
-**[exceptional-discovery-guide.md](./exceptional-discovery-guide.md)** - *How to discover exceptional embeddings yourself*
+**[exceptional-discovery-guide.md](./exceptional-discovery-guide.md)** - _How to discover exceptional embeddings yourself_
 
 **Purpose**: Practical guide to finding and understanding exceptional Lie group embeddings in Atlas
 
 **Content**:
+
 - The four discovery signals (dimensions, quotients, overcounting, alignment)
 - Verified case study: G₂ through Fano plane (step-by-step)
 - Strong hypothesis: F₄ through rank-1 quotient (detailed walkthrough)
@@ -350,6 +362,7 @@ Programmatic verification scripts in [research-scripts/](./research-scripts/):
 **No** - Atlas is more fundamental than any single modality.
 
 **Atlas is**:
+
 - An algebraic structure (tensor product)
 - A computational system (dual semantics)
 - A categorical framework (monoidal category)
@@ -379,6 +392,7 @@ Both are **canonical interpretations** - neither is more "true" than the other. 
 **Bridge**: The pair of functions lift (class → SGA) and project (SGA → class)
 
 **Critical property**:
+
 ```
 project(g_SGA(lift(c))) = g_class(c)
 ```
@@ -394,6 +408,7 @@ project(g_SGA(lift(c))) = g_class(c)
 **Long answer**: See [exceptional-structures-complete.md](./exceptional-structures-complete.md)
 
 **Key discoveries**:
+
 - **G₂** (verified): Embeds through Fano plane, PSL(2,7) = 14 × 12
 - **F₄** (strong): Rank-1 group is F₄ Weyl / (ℤ₂ × ℤ₃) where quotient = Mirror × Triality
 - **E₇** (weak): Dimensional proximity 133 ≈ 128, but non-integer Weyl ratio
@@ -423,12 +438,14 @@ project(g_SGA(lift(c))) = g_class(c)
 ## Meta-Documentation Note
 
 **These documents avoid**:
+
 - Claiming Atlas is "designed" (it's discovered)
 - Privileging one modality (all are equal projections)
 - Unverified assertions (everything is proven or cited)
 - Modal fixation (each doc presents multiple views)
 
 **These documents emphasize**:
+
 - Universal properties (why Atlas is inevitable)
 - Executable verification (codebase as proof)
 - Multi-modal nature (super-symmetry)

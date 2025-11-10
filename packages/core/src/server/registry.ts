@@ -170,6 +170,41 @@ function buildIR(descriptor: ModelDescriptor): IRNode {
     return IR.projectClass(IR.param('x'));
   }
 
+  // Arithmetic operations
+  if (name === 'gcd96') {
+    return IR.gcd96();
+  }
+
+  if (name === 'lcm96') {
+    return IR.lcm96();
+  }
+
+  // Reduction operations
+  if (name === 'sum') {
+    return IR.sum();
+  }
+
+  if (name === 'product') {
+    return IR.product();
+  }
+
+  if (name === 'max') {
+    return IR.max();
+  }
+
+  if (name === 'min') {
+    return IR.min();
+  }
+
+  // Factorization operations
+  if (name === 'factor96') {
+    return IR.factor96();
+  }
+
+  if (name === 'isPrime96') {
+    return IR.isPrime96();
+  }
+
   throw new Error(`Unknown model: ${name}`);
 }
 
@@ -297,6 +332,103 @@ export const StdlibModels = {
       runtime: { x: {} },
       complexityHint: 'C1',
       loweringHints: { prefer: 'sga' },
+    }),
+
+  /**
+   * Arithmetic operations
+   */
+  gcd96: () =>
+    compileModel<{ a: number; b: number }, number>({
+      name: 'gcd96',
+      version: '1.0.0',
+      namespace: 'stdlib.arithmetic',
+      compiled: {},
+      runtime: { a: 0, b: 0 },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'class' },
+    }),
+
+  lcm96: () =>
+    compileModel<{ a: number; b: number }, number>({
+      name: 'lcm96',
+      version: '1.0.0',
+      namespace: 'stdlib.arithmetic',
+      compiled: {},
+      runtime: { a: 0, b: 0 },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'class' },
+    }),
+
+  /**
+   * Reduction operations
+   */
+  sum: () =>
+    compileModel<{ values: number[] }, number>({
+      name: 'sum',
+      version: '1.0.0',
+      namespace: 'stdlib.reduction',
+      compiled: {},
+      runtime: { values: [] },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'class' },
+    }),
+
+  product: () =>
+    compileModel<{ values: number[] }, number>({
+      name: 'product',
+      version: '1.0.0',
+      namespace: 'stdlib.reduction',
+      compiled: {},
+      runtime: { values: [] },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'class' },
+    }),
+
+  max: () =>
+    compileModel<{ values: number[] }, number>({
+      name: 'max',
+      version: '1.0.0',
+      namespace: 'stdlib.reduction',
+      compiled: {},
+      runtime: { values: [] },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'class' },
+    }),
+
+  min: () =>
+    compileModel<{ values: number[] }, number>({
+      name: 'min',
+      version: '1.0.0',
+      namespace: 'stdlib.reduction',
+      compiled: {},
+      runtime: { values: [] },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'class' },
+    }),
+
+  /**
+   * Factorization operations
+   */
+  factor96: () =>
+    compileModel<{ n: number }, number[]>({
+      name: 'factor96',
+      version: '1.0.0',
+      namespace: 'stdlib.factorization',
+      compiled: {},
+      runtime: { n: 0 },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'class' },
+    }),
+
+  isPrime96: () =>
+    compileModel<{ n: number }, boolean>({
+      name: 'isPrime96',
+      version: '1.0.0',
+      namespace: 'stdlib.factorization',
+      compiled: {},
+      runtime: { n: 0 },
+      complexityHint: 'C1',
+      loweringHints: { prefer: 'class' },
     }),
 };
 

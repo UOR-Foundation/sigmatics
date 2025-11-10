@@ -7,6 +7,7 @@ This document provides a comprehensive definition of **Atlas** - the discovered 
 **This document describes the rank-1 projection (96 classes, 192 automorphisms).**
 
 Atlas actually possesses **two automorphism groups**:
+
 - **Order 192**: Acts on rank-1 elements (documented here)
 - **Order 2048**: Acts on full 128-dimensional Cl₀,₇ (see [The 2048 Automorphism Group](./the-2048-automorphism-group.md))
 
@@ -31,6 +32,7 @@ The 96-class system is a **computationally tractable projection** of a vastly de
 ### The Tensor Product
 
 **Full algebra**:
+
 ```
 SGA = Cl₀,₇ ⊗_ℝ ℝ[ℤ₄] ⊗_ℝ ℝ[ℤ₃]
 ```
@@ -38,6 +40,7 @@ SGA = Cl₀,₇ ⊗_ℝ ℝ[ℤ₄] ⊗_ℝ ℝ[ℤ₃]
 **Dimension**: 128 × 4 × 3 = 1,536
 
 **Rank-1 restriction**:
+
 ```
 Atlas₉₆ = {r^h ⊗ e_ℓ ⊗ τ^d : h ∈ ℤ₄, d ∈ ℤ₃, ℓ ∈ ℤ₈}
 ```
@@ -47,11 +50,13 @@ Atlas₉₆ = {r^h ⊗ e_ℓ ⊗ τ^d : h ∈ ℤ₄, d ∈ ℤ₃, ℓ ∈ ℤ�
 ### The Coordinate System
 
 **Class index**:
+
 ```
 class(h, d, ℓ) = 24h + 8d + ℓ  ∈ {0..95}
 ```
 
 **Semantic interpretation**:
+
 - **h ∈ {0,1,2,3}**: Scope/quadrant (WHERE computation happens)
 - **d ∈ {0,1,2}**: Modality (HOW computation behaves: neutral/produce/consume)
 - **ℓ ∈ {0..7}**: Context (WHAT structure is manipulated: scalar + 7 basis vectors)
@@ -61,37 +66,46 @@ class(h, d, ℓ) = 24h + 8d + ℓ  ∈ {0..95}
 **Four fundamental automorphisms**:
 
 **R (Rotation)**: Quadrant action
+
 ```
 R(r^h ⊗ e_ℓ ⊗ τ^d) = r^(h+1) ⊗ e_ℓ ⊗ τ^d
 ```
+
 - Order 4: R⁴ = identity
 - Permutes quadrants: h ↦ h+1 (mod 4)
 
 **D (Triality)**: Modality action
+
 ```
 D(r^h ⊗ e_ℓ ⊗ τ^d) = r^h ⊗ e_ℓ ⊗ τ^(d+1)
 ```
+
 - Order 3: D³ = identity
 - Permutes modalities: d ↦ d+1 (mod 3)
 - 32 triality orbits (96 classes / 3)
 
 **T (Twist)**: Context action
+
 ```
 T(r^h ⊗ e_ℓ ⊗ τ^d) = r^h ⊗ e_{(ℓ+1)} ⊗ τ^d
 ```
+
 - Order 8: T⁸ = identity
 - Permutes contexts: ℓ ↦ ℓ+1 (mod 8)
 - Includes scalar (ℓ=0) in the cycle
 
 **M (Mirror)**: Modality involution
+
 ```
 M(r^h ⊗ e_ℓ ⊗ τ^d) = r^h ⊗ e_ℓ ⊗ τ^(-d)
 ```
+
 - Order 2: M² = identity (involution)
 - Swaps produce ↔ consume, fixes neutral
 - Conjugates other transforms: MgM = g⁻¹
 
 **Group structure**:
+
 ```
 [R,D] = [R,T] = [D,T] = 0  (pairwise commute)
 MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
@@ -118,17 +132,21 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Two canonical interpretations**:
 
 **1. Literal Backend** (Denotational):
+
 ```
 ⟦·⟧_B : Expr → B⁸*
 ```
+
 - Maps expressions to **byte sequences**
 - Outputs canonical form (LSB=0, minimal modality encoding)
 - With belt addressing: produces (byte, page) → address
 
 **2. Operational Backend** (Procedural):
+
 ```
 ⟦·⟧_G : Expr → Words(G)
 ```
+
 - Maps expressions to **instruction sequences**
 - Emits control words: phase markers, generator words, transform markers
 - Describes HOW computation proceeds, not just WHAT result is
@@ -146,6 +164,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Answer**: Clifford algebra - the unique associative algebra extending the geometric product to arbitrary dimensions.
 
 **Why 7 dimensions?**
+
 - Connects to octonions (unique 8D normed division algebra = scalar + 7 imaginaries)
 - Maximal dimension maintaining computational tractability (2⁷ = 128 basis blades)
 - 7 imaginary octonions ↔ 7 basis vectors in Cl₀,₇
@@ -158,6 +177,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Question**: What are the minimal discrete symmetries beyond binary?
 
 **Answer**:
+
 - **ℤ₄**: Minimal cyclic group supporting cardinal directionality (4 quadrants, 360° rotation in 4 steps)
 - **ℤ₃**: Minimal cyclic group beyond binary (triality: neutral/produce/consume)
 
@@ -189,6 +209,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Answer**: Precisely the 4 transforms R, D, T, M (acting on respective factors).
 
 **Why these 4?**
+
 - **R**: Canonical action of ℤ₄ generator r
 - **D**: Canonical action of ℤ₃ generator τ
 - **T**: Canonical basis permutation in Cl₀,₇
@@ -203,6 +224,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Each modality is a valid perspective**:
 
 ### Algebraic Modality
+
 **View**: Atlas as tensor product SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
 
 **Truth**: This is the **algebraic foundation** - the structure from which everything else emerges.
@@ -210,6 +232,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Limitation**: Focuses on static structure, misses computational dynamics.
 
 ### Computational Modality
+
 **View**: Atlas as dual-backend symbolic evaluator (literal + operational semantics)
 
 **Truth**: This is the **execution model** - how Atlas actually computes.
@@ -217,6 +240,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Limitation**: Focuses on process, misses underlying algebra.
 
 ### Categorical Modality
+
 **View**: Atlas as symmetric monoidal closed category with 7 generators
 
 **Truth**: This is the **compositional structure** - how operations combine.
@@ -224,6 +248,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Limitation**: Focuses on abstract composition, misses concrete representation.
 
 ### Geometric Modality
+
 **View**: Atlas as octonionic geometry with Fano plane multiplication
 
 **Truth**: This is the **geometric intuition** - visual/spatial understanding.
@@ -231,6 +256,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Limitation**: Focuses on one component (Cl₀,₇), misses group algebra factors.
 
 ### Information-Theoretic Modality
+
 **View**: Atlas as content-addressable system with 96-class hash space
 
 **Truth**: This is the **addressing structure** - how data is located.
@@ -238,6 +264,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 **Limitation**: Focuses on storage, misses transformation algebra.
 
 ### Type-Theoretic Modality
+
 **View**: Atlas as typed programming language with phase/modality/context types
 
 **Truth**: This is the **computational semantics** - how programs are checked.
@@ -281,6 +308,7 @@ MRM = R⁻¹, MDM = D⁻¹, MTM = T⁻¹
 Throughout Atlas, constraints are **discovered properties**, not imposed rules:
 
 **Examples**:
+
 - **LSB=0 for canonical bytes**: Emerges from equivalence relation, not decreed
 - **Modality encoding** (b₅,b₄): Unique minimal encoding for 3 values using 2 bits
 - **Transform distribution**: Follows from equivariance (morphisms preserve structure)
@@ -295,6 +323,7 @@ Throughout Atlas, constraints are **discovered properties**, not imposed rules:
 **Atlas**: Codebase **excavates** a structure that exists independently.
 
 **Evidence**:
+
 - **Bridge validation** proves class permutations ≅ SGA automorphisms (they are "the same thing")
 - **Algebraic law verification** proves the group structure was discovered, not invented
 - **Test vectors** are unique - no alternative satisfies the constraints
@@ -338,6 +367,7 @@ Atlas is initial in the sense that:
 6. **Execution**: Run compiled plan
 
 **Examples of domains**:
+
 - Arithmetic: Ring operations on ℤ₉₆
 - Transforms: Group actions R, D, T, M
 - Algebra: Full SGA geometric product, grade projections
@@ -384,6 +414,7 @@ Atlas is initial in the sense that:
 **Atlas is not just theoretically well-defined - it is empirically verified.**
 
 **Exhaustive proofs** (see [Implementation as Proof](./implementation-as-proof.md)):
+
 - Bijective encoding: 96 classes ↔ (h,d,ℓ) coordinates ✓
 - Transform commutativity: [R,D]=[R,T]=[D,T]=0 across all 96 classes ✓
 - Transform orders: R⁴=D³=T⁸=M²=id across all 96 classes ✓
@@ -410,6 +441,7 @@ Atlas is initial in the sense that:
 6. **Universally**: An initial object - the minimal structure from which everything else can be derived
 
 **Atlas is not:**
+
 - A programming language (too narrow)
 - A computer system (too concrete)
 - An invention (implies human authorship)

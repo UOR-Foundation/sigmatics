@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Sigmatics is the reference implementation of the **Atlas Sigil Algebra** formal specification v1.0 - a symbolic computation system built on 7 fundamental generators and a 96-class resonance structure (≡₉₆). This is a TypeScript monorepo maintained by the UOR Foundation.
 
 **Core concepts:**
+
 - The algebra operates on a 96-class equivalence structure over 256 bytes
 - Each class is identified by a triple (h₂, d, ℓ) where h₂ ∈ {0,1,2,3} is the quadrant, d ∈ {0,1,2} is the modality, and ℓ ∈ {0..7} is the context ring position
 - Seven generators: `mark`, `copy`, `swap`, `merge`, `split`, `quote`, `evaluate`
@@ -16,6 +17,7 @@ Sigmatics is the reference implementation of the **Atlas Sigil Algebra** formal 
 ## Repository Structure
 
 **Monorepo workspace** organized as:
+
 - `packages/core/` - Main library (`@uor-foundation/sigmatics`), published to npm
 - `apps/playground-web/` - React/Vite interactive web UI
 - `apps/playground-cli/` - Command-line exploration tool
@@ -98,6 +100,7 @@ server/           # v0.4.0: Model registry and standard library
 Each module exports via barrel pattern: `module/*.ts` → `module/index.ts` → `src/index.ts`.
 
 **Import patterns within core:**
+
 ```typescript
 // Relative imports for internal modules
 import { tokenize } from '../lexer';
@@ -105,6 +108,7 @@ import type { Phrase } from '../types';
 ```
 
 **Import patterns from external packages/apps:**
+
 ```typescript
 import { Atlas } from '@uor-foundation/sigmatics';
 import { tokenize } from '@uor-foundation/sigmatics/lexer';
@@ -141,6 +145,7 @@ All 8 specification test vectors in `packages/core/test/index.ts` must pass. Err
 **Key architectural change:** Operations are compiled from declarative schemas → IR → backend execution plans.
 
 **Compilation pipeline:**
+
 1. Schema (JSON/TypeScript descriptor) → ModelDescriptor
 2. Compiler rewrites to IR (intermediate representation)
 3. IR fusion optimizes by complexity class (C0/C1/C2/C3)
@@ -148,6 +153,7 @@ All 8 specification test vectors in `packages/core/test/index.ts` must pass. Err
 5. Backend dispatcher runs the plan
 
 **Complexity classes:**
+
 - **C0**: Fully compiled, no runtime parameters - maximum fusion
 - **C1**: Few runtime degrees - prefer class backend (permutations/rank-1)
 - **C2**: Bounded mixed-grade - selective SGA backend
@@ -156,6 +162,7 @@ All 8 specification test vectors in `packages/core/test/index.ts` must pass. Err
 **Standard library models** are registered in `packages/core/src/server/registry.ts` and exposed via `Atlas.Model` namespace.
 
 **Adding new models:**
+
 1. Define schema in `packages/core/src/model/schemas/`
 2. Register in `server/registry.ts`
 3. Add test in `packages/core/test/model/`
@@ -164,6 +171,7 @@ All 8 specification test vectors in `packages/core/test/index.ts` must pass. Err
 ## AST Type System
 
 AST types in `packages/core/src/types/types.ts` encode:
+
 - **Operation**: Generator applied to ClassSigil
 - **Sequential**: Right-associative composition (`items` array, last item executes first)
 - **Parallel**: Parallel branches (⊗ operator)
@@ -172,6 +180,7 @@ AST types in `packages/core/src/types/types.ts` encode:
 - **Phrase**: Top-level (Transformed | Parallel)
 
 **ClassSigil** carries:
+
 - `classIndex` (0..95)
 - Optional transforms: `rotate`, `triality`, `twist`, `mirror`
 - Optional `page` (0..47) for belt addressing
@@ -179,6 +188,7 @@ AST types in `packages/core/src/types/types.ts` encode:
 ## Specification Compliance
 
 This implementation must maintain 100% compliance with:
+
 - Atlas Sigil Algebra — Formal Specification v1.0
 - Atlas Sigil Parser Spec + Test Vectors v1.0
 
@@ -216,6 +226,7 @@ All 8 test vectors must pass. Never modify core evaluation semantics without ver
 ## Operational Backend Word Format
 
 The operational backend emits control markers with specific formatting:
+
 - Phase markers: `phase[h₂=<n>]`
 - Generator words: `<generator>[d=<n>]` (e.g., `copy[d=0]`)
 - Rotation markers: `→ρ[<k>]`, `←ρ[<k>]`
@@ -260,12 +271,14 @@ Main branch: `main`
 The 96-class structure (≡₉₆) is the **canonical instantiation** that Sigmatics uses internally, but the algebraic framework extends to any domain:
 
 **SGA provides:**
+
 - Universal composition operators: `∘` (sequential), `⊗` (parallel/tensor), `⊕` (merge)
 - Universal transforms: `R` (rotate scope), `D` (change modality), `T` (twist context), `M` (mirror)
 - Constraint propagation rules that work across taxonomies
 - A language for expressing compositional constraints without heuristics
 
 **Example taxonomies:**
+
 - **Factorization**: `model(integer) = ⊗(model(prime_i))` with constraint `product(primes) === integer`
 - **NLP**: `model(sentence) = ∘(model(word_i))` with constraint `meaning(sentence) ⊃ ⋃(meaning(word_i))`
 - **Program synthesis**: `model(program) = ∘(model(statement_i))` with constraint `spec(program) ⇒ ∀ invariant(statement_i)`
@@ -282,6 +295,7 @@ The 96-class structure (≡₉₆) is the **canonical instantiation** that Sigma
 **Key principle:** Constraints are what the consumer (successor in pipeline) expects from the producer (predecessor). More constraints = tighter interface contract = more optimization opportunities.
 
 **Example constraint composition:**
+
 ```typescript
 // Language model taxonomy
 [model(prompt) = model(message) ∘ model(user)] + model(language) = model(response)
@@ -296,12 +310,14 @@ The 96-class structure (≡₉₆) is the **canonical instantiation** that Sigma
 ### SGA vs. Model System
 
 **SGA (Foundation Layer):**
+
 - Implements the mathematical structure that defines Sigmatics
 - Embodies the ≡₉₆ equivalence structure and formal specification
 - Provides canonical transforms (R, D, T, M) and algebraic operations
 - NOT arbitrary - this IS what Sigmatics is
 
 **Model System (Application Layer):**
+
 - Compiles arbitrary operations from declarative schemas
 - Can represent operations beyond Sigmatics-specific primitives
 - Uses SGA as the semantic backend when needed

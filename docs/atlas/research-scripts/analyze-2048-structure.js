@@ -71,7 +71,9 @@ console.log('Part 4: Combining Components');
 console.log('----------------------------------------------------------------\n');
 
 console.log('Naive product:');
-console.log(`  ${involutions} × ${signChanges} × ${fanoAutomorphisms} = ${involutions * signChanges * fanoAutomorphisms}\n`);
+console.log(
+  `  ${involutions} × ${signChanges} × ${fanoAutomorphisms} = ${involutions * signChanges * fanoAutomorphisms}\n`,
+);
 
 const naiveProduct = involutions * signChanges * fanoAutomorphisms;
 const target = 2048;

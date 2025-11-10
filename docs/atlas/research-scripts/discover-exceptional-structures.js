@@ -32,7 +32,7 @@ const exceptionalGroups = [
 ];
 
 console.log('Exceptional Lie Groups:\n');
-exceptionalGroups.forEach(g => {
+exceptionalGroups.forEach((g) => {
   console.log(`  ${g.name}:`);
   console.log(`    Dimension: ${g.dimension}`);
   console.log(`    Weyl group order: ${g.order_weyl.toLocaleString()}`);
@@ -54,7 +54,7 @@ const atlasDimensions = {
 };
 
 console.log('Atlas structural dimensions:\n');
-Object.values(atlasDimensions).forEach(d => {
+Object.values(atlasDimensions).forEach((d) => {
   console.log(`  ${d.name}: ${d.dim}`);
   console.log(`    Structure: ${d.structure}\n`);
 });

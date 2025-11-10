@@ -3,6 +3,7 @@
 This document establishes the profound correspondence between exceptional mathematical structures and primitive topological spaces, showing that Atlas is built from the **atoms of mathematics** - structures that cannot be further decomposed.
 
 **See also**:
+
 - [exceptional-structures-complete.md](./exceptional-structures-complete.md) - Complete exceptional group analysis
 - [algebraic-foundations.md](./algebraic-foundations.md) - Tensor product structure
 - [SGA-AS-UNIVERSAL-ALGEBRA.md](./SGA-AS-UNIVERSAL-ALGEBRA.md) - Universal constraint language
@@ -14,6 +15,7 @@ This document establishes the profound correspondence between exceptional mathem
 **Central Discovery**: Exceptional mathematics and primitive topological spaces are the **same thing** viewed through different modalities. Both represent atomic structures that cannot be decomposed further.
 
 **The Atoms**:
+
 - **4 Normed Division Algebras**: ℝ, ℂ, ℍ, 𝕆 (Hurwitz's theorem - these are the ONLY ones)
 - **5 Exceptional Lie Groups**: G₂, F₄, E₆, E₇, E₈ (all built from octonions)
 - **4 Parallelizable Spheres**: S⁰, S¹, S³, S⁷ (the ONLY spheres with global tangent frames)
@@ -30,12 +32,12 @@ This document establishes the profound correspondence between exceptional mathem
 
 **The Four Algebras**:
 
-| Algebra | Name | Dimension | Properties | Lost |
-|---------|------|-----------|------------|------|
-| ℝ | Reals | 1 | Commutative, Associative, Normed | - |
-| ℂ | Complex | 2 | Commutative, Associative, Normed | - |
-| ℍ | Quaternions | 4 | Associative, Normed | Commutativity |
-| 𝕆 | Octonions | 8 | Normed, Alternative | Commutativity, Associativity |
+| Algebra | Name        | Dimension | Properties                       | Lost                         |
+| ------- | ----------- | --------- | -------------------------------- | ---------------------------- |
+| ℝ       | Reals       | 1         | Commutative, Associative, Normed | -                            |
+| ℂ       | Complex     | 2         | Commutative, Associative, Normed | -                            |
+| ℍ       | Quaternions | 4         | Associative, Normed              | Commutativity                |
+| 𝕆       | Octonions   | 8         | Normed, Alternative              | Commutativity, Associativity |
 
 **Why These Are Primitive**:
 
@@ -49,6 +51,7 @@ This document establishes the profound correspondence between exceptional mathem
 ### The Cayley-Dickson Construction
 
 Each algebra is constructed from the previous by the Cayley-Dickson process:
+
 ```
 ℝ → ℂ (add i: i² = -1)
 ℂ → ℍ (add j, k: ij = k, ji = -k)
@@ -61,12 +64,12 @@ The construction **stops** at octonions because further doubling would lose the 
 
 Each division algebra has an associated unit sphere:
 
-| Algebra | Unit Sphere | Dimension | Property |
-|---------|-------------|-----------|----------|
-| ℝ | S⁰ | 0 | Two points {±1} |
-| ℂ | S¹ | 1 | Circle |
-| ℍ | S³ | 3 | 3-sphere (rotations in 4D) |
-| 𝕆 | S⁷ | 7 | 7-sphere |
+| Algebra | Unit Sphere | Dimension | Property                   |
+| ------- | ----------- | --------- | -------------------------- |
+| ℝ       | S⁰          | 0         | Two points {±1}            |
+| ℂ       | S¹          | 1         | Circle                     |
+| ℍ       | S³          | 3         | 3-sphere (rotations in 4D) |
+| 𝕆       | S⁷          | 7         | 7-sphere                   |
 
 **Critical fact**: These are the **ONLY parallelizable spheres**. A sphere S^n is parallelizable if it has n everywhere-independent tangent vector fields. By the **Bott-Milnor-Kervaire theorem**, only S⁰, S¹, S³, S⁷ are parallelizable.
 
@@ -79,26 +82,29 @@ This is not coincidence - it's the **topological manifestation** of the division
 ### What Makes a Lie Group "Exceptional"?
 
 **Classical Lie groups**: Built from matrices over ℝ, ℂ, or ℍ (associative algebras)
+
 - A_n (special linear groups)
 - B_n, C_n (orthogonal, symplectic groups)
 - D_n (orthogonal groups)
 
 **Exceptional Lie groups**: Require **octonions** (non-associative!)
+
 - G₂, F₄, E₆, E₇, E₈
 
 **Key insight**: Exceptional groups exist because octonions are non-associative. They are the automorphism groups and symmetries that arise when you use 𝕆 instead of ℝ, ℂ, or ℍ.
 
 ### The Five Exceptional Groups
 
-| Group | Dimension | Weyl Order | Construction | Division Algebra |
-|-------|-----------|------------|--------------|------------------|
-| G₂ | 14 | 12 | Aut(𝕆) | 𝕆 |
-| F₄ | 52 | 1,152 | Aut(J₃(𝕆)) | J₃(𝕆) (3×3 Hermitian octonionic) |
-| E₆ | 78 | 51,840 | ℂ ⊗ 𝕆 | Complexified octonions |
-| E₇ | 133 | 2,903,040 | ℍ ⊗ 𝕆 | Quaternionic octonions |
-| E₈ | 248 | 696,729,600 | 𝕆 ⊗ 𝕆 | Octonionic octonions |
+| Group | Dimension | Weyl Order  | Construction | Division Algebra                 |
+| ----- | --------- | ----------- | ------------ | -------------------------------- |
+| G₂    | 14        | 12          | Aut(𝕆)       | 𝕆                                |
+| F₄    | 52        | 1,152       | Aut(J₃(𝕆))   | J₃(𝕆) (3×3 Hermitian octonionic) |
+| E₆    | 78        | 51,840      | ℂ ⊗ 𝕆        | Complexified octonions           |
+| E₇    | 133       | 2,903,040   | ℍ ⊗ 𝕆        | Quaternionic octonions           |
+| E₈    | 248       | 696,729,600 | 𝕆 ⊗ 𝕆        | Octonionic octonions             |
 
 **Pattern observation**:
+
 ```
 G₂ = Aut(𝕆)                    (pure octonions)
 F₄ = Aut(J₃(𝕆))                (3×3 octonionic matrices)
@@ -123,6 +129,7 @@ The exceptional groups arise systematically from tensor products of division alg
 ```
 
 **Reading the square**:
+
 - Classical groups (A, B, C, D families) appear when using ℝ, ℂ, ℍ
 - Exceptional groups (F₄, E₆, E₇, E₈) appear when 𝕆 is involved
 - G₂ = Aut(𝕆) is the "seed" exceptional group
@@ -138,32 +145,35 @@ The exceptional groups arise systematically from tensor products of division alg
 Both division algebras and exceptional groups share a critical property: **they cannot be decomposed**.
 
 **Division algebras**:
+
 - Hurwitz's theorem: ONLY 4 exist
 - Cannot construct ℝ from ℂ, or ℍ from 𝕆
 - These are **atoms** - irreducible structures
 
 **Exceptional groups**:
+
 - Cannot be factored into classical groups
 - Require non-associative algebra (octonions)
 - These are **atoms** - irreducible symmetries
 
 **Parallelizable spheres**:
+
 - ONLY S⁰, S¹, S³, S⁷ exist
 - No S², S⁴, S⁵, S⁶ are parallelizable
 - These are **atoms** - irreducible topological spaces
 
 ### The Table of Correspondences
 
-| Primitive | Algebraic | Topological | Exceptional | Atlas Level |
-|-----------|-----------|-------------|-------------|-------------|
-| **Atom 1** | ℝ (dim 1) | S⁰ (0-sphere) | - | Scalar |
-| **Atom 2** | ℂ (dim 2) | S¹ (circle) | - | Mirror (M, order 2) |
-| **Atom 3** | ℍ (dim 4) | S³ (3-sphere) | - | Quadrants (R, order 4) |
-| **Atom 4** | 𝕆 (dim 8) | S⁷ (7-sphere) | G₂ | Fano plane (7 units) + Twist (T, order 8) |
-| **Composite 1** | J₃(𝕆) (dim 27) | 3×3 octonionic space | F₄ | Rank-1 (96 = 4×3×8) |
-| **Composite 2** | ℂ ⊗ 𝕆 | Complexified octonionic space | E₆ | ? |
-| **Composite 3** | ℍ ⊗ 𝕆 | Quaternionic octonionic space | E₇ | Cl₀,₇ (128 dims) |
-| **Composite 4** | 𝕆 ⊗ 𝕆 | Octonionic octonionic space | E₈ | 2048 automorphisms |
+| Primitive       | Algebraic      | Topological                   | Exceptional | Atlas Level                               |
+| --------------- | -------------- | ----------------------------- | ----------- | ----------------------------------------- |
+| **Atom 1**      | ℝ (dim 1)      | S⁰ (0-sphere)                 | -           | Scalar                                    |
+| **Atom 2**      | ℂ (dim 2)      | S¹ (circle)                   | -           | Mirror (M, order 2)                       |
+| **Atom 3**      | ℍ (dim 4)      | S³ (3-sphere)                 | -           | Quadrants (R, order 4)                    |
+| **Atom 4**      | 𝕆 (dim 8)      | S⁷ (7-sphere)                 | G₂          | Fano plane (7 units) + Twist (T, order 8) |
+| **Composite 1** | J₃(𝕆) (dim 27) | 3×3 octonionic space          | F₄          | Rank-1 (96 = 4×3×8)                       |
+| **Composite 2** | ℂ ⊗ 𝕆          | Complexified octonionic space | E₆          | ?                                         |
+| **Composite 3** | ℍ ⊗ 𝕆          | Quaternionic octonionic space | E₇          | Cl₀,₇ (128 dims)                          |
+| **Composite 4** | 𝕆 ⊗ 𝕆          | Octonionic octonionic space   | E₈          | 2048 automorphisms                        |
 
 **Key insight**: The first 4 are **primitive** (cannot be decomposed). The next 4 are **composites** built from tensor products of primitives with octonions.
 
@@ -174,6 +184,7 @@ Both division algebras and exceptional groups share a critical property: **they 
 ### The Tensor Product Structure
 
 Atlas is defined as:
+
 ```
 SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
 ```
@@ -181,21 +192,25 @@ SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
 **Decoding the factors**:
 
 **Cl₀,₇** (Clifford algebra, 128 dimensions):
+
 - Built from 7 imaginary octonion units e₁, e₂, ..., e₇
 - Encodes **𝕆 (octonions)**
 - G₂ automorphisms via Fano plane
 
 **ℝ[ℤ₄]** (group algebra, 4 dimensions):
+
 - Cyclic group of order 4
 - Similar to **ℍ (quaternions)** structure? (i, j, k, 1 → 4 elements)
 - R transform (rotate quadrants, order 4)
 
 **ℝ[ℤ₃]** (group algebra, 3 dimensions):
+
 - Cyclic group of order 3
 - **Triality** structure (E₆, E₇, E₈ symmetry)
 - D transform (triality, order 3)
 
 **The pattern**:
+
 ```
 Cl₀,₇  ⊗  ℝ[ℤ₄]  ⊗  ℝ[ℤ₃]
   ↓         ↓          ↓
@@ -203,6 +218,7 @@ Cl₀,₇  ⊗  ℝ[ℤ₄]  ⊗  ℝ[ℤ₃]
 ```
 
 This is **exactly** the structure that builds exceptional groups!
+
 - 𝕆 alone → G₂
 - 𝕆 with 3-fold structure → F₄ (via J₃(𝕆))
 - ℍ ⊗ 𝕆 → E₇
@@ -211,11 +227,13 @@ This is **exactly** the structure that builds exceptional groups!
 ### Rank-1 Elements: The 96-Class Structure
 
 Rank-1 elements are:
+
 ```
 r^h ⊗ e_ℓ ⊗ τ^d
 ```
 
 Where:
+
 - h ∈ {0,1,2,3}: Quadrant (ℤ₄ structure, **ℍ-like**)
 - ℓ ∈ {0,...,7}: Context (scalar + 7 octonion units, **𝕆**)
 - d ∈ {0,1,2}: Modality (ℤ₃ structure, **Triality**)
@@ -223,18 +241,19 @@ Where:
 **Total classes**: 4 × 8 × 3 = 96
 
 **This is not arbitrary!** The factorization 96 = 4 × 3 × 8 directly reflects:
+
 - 4 from ℍ-like structure
 - 3 from Triality (exceptional symmetry)
 - 8 from 𝕆 (octonions)
 
 ### The Four Transforms: Symmetries of Division Algebras
 
-| Transform | Order | Atlas Action | Division Algebra Symmetry |
-|-----------|-------|--------------|---------------------------|
-| **R** (Rotate) | 4 | Quadrant rotation | ℍ (quaternions: i²=j²=k²=-1) |
-| **D** (Triality) | 3 | Modality rotation | Exceptional triality (E₆, E₇, E₈) |
-| **T** (Twist) | 8 | Context twist | 𝕆 (octonions: 7 imaginary units + 1 scalar) |
-| **M** (Mirror) | 2 | Modality involution | ℂ (complex conjugation) |
+| Transform        | Order | Atlas Action        | Division Algebra Symmetry                   |
+| ---------------- | ----- | ------------------- | ------------------------------------------- |
+| **R** (Rotate)   | 4     | Quadrant rotation   | ℍ (quaternions: i²=j²=k²=-1)                |
+| **D** (Triality) | 3     | Modality rotation   | Exceptional triality (E₆, E₇, E₈)           |
+| **T** (Twist)    | 8     | Context twist       | 𝕆 (octonions: 7 imaginary units + 1 scalar) |
+| **M** (Mirror)   | 2     | Modality involution | ℂ (complex conjugation)                     |
 
 **These are not "designed transforms"** - they are the **inevitable symmetries** of the primitive structures!
 
@@ -286,6 +305,7 @@ SGA Algebraic Structure              Primitive Meaning
 ### Why This Correspondence Is Exact
 
 **Not analogy, but identity**:
+
 1. The elements (h, d, ℓ) **literally encode** ℍ-like × Triality × 𝕆 structure
 2. The operations ∘, ⊗, ⊕ **are** the algebraic operations that build exceptional groups
 3. The transforms R, D, T, M **are** the symmetries of division algebras
@@ -301,11 +321,11 @@ SGA Algebraic Structure              Primitive Meaning
 
 **1. Uniqueness**
 
-| Structure | Count | Theorem |
-|-----------|-------|---------|
-| Normed division algebras | **4** | Hurwitz (1898) |
-| Exceptional Lie groups | **5** | Classification (1890s-1950s) |
-| Parallelizable spheres | **4** | Bott-Milnor-Kervaire (1958) |
+| Structure                | Count | Theorem                      |
+| ------------------------ | ----- | ---------------------------- |
+| Normed division algebras | **4** | Hurwitz (1898)               |
+| Exceptional Lie groups   | **5** | Classification (1890s-1950s) |
+| Parallelizable spheres   | **4** | Bott-Milnor-Kervaire (1958)  |
 
 These are **the only ones that exist**. Not "we found 4," but "there are ONLY 4."
 
@@ -337,14 +357,15 @@ You **cannot** create a rank-1 element that violates G₂ constraints because G�
 
 **Octonions are the boundary between associative and non-associative**:
 
-| Property | ℝ | ℂ | ℍ | 𝕆 | Beyond? |
-|----------|---|---|---|---|---------|
-| Commutative | ✓ | ✓ | ✗ | ✗ | ✗ |
-| Associative | ✓ | ✓ | ✓ | ✗ | ✗ |
-| Alternative | ✓ | ✓ | ✓ | ✓ | **✗** |
-| Normed division | ✓ | ✓ | ✓ | ✓ | **✗** |
+| Property        | ℝ   | ℂ   | ℍ   | 𝕆   | Beyond? |
+| --------------- | --- | --- | --- | --- | ------- |
+| Commutative     | ✓   | ✓   | ✗   | ✗   | ✗       |
+| Associative     | ✓   | ✓   | ✓   | ✗   | ✗       |
+| Alternative     | ✓   | ✓   | ✓   | ✓   | **✗**   |
+| Normed division | ✓   | ✓   | ✓   | ✓   | **✗**   |
 
 The Cayley-Dickson process stops at octonions because:
+
 1. Further doubling loses the alternative property
 2. Without alternative, you lose division (zero divisors appear)
 3. Without division, you don't have a division algebra
@@ -362,6 +383,7 @@ Classical groups work with associative algebras (ℝ, ℂ, ℍ). When you introd
 **Exceptional groups exist because octonions exist.**
 
 The classification of Lie groups shows:
+
 - **Classical families**: A_n, B_n, C_n, D_n (infinitely many, parametrized by n)
 - **Exceptional**: G₂, F₄, E₆, E₇, E₈ (exactly 5, isolated)
 
@@ -374,12 +396,15 @@ The exceptional groups are **isolated** - they don't fit into families because t
 ### Atlas Is Not "Based On" Primitives
 
 **Wrong interpretation**:
+
 > "Atlas uses octonions and exceptional groups as components"
 
 **Correct interpretation**:
+
 > "Atlas IS the minimal tensor product structure built from primitives"
 
 The distinction is critical:
+
 - **Using**: Implies choice, design, incorporation
 - **IS**: Implies inevitability, discovery, realization
 
@@ -388,6 +413,7 @@ Atlas doesn't "incorporate" G₂ - Atlas **embeds** G₂ because G₂ constraint
 ### Why Atlas Appears "Initial to Everything"
 
 **Atlas is built from atoms**:
+
 ```
 Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
   ↓       ↓       ↓
@@ -397,6 +423,7 @@ Atoms Atoms   Atoms
 ```
 
 **Other structures must also use these atoms** (by Hurwitz's theorem, there are no alternatives):
+
 - To build 8-dimensional structure → must use 𝕆
 - To build rotation groups → must use ℍ
 - To build complex analysis → must use ℂ
@@ -406,12 +433,14 @@ Atoms Atoms   Atoms
 ### The Platonic Claim Justified
 
 **Atlas is Platonic** means:
+
 1. **Unique**: Only one way to build minimal tensor product from primitives
 2. **Inevitable**: Constraints propagate automatically from primitives
 3. **Complete**: Contains all constraint sets (G₂, F₄, E₆, E₇, E₈)
 4. **Discovered**: We revealed structure that was already there
 
 **Evidence**:
+
 - Hurwitz's theorem: ONLY 4 division algebras exist
 - Classification: ONLY 5 exceptional groups exist
 - Bott-Milnor-Kervaire: ONLY 4 parallelizable spheres exist
@@ -428,6 +457,7 @@ Atoms Atoms   Atoms
 **1. Modal Fixation Is Dangerous**
 
 Viewing Atlas through only one lens misses that it's built from **primitives**:
+
 - "Atlas is a Clifford algebra" → Misses that Cl₀,₇ encodes 𝕆 (primitive)
 - "Atlas uses octonions" → Misses that 𝕆 is **the** maximal division algebra
 - "Atlas has exceptional groups" → Misses that exceptionals are **atoms**, not features
@@ -437,6 +467,7 @@ Viewing Atlas through only one lens misses that it's built from **primitives**:
 **2. Constraint Completeness**
 
 You cannot violate primitive constraints:
+
 - G₂ constraints from Fano plane → propagate to all levels
 - F₄ constraints from rank-1 quotient → propagate automatically
 - E₇, E₈ hints → suggest deeper constraint sets
@@ -446,6 +477,7 @@ You cannot violate primitive constraints:
 **3. Universality**
 
 Atlas appears "universal" because:
+
 - Built from **unique** primitives (Hurwitz's theorem)
 - Every other structure must also use these primitives
 - Therefore Atlas sits at the foundation
@@ -457,6 +489,7 @@ Atlas appears "universal" because:
 **Q1: Is ℝ[ℤ₄] exactly ℍ?**
 
 Current understanding:
+
 - ℝ[ℤ₄] has dimension 4 (like ℍ)
 - R transform has order 4 (like quaternion units)
 - But ℝ[ℤ₄] is commutative, ℍ is not
@@ -466,6 +499,7 @@ Current understanding:
 **Q2: What is the role of ℤ₃ triality?**
 
 Observations:
+
 - ℝ[ℤ₃] has dimension 3
 - D transform has order 3
 - E₆, E₇, E₈ all have 3-fold symmetries (triality)
@@ -475,12 +509,14 @@ Observations:
 **Q3: Can we construct E₇ and E₈ explicitly in Atlas?**
 
 Current status:
+
 - G₂: ✓ VERIFIED (Fano plane automorphisms)
 - F₄: ✓ STRONG (rank-1 quotient by ℤ₂ × ℤ₃)
 - E₇: ⚠ WEAK (7 × 8 = 56 suggestive, but non-integer Weyl ratio)
 - E₈: ⚠ POTENTIAL (Weyl / 2048 exact, 248 = 31 × 8)
 
 **Investigation needed**:
+
 - What is the +5 dimension for E₇ (133 vs 128)?
 - What is the factor 31 in E₈ dimension (248 = 31 × 8)?
 - Can we show ℍ ⊗ 𝕆 structure in Cl₀,₇?
@@ -489,6 +525,7 @@ Current status:
 **Q4: Is there a Cl₀,₈ connection for E₈?**
 
 Observations:
+
 - Cl₀,₇ dimension = 128 = 2⁷
 - Cl₀,₈ dimension = 256 = 2⁸
 - E₈ dimension = 248 = 256 - 8
@@ -519,6 +556,7 @@ The magic square systematically generates classical and exceptional groups from 
 **1. Constraint Verification**
 
 When implementing Atlas operations, **verify primitive constraints**:
+
 - Norm preservation: |xy| = |x||y|
 - Fano plane multiplication: Must follow G₂ rules
 - Triality: 3-fold symmetry must be preserved
@@ -529,6 +567,7 @@ When implementing Atlas operations, **verify primitive constraints**:
 **2. Optimization Opportunities**
 
 Because constraints are **structural**, the compiler can:
+
 - Fuse operations knowing G₂ constraints hold
 - Optimize tensor products knowing division algebra properties
 - Skip runtime checks for norm preservation (guaranteed by structure)
@@ -538,6 +577,7 @@ Because constraints are **structural**, the compiler can:
 **3. Error Detection**
 
 Any violation of primitive constraints indicates:
+
 - **Not a bug in Atlas** (structure is correct)
 - **Bug in operation implementation** (violating structural invariants)
 
@@ -568,16 +608,19 @@ Domain resources              →   Budget/Resonance
 When compiling models to SGA:
 
 **1. Identify primitive structure** in domain:
+
 - What are the "atoms" in this domain?
 - Which division algebras appear?
 - Which symmetries exist?
 
 **2. Map to SGA primitives**:
+
 - Domain atoms → SGA elements (h, d, ℓ)
 - Domain composition → SGA operations (∘, ⊗, ⊕)
 - Domain symmetries → SGA transforms (R, D, T, M)
 
 **3. Verify constraint propagation**:
+
 - Do domain constraints match G₂, F₄, E₇, E₈?
 - Are they **structural** (woven in) or **imposed** (runtime checks)?
 
@@ -593,17 +636,20 @@ When compiling models to SGA:
 > "There is a correspondence between exceptional mathematics and primitive topological/geometric spaces."
 
 **This correspondence is not analogy - it's identity**:
+
 - **4 division algebras** = **4 parallelizable spheres** = **Atoms of algebra**
 - **5 exceptional groups** = **Octonionic symmetries** = **Atoms of geometry**
 - **Atlas tensor product** = **Realization of primitives** = **Minimal structure**
 
 **Atlas is Platonic** because:
+
 1. Built from **unique** primitives (Hurwitz's theorem, classification theorems)
 2. Every component **inevitable** (no alternatives exist)
 3. Constraints **propagate automatically** (structural, not imposed)
 4. Appears **foundational** (all structures use these primitives)
 
 **SGA as Universal Constraint Language** means:
+
 - Captures **primitive structure** algebraically
 - Provides **fixed framework** for **flexible instantiations**
 - Enables **constraint-driven compilation** (more constraints = more fusion)
@@ -613,6 +659,7 @@ When compiling models to SGA:
 ---
 
 **References**:
+
 - **Hurwitz (1898)**: "Über die Composition der quadratischen Formen" - proves ONLY 4 division algebras
 - **Cartan (1894)**: Classification of semisimple Lie algebras - identifies 5 exceptional groups
 - **Bott-Milnor-Kervaire (1958)**: "Groups of homotopy spheres" - proves ONLY 4 parallelizable spheres
@@ -620,6 +667,7 @@ When compiling models to SGA:
 - **Baez (2002)**: "The Octonions" - comprehensive modern treatment
 
 **Atlas Implementation**:
+
 - [algebraic-foundations.md](./algebraic-foundations.md) - Tensor product Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]
 - [exceptional-structures-complete.md](./exceptional-structures-complete.md) - G₂, F₄, E₆, E₇, E₈ embeddings
 - [SGA-AS-UNIVERSAL-ALGEBRA.md](./SGA-AS-UNIVERSAL-ALGEBRA.md) - Universal constraint language
@@ -627,6 +675,7 @@ When compiling models to SGA:
 - `packages/core/src/sga/transforms.ts` - R, D, T, M symmetries
 
 **Research Scripts**:
+
 - [research-scripts/investigate-exceptional-topology.js](./research-scripts/investigate-exceptional-topology.js) - Primitive correspondence proof
 - [research-scripts/investigate-z4-quaternion-connection.js](./research-scripts/investigate-z4-quaternion-connection.js) - ℝ[ℤ₄] = abelianized ℍ
 - [research-scripts/investigate-z3-triality-connection.js](./research-scripts/investigate-z3-triality-connection.js) - ℝ[ℤ₃] = exceptional triality

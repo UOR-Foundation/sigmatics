@@ -101,6 +101,86 @@ export function mul96(overflowMode: 'drop' | 'track' = 'drop'): IRNode {
 }
 
 /**
+ * Create a gcd96 IR node
+ */
+export function gcd96(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'gcd96' },
+  };
+}
+
+/**
+ * Create a lcm96 IR node
+ */
+export function lcm96(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'lcm96' },
+  };
+}
+
+/**
+ * Create a sum IR node
+ */
+export function sum(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'sum' },
+  };
+}
+
+/**
+ * Create a product IR node
+ */
+export function product(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'product' },
+  };
+}
+
+/**
+ * Create a max IR node
+ */
+export function max(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'max' },
+  };
+}
+
+/**
+ * Create a min IR node
+ */
+export function min(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'min' },
+  };
+}
+
+/**
+ * Create a factor96 IR node
+ */
+export function factor96(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'factor96' },
+  };
+}
+
+/**
+ * Create an isPrime96 IR node
+ */
+export function isPrime96(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'isPrime96' },
+  };
+}
+
+/**
  * Sequential composition (∘)
  */
 export function seq(left: IRNode, right: IRNode): IRNode {
@@ -188,6 +268,22 @@ export function prettyPrintIR(node: IRNode, indent = 0): string {
           return `${spaces}Sub96(${op.overflowMode})`;
         case 'mul96':
           return `${spaces}Mul96(${op.overflowMode})`;
+        case 'gcd96':
+          return `${spaces}Gcd96()`;
+        case 'lcm96':
+          return `${spaces}Lcm96()`;
+        case 'sum':
+          return `${spaces}Sum()`;
+        case 'product':
+          return `${spaces}Product()`;
+        case 'max':
+          return `${spaces}Max()`;
+        case 'min':
+          return `${spaces}Min()`;
+        case 'factor96':
+          return `${spaces}Factor96()`;
+        case 'isPrime96':
+          return `${spaces}IsPrime96()`;
       }
       break;
     }

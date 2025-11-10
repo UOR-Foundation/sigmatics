@@ -7,6 +7,7 @@ This directory contains programmatic verification and exploration scripts used t
 ### Phase 1: G₂ Embedding
 
 **[construct-g2-automorphisms.js](./construct-g2-automorphisms.js)**
+
 - Constructs the 12 G₂ Weyl group automorphisms
 - Verifies octonion multiplication preservation
 - Demonstrates PSL(2,7) = 14 × 12 factorization
@@ -17,6 +18,7 @@ This directory contains programmatic verification and exploration scripts used t
 ### Phase 2: F₄ Connection
 
 **[prove-f4-connection.js](./prove-f4-connection.js)**
+
 - Enumerates all 192 rank-1 automorphisms
 - Computes F₄ Weyl quotient: 1,152 / 192 = 6
 - Identifies ℤ₂ × ℤ₃ = Mirror × Triality
@@ -27,6 +29,7 @@ This directory contains programmatic verification and exploration scripts used t
 ### Phase 3: E₇ Analysis
 
 **[analyze-e7-structure.js](./analyze-e7-structure.js)**
+
 - Analyzes E₇ dimension (133) vs Cl₀,₇ (128)
 - Computes Weyl quotient (non-integer: 1,417.5)
 - Explores 7 × 8 = 56 relationship (E₇ fundamental rep)
@@ -37,6 +40,7 @@ This directory contains programmatic verification and exploration scripts used t
 ### Phase 4: E₆ and E₈ Search
 
 **[search-all-exceptional.js](./search-all-exceptional.js)**
+
 - Comprehensive search for all exceptional groups
 - Discovers E₈ exact division: Weyl / 2048 = 340,200
 - Finds E₈ dimension: 248 = 31 × 8
@@ -48,18 +52,21 @@ This directory contains programmatic verification and exploration scripts used t
 ### Phase 5: The 340,200 Structure (New Discovery!)
 
 **[investigate-340200-structure.js](./investigate-340200-structure.js)**
+
 - Comprehensive mathematical analysis of 340,200 = W(E₈) / 2,048
 - Prime factorization: 2³ × 3⁵ × 5² × 7
 - Key discovery: 340,200 = 168 × 2,025 = PSL(2,7) × 45²
 - **Status**: ✓ COMPLETE
 
 **[explore-340200-in-sga.js](./explore-340200-in-sga.js)**
+
 - Explores 340,200 through Atlas SGA operations
 - Analyzes connection to SO(10) (45 = dim(SO(10)))
 - Tests divisibility by Atlas structures
 - **Status**: ✓ COMPLETE
 
 **[search-340200-in-lie-theory.js](./search-340200-in-lie-theory.js)**
+
 - Systematic search through all Lie groups for order 340,200
 - Tests PSL(n,q), exceptional groups, sporadic groups
 - Confirms: 340,200 is NOT a standard Lie group
@@ -67,6 +74,7 @@ This directory contains programmatic verification and exploration scripts used t
 - **Status**: ✓ VERIFIED
 
 **[construct-340200-group.js](./construct-340200-group.js)**
+
 - Explicit construction: G₃₄₀,₂₀₀ = PSL(2,7) × ℤ₈₁ × ℤ₂₅
 - Enumerates all 168 elements of PSL(2,7) via 2×2 matrices over ℤ₇
 - Verifies group structure and order
@@ -75,6 +83,7 @@ This directory contains programmatic verification and exploration scripts used t
 **Documentation**: See [the-340200-structure.md](../the-340200-structure.md)
 
 **Run**:
+
 ```bash
 node docs/atlas/research-scripts/investigate-340200-structure.js
 node docs/atlas/research-scripts/explore-340200-in-sga.js
@@ -87,6 +96,7 @@ node docs/atlas/research-scripts/construct-340200-group.js
 ### Exceptional = Primitive Topology
 
 **[investigate-exceptional-topology.js](./investigate-exceptional-topology.js)**
+
 - Proves exceptional mathematics = primitive topological spaces
 - Analyzes 4 normed division algebras (ℝ, ℂ, ℍ, 𝕆)
 - Shows 5 exceptional groups all built from octonions
@@ -98,6 +108,7 @@ node docs/atlas/research-scripts/construct-340200-group.js
 ### ℝ[ℤ₄] and Quaternion Connection
 
 **[investigate-z4-quaternion-connection.js](./investigate-z4-quaternion-connection.js)**
+
 - Proves ℝ[ℤ₄] ≅ ℝ[⟨i⟩] ⊂ ℝ[Q₈] ⊂ ℍ
 - Shows ℝ[ℤ₄] is "abelianized quaternions"
 - Explains why Atlas uses ℝ[ℤ₄] not ℍ (minimality, commutativity)
@@ -109,6 +120,7 @@ node docs/atlas/research-scripts/construct-340200-group.js
 ### ℝ[ℤ₃] and Exceptional Triality
 
 **[investigate-z3-triality-connection.js](./investigate-z3-triality-connection.js)**
+
 - Proves ℝ[ℤ₃] encodes exceptional triality
 - Shows triality appears ONLY in octonionic structures (SO(8), E₆, E₇, E₈)
 - Verifies D transform is exactly ℤ₃ triality action
@@ -119,17 +131,17 @@ node docs/atlas/research-scripts/construct-340200-group.js
 
 ## Summary of Results
 
-| Investigation | Status | Key Finding |
-|---------------|--------|-------------|
-| G₂ embedding | ✓ Framework | PSL(2,7) = 14 × 12 through Fano plane |
-| F₄ connection | ✓ VERIFIED | 1,152 / 192 = 6 = ℤ₂ × ℤ₃ = M × D |
-| E₇ relationship | ✓ Complete | 7 × 8 = 56, but non-integer Weyl ratio |
-| E₆ search | ⚠ Unclear | Weyl / 192 = 270 = 27 × 10 |
-| E₈ search | ✓ VERIFIED | Weyl / 2048 = 340,200 exact |
-| **340,200 structure** | ✓✓✓ VERIFIED | PSL(2,7) × ℤ₈₁ × ℤ₂₅, bridges Atlas↔E₈ |
-| Primitive correspondence | ✓ VERIFIED | Exceptional = topological atoms |
-| ℝ[ℤ₄] = ℍ-like | ✓ VERIFIED | Abelianized quaternions |
-| ℝ[ℤ₃] = Triality | ✓ VERIFIED | Minimal 3-fold exceptional symmetry |
+| Investigation            | Status       | Key Finding                             |
+| ------------------------ | ------------ | --------------------------------------- |
+| G₂ embedding             | ✓ Framework  | PSL(2,7) = 14 × 12 through Fano plane   |
+| F₄ connection            | ✓ VERIFIED   | 1,152 / 192 = 6 = ℤ₂ × ℤ₃ = M × D       |
+| E₇ relationship          | ✓ Complete   | 7 × 8 = 56, but non-integer Weyl ratio  |
+| E₆ search                | ⚠ Unclear   | Weyl / 192 = 270 = 27 × 10              |
+| E₈ search                | ✓ VERIFIED   | Weyl / 2048 = 340,200 exact             |
+| **340,200 structure**    | ✓✓✓ VERIFIED | PSL(2,7) × ℤ₈₁ × ℤ₂₅, bridges Atlas↔E₈ |
+| Primitive correspondence | ✓ VERIFIED   | Exceptional = topological atoms         |
+| ℝ[ℤ₄] = ℍ-like           | ✓ VERIFIED   | Abelianized quaternions                 |
+| ℝ[ℤ₃] = Triality         | ✓ VERIFIED   | Minimal 3-fold exceptional symmetry     |
 
 ## Related Documentation
 

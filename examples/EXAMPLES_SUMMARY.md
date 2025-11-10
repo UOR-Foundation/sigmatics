@@ -11,17 +11,20 @@ Created comprehensive examples showcasing the power and performance of Sigmatics
 ## Examples Created
 
 ### 1. **Fused Circuit Performance** (`fused-circuit-performance.ts`)
+
 **Lines:** 237  
 **Purpose:** Performance benchmarking of compiled models
 
 **Demonstrates:**
+
 - Ring operations (add96, mul96): 100K ops in ~10ms
-- Transform operations (R, D, T, M): 100K ops in ~10-12ms  
+- Transform operations (R, D, T, M): 100K ops in ~10-12ms
 - Class vs SGA backend comparison: Class is ~10x faster
 - Batch operations: 1M transforms in ~33ms
 - Cryptographic patterns: 16K round operations in ~60ms
 
 **Key Metrics:**
+
 - Throughput: ~10M operations per second (class backend)
 - Latency: <100ns per operation
 - Memory: Pre-compiled models have zero runtime allocation
@@ -29,10 +32,12 @@ Created comprehensive examples showcasing the power and performance of Sigmatics
 ---
 
 ### 2. **Algebraic Law Verification** (`algebraic-law-verification.ts`)
+
 **Lines:** 305  
 **Purpose:** Formal verification of algebraic properties
 
 **Verifies:**
+
 - ✅ R⁴ = identity (all 96 classes)
 - ✅ D³ = identity (all 96 classes)
 - ✅ T⁸ = identity (all 96 classes)
@@ -49,10 +54,12 @@ Created comprehensive examples showcasing the power and performance of Sigmatics
 ---
 
 ### 3. **Dual Backend Dispatch** (`dual-backend-dispatch.ts`)
+
 **Lines:** 332  
 **Purpose:** Demonstrates automatic backend selection
 
 **Shows:**
+
 - Class backend: Fast permutations (input: `number`)
 - SGA backend: Full algebra (input: `SgaElement`)
 - Automatic dispatch based on input types
@@ -64,10 +71,12 @@ Created comprehensive examples showcasing the power and performance of Sigmatics
 ---
 
 ### 4. **Custom Composition** (`custom-composition.ts`)
+
 **Lines:** 378  
 **Purpose:** Building complex operations from primitives
 
 **Patterns:**
+
 - Custom transforms (spiral: R² ∘ D¹ ∘ T³)
 - Cryptographic round functions
 - Batch operations
@@ -81,10 +90,12 @@ Created comprehensive examples showcasing the power and performance of Sigmatics
 ---
 
 ### 5. **Cryptographic Hash Function** (`cryptographic-hash.ts`)
+
 **Lines:** 398  
 **Purpose:** Complete cryptographic application
 
 **Features:**
+
 - 4-word state (28 bits total)
 - 12-round compression function
 - Message padding and finalization
@@ -93,6 +104,7 @@ Created comprehensive examples showcasing the power and performance of Sigmatics
 - Performance: 10K hashes in ~3 seconds for 10-byte messages
 
 **Architecture:**
+
 ```
 Input → Padding → Compression (12 rounds) → Finalization → Digest
          ↓            ↓                        ↓
@@ -105,10 +117,12 @@ Input → Padding → Compression (12 rounds) → Finalization → Digest
 ---
 
 ### 6. **Examples README** (`README.md`)
+
 **Lines:** 432  
 **Purpose:** Comprehensive documentation
 
 **Contents:**
+
 - Overview of v0.4.0 architecture
 - Quick start guide
 - Detailed description of each example
@@ -136,6 +150,7 @@ Class Backend    SGA Backend
 ```
 
 **Benefits:**
+
 1. **Zero interpretation overhead** - Pre-compiled execution plans
 2. **Dual backends** - Optimal performance for each use case
 3. **Automatic dispatch** - Transparent backend selection
@@ -143,16 +158,17 @@ Class Backend    SGA Backend
 
 ### Performance Characteristics
 
-| Operation | Backend | Throughput | Use Case |
-|-----------|---------|------------|----------|
-| R² transform | Class | ~1M ops/sec | Fast mixing |
-| add96 | Class | ~2M ops/sec | Arithmetic |
-| R² transform | SGA | ~100K ops/sec | Verification |
-| Hash (10-byte) | Class | ~3K hashes/sec | Cryptography |
+| Operation      | Backend | Throughput     | Use Case     |
+| -------------- | ------- | -------------- | ------------ |
+| R² transform   | Class   | ~1M ops/sec    | Fast mixing  |
+| add96          | Class   | ~2M ops/sec    | Arithmetic   |
+| R² transform   | SGA     | ~100K ops/sec  | Verification |
+| Hash (10-byte) | Class   | ~3K hashes/sec | Cryptography |
 
 ### Code Quality
 
 All examples:
+
 - ✅ Type-safe (TypeScript strict mode)
 - ✅ Documented with comprehensive headers
 - ✅ Include timing benchmarks
@@ -163,22 +179,26 @@ All examples:
 ## Use Case Coverage
 
 ### ✅ Cryptography
+
 - Fast mixing functions (performance example)
 - Block cipher components (composition example)
 - Hash functions (hash example)
 - Feistel networks (composition example)
 
 ### ✅ Formal Verification
+
 - Algebraic law verification (verification example)
 - Property-based testing patterns (verification example)
 - Commutative diagram validation (verification example)
 
 ### ✅ Symbolic Computation
+
 - Transform composition (composition example)
 - Orbit analysis (composition example)
 - State machines (composition example)
 
 ### ✅ Performance Optimization
+
 - Backend comparison (dual backend example)
 - Batch operations (performance example)
 - Chained operations (performance example)
@@ -227,9 +247,10 @@ These examples showcase that Sigmatics v0.4.0 provides:
 ✅ **Performance** - Compiled models eliminate interpretation overhead  
 ✅ **Correctness** - Dual backends ensure algebraic properties hold  
 ✅ **Flexibility** - Composable primitives enable diverse applications  
-✅ **Usability** - Automatic dispatch and type safety reduce errors  
+✅ **Usability** - Automatic dispatch and type safety reduce errors
 
 The declarative model system successfully delivers on the refactor goals:
+
 - Self-bootstrapping extensible model system ✅
 - Fast fused circuit operations ✅
 - Stdlib of composable operations ✅
@@ -238,6 +259,7 @@ The declarative model system successfully delivers on the refactor goals:
 ## Next Steps
 
 Potential future examples:
+
 - **Neural Network Operations** - Matrix operations via Sigmatics
 - **Symbolic Differentiation** - Automatic differentiation of transforms
 - **Quantum Circuit Simulation** - Using geometric algebra features

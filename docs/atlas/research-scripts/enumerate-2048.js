@@ -107,7 +107,7 @@ for (let mask = 0; mask < 128; mask++) {
   // Convert mask to sign pattern
   const signs = [];
   for (let i = 0; i < 7; i++) {
-    signs[i] = (mask & (1 << i)) ? -1 : 1;
+    signs[i] = mask & (1 << i) ? -1 : 1;
   }
 
   if (isValidSignPattern(signs)) {
@@ -121,7 +121,7 @@ console.log(`This is a factor of: 128 / ${validSignPatterns} = ${128 / validSign
 
 console.log('Sample valid patterns:');
 validPatterns.slice(0, 8).forEach((pattern, idx) => {
-  const str = pattern.map(s => s > 0 ? '+' : '-').join('');
+  const str = pattern.map((s) => (s > 0 ? '+' : '-')).join('');
   console.log(`  Pattern ${idx + 1}: [${str}]`);
 });
 console.log();
@@ -156,7 +156,9 @@ console.log(`  - Valid sign patterns: ${validSignPatterns}`);
 console.log(`  - Fano permutations: ${fanoAutomorphisms}\n`);
 
 console.log('Naive product:');
-console.log(`  4 × ${validSignPatterns} × ${fanoAutomorphisms} = ${4 * validSignPatterns * fanoAutomorphisms}\n`);
+console.log(
+  `  4 × ${validSignPatterns} × ${fanoAutomorphisms} = ${4 * validSignPatterns * fanoAutomorphisms}\n`,
+);
 
 if (4 * validSignPatterns * fanoAutomorphisms === 2048) {
   console.log('✓ This EXACTLY equals 2048!\n');
@@ -168,7 +170,7 @@ if (4 * validSignPatterns * fanoAutomorphisms === 2048) {
   console.log(`Ratio to 2048: ${ratio}`);
 
   if (ratio < 1) {
-    console.log(`We have ${Math.round(1/ratio)}× too many - must have overcounted`);
+    console.log(`We have ${Math.round(1 / ratio)}× too many - must have overcounted`);
     console.log('This suggests some combinations are redundant\n');
   } else {
     console.log(`We are missing a factor of ${ratio}`);

@@ -19,6 +19,7 @@ This transforms the codebase from "tests that might find bugs" to "proofs that v
 **Claim**: The mapping between (h₂, d, ℓ) coordinates and class indices is bijective.
 
 **Mathematical Statement**:
+
 ```
 ∃! f: {0..3} × {0..2} × {0..7} → {0..95}
 ∃! g: {0..95} → {0..3} × {0..2} × {0..7}
@@ -55,7 +56,7 @@ export function decomposeClassIndex(classIndex: number): ClassComponents {
 for (let c = 0; c < 96; c++) {
   const { h2, d, l } = decomposeClassIndex(c);
   const reconstructed = classIndex(h2, d, l);
-  assert(reconstructed === c);  // ✓ Verified for all 96 classes
+  assert(reconstructed === c); // ✓ Verified for all 96 classes
 }
 
 // Proof 2: g ∘ f = identity on {0..3}×{0..2}×{0..7}
@@ -64,7 +65,7 @@ for (let h = 0; h < 4; h++) {
     for (let l = 0; l < 8; l++) {
       const c = classIndex(h, d, l);
       const { h2, d: d2, l: l2 } = decomposeClassIndex(c);
-      assert(h2 === h && d2 === d && l2 === l);  // ✓ Verified for all 96 coordinates
+      assert(h2 === h && d2 === d && l2 === l); // ✓ Verified for all 96 coordinates
     }
   }
 }
@@ -79,6 +80,7 @@ for (let h = 0; h < 4; h++) {
 **Claim**: The transforms R, D, T pairwise commute.
 
 **Mathematical Statement**:
+
 ```
 ∀c ∈ {0..95}:
   R(D(c)) = D(R(c))
@@ -97,20 +99,22 @@ function verifyCommutativity(
   op1: (c: number) => number,
   op2: (c: number) => number,
   name1: string,
-  name2: string
+  name2: string,
 ): boolean {
   let passed = 0;
   let failed = 0;
 
   for (let c = 0; c < 96; c++) {
-    const result1 = op1(op2(c));  // op1(op2(c))
-    const result2 = op2(op1(c));  // op2(op1(c))
+    const result1 = op1(op2(c)); // op1(op2(c))
+    const result2 = op2(op1(c)); // op2(op1(c))
 
     if (result1 === result2) {
       passed++;
     } else {
       failed++;
-      console.error(`FAIL: ${name1}(${name2}(${c})) = ${result1}, ${name2}(${name1}(${c})) = ${result2}`);
+      console.error(
+        `FAIL: ${name1}(${name2}(${c})) = ${result1}, ${name2}(${name1}(${c})) = ${result2}`,
+      );
     }
   }
 
@@ -122,9 +126,9 @@ const rdCommutes = verifyCommutativity(applyRotation, applyTriality, 'R', 'D');
 const rtCommutes = verifyCommutativity(applyRotation, applyTwist, 'R', 'T');
 const dtCommutes = verifyCommutativity(applyTriality, applyTwist, 'D', 'T');
 
-assert(rdCommutes);  // ✓ Verified for all 96 classes
-assert(rtCommutes);  // ✓ Verified for all 96 classes
-assert(dtCommutes);  // ✓ Verified for all 96 classes
+assert(rdCommutes); // ✓ Verified for all 96 classes
+assert(rtCommutes); // ✓ Verified for all 96 classes
+assert(dtCommutes); // ✓ Verified for all 96 classes
 ```
 
 **Result**: All three pairs commute across all 96 classes. **Q.E.D.**
@@ -134,6 +138,7 @@ assert(dtCommutes);  // ✓ Verified for all 96 classes
 **Claim**: The transforms have the specified orders.
 
 **Mathematical Statement**:
+
 ```
 ∀c ∈ {0..95}:
   R⁴(c) = c   (R has order 4)
@@ -147,11 +152,7 @@ assert(dtCommutes);  // ✓ Verified for all 96 classes
 **File**: [examples/algebraic-law-verification.ts](../../examples/algebraic-law-verification.ts)
 
 ```typescript
-function verifyOrder(
-  op: (c: number) => number,
-  order: number,
-  name: string
-): boolean {
+function verifyOrder(op: (c: number) => number, order: number, name: string): boolean {
   let passed = 0;
   let failed = 0;
 
@@ -173,10 +174,10 @@ function verifyOrder(
 }
 
 // Execute proofs
-assert(verifyOrder(applyRotation, 4, 'R'));   // ✓ R⁴ = id for all 96 classes
-assert(verifyOrder(applyTriality, 3, 'D'));   // ✓ D³ = id for all 96 classes
-assert(verifyOrder(applyTwist, 8, 'T'));      // ✓ T⁸ = id for all 96 classes
-assert(verifyOrder(applyMirror, 2, 'M'));     // ✓ M² = id for all 96 classes
+assert(verifyOrder(applyRotation, 4, 'R')); // ✓ R⁴ = id for all 96 classes
+assert(verifyOrder(applyTriality, 3, 'D')); // ✓ D³ = id for all 96 classes
+assert(verifyOrder(applyTwist, 8, 'T')); // ✓ T⁸ = id for all 96 classes
+assert(verifyOrder(applyMirror, 2, 'M')); // ✓ M² = id for all 96 classes
 ```
 
 **Result**: All transform orders verified across all 96 classes. **Q.E.D.**
@@ -186,6 +187,7 @@ assert(verifyOrder(applyMirror, 2, 'M'));     // ✓ M² = id for all 96 classes
 **Claim**: Mirror (M) conjugates the other transforms to their inverses.
 
 **Mathematical Statement**:
+
 ```
 ∀c ∈ {0..95}:
   M(R(M(c))) = R⁻¹(c) = R³(c)
@@ -203,7 +205,7 @@ assert(verifyOrder(applyMirror, 2, 'M'));     // ✓ M² = id for all 96 classes
 function verifyConjugation(
   op: (c: number) => number,
   inverse: (c: number) => number,
-  name: string
+  name: string,
 ): boolean {
   let passed = 0;
   let failed = 0;
@@ -225,14 +227,26 @@ function verifyConjugation(
 }
 
 // Define inverse operations
-const R_inv = (c: number) => { let x = c; for(let i=0; i<3; i++) x = applyRotation(x); return x; };
-const D_inv = (c: number) => { let x = c; for(let i=0; i<2; i++) x = applyTriality(x); return x; };
-const T_inv = (c: number) => { let x = c; for(let i=0; i<7; i++) x = applyTwist(x); return x; };
+const R_inv = (c: number) => {
+  let x = c;
+  for (let i = 0; i < 3; i++) x = applyRotation(x);
+  return x;
+};
+const D_inv = (c: number) => {
+  let x = c;
+  for (let i = 0; i < 2; i++) x = applyTriality(x);
+  return x;
+};
+const T_inv = (c: number) => {
+  let x = c;
+  for (let i = 0; i < 7; i++) x = applyTwist(x);
+  return x;
+};
 
 // Execute proofs
-assert(verifyConjugation(applyRotation, R_inv, 'R'));  // ✓ MRM = R⁻¹
-assert(verifyConjugation(applyTriality, D_inv, 'D'));  // ✓ MDM = D⁻¹
-assert(verifyConjugation(applyTwist, T_inv, 'T'));     // ✓ MTM = T⁻¹
+assert(verifyConjugation(applyRotation, R_inv, 'R')); // ✓ MRM = R⁻¹
+assert(verifyConjugation(applyTriality, D_inv, 'D')); // ✓ MDM = D⁻¹
+assert(verifyConjugation(applyTwist, T_inv, 'T')); // ✓ MTM = T⁻¹
 ```
 
 **Result**: All conjugation laws verified across all 96 classes. **Q.E.D.**
@@ -242,6 +256,7 @@ assert(verifyConjugation(applyTwist, T_inv, 'T'));     // ✓ MTM = T⁻¹
 **Claim**: Class permutations and SGA automorphisms are equivalent via lift/project.
 
 **Mathematical Statement**:
+
 ```
 For all g ∈ {R, D, T, M} and c ∈ {0..95}:
   project(g_SGA(lift(c))) = g_class(c)
@@ -270,7 +285,7 @@ g_class       g_SGA
 function validateTransformCommutation(
   g_class: (c: number) => number,
   g_sga: (elem: SgaElement) => SgaElement,
-  transformName: string
+  transformName: string,
 ): { passed: number; failed: number } {
   let passed = 0;
   let failed = 0;
@@ -290,7 +305,7 @@ function validateTransformCommutation(
       failed++;
       console.error(
         `FAIL ${transformName}(${c}): ` +
-        `class=${classResult}, SGA→${projected.classIndex ?? 'error'}`
+          `class=${classResult}, SGA→${projected.classIndex ?? 'error'}`,
       );
     }
   }
@@ -317,6 +332,7 @@ export function validateR(): ValidationReport {
 ```
 
 **Verification counts**:
+
 - **R**: 96 classes × 3 powers = 288 commutative diagrams ✓
 - **D**: 96 classes × 2 powers = 192 commutative diagrams ✓
 - **T**: 96 classes × 7 powers = 672 commutative diagrams ✓
@@ -333,6 +349,7 @@ export function validateR(): ValidationReport {
 **Claim**: Every class has a unique canonical byte representative.
 
 **Mathematical Statement**:
+
 ```
 ∀c ∈ {0..95}: ∃! b ∈ B⁸ such that:
   1. classIndex(b) = c
@@ -353,7 +370,7 @@ export function encodeComponentsToByte(h2: number, d: number, l: number): number
 
   // Encode components
   const b6_b7 = h2 & 0b11;
-  const b4_b5 = d === 0 ? 0b00 : d === 1 ? 0b01 : 0b10;  // Never 0b11
+  const b4_b5 = d === 0 ? 0b00 : d === 1 ? 0b01 : 0b10; // Never 0b11
   const b1_b3 = l & 0b111;
 
   // Combine with b₀ = 0 implicitly
@@ -372,19 +389,19 @@ for (let c = 0; c < 96; c++) {
   const byte = encodeComponentsToByte(h2, d, l);
 
   // Check uniqueness
-  assert(!canonicalBytes.has(byte));  // ✓ No duplicates
+  assert(!canonicalBytes.has(byte)); // ✓ No duplicates
   canonicalBytes.add(byte);
 
   // Check LSB = 0
-  assert((byte & 0x01) === 0);  // ✓ LSB cleared
+  assert((byte & 0x01) === 0); // ✓ LSB cleared
 
   // Check modality encoding
   const b4_b5 = (byte >> 4) & 0b11;
-  assert(b4_b5 !== 0b11);  // ✓ Never uses (1,1) encoding
+  assert(b4_b5 !== 0b11); // ✓ Never uses (1,1) encoding
 }
 
 // Proof: Exactly 96 distinct canonical bytes
-assert(canonicalBytes.size === 96);  // ✓ One per class
+assert(canonicalBytes.size === 96); // ✓ One per class
 ```
 
 **Result**: Canonical form is well-defined and unique. **Q.E.D.**
@@ -394,6 +411,7 @@ assert(canonicalBytes.size === 96);  // ✓ One per class
 **Claim**: The literal and operational backends are consistent (produce equivalent results).
 
 **Mathematical Statement**:
+
 ```
 ∀expr ∈ valid_expressions:
   bytes_from_literal(expr) ≈ bytes_implied_by_operational(expr)
@@ -450,6 +468,7 @@ testDualSemantics('evaluate@c21 . copy@c05');
 **Claim**: The rewrite system for transform normalization is confluent (produces unique normal forms).
 
 **Mathematical Statement**:
+
 ```
 ∀expr: rewrites form a terminating and confluent system
        ⟹ ∃! normal_form(expr)
@@ -462,6 +481,7 @@ testDualSemantics('evaluate@c21 . copy@c05');
 **File**: [compiler/rewrites.ts](../../packages/core/src/compiler/rewrites.ts)
 
 **Rewrite Rules** (sampling):
+
 ```typescript
 // Rule 1: Distribute transforms over sequential composition
 R(s₂ ∘ s₁) → R(s₂) ∘ R(s₁)
@@ -487,12 +507,14 @@ M² → ε
 ```
 
 **Termination Proof** (sketch):
+
 - Define measure: transform nesting depth + total power count
 - Each rewrite strictly decreases this measure
 - Measure is bounded below by 0
 - ∴ Rewriting terminates
 
 **Confluence Proof** (sketch):
+
 - Critical pairs: Where multiple rewrites apply
 - Show: All critical pairs converge (local confluence)
 - By Newman's lemma: Local confluence + termination ⟹ confluence
@@ -508,7 +530,7 @@ function testRewriteConfluence(expr: string) {
   const order2 = normalizeTransform(ast, { foldingFirst: true });
 
   // Compare results (should be equal)
-  assert(astEqual(order1, order2));  // ✓ Same normal form
+  assert(astEqual(order1, order2)); // ✓ Same normal form
 }
 
 // Test on variety of expressions
@@ -524,6 +546,7 @@ testRewriteConfluence('M@ (R+1@ (M@ c10))');
 **Claim**: Because Atlas operates on **finite structures**, many theorems admit **exhaustive proof** rather than inductive proof.
 
 **Finite structures**:
+
 - 96 classes (enumerable)
 - 256 bytes (enumerable)
 - 4 transforms with known finite orders
@@ -532,6 +555,7 @@ testRewriteConfluence('M@ (R+1@ (M@ c10))');
 **Advantage**: Instead of proving "∀c: P(c)" by induction, we can **compute** P(c) for all c ∈ {0..95} and verify directly.
 
 **Examples**:
+
 - **Transform commutativity**: Check all 96 × 96 pairs ✓
 - **Transform orders**: Check all 96 classes ✓
 - **Bridge correctness**: Check all 96 × 4 × k cases ✓
@@ -544,16 +568,19 @@ testRewriteConfluence('M@ (R+1@ (M@ c10))');
 ## The Codebase as Mathematical Object
 
 **Traditional view**:
+
 - Specification: Mathematical (abstract)
 - Implementation: Software (concrete)
 - Relationship: Implementation approximates specification
 
 **Atlas view**:
+
 - Specification: Algebraic structure (Platonic)
 - Implementation: Executable mathematics (realization)
 - Relationship: Implementation **IS** the structure (isomorphism)
 
 **Evidence**:
+
 1. **Bijective encoding** proves class system is well-defined
 2. **Transform laws** prove group structure is correct
 3. **Bridge verification** proves class ≅ SGA (as automorphism groups)
@@ -567,16 +594,16 @@ testRewriteConfluence('M@ (R+1@ (M@ c10))');
 
 ## Summary of Proven Theorems
 
-| Theorem | Statement | Proof Type | Verification |
-|---------|-----------|------------|--------------|
-| 1. Bijective Encoding | (h,d,ℓ) ↔ class | Exhaustive | 96 + 96 cases ✓ |
-| 2. Transform Commutativity | [R,D]=[R,T]=[D,T]=0 | Exhaustive | 3 × 96 cases ✓ |
-| 3. Transform Orders | R⁴=D³=T⁸=M²=id | Exhaustive | 4 × 96 cases ✓ |
-| 4. Mirror Conjugation | MgM=g⁻¹ | Exhaustive | 3 × 96 cases ✓ |
-| 5. **Bridge Correctness** | **project∘g_SGA∘lift = g_class** | **Exhaustive** | **1,248 cases ✓** |
-| 6. Canonical Uniqueness | ∃! canonical byte per class | Exhaustive | 96 cases ✓ |
-| 7. Dual Semantics | Literal ≈ operational | Test vectors | 8 vectors ✓ |
-| 8. Rewrite Confluence | Unique normal forms | Structural + empirical | Multiple cases ✓ |
+| Theorem                    | Statement                        | Proof Type             | Verification      |
+| -------------------------- | -------------------------------- | ---------------------- | ----------------- |
+| 1. Bijective Encoding      | (h,d,ℓ) ↔ class                 | Exhaustive             | 96 + 96 cases ✓   |
+| 2. Transform Commutativity | [R,D]=[R,T]=[D,T]=0              | Exhaustive             | 3 × 96 cases ✓    |
+| 3. Transform Orders        | R⁴=D³=T⁸=M²=id                   | Exhaustive             | 4 × 96 cases ✓    |
+| 4. Mirror Conjugation      | MgM=g⁻¹                          | Exhaustive             | 3 × 96 cases ✓    |
+| 5. **Bridge Correctness**  | **project∘g_SGA∘lift = g_class** | **Exhaustive**         | **1,248 cases ✓** |
+| 6. Canonical Uniqueness    | ∃! canonical byte per class      | Exhaustive             | 96 cases ✓        |
+| 7. Dual Semantics          | Literal ≈ operational            | Test vectors           | 8 vectors ✓       |
+| 8. Rewrite Confluence      | Unique normal forms              | Structural + empirical | Multiple cases ✓  |
 
 **Total verified cases**: >2,000 exhaustive checks
 

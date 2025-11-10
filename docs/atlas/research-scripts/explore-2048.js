@@ -34,21 +34,29 @@ let elem = Atlas.SGA.lift(testClass);
 // Verify R^4 = identity
 let r4 = elem;
 for (let i = 0; i < 4; i++) r4 = Atlas.SGA.R(r4);
-console.log(`Verify R⁴(${testClass}) = ${Atlas.SGA.project(r4)} (should be ${testClass}): ${Atlas.SGA.project(r4) === testClass ? '✓' : '✗'}`);
+console.log(
+  `Verify R⁴(${testClass}) = ${Atlas.SGA.project(r4)} (should be ${testClass}): ${Atlas.SGA.project(r4) === testClass ? '✓' : '✗'}`,
+);
 
 // Verify D^3 = identity
 let d3 = elem;
 for (let i = 0; i < 3; i++) d3 = Atlas.SGA.D(d3);
-console.log(`Verify D³(${testClass}) = ${Atlas.SGA.project(d3)} (should be ${testClass}): ${Atlas.SGA.project(d3) === testClass ? '✓' : '✗'}`);
+console.log(
+  `Verify D³(${testClass}) = ${Atlas.SGA.project(d3)} (should be ${testClass}): ${Atlas.SGA.project(d3) === testClass ? '✓' : '✗'}`,
+);
 
 // Verify T^8 = identity
 let t8 = elem;
 for (let i = 0; i < 8; i++) t8 = Atlas.SGA.T(t8);
-console.log(`Verify T⁸(${testClass}) = ${Atlas.SGA.project(t8)} (should be ${testClass}): ${Atlas.SGA.project(t8) === testClass ? '✓' : '✗'}`);
+console.log(
+  `Verify T⁸(${testClass}) = ${Atlas.SGA.project(t8)} (should be ${testClass}): ${Atlas.SGA.project(t8) === testClass ? '✓' : '✗'}`,
+);
 
 // Verify M^2 = identity
 let m2 = Atlas.SGA.M(Atlas.SGA.M(elem));
-console.log(`Verify M²(${testClass}) = ${Atlas.SGA.project(m2)} (should be ${testClass}): ${Atlas.SGA.project(m2) === testClass ? '✓' : '✗'}\n`);
+console.log(
+  `Verify M²(${testClass}) = ${Atlas.SGA.project(m2)} (should be ${testClass}): ${Atlas.SGA.project(m2) === testClass ? '✓' : '✗'}\n`,
+);
 
 // ============================================================================
 // Part 2: Counting Distinct Transformations
@@ -109,8 +117,8 @@ console.log(`Expected: 192\n`);
 
 if (count !== 192) {
   console.log(`⚠ WARNING: Found ${count} instead of 192!`);
-  console.log(`This suggests either:`)
-  console.log(`  1. Some combinations are redundant`)
+  console.log(`This suggests either:`);
+  console.log(`  1. Some combinations are redundant`);
   console.log(`  2. The group structure is different than documented\n`);
 }
 
@@ -139,7 +147,9 @@ console.log('  These generate ℤ₂ × ℤ₂ (Klein 4-group)\n');
 
 console.log('Full Clifford algebra structure:');
 console.log('  Dimension: 128 (all grades 0..7)');
-console.log('  Rank-1 restriction: Only grade 0 (scalar) + grade 1 (7 vectors) = 8 elements per (h,d)');
+console.log(
+  '  Rank-1 restriction: Only grade 0 (scalar) + grade 1 (7 vectors) = 8 elements per (h,d)',
+);
 console.log('  96 classes = 4 quadrants × 3 modalities × 8 contexts\n');
 
 console.log('Hypothesis for 2048:');

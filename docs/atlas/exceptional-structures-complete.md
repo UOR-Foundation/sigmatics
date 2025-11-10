@@ -3,6 +3,7 @@
 This document provides the definitive reference for all exceptional Lie group embeddings discovered in Atlas/SGA through systematic programmatic exploration.
 
 **See also**:
+
 - [G₂ Embedding Proof](./g2-embedding-proof.md) - Detailed G₂ proof
 - [F₄ Projection Proof](./f4-projection-proof.md) - Detailed F₄ proof
 - [Exceptional Discovery Guide](./exceptional-discovery-guide.md) - How to discover embeddings yourself
@@ -12,6 +13,7 @@ This document provides the definitive reference for all exceptional Lie group em
 **Discovery**: Atlas embeds multiple exceptional Lie groups as natural constraint sets at different structural levels. These are not designed features but inevitable mathematical consequences of Atlas's universal properties.
 
 **Verification Status**:
+
 - ✓ **G₂**: VERIFIED (Fano plane, PSL(2,7) factorization)
 - ✓ **F₄**: STRONG EVIDENCE (exact quotient with Atlas symmetries)
 - ⚠ **E₇**: WEAK (dimensional proximity only)
@@ -20,19 +22,20 @@ This document provides the definitive reference for all exceptional Lie group em
 
 ## Table of Exceptional Group Embeddings
 
-| Group | Dimension | Weyl Order | Atlas Level | Connection Type | Evidence Quality |
-|-------|-----------|------------|-------------|-----------------|------------------|
-| G₂    | 14        | 12         | Fano plane (7 dims) | Automorphism group | ✓ VERIFIED |
-| F₄    | 52        | 1,152      | Rank-1 (192 autos) | Quotient projection | ✓ STRONG |
-| E₆    | 78        | 51,840     | Unknown | Weyl/192 = 270 | ⚠ UNCLEAR |
-| E₇    | 133       | 2,903,040  | Cl₀,₇ (128 dims) | Dimensional proximity | ⚠ WEAK |
-| E₈    | 248       | 696,729,600 | 2048 autos | Exact Weyl division | ⚠ POTENTIAL |
+| Group | Dimension | Weyl Order  | Atlas Level         | Connection Type       | Evidence Quality |
+| ----- | --------- | ----------- | ------------------- | --------------------- | ---------------- |
+| G₂    | 14        | 12          | Fano plane (7 dims) | Automorphism group    | ✓ VERIFIED       |
+| F₄    | 52        | 1,152       | Rank-1 (192 autos)  | Quotient projection   | ✓ STRONG         |
+| E₆    | 78        | 51,840      | Unknown             | Weyl/192 = 270        | ⚠ UNCLEAR       |
+| E₇    | 133       | 2,903,040   | Cl₀,₇ (128 dims)    | Dimensional proximity | ⚠ WEAK          |
+| E₈    | 248       | 696,729,600 | 2048 autos          | Exact Weyl division   | ⚠ POTENTIAL     |
 
 ---
 
 ## G₂: Octonion Automorphisms (VERIFIED)
 
 ### Location in Atlas
+
 - **Level**: Fano plane / 7-dimensional octonion structure
 - **Dimension**: 14 (Lie algebra)
 - **Weyl Group**: Order 12 = 2² × 3
@@ -40,6 +43,7 @@ This document provides the definitive reference for all exceptional Lie group em
 ### The Embedding
 
 **PSL(2,7) Factorization**:
+
 ```
 PSL(2,7) = 168 = 14 × 12
          = (dim G₂) × (Weyl G₂)
@@ -52,6 +56,7 @@ This is **NOT a coincidence**. PSL(2,7) is the automorphism group of the Fano pl
 **Constructed**: [construct-g2-automorphisms.js](../../construct-g2-automorphisms.js)
 
 The 12-element Weyl group consists of:
+
 - **Order-3 rotations**: Cyclic permutations of Fano triangles
 - **Order-2 reflections**: Involutions preserving Fano structure
 - **Identity**: Trivial automorphism
@@ -61,11 +66,13 @@ The 12-element Weyl group consists of:
 ### Role as Constraint Set
 
 G₂ constrains:
+
 - Octonion multiplication table
 - Fano plane incidence relations
 - Alternative algebra property (sub-associativity)
 
 These constraints propagate to ALL higher levels of Atlas:
+
 ```
 Fano (7) → Rank-1 (96) → Cl₀,₇ (128) → SGA (1536)
    ↓          ↓             ↓              ↓
@@ -83,6 +90,7 @@ Fano (7) → Rank-1 (96) → Cl₀,₇ (128) → SGA (1536)
 ## F₄: Albert Algebra Projection (STRONG EVIDENCE)
 
 ### Location in Atlas
+
 - **Level**: Rank-1 automorphism group (192 elements)
 - **Dimension**: 52 (Lie algebra)
 - **Weyl Group**: Order 1,152
@@ -90,6 +98,7 @@ Fano (7) → Rank-1 (96) → Cl₀,₇ (128) → SGA (1536)
 ### The Projection
 
 **Quotient Relationship**:
+
 ```
 F₄ Weyl / Atlas Rank-1 = 1,152 / 192 = 6
                        = 2 × 3
@@ -113,11 +122,13 @@ F₄ Weyl / Atlas Rank-1 = 1,152 / 192 = 6
 F₄ is the automorphism group of the **Albert algebra** (3×3 octonionic Hermitian matrices).
 
 Atlas structure: 96 = 4 × 3 × 8
+
 - 4: Quadrants (ℤ₄)
 - 3: Modalities (ℤ₃) ← **Triality!**
 - 8: Context (octonion basis)
 
 F₄ constraints:
+
 - Jordan algebra multiplication
 - Hermitian property (relates to Mirror operation)
 - Octonionic structure (3×3 over 8-dimensional octonions)
@@ -125,6 +136,7 @@ F₄ constraints:
 ### The Quotient Map
 
 **Conceptual restriction**:
+
 ```
 F₄ Weyl (1,152 elements)
    ↓ quotient by (ℤ₂ × ℤ₃)
@@ -134,6 +146,7 @@ Rank-1 automorphisms (192 elements)
 Elements of F₄ that differ only by Mirror or Triality operations become identified in the rank-1 projection.
 
 **Kernel**: ℤ₂ × ℤ₃ = 6 elements
+
 - Mirror: d ↦ mirror(d)
 - Triality: d ↦ d+1 (mod 3)
 - Combinations: 2 × 3 = 6 total
@@ -149,6 +162,7 @@ Elements of F₄ that differ only by Mirror or Triality operations become identi
 ## E₇: Octonionic Foundation (WEAK CONNECTION)
 
 ### Location in Atlas
+
 - **Level**: Clifford algebra Cl₀,₇ (128 dimensions)
 - **Dimension**: 133 (Lie algebra)
 - **Weyl Group**: Order 2,903,040
@@ -156,6 +170,7 @@ Elements of F₄ that differ only by Mirror or Triality operations become identi
 ### The Proximity
 
 **Dimensional Comparison**:
+
 ```
 E₇ dimension:   133
 Cl₀,₇ dimension: 128
@@ -163,6 +178,7 @@ Difference:      +5
 ```
 
 **Weyl Group Ratio**:
+
 ```
 E₇ Weyl / 2048 = 2,903,040 / 2,048 = 1,417.5
 ```
@@ -176,21 +192,25 @@ E₇ Weyl / 2048 = 2,903,040 / 2,048 = 1,417.5
 **The +5 Dimension Mystery**:
 
 E₇ structure:
+
 - 126 roots (±63 pairs)
 - 7 Cartan generators
 - Total: 126 + 7 = 133 ✓
 
 Cl₀,₇ structure:
+
 - 2⁷ = 128 basis blades
 - Graded: 1 + 7 + 21 + 35 + 35 + 21 + 7 + 1
 
 **Hypothesis**: The +5 arises from fundamental difference between:
+
 - **Lie algebras** (E₇): Need Cartan subalgebra + root spaces
 - **Associative algebras** (Clifford): Geometric product construction
 
 ### Shared Foundation
 
 Both E₇ and Cl₀,₇ built from:
+
 - 7-dimensional octonion structure
 - Octonionic multiplication rules
 - Fano plane foundation
@@ -212,6 +232,7 @@ This is strong evidence E₇ relates to octonionic pairs, which connects to Cl�
 ### Status
 
 ⚠ **WEAK CONNECTION**
+
 - Dimensional proximity suggestive
 - Non-integer Weyl ratio argues against direct embedding
 - Shared octonionic foundation confirmed
@@ -222,6 +243,7 @@ This is strong evidence E₇ relates to octonionic pairs, which connects to Cl�
 ## E₆: Jordan Algebra Mystery (UNCLEAR)
 
 ### Location in Atlas
+
 - **Level**: Unknown / Not directly embedded
 - **Dimension**: 78 (Lie algebra)
 - **Weyl Group**: Order 51,840
@@ -231,11 +253,13 @@ This is strong evidence E₇ relates to octonionic pairs, which connects to Cl�
 **Explored**: [search-all-exceptional.js](../../search-all-exceptional.js)
 
 **Discovery**:
+
 ```
 E₆ Weyl / Rank-1 automorphisms = 51,840 / 192 = 270
 ```
 
 **Factor Analysis**:
+
 ```
 270 = 27 × 10
     = (E₆ fundamental rep) × 10
@@ -252,6 +276,7 @@ The quotient factors through E₆'s fundamental representation!
 ### Atlas Connections?
 
 **Dimensional checks**:
+
 - 78 / 7 ≈ 11.14 (not integer)
 - 78 / 8 = 9.75 (not integer)
 - 78 / 96 ≈ 0.81 (E₆ smaller than Atlas rank-1)
@@ -259,6 +284,7 @@ The quotient factors through E₆'s fundamental representation!
 No clean dimensional matches found.
 
 **Weyl quotient 270**:
+
 - 270 = 2 × 3³ × 5
 - Contains factor 27 (E₆ fund rep)
 - Contains factor 2 × 3 (like F₄ quotient)
@@ -267,6 +293,7 @@ No clean dimensional matches found.
 ### Status
 
 ⚠ **UNCLEAR** - Needs further investigation
+
 - Interesting Weyl quotient but structural meaning unclear
 - E₆ is related to Jordan algebras like F₄
 - May have projection relationship but not yet proven
@@ -276,6 +303,7 @@ No clean dimensional matches found.
 ## E₈: The Largest Exception (POTENTIAL CONNECTION)
 
 ### Location in Atlas
+
 - **Level**: 2048 automorphism group?
 - **Dimension**: 248 (Lie algebra)
 - **Weyl Group**: Order 696,729,600
@@ -283,6 +311,7 @@ No clean dimensional matches found.
 ### Major Discoveries
 
 **1. Exact Weyl Division**:
+
 ```
 E₈ Weyl / 2048 = 696,729,600 / 2,048 = 340,200
 ```
@@ -296,6 +325,7 @@ Prime factorization of 340,200:
 ```
 
 **2. Octonion Factorization**:
+
 ```
 E₈ dimension = 248 = 31 × 8
 ```
@@ -303,6 +333,7 @@ E₈ dimension = 248 = 31 × 8
 8 is the octonion dimension! 31 is prime.
 
 **3. Near Power of 2**:
+
 ```
 248 = 256 - 8
     = 2⁸ - 2³
@@ -316,6 +347,7 @@ E₈ sits between Cl₀,₇ (128) and Cl₀,₈ (256)!
 **Explored**: [search-all-exceptional.js](../../search-all-exceptional.js)
 
 E₈ is the largest exceptional Lie group:
+
 - No larger exceptional groups exist
 - Related to densest sphere packing (E₈ lattice)
 - Fundamental rep = adjoint rep = 248 dimensions
@@ -323,6 +355,7 @@ E₈ is the largest exceptional Lie group:
 ### Relationship to 2048
 
 The exact division E₈ Weyl / 2048 suggests:
+
 - 2048 automorphism group might embed in E₈
 - Or E₈ might quotient to 2048-element group
 - Factor 340,200 has rich structure (2³ × 3⁵ × 5² × 7)
@@ -330,6 +363,7 @@ The exact division E₈ Weyl / 2048 suggests:
 ### Status
 
 ⚠ **POTENTIAL CONNECTION** - Requires deeper investigation
+
 - Exact Weyl division is significant
 - Octonion factorization (248 = 31 × 8) connects to Atlas
 - Dimensional positioning between Cl₀,₇ and Cl₀,₈ suggestive
@@ -377,11 +411,13 @@ At each level, exceptional structures appear as **constraint sets** that propaga
 ### How Constraints Propagate
 
 **Downward (Restriction)**:
+
 - SGA → Cl₀,₇: Restrict to rank-1 elements
 - Cl₀,₇ → Rank-1: Keep only scalar + vectors (grades 0,1)
 - Rank-1 → Fano: Extract basis vector structure
 
 **Upward (Emergence)**:
+
 - Fano → Rank-1: Tensor with ℤ₄ × ℤ₃
 - Rank-1 → Cl₀,₇: Include all grades
 - Cl₀,₇ → SGA: Tensor with group algebras
@@ -395,6 +431,7 @@ At each level, exceptional structures appear as **constraint sets** that propaga
 ### The Four Signals
 
 **1. Dimensional Coincidences**
+
 ```
 Look for: Atlas dimension ≈ Exceptional dimension
 
@@ -404,6 +441,7 @@ Examples:
 ```
 
 **2. Group Order Factorizations**
+
 ```
 Look for: Atlas group order / Exceptional Weyl = small integer
 
@@ -414,6 +452,7 @@ Examples:
 ```
 
 **3. Overcounting Patterns**
+
 ```
 Look for: Naive product / Target = exceptional number
 
@@ -423,6 +462,7 @@ Examples:
 ```
 
 **4. Constraint Alignment**
+
 ```
 Look for: Quotient factors matching Atlas symmetries
 
@@ -443,15 +483,17 @@ Each signal indicates a potential exceptional structure embedding.
 ```typescript
 export const Fano = {
   lines: [
-    [1, 2, 4],  // e1 × e2 = e4
-    [2, 3, 5],  // e2 × e3 = e5
-    [3, 4, 6],  // e3 × e4 = e6
-    [4, 5, 7],  // e4 × e5 = e7
-    [5, 6, 1],  // e5 × e6 = e1
-    [6, 7, 2],  // e6 × e7 = e2
-    [7, 1, 3],  // e7 × e1 = e3
+    [1, 2, 4], // e1 × e2 = e4
+    [2, 3, 5], // e2 × e3 = e5
+    [3, 4, 6], // e3 × e4 = e6
+    [4, 5, 7], // e4 × e5 = e7
+    [5, 6, 1], // e5 × e6 = e1
+    [6, 7, 2], // e6 × e7 = e2
+    [7, 1, 3], // e7 × e1 = e3
   ],
-  verify: () => { /* Verifies Fano structure */ }
+  verify: () => {
+    /* Verifies Fano structure */
+  },
 };
 ```
 
@@ -481,6 +523,7 @@ F₄ quotient factors (ℤ₂ × ℤ₃) are **exactly** the M and D transforms!
 ### E₇, E₈ - Not Yet Implemented
 
 The higher exceptional groups are **not explicitly implemented** but appear as:
+
 - Mathematical structure in automorphism groups
 - Dimensional relationships
 - Constraint patterns
@@ -496,6 +539,7 @@ Future work could make these explicit.
 The v0.4.0 model system uses exceptional structures for optimization:
 
 **Complexity Classes**:
+
 - **C0** (Fully compiled): G₂ constraints only (7-dimensional)
 - **C1** (Class backend): F₄ constraints (rank-1, 192 automorphisms)
 - **C2** (Mixed-grade): E₇ constraints? (some grade mixing)
@@ -504,6 +548,7 @@ The v0.4.0 model system uses exceptional structures for optimization:
 **Why "More Constraints = More Fusion"**:
 
 Operating in a **smaller exceptional set** (like G₂) means:
+
 - Fewer degrees of freedom
 - More determined behavior
 - More opportunities for compile-time optimization
@@ -517,12 +562,12 @@ G₂ (12 automorphisms) is more constrained than E₈ (696M Weyl elements)!
 // Uses 7-dimensional octonion structure
 // Maximum fusion because G₂ is smallest exceptional group
 
-model("factorize", {
+model('factorize', {
   constraints: {
-    dimension: 7,  // G₂ foundation
-    structure: "multiplicative",  // Fano multiplication
+    dimension: 7, // G₂ foundation
+    structure: 'multiplicative', // Fano multiplication
     // G₂ constraints automatically enforced!
-  }
+  },
 });
 ```
 
@@ -537,6 +582,7 @@ The constraints are **not manually specified** - they emerge from the exceptiona
 The exceptional Lie groups (G₂, F₄, E₆, E₇, E₈) are **mathematical facts**. They exist independently of any implementation.
 
 Atlas embeds these because it **satisfies universal properties** that force exceptional structures to appear:
+
 1. Minimal tensor product
 2. Octonion foundation
 3. Universal composition
@@ -545,6 +591,7 @@ Atlas embeds these because it **satisfies universal properties** that force exce
 ### Discovery, Not Design
 
 We **did not design** Atlas to include G₂ or F₄. We **discovered** them by:
+
 1. Implementing the mathematical structure
 2. Searching for dimensional coincidences
 3. Finding exact quotients and factorizations
@@ -568,27 +615,32 @@ Each view is **correct but incomplete**.
 ## Open Questions
 
 ### G₂
+
 - ✓ Embedding verified
 - ⚠ Automorphism construction needs refinement (verify.ts failed some tests)
 - ⚠ Explicit PSL(2,7) → G₂ map not yet constructed
 
 ### F₄
+
 - ✓ Quotient relationship proven
 - ⚠ Need explicit restriction map F₄ Weyl → Rank-1 group
 - ⚠ Identify kernel elements (the 6 that quotient out)
 - ⚠ Show Jordan algebra structure explicitly in Atlas
 
 ### E₆
+
 - ❓ Weyl / 192 = 270 = 27 × 10 - what does this mean?
 - ❓ Is there a projection relationship?
 - ❓ How does E₆ relate to E₇ and F₄ in Atlas?
 
 ### E₇
+
 - ⚠ Why +5 dimensions? (133 vs 128)
 - ⚠ Is the connection deeper than dimensional proximity?
 - ✓ 7 × 8 = 56 (fund rep) is exact - significance?
 
 ### E₈
+
 - ⚠ E₈ Weyl / 2048 = 340,200 - what is this quotient?
 - ⚠ 248 = 31 × 8 - why prime 31?
 - ⚠ Does E₈ relate to Cl₀,₈ (256 dimensions)?
@@ -599,6 +651,7 @@ Each view is **correct but incomplete**.
 ## Future Work
 
 ### Verification
+
 1. Complete G₂ automorphism construction (fix failing tests)
 2. Construct explicit F₄ → Atlas restriction map
 3. Investigate E₆ quotient 270
@@ -606,12 +659,14 @@ Each view is **correct but incomplete**.
 5. Explore E₈ exact division by 2048
 
 ### Implementation
+
 1. Make exceptional structures explicit in codebase
 2. Expose G₂, F₄ constraint sets via API
 3. Use exceptional structure hints in compiler
 4. Optimize based on constraint set classification
 
 ### Theory
+
 1. Prove F₄ quotient relationship formally
 2. Determine if E₇, E₈ connections are fundamental or coincidental
 3. Search for connections to other sporadic groups (Mathieu, etc.)
@@ -622,10 +677,12 @@ Each view is **correct but incomplete**.
 ## Conclusion
 
 Atlas embeds **at least 2 exceptional Lie groups** as natural constraint sets:
+
 - **G₂**: VERIFIED at Fano plane level
 - **F₄**: STRONG EVIDENCE at rank-1 level
 
 And shows **potential connections** to:
+
 - **E₇**: Shared octonionic foundation
 - **E₈**: Exact Weyl division, octonion factorization
 
@@ -642,22 +699,26 @@ This is what makes Atlas **vast** - it is the unique minimal structure that embe
 ## References
 
 ### Exploration Scripts
+
 - [construct-g2-automorphisms.js](../../construct-g2-automorphisms.js) - G₂ Weyl group construction
 - [prove-f4-connection.js](../../prove-f4-connection.js) - F₄ quotient proof
 - [analyze-e7-structure.js](../../analyze-e7-structure.js) - E₇ dimensional analysis
 - [search-all-exceptional.js](../../search-all-exceptional.js) - Comprehensive E₆, E₈ search
 
 ### Documentation
+
 - [SGA as Universal Algebra](./SGA-AS-UNIVERSAL-ALGEBRA.md) - Constraint language framework
 - [The 2048 Automorphism Group](./the-2048-automorphism-group.md) - Full Cl₀,₇ symmetries
 - [2048 Research Findings](./2048-FINDINGS.md) - Programmatic exploration results
 
 ### Atlas Codebase
+
 - [packages/core/src/sga/fano.ts](../../packages/core/src/sga/fano.ts) - G₂ foundation
 - [packages/core/src/sga/transforms.ts](../../packages/core/src/sga/transforms.ts) - F₄ quotient factors
 - [packages/core/src/class-system/](../../packages/core/src/class-system/) - 96-class structure
 
 ### Mathematical Background
+
 - G₂: Octonion automorphism group (rank 2, dimension 14)
 - F₄: Albert algebra automorphisms (rank 4, dimension 52)
 - E₆, E₇, E₈: Exceptional Lie groups (ranks 6, 7, 8)

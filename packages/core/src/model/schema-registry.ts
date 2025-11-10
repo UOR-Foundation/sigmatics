@@ -75,6 +75,14 @@ export function preloadSchemas(): void {
     'lift',
     'project',
     'projectClass',
+    'gcd96',
+    'lcm96',
+    'sum',
+    'product',
+    'max',
+    'min',
+    'factor96',
+    'isPrime96',
   ];
 
   for (const modelName of knownModels) {

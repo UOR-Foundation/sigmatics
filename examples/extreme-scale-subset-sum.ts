@@ -25,9 +25,16 @@ interface OrbitEncoding {
   index: number;
   orbitId: number;
   h2: number; // quadrant (0..3)
-  l: number;  // ring position (0..7)
+  l: number; // ring position (0..7)
   // modular signatures
-  m2: number; m3: number; m4: number; m5: number; m7: number; m8: number; m11: number; m13: number;
+  m2: number;
+  m3: number;
+  m4: number;
+  m5: number;
+  m7: number;
+  m8: number;
+  m11: number;
+  m13: number;
 }
 
 interface EncodingResult {
@@ -87,7 +94,9 @@ class HyperscaleGeometricSolver {
       return {
         value: num,
         index: idx,
-        orbitId, h2, l,
+        orbitId,
+        h2,
+        l,
         m2: num % 2,
         m3: num % 3,
         m4: num % 4,
@@ -150,7 +159,7 @@ class HyperscaleGeometricSolver {
         next.add((p + val) % mod);
       }
       possible.clear();
-      next.forEach(v => possible.add(v));
+      next.forEach((v) => possible.add(v));
       if (possible.has(target)) return true;
       if (possible.size === mod) return true; // saturated
     }
@@ -159,20 +168,33 @@ class HyperscaleGeometricSolver {
 
   private prune(sum: number, pos: number): boolean {
     // Level 1: Bounds
-    if (sum > this.target) { this.stats.level1Prunes++; return true; }
+    if (sum > this.target) {
+      this.stats.level1Prunes++;
+      return true;
+    }
     const remaining = this.encoding.cumSums[this.n] - this.encoding.cumSums[pos];
-    if (sum + remaining < this.target) { this.stats.level1Prunes++; return true; }
+    if (sum + remaining < this.target) {
+      this.stats.level1Prunes++;
+      return true;
+    }
 
     // Level 2: quick modular (mod 8)
     const needed = this.target - sum;
-    if (!this.canMakeMod(pos, needed % 8, 8)) { this.stats.level2Prunes++; return true; }
+    if (!this.canMakeMod(pos, needed % 8, 8)) {
+      this.stats.level2Prunes++;
+      return true;
+    }
 
     // Level 3: deeper modular combos
-    if (!this.canMakeMod(pos, needed % 3, 3)) { this.stats.level3Prunes++; return true; }
+    if (!this.canMakeMod(pos, needed % 3, 3)) {
+      this.stats.level3Prunes++;
+      return true;
+    }
 
     // Level 4: rare expensive check (mod 13) early in tree
     if (pos < this.n - 10 && !this.canMakeMod(pos, needed % 13, 13)) {
-      this.stats.level4Prunes++; return true;
+      this.stats.level4Prunes++;
+      return true;
     }
     return false;
   }
@@ -192,13 +214,18 @@ class HyperscaleGeometricSolver {
         return;
       }
 
-      if (this.prune(sum, pos)) { this.stats.nodesPruned++; return; }
+      if (this.prune(sum, pos)) {
+        this.stats.nodesPruned++;
+        return;
+      }
 
       const val = this.numbers[pos];
       // choose
-      selection[pos] = 1; dfs(pos + 1, sum + val);
+      selection[pos] = 1;
+      dfs(pos + 1, sum + val);
       // skip
-      selection[pos] = 0; dfs(pos + 1, sum);
+      selection[pos] = 0;
+      dfs(pos + 1, sum);
     };
 
     dfs(0, 0);
@@ -214,16 +241,16 @@ class HyperscaleGeometricSolver {
   }
 
   toCircuit(selection: number[]) {
-    const indices = selection.map((s, i) => (s ? i : -1)).filter(i => i >= 0);
+    const indices = selection.map((s, i) => (s ? i : -1)).filter((i) => i >= 0);
     if (!indices.length) return null;
-    const values = indices.map(i => this.numbers[i]);
+    const values = indices.map((i) => this.numbers[i]);
     const sum = values.reduce((a, b) => a + b, 0);
 
     if (indices.length > 24) {
       return { values: values.slice(0, 24), sum, circuitSize: indices.length };
     }
 
-    const terms = indices.map(i => {
+    const terms = indices.map((i) => {
       const o = this.encoding.orbits[i];
       // map (h2,l) into canonical class index-ish display (not an exact semantic map)
       const pseudoClass = 24 * o.h2 + o.l; // compress l into low bits
@@ -237,20 +264,66 @@ class HyperscaleGeometricSolver {
 // Benchmark Harness
 // ----------------------------------------------------------------------------
 
-interface BenchmarkCase { name: string; n: number; gen: (n: number) => number[]; target: number; time?: number; }
+interface BenchmarkCase {
+  name: string;
+  n: number;
+  gen: (n: number) => number[];
+  target: number;
+  time?: number;
+}
 
 const FULL_BENCH: BenchmarkCase[] = [
-  { name: 'Warmup', n: 30, gen: n => Array.from({ length: n }, (_, i) => (i + 1) * 2), target: 200 },
-  { name: 'Large', n: 50, gen: n => Array.from({ length: n }, (_, i) => (i + 1) * 3), target: 500 },
-  { name: 'Very Large', n: 75, gen: n => Array.from({ length: n }, (_, i) => (i + 1) * 2 + 1), target: 750 },
-  { name: 'Extreme', n: 100, gen: n => Array.from({ length: n }, (_, i) => (i + 1) * 4), target: 1000 },
-  { name: 'Hyperscale', n: 150, gen: n => Array.from({ length: n }, (_, i) => (i + 1) * 3 + (i % 7)), target: 1500 },
+  {
+    name: 'Warmup',
+    n: 30,
+    gen: (n) => Array.from({ length: n }, (_, i) => (i + 1) * 2),
+    target: 200,
+  },
+  {
+    name: 'Large',
+    n: 50,
+    gen: (n) => Array.from({ length: n }, (_, i) => (i + 1) * 3),
+    target: 500,
+  },
+  {
+    name: 'Very Large',
+    n: 75,
+    gen: (n) => Array.from({ length: n }, (_, i) => (i + 1) * 2 + 1),
+    target: 750,
+  },
+  {
+    name: 'Extreme',
+    n: 100,
+    gen: (n) => Array.from({ length: n }, (_, i) => (i + 1) * 4),
+    target: 1000,
+  },
+  {
+    name: 'Hyperscale',
+    n: 150,
+    gen: (n) => Array.from({ length: n }, (_, i) => (i + 1) * 3 + (i % 7)),
+    target: 1500,
+  },
 ];
 
 const QUICK_BENCH: BenchmarkCase[] = [
-  { name: 'Quick-Warmup', n: 20, gen: n => Array.from({ length: n }, (_, i) => (i + 1) * 2), target: 90 },
-  { name: 'Quick-Mid', n: 28, gen: n => Array.from({ length: n }, (_, i) => (i + 1) * 3), target: 250 },
-  { name: 'Quick-Large', n: 32, gen: n => Array.from({ length: n }, (_, i) => (i + 1) * 3 + (i % 5)), target: 400 },
+  {
+    name: 'Quick-Warmup',
+    n: 20,
+    gen: (n) => Array.from({ length: n }, (_, i) => (i + 1) * 2),
+    target: 90,
+  },
+  {
+    name: 'Quick-Mid',
+    n: 28,
+    gen: (n) => Array.from({ length: n }, (_, i) => (i + 1) * 3),
+    target: 250,
+  },
+  {
+    name: 'Quick-Large',
+    n: 32,
+    gen: (n) => Array.from({ length: n }, (_, i) => (i + 1) * 3 + (i % 5)),
+    target: 400,
+  },
 ];
 
 const RUN_MODE = process.env.RUN_MODE === 'FULL' ? 'FULL' : 'QUICK';
@@ -280,9 +353,12 @@ for (const test of SUITE) {
   console.log('  ✓ Search complete');
   console.log(`    Nodes Explored: ${stats.nodesExplored.toLocaleString()}`);
   console.log(`    Nodes Pruned:   ${stats.nodesPruned.toLocaleString()}`);
-  console.log(`    L1/L2/L3/L4:    ${stats.level1Prunes}/${stats.level2Prunes}/${stats.level3Prunes}/${stats.level4Prunes}`);
+  console.log(
+    `    L1/L2/L3/L4:    ${stats.level1Prunes}/${stats.level2Prunes}/${stats.level3Prunes}/${stats.level4Prunes}`,
+  );
   console.log(`    Time (ms):      ${stats.elapsed}`);
-  const speedup = stats.totalSpace && stats.nodesExplored > 0 ? stats.totalSpace / stats.nodesExplored : 0;
+  const speedup =
+    stats.totalSpace && stats.nodesExplored > 0 ? stats.totalSpace / stats.nodesExplored : 0;
   console.log(`    Speedup vs brute force (approx): ${speedup.toExponential(2)}`);
   console.log(`    Throughput:     ${stats.nodesPerSecond?.toFixed(0)} nodes/sec`);
   console.log(`    Solutions:      ${solutions.length}`);
@@ -309,14 +385,18 @@ for (const test of SUITE) {
 console.log('═'.repeat(80));
 console.log('SUMMARY');
 console.log('═'.repeat(80));
-console.log('Scale                | n   | Classical Space    | Explored    | Speedup    | Time (ms)');
+console.log(
+  'Scale                | n   | Classical Space    | Explored    | Speedup    | Time (ms)',
+);
 console.log('-'.repeat(80));
 for (const r of results) {
   const classical = r.classicalSpace.toExponential(2).padStart(17);
   const explored = r.nodesExplored.toLocaleString().padStart(11);
   const speed = (r.classicalSpace / (r.nodesExplored || 1)).toExponential(2).padStart(11);
   const time = String(r.elapsed).padStart(9);
-  console.log(`${r.name.padEnd(20)} | ${String(r.n).padStart(3)} | ${classical} | ${explored} | ${speed} | ${time}`);
+  console.log(
+    `${r.name.padEnd(20)} | ${String(r.n).padStart(3)} | ${classical} | ${explored} | ${speed} | ${time}`,
+  );
 }
 
 console.log('\nKey Takeaways:');

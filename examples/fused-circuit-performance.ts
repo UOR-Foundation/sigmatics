@@ -182,7 +182,7 @@ console.log('─'.repeat(80));
 function mixClass(c: number, round: number): number {
   // Each round applies R, D, T transforms based on round number
   const r = (round % 4) as 0 | 1 | 2 | 3;
-  const d = ((round % 3) as 0 | 1 | 2);
+  const d = (round % 3) as 0 | 1 | 2;
   const t = (round % 8) as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
   let result = c;
@@ -197,7 +197,7 @@ const rounds = 16;
 const inputs = Array.from({ length: 1000 }, (_, i) => i % 96);
 
 console.time('Crypto mixing (16 rounds × 1000 inputs)');
-const mixed = inputs.map(c => {
+const mixed = inputs.map((c) => {
   let result = c;
   for (let round = 0; round < rounds; round++) {
     result = mixClass(result, round);

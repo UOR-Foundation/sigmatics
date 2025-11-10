@@ -5,17 +5,17 @@ Below is the end-to-end plan to re-architect the repository so that Sigmatics Co
 
 A) Target Architecture (what we’re moving to)
 Atlas API
-  └─ Model Server / Registry
-       ├─ Schemas (JSON-Schema for models)
-       ├─ Compiler
-       │    ├─ IR (atoms, ∘, ⊗, transforms, selectors)
-       │    ├─ Rewrites (push/normalize/fold)
-       │    ├─ Fusion (complexity class, compiled vs runtime params)
-       │    └─ Lowering (backend plan)
-       ├─ Backends
-       │    ├─ Class backend (permutation / rank-1 fast path)
-       │    └─ SGA backend (grade-aware correctness)
-       └─ Cache (compiled model artifacts)
+└─ Model Server / Registry
+├─ Schemas (JSON-Schema for models)
+├─ Compiler
+│ ├─ IR (atoms, ∘, ⊗, transforms, selectors)
+│ ├─ Rewrites (push/normalize/fold)
+│ ├─ Fusion (complexity class, compiled vs runtime params)
+│ └─ Lowering (backend plan)
+├─ Backends
+│ ├─ Class backend (permutation / rank-1 fast path)
+│ └─ SGA backend (grade-aware correctness)
+└─ Cache (compiled model artifacts)
 Key invariants we maintain:
 
 SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃] semantics are preserved; SGA multiply = GP ⊗ Z₄ ⊗ Z₃
@@ -24,31 +24,31 @@ Group-algebra kernels (ℝ[ℤ₄], ℝ[ℤ₃]) remain the primitive building b
 Formal spec’s class system, transforms and operational semantics are the law we compile from (class index, R/T/M actions, typed composition) .
 B) Repository Layout (post-refactor)
 packages/core/
-  src/
-    model/                    # Model layer
-      schemas/                # JSON-Schema (stdlib models)
-      registry.ts             # Load/validate schemas, resolve versions
-      types.ts                # SigModel, CompiledModel, Params (compiled/runtime), ComplexityClass
-    compiler/                 # Compiler pipeline
-      ir.ts                   # Tiny IR (atoms, ∘, ⊗, transforms R/D/T/M, project(k))
-      rewrites.ts             # Push transforms to leaves; fold pure powers; canonicalize (per spec §6)
-      fuser.ts                # Complexity-guided fusion; bake compiled params; kernel selection
-      lowering/
-        class-backend.ts      # Class/permutation plan (rank-1 fast path)
-        sga-backend.ts        # SGA plan (grade-aware correctness)
-    stdlib/                   # All operations are declared models
-      ring/                   # add96, sub96, mul96
-      transforms/             # R, D, T, M
-      grade/                  # project(k) + utilities
-      bridge/                 # lift(i), project(element) as models (rank-1 only by definition)
-    sga/                      # Existing SGA primitives (kept; used by sga-backend)
-      sga-element.ts          # (now thin wrappers or invoked by backend plans) :contentReference[oaicite:9]{index=9}
-      transforms.ts           # (internal helpers; still match automorphism laws) :contentReference[oaicite:10]{index=10}
-      group-algebras.ts       # (unchanged kernels) :contentReference[oaicite:11]{index=11}
-    server/                   # Model server (in-process)
-      registry-server.ts      # getModel(name, version) → CompiledModel
-      cache.ts                # compiled plan cache (keyed by schema+compiled params)
-  test/                       # Property tests; differential tests (class vs SGA backend)
+src/
+model/ # Model layer
+schemas/ # JSON-Schema (stdlib models)
+registry.ts # Load/validate schemas, resolve versions
+types.ts # SigModel, CompiledModel, Params (compiled/runtime), ComplexityClass
+compiler/ # Compiler pipeline
+ir.ts # Tiny IR (atoms, ∘, ⊗, transforms R/D/T/M, project(k))
+rewrites.ts # Push transforms to leaves; fold pure powers; canonicalize (per spec §6)
+fuser.ts # Complexity-guided fusion; bake compiled params; kernel selection
+lowering/
+class-backend.ts # Class/permutation plan (rank-1 fast path)
+sga-backend.ts # SGA plan (grade-aware correctness)
+stdlib/ # All operations are declared models
+ring/ # add96, sub96, mul96
+transforms/ # R, D, T, M
+grade/ # project(k) + utilities
+bridge/ # lift(i), project(element) as models (rank-1 only by definition)
+sga/ # Existing SGA primitives (kept; used by sga-backend)
+sga-element.ts # (now thin wrappers or invoked by backend plans) :contentReference[oaicite:9]{index=9}
+transforms.ts # (internal helpers; still match automorphism laws) :contentReference[oaicite:10]{index=10}
+group-algebras.ts # (unchanged kernels) :contentReference[oaicite:11]{index=11}
+server/ # Model server (in-process)
+registry-server.ts # getModel(name, version) → CompiledModel
+cache.ts # compiled plan cache (keyed by schema+compiled params)
+test/ # Property tests; differential tests (class vs SGA backend)
 C) Sigmatics Model Spec
 Everything is a Model:
 
@@ -81,7 +81,7 @@ APIs
 // compile-time
 const cm = ModelRegistry.compile("add96", { overflowMode: "track" }); // compiled params
 // run-time
-const out = cm.run({ a: 42, b: 99 });                                 // runtime params
+const out = cm.run({ a: 42, b: 99 }); // runtime params
 Behavior
 
 All stdlib ops (ring, transforms, grade, bridge) live as models here.
@@ -107,7 +107,7 @@ Phase 4 — Stdlib as Models (declare, don’t hard-code)
 Ring: add96, sub96, mul96 (compiled overflow policy; runtime: inputs).
 Transforms: R, D, T, M (compiled powers); lower exactly as current automorphisms (R left-multiplies r, D right-multiplies τ, T permutes ℓ, M inverts τ) .
 Grade: project(k) → SGA backend’s grade projection; class backend no-op for rank-1 scalar/vector cases.
-Bridge: lift(i) (rank-1 basis E_{h,d,ℓ}), project(element) (rank-1 only) as models (reusing existing logic) .
+Bridge: lift(i) (rank-1 basis E\_{h,d,ℓ}), project(element) (rank-1 only) as models (reusing existing logic) .
 Phase 5 — Wire Atlas API to Model Server
 Keep current Atlas surface but route stdlib calls through the registry.
 SGA exports remain available; internally they can delegate to compiled plans where equivalence is proven (same tensor-product law and kernels) .
@@ -139,16 +139,16 @@ Deterministic rewrites (no e-graph blowups): fixed, terminating rule set matchin
 Prefer class backend unless IR requires grade semantics (e.g., project(k)); this keeps hot-path performance identical to current permutation behavior.
 All group-algebra and transform identities remain validated by existing kernels and tests .
 Sigmatics Model Spec (v0.4.0)
+
 1. Scope & Sources (Normative)
-This specification defines the Sigmatics Model abstraction, its JSON-Schema contract, the intermediate representation (IR), the rewrite/normalization laws, fusion/complexity classes, lowering/backends, and the stdlib of models (ring ops, transforms, grade utilities, bridge). It preserves the formal Atlas semantics: class index, typed composition, and transform calculus; and the SGA foundation Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃] for correctness and higher-grade interpretation .
+   This specification defines the Sigmatics Model abstraction, its JSON-Schema contract, the intermediate representation (IR), the rewrite/normalization laws, fusion/complexity classes, lowering/backends, and the stdlib of models (ring ops, transforms, grade utilities, bridge). It preserves the formal Atlas semantics: class index, typed composition, and transform calculus; and the SGA foundation Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃] for correctness and higher-grade interpretation .
 
 Ground truths this spec relies on (unchanged):
 
 Authoritative class index mapping C : B⁸ → {0..95} and equality ≡₉₆ .
 Composition: sequential ∘, parallel ⊗ with the usual associativity/units/commutativity (typed) .
 Transforms R, T_k, M act by class permutations, preserve ≡₉₆, and satisfy the group laws (orders, commutations, conjugations) .
-Dual denotations (literal bytes / operational words) and soundness conditions remain intact .
-2. Model Abstraction
+Dual denotations (literal bytes / operational words) and soundness conditions remain intact . 2. Model Abstraction
 Everything is a Model. A model declares shape and constraints and is compiled to an executable plan.
 
 2.1 Identity
@@ -170,18 +170,18 @@ C3: general case.
 The compiler selects the lowest class consistent with the model’s compiled & runtime parameters.
 
 3. Model JSON-Schema
-Each model M must provide a JSON-Schema that validates its configuration and call shape.
+   Each model M must provide a JSON-Schema that validates its configuration and call shape.
 
 3.1 Descriptor Schema (normative)
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+"$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Sigmatics Model Descriptor",
   "type": "object",
   "required": ["name", "version", "namespace", "compiled", "runtime"],
   "properties": {
     "name": { "type": "string" },
     "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
-    "namespace": { "type": "string" },
+"namespace": { "type": "string" },
 
     "compiled": { "type": "object", "additionalProperties": true },
     "runtime":  { "type": "object", "additionalProperties": true },
@@ -202,15 +202,15 @@ Each model M must provide a JSON-Schema that validates its configuration and cal
       "properties": { "prefer": { "enum": ["class", "sga", "auto"] } },
       "additionalProperties": false
     }
-  }
+
+}
 }
 Notes (binding to formal semantics):
 
-When models reference class terms or sigils, the canonical σ=(h₂,d,ℓ) and transform actions must follow the formal specification (typed composition; transform distribution) .
-4. Intermediate Representation (IR)
+When models reference class terms or sigils, the canonical σ=(h₂,d,ℓ) and transform actions must follow the formal specification (typed composition; transform distribution) . 4. Intermediate Representation (IR)
 4.1 IR Atoms
 Generator op: g@σ, where g ∈ {mark, copy, swap, merge, split, quote, evaluate} and σ=(h₂,d,ℓ) .
-Class literal: c<i> (i in 0..95) and helpers lift(i), project(x) (bridge) consistent with rank-1 basis E_{h,d,ℓ} = r^h ⊗ e_ℓ ⊗ τ^d .
+Class literal: c<i> (i in 0..95) and helpers lift(i), project(x) (bridge) consistent with rank-1 basis E*{h,d,ℓ} = r^h ⊗ e*ℓ ⊗ τ^d .
 Selectors: project(k) for grade projection (Clifford) when the SGA backend is selected.
 4.2 IR Composition
 Sequential ∘ and parallel ⊗ with associativity/units/commutativity as in the formal algebra of combination (typed) .
@@ -218,32 +218,31 @@ Sequential ∘ and parallel ⊗ with associativity/units/commutativity as in the
 R, D, T_k, M tagged on any subterm; their actions are permutations (class semantics) and automorphisms (SGA semantics), with group relations R⁴=D³=T⁸=M², pairwise commutations, mirror conjugations .
 
 4.4 IR Grammar (EBNF)
-<sigil>      ::= "c" <00..95> ["^" ("+"|"-") <k:int>] ["~"] ["@" <λ:int>]
-<op>         ::= ("mark"|"copy"|"swap"|"merge"|"split"|"quote"|"evaluate") "@" <sigil>
-<term>       ::= <op> | "(" <term> ")"
-<seq>        ::= <term> { "." <term> }          // ∘
-<par>        ::= <seq>  { "||" <seq> }          // ⊗
-<transform>  ::= [ "R" ("+"|"-") <q:int> ] [ "T" ("+"|"-") <k:int> ] [ "~" ]
-<phrase>     ::= [ <transform> "@" ] <par>
+<sigil> ::= "c" <00..95> ["^" ("+"|"-") <k:int>] ["~"] ["@" <λ:int>]
+<op> ::= ("mark"|"copy"|"swap"|"merge"|"split"|"quote"|"evaluate") "@" <sigil>
+<term> ::= <op> | "(" <term> ")"
+<seq> ::= <term> { "." <term> } // ∘
+<par> ::= <seq> { "||" <seq> } // ⊗
+<transform> ::= [ "R" ("+"|"-") <q:int> ] [ "T" ("+"|"-") <k:int> ] [ "~" ]
+<phrase> ::= [ <transform> "@" ] <par>
 (Adapted from the executable surface grammar) .
 
 5. Rewrite & Normalization (Deterministic)
-A terminating, deterministic rewrite system yields a canonical form:
+   A terminating, deterministic rewrite system yields a canonical form:
 
 Push transforms to leaves: R, T_k, M distribute over ∘ and ⊗ (equivariant actions) .
 Fold pure powers in ℝ[ℤ₄]/ℝ[ℤ₃]: r^i·r^j = r^{i+j mod 4}, τ^i·τ^j = τ^{i+j mod 3}; realized concretely as z4Multiply/z3Multiply or z4Power/z3Power when pure powers are detected .
 Class invariants: transforms act by class permutations and preserve ≡₉₆ .
-Canonical presentation: after pushing transforms and folding, atomic ops carry updated σ=(h₂,d,ℓ); formatting may pretty-print that canonical form (implementation note) .
-6. Fusion & Complexity Classes
+Canonical presentation: after pushing transforms and folding, atomic ops carry updated σ=(h₂,d,ℓ); formatting may pretty-print that canonical form (implementation note) . 6. Fusion & Complexity Classes
 The compiler bakes compiled parameters and selects a ComplexityClass (C0..C3), enabling:
 
 C0/C1: prefer class backend (rank-1 fast path; permutation semantics).
 C2/C3: use SGA backend when grade operations or mixed-grade terms appear (Clifford grade projection, geometric product) .
-Bridge contracts (unchanged): lift(i) produces a rank-1 basis E_{h,d,ℓ}, and project(x) returns a class index iff x is rank-1; else null (or throws for projectStrict) .
+Bridge contracts (unchanged): lift(i) produces a rank-1 basis E\_{h,d,ℓ}, and project(x) returns a class index iff x is rank-1; else null (or throws for projectStrict) .
 
 7. Lowering & Backends
-7.1 Class Backend (Permutation)
-Ring ops: integer arithmetic modulo 96 for class indices.
+   7.1 Class Backend (Permutation)
+   Ring ops: integer arithmetic modulo 96 for class indices.
 
 Transforms:
 
@@ -256,8 +255,7 @@ Evaluate models in SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃]:
 
 Multiply/add/scale by tensoring the component-wise operations (geometricProduct, z4Multiply, z3Multiply, etc.) .
 Grade involutions, reversion, conjugations on the Clifford component, untouched Z₄/Z₃ components .
-Construct rank-1 basis and powers via createRank1Basis, z4Power, z3Power .
-8. Stdlib Models (Normative Definitions)
+Construct rank-1 basis and powers via createRank1Basis, z4Power, z3Power . 8. Stdlib Models (Normative Definitions)
 Each stdlib op is declared as a model (schema name, compiled/runtime params) and lowered via the compiler.
 
 8.1 Ring
@@ -300,11 +298,10 @@ lowering: SGA backend (Clifford grade projection).
 lift
 
 compiled: {}; runtime: { classIndex: int(0..95) }.
-semantics: E_{h,d,ℓ} = r^h ⊗ e_ℓ ⊗ τ^d decoded from class index .
+semantics: E*{h,d,ℓ} = r^h ⊗ e*ℓ ⊗ τ^d decoded from class index .
 project / projectStrict / isRank1
 
-semantics: only rank-1 SGA elements map back to classes (scalar or single basis vector, pure powers in ℝ[ℤ₄], ℝ[ℤ₃]) .
-9. Execution Semantics
+semantics: only rank-1 SGA elements map back to classes (scalar or single basis vector, pure powers in ℝ[ℤ₄], ℝ[ℤ₃]) . 9. Execution Semantics
 9.1 Compile-Time
 compile(modelDescriptor) returns a CompiledModel:
 
@@ -317,12 +314,10 @@ Cache compiled artifact keyed by (name, version, compiledParams).
 CompiledModel.run(runtimeParams) executes the backend plan:
 
 Class backend: integer ops on classes; ℝ[ℤ₄]/ℝ[ℤ₃] powers for R/D; ℓ-permutation for T (rank-1) .
-SGA backend: tensor product semantics for add/mul/scale; grade ops on Clifford; powers via z4Power/z3Power .
-10. Soundness, Determinism, Safety
+SGA backend: tensor product semantics for add/mul/scale; grade ops on Clifford; powers via z4Power/z3Power . 10. Soundness, Determinism, Safety
 Soundness: class transforms are permutations that preserve ≡₉₆; well-typed composite terms preserve budgets; both byte and word interpreters are deterministic (unchanged) .
 Transform identities & commutations: R⁴=D³=T⁸=M²; RD=DR, RT=TR, DT=TD; mirror conjugations — must continue to hold in compiled plans (validated by existing transform tests) .
-Bridge diagrams: project(g_alg(lift(c))) === g_perm(c) remain valid (release-noted invariant) .
-11. Versioning & Registry
+Bridge diagrams: project(g_alg(lift(c))) === g_perm(c) remain valid (release-noted invariant) . 11. Versioning & Registry
 Model Registry maps (name, version) → schema + compiler recipe.
 
 Semver updates:
@@ -333,21 +328,22 @@ Major: semantic changes to model behavior.
 Registry caches compiled plans (content-hash of schema + compiled params).
 
 12. Conformance & Tests
-Algebraic laws: orders, commutations, conjugations for all 96 classes (as in v0.3.0: 1,344 diagram checks) must pass against compiled plans .
-Differential tests: for overlapping domains (rank-1), class backend and SGA backend results must agree.
-Bridge round-trip: project(lift(i)) === i for all i∈{0..95}.
-Performance: retain permutation fast-path behavior and lift/project latency characteristics (as documented) .
+    Algebraic laws: orders, commutations, conjugations for all 96 classes (as in v0.3.0: 1,344 diagram checks) must pass against compiled plans .
+    Differential tests: for overlapping domains (rank-1), class backend and SGA backend results must agree.
+    Bridge round-trip: project(lift(i)) === i for all i∈{0..95}.
+    Performance: retain permutation fast-path behavior and lift/project latency characteristics (as documented) .
 13. Appendix A — SGA Component Semantics (Reference)
-SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃], product is tensoring the component products; rank-1 basis E_{h,d,ℓ}; SGA operations extend Clifford ops and group-algebra ops component-wise .
-ℝ[ℤ₄], ℝ[ℤ₃] implement identity/zero, power, add/scale/subtract, multiply (convolution), invert with pure-power fast paths (and linear-system fallback) .
+    SGA = Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃], product is tensoring the component products; rank-1 basis E\_{h,d,ℓ}; SGA operations extend Clifford ops and group-algebra ops component-wise .
+    ℝ[ℤ₄], ℝ[ℤ₃] implement identity/zero, power, add/scale/subtract, multiply (convolution), invert with pure-power fast paths (and linear-system fallback) .
 14. Appendix B — Surface Grammar (for Parsers/Pretty-Printers)
-The user-facing expression grammar remains as in the formal spec’s Executable Surface Grammar; parsers/pretty-printers MUST produce canonicalized transform positions consistent with the rewrite system (transforms pushed to leaves) .
+    The user-facing expression grammar remains as in the formal spec’s Executable Surface Grammar; parsers/pretty-printers MUST produce canonicalized transform positions consistent with the rewrite system (transforms pushed to leaves) .
 
 End of Sigmatics Model Spec (v0.4.0)
 Sigmatics 0.4.0 — Acceptance Criteria & Definition of Done
-1) Functional Acceptance Criteria
-A. Declarative model architecture in place
-A Model Server/Registry exists and is the only entry point for stdlib operations (ring, transforms, grade, bridge). All operations are declared via JSON-Schema, compiled to IR, rewritten, fused by complexity class, and lowered to a backend plan. No direct feature code calls SGA or permutation kernels without going through the model server/registry. (Three-layer baseline and invariants preserved: permutation fast path; SGA is algebraic ground truth)
+
+1. Functional Acceptance Criteria
+   A. Declarative model architecture in place
+   A Model Server/Registry exists and is the only entry point for stdlib operations (ring, transforms, grade, bridge). All operations are declared via JSON-Schema, compiled to IR, rewritten, fused by complexity class, and lowered to a backend plan. No direct feature code calls SGA or permutation kernels without going through the model server/registry. (Three-layer baseline and invariants preserved: permutation fast path; SGA is algebraic ground truth)
 
 Stdlib is complete as models: add96, sub96, mul96, R, D, T, M, project(k), and lift/project are all served via the registry and compiled to a backend plan. (Transform automorphisms, their orders and actions are unchanged)
 
@@ -364,8 +360,7 @@ C. No legacy paths / no fallbacks to non-Sigmatics fused ops
 All feature-level code paths must go through the model server/registry and its compiler; there are no legacy evaluators or ad-hoc algorithmic shortcuts left in feature modules.
 SGA primitives remain as backend implementation only (invoked by the SGA backend), not as a direct feature surface. (SGA tensor product law remains the same)
 D. Performance parity (or better) for hot paths
-Permutation fast path (class backend) is still the default for class-pure operations; there is no regression relative to 0.3.0; lift/project < 1 ms remains true.
-2) Testing Expectations
+Permutation fast path (class backend) is still the default for class-pure operations; there is no regression relative to 0.3.0; lift/project < 1 ms remains true. 2) Testing Expectations
 A. Unit & property tests
 Compiler unit tests for: schema validation, IR construction, rewrite normalization (push transforms to leaves; fold pure powers), fusion (complexity selection), and backend selection.
 
@@ -382,8 +377,7 @@ D. Bridge round-trip
 For all i ∈ {0..95}, project(lift(i)) === i under the compiled flow. (Regression guard).
 E. Coverage thresholds
 Minimum coverage (statements/branches/functions/lines): 90% across model/, compiler/, stdlib/, and backends/.
-All tests green on CI with tsc --noEmit type checks and the full test matrix.
-3) Linting & Formatting Expectations (for the pushed commit)
+All tests green on CI with tsc --noEmit type checks and the full test matrix. 3) Linting & Formatting Expectations (for the pushed commit)
 TypeScript strictness: code compiles with tsc --noEmit and no any in public surfaces of model/, compiler/, stdlib/, and backends/.
 
 ESLint: repository ESLint config passes with 0 errors and 0 warnings across changed/added files (including rule sets for imports, unused vars/exports, and complexity).
@@ -393,15 +387,15 @@ Prettier: formatting must match repo Prettier settings (consistent quotes, semic
 
 Commit must include updated or new type defs for the public APIs changed (e.g., CompiledModel, ModelRegistry), and all files adhere to lint/format hooks.
 
-4) Code Hygiene & Removal of Dead Code
-Dead code eliminated:
+4. Code Hygiene & Removal of Dead Code
+   Dead code eliminated:
 
 No unreachable branches, no unused exports, no stale adapters.
 Legacy evaluators and feature-level bypasses to SGA or permutation code removed; the only permissible direct usage of those primitives is inside backends.
 No deprecated flags or runtime fallbacks to pre-compiler paths. If a capability is needed, it must be expressed as a model and compiled.
 
-5) Documentation & Developer Experience
-Spec & Dev Docs updated:
+5. Documentation & Developer Experience
+   Spec & Dev Docs updated:
 
 Model Spec (JSON-Schema contract, compiled/runtime params, complexity classes).
 Compiler pipeline (IR, rewrites, fusion, lowering).
@@ -409,8 +403,8 @@ Backends (class vs. SGA) and selection rules.
 Stdlib catalogue: exact parameters and semantics of each model (ring ops, transforms, grade, bridge), referencing transform orders and actions.
 Examples: minimal code samples showing compile() and run() through the registry for each stdlib op.
 
-6) Definition of Done (DoD)
-A commit is Done when all of the following are true:
+6. Definition of Done (DoD)
+   A commit is Done when all of the following are true:
 
 Architecture
 

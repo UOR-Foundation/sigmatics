@@ -251,7 +251,7 @@ console.log('  2048 elements → ??? elements preserve rank-1');
 console.log('  Those that preserve rank-1 → some subset of 192');
 console.log('  NOT all 192 are reachable from 2048 restriction!\n');
 
-console.log('This reveals Atlas\'s depth:');
+console.log("This reveals Atlas's depth:");
 console.log('  Surface: 96 classes, 192 automorphisms (computational)');
 console.log('  Depth: 128 dimensions, 2048 automorphisms (algebraic)');
 console.log('  The rank-1 system is a TRACTABLE PROJECTION');

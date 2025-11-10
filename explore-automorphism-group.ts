@@ -36,8 +36,12 @@ const testClass = 21;
 console.log(`Testing on class ${testClass}:`);
 
 const info = Atlas.classInfo(Atlas.canonicalByte(testClass));
-console.log(`  Initial: class=${testClass}, (h₂=${info.components.h2}, d=${info.components.d}, ℓ=${info.components.l})`);
-console.log(`  Canonical byte: 0x${Atlas.canonicalByte(testClass).toString(16).toUpperCase().padStart(2, '0')}\n`);
+console.log(
+  `  Initial: class=${testClass}, (h₂=${info.components.h2}, d=${info.components.d}, ℓ=${info.components.l})`,
+);
+console.log(
+  `  Canonical byte: 0x${Atlas.canonicalByte(testClass).toString(16).toUpperCase().padStart(2, '0')}\n`,
+);
 
 // Apply each basic transform
 const elem = Atlas.SGA.lift(testClass);
@@ -115,7 +119,9 @@ console.log('  Order of PSL(2,7): 168\n');
 
 console.log('Hypothesis for 2048:');
 console.log('  2048 = 2¹¹ = 2⁴ × 2⁷ = 16 × 128');
-console.log('  Could be: (Klein-4 involutions) × (Sign changes with constraint) × (Fano symmetries)?');
+console.log(
+  '  Could be: (Klein-4 involutions) × (Sign changes with constraint) × (Fano symmetries)?',
+);
 console.log('  OR: Related to Pin(7) or Spin(7) discrete subgroup?\n');
 
 // ============================================================================
@@ -142,7 +148,7 @@ console.log('Extended group including reflections:');
 console.log('  (ℤ₄ ⋊ ℤ₂) × (ℤ₃ ⋊ ℤ₂) × ℤ₈ × (Clifford involutions)');
 console.log('  = 8 × 6 × 8 × 4 = 1,536 (?)\n');
 
-console.log('Wait, let\'s recalculate for 2048:');
+console.log("Wait, let's recalculate for 2048:");
 console.log('  2048 / 192 = 10.67 (not integer - not a simple extension!)');
 console.log('  This suggests 2048 is a DIFFERENT group, not containing the 192 as subgroup\n');
 
@@ -283,4 +289,4 @@ console.log('This exploration reveals:');
 console.log('  Atlas is VASTLY deeper than the rank-1 projection suggests');
 console.log('  The 96-class system is a computationally tractable VIEW');
 console.log('  The full structure (2048 automorphisms) operates on 128 dimensions');
-console.log('  Understanding this correspondence is key to grasping Atlas\'s true scope\n');
+console.log("  Understanding this correspondence is key to grasping Atlas's true scope\n");

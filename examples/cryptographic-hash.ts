@@ -198,7 +198,7 @@ function stringToMessage(str: string): number[] {
  * Format hash state as hex string
  */
 function formatHash(state: HashState): string {
-  return state.values.map(v => v.toString(16).padStart(2, '0')).join('');
+  return state.values.map((v) => v.toString(16).padStart(2, '0')).join('');
 }
 
 // ============================================================================
@@ -240,7 +240,8 @@ console.log();
 const baseMessage = 'test message';
 const messages = [
   baseMessage,
-  baseMessage.slice(0, -1) + String.fromCharCode(baseMessage.charCodeAt(baseMessage.length - 1) + 1),
+  baseMessage.slice(0, -1) +
+    String.fromCharCode(baseMessage.charCodeAt(baseMessage.length - 1) + 1),
   baseMessage + 'x',
   baseMessage.toUpperCase(),
 ];

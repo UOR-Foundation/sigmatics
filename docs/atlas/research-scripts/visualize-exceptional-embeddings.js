@@ -181,7 +181,7 @@ const verifications = [
   { structure: 'E₈ embedding', status: '❓ UNKNOWN', evidence: 'Not yet investigated' },
 ];
 
-verifications.forEach(v => {
+verifications.forEach((v) => {
   console.log(`${v.status.padEnd(15)} ${v.structure.padEnd(30)} [${v.evidence}]`);
 });
 

@@ -28,7 +28,9 @@ for (const [i, j, k] of fanoLines) {
   const product = allPos[i] * allPos[j];
   const expected = allPos[k];
   const ok = product === expected;
-  console.log(`  e${i} × e${j} = e${k}: (${allPos[i]}) × (${allPos[j]}) = ${product}, expect ${expected} ${ok ? '✓' : '✗'}`);
+  console.log(
+    `  e${i} × e${j} = e${k}: (${allPos[i]}) × (${allPos[j]}) = ${product}, expect ${expected} ${ok ? '✓' : '✗'}`,
+  );
   if (!ok) valid = false;
 }
 console.log(`  Valid: ${valid}\n`);
@@ -41,7 +43,9 @@ for (const [i, j, k] of fanoLines) {
   const product = allNeg[i] * allNeg[j];
   const expected = allNeg[k];
   const ok = product === expected;
-  console.log(`  e${i} × e${j} = e${k}: (${allNeg[i]}) × (${allNeg[j]}) = ${product}, expect ${expected} ${ok ? '✓' : '✗'}`);
+  console.log(
+    `  e${i} × e${j} = e${k}: (${allNeg[i]}) × (${allNeg[j]}) = ${product}, expect ${expected} ${ok ? '✓' : '✗'}`,
+  );
   if (!ok) valid = false;
 }
 console.log(`  Valid: ${valid}\n`);
@@ -54,7 +58,9 @@ for (const [i, j, k] of fanoLines) {
   const product = flipE0[i] * flipE0[j];
   const expected = flipE0[k];
   const ok = product === expected;
-  console.log(`  e${i} × e${j} = e${k}: (${flipE0[i]}) × (${flipE0[j]}) = ${product}, expect ${expected} ${ok ? '✓' : '✗'}`);
+  console.log(
+    `  e${i} × e${j} = e${k}: (${flipE0[i]}) × (${flipE0[j]}) = ${product}, expect ${expected} ${ok ? '✓' : '✗'}`,
+  );
   if (!ok) valid = false;
 }
 console.log(`  Valid: ${valid}\n`);

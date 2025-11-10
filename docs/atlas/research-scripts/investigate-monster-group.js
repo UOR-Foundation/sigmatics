@@ -29,25 +29,27 @@ console.log('PART 1: THE MONSTER GROUP M\n');
 
 // Monster order (exact)
 const MONSTER_ORDER_FACTORS = {
-  2: 46,   // 2^46
-  3: 20,   // 3^20
-  5: 9,    // 5^9
-  7: 6,    // 7^6
-  11: 2,   // 11^2
-  13: 3,   // 13^3
-  17: 1,   // 17
-  19: 1,   // 19
-  23: 1,   // 23
-  29: 1,   // 29
-  31: 1,   // 31
-  41: 1,   // 41
-  47: 1,   // 47
-  59: 1,   // 59
-  71: 1    // 71
+  2: 46, // 2^46
+  3: 20, // 3^20
+  5: 9, // 5^9
+  7: 6, // 7^6
+  11: 2, // 11^2
+  13: 3, // 13^3
+  17: 1, // 17
+  19: 1, // 19
+  23: 1, // 23
+  29: 1, // 29
+  31: 1, // 31
+  41: 1, // 41
+  47: 1, // 47
+  59: 1, // 59
+  71: 1, // 71
 };
 
 console.log('Monster group order:');
-console.log('|M| = 2^46 × 3^20 × 5^9 × 7^6 × 11^2 × 13^3 × 17 × 19 × 23 × 29 × 31 × 41 × 47 × 59 × 71');
+console.log(
+  '|M| = 2^46 × 3^20 × 5^9 × 7^6 × 11^2 × 13^3 × 17 × 19 × 23 × 29 × 31 × 41 × 47 × 59 × 71',
+);
 console.log('   ≈ 8.08 × 10^53');
 console.log();
 
@@ -130,7 +132,7 @@ function primeFactorize(n) {
 
 function formatFactors(factors) {
   return Object.entries(factors)
-    .map(([p, e]) => e === 1 ? p : `${p}^${e}`)
+    .map(([p, e]) => (e === 1 ? p : `${p}^${e}`))
     .join(' × ');
 }
 
@@ -152,35 +154,20 @@ console.log('  where 196,883 is the dimension of the smallest non-trivial');
 console.log('  irreducible representation of the Monster group!');
 console.log();
 
-const j_coefficients = [
-  -1,
-  744,
-  196884,
-  21493760,
-  864299970,
-  20245856256
-];
+const j_coefficients = [-1, 744, 196884, 21493760, 864299970, 20245856256];
 
 console.log('First few j-invariant coefficients:');
 j_coefficients.forEach((coef, i) => {
   if (i === 0) {
-    console.log(`  q^${i-1}: ${coef.toLocaleString()}`);
+    console.log(`  q^${i - 1}: ${coef.toLocaleString()}`);
   } else {
-    console.log(`  q^${i-1}: ${coef.toLocaleString()}`);
+    console.log(`  q^${i - 1}: ${coef.toLocaleString()}`);
   }
 });
 console.log();
 
 console.log('Monster representation dimensions:');
-const monster_reps = [
-  1,
-  196883,
-  21296876,
-  842609326,
-  18538750076,
-  19360062527,
-  293553734298
-];
+const monster_reps = [1, 196883, 21296876, 842609326, 18538750076, 19360062527, 293553734298];
 
 console.log('(smallest irreducible representations)');
 monster_reps.slice(0, 5).forEach((dim, i) => {
@@ -221,7 +208,7 @@ console.log();
 
 console.log('CONNECTION TO ATLAS:');
 console.log('  196,884 = 2^2 × 3 × 16,407');
-console.log('  Let\'s factor 16,407...');
+console.log("  Let's factor 16,407...");
 
 const griess_dim = 196884;
 const griess_factors = primeFactorize(griess_dim);
@@ -249,7 +236,7 @@ const Co0_order_factors = {
   7: 2,
   11: 1,
   13: 1,
-  23: 1
+  23: 1,
 };
 
 console.log('Conway group Co₀:');
@@ -299,7 +286,7 @@ const sporadics = {
   'He (Held)': { order: 4030387200, maxInM: true },
   'Fi₂₂ (Fischer)': { order: 64561751654400, maxInM: true },
   'Fi₂₃ (Fischer)': { order: 4089470473293004800, maxInM: true },
-  'Fi₂₄\' (Fischer)': { order: 1255205709190661721292800, maxInM: true },
+  "Fi₂₄' (Fischer)": { order: 1255205709190661721292800, maxInM: true },
   'HN (Harada-Norton)': { order: 273030912000000, maxInM: true },
   'Th (Thompson)': { order: 90745943887872000, maxInM: true },
   'B (Baby Monster)': { order: 4154781481226426191177580544000000, maxInM: true },
@@ -326,7 +313,7 @@ console.log('  = 21 groups in the Happy Family');
 console.log();
 
 console.log('The "Pariahs" (6 sporadic groups NOT in Monster):');
-console.log('  J₁, J₄, Ly (Lyons), O\'N (O\'Nan), Ru (Rudvalis), J₂');
+console.log("  J₁, J₄, Ly (Lyons), O'N (O'Nan), Ru (Rudvalis), J₂");
 console.log();
 
 // ============================================================================
@@ -427,7 +414,9 @@ const key_numbers = {
 console.log('Key numbers table:\n');
 Object.entries(key_numbers).forEach(([name, value]) => {
   const factors = primeFactorize(value);
-  console.log(`${name.padEnd(30)} ${value.toLocaleString().padStart(15)}  = ${formatFactors(factors)}`);
+  console.log(
+    `${name.padEnd(30)} ${value.toLocaleString().padStart(15)}  = ${formatFactors(factors)}`,
+  );
 });
 console.log();
 

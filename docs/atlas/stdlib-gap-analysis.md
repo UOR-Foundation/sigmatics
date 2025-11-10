@@ -1,4 +1,5 @@
 # Sigmatics Stdlib Gap Analysis
+
 ## Current Operations vs. Required for Perfect Factorization
 
 **Date**: 2025-11-10
@@ -9,39 +10,43 @@
 ## Current Stdlib (v0.4.0) ✅
 
 ### Ring Operations on ≡₉₆
+
 ```typescript
-Atlas.Model.add96(overflowMode)  // Addition mod 96
-Atlas.Model.sub96(overflowMode)  // Subtraction mod 96
-Atlas.Model.mul96(overflowMode)  // Multiplication mod 96
+Atlas.Model.add96(overflowMode); // Addition mod 96
+Atlas.Model.sub96(overflowMode); // Subtraction mod 96
+Atlas.Model.mul96(overflowMode); // Multiplication mod 96
 ```
 
 These operate on the 96-class equivalence structure.
 
 ### Transform Operations (RDTM)
+
 ```typescript
-Atlas.Model.R(k)  // Rotate quadrants (ℤ₄, order 4)
-Atlas.Model.D(k)  // Triality (ℤ₃, order 3)
-Atlas.Model.T(k)  // Twist context (ℤ₈, order 8)
-Atlas.Model.M()   // Mirror (ℤ₂, order 2)
+Atlas.Model.R(k); // Rotate quadrants (ℤ₄, order 4)
+Atlas.Model.D(k); // Triality (ℤ₃, order 3)
+Atlas.Model.T(k); // Twist context (ℤ₈, order 8)
+Atlas.Model.M(); // Mirror (ℤ₂, order 2)
 ```
 
 These are the 4 fundamental symmetries of Atlas.
 
 ### SGA Operations
+
 ```typescript
-Atlas.SGA.lift(classIndex)      // Class → SGA element
-Atlas.SGA.project(sgaElement)   // SGA element → Class
-Atlas.SGA.R(element)            // Apply R to SGA
-Atlas.SGA.D(element)            // Apply D to SGA
-Atlas.SGA.T(element)            // Apply T to SGA
-Atlas.SGA.M(element)            // Apply M to SGA
+Atlas.SGA.lift(classIndex); // Class → SGA element
+Atlas.SGA.project(sgaElement); // SGA element → Class
+Atlas.SGA.R(element); // Apply R to SGA
+Atlas.SGA.D(element); // Apply D to SGA
+Atlas.SGA.T(element); // Apply T to SGA
+Atlas.SGA.M(element); // Apply M to SGA
 ```
 
 Full algebraic operations on Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃].
 
 ### Grade Operations
+
 ```typescript
-Atlas.Model.projectGrade(grade)  // Project to grade 0-7
+Atlas.Model.projectGrade(grade); // Project to grade 0-7
 ```
 
 Clifford algebra grade projection.
@@ -56,10 +61,10 @@ Clifford algebra grade projection.
 
 ```typescript
 // Prime operations within ≡₉₆
-Atlas.Model.gcd96(a, b)          // GCD in the 96-class ring
-Atlas.Model.lcm96(a, b)          // LCM in the 96-class ring
-Atlas.Model.factor96(n)          // Factor into primes within ≡₉₆
-Atlas.Model.isPrime96(n)         // Primality test in ≡₉₆
+Atlas.Model.gcd96(a, b); // GCD in the 96-class ring
+Atlas.Model.lcm96(a, b); // LCM in the 96-class ring
+Atlas.Model.factor96(n); // Factor into primes within ≡₉₆
+Atlas.Model.isPrime96(n); // Primality test in ≡₉₆
 
 // Examples:
 // gcd96(12, 18) → 6
@@ -68,6 +73,7 @@ Atlas.Model.isPrime96(n)         // Primality test in ≡₉₆
 ```
 
 **Implementation notes**:
+
 - These operate on class indices (0-95)
 - GCD/LCM use the ring structure of ℤ₉₆
 - Factorization is perfect within this structure
@@ -79,22 +85,23 @@ Atlas.Model.isPrime96(n)         // Primality test in ≡₉₆
 
 ```typescript
 // Activation-like operations
-Atlas.Model.relu(x)              // max(0, x) in ≡₉₆
-Atlas.Model.sigmoid(x)           // Sigmoid approximation in ≡₉₆
-Atlas.Model.tanh(x)              // Tanh approximation in ≡₉₆
+Atlas.Model.relu(x); // max(0, x) in ≡₉₆
+Atlas.Model.sigmoid(x); // Sigmoid approximation in ≡₉₆
+Atlas.Model.tanh(x); // Tanh approximation in ≡₉₆
 
 // Reduction operations
-Atlas.Model.sum(array)           // Sum array of class indices
-Atlas.Model.product(array)       // Product array of class indices
-Atlas.Model.max(array)           // Maximum in ≡₉₆ ordering
-Atlas.Model.min(array)           // Minimum in ≡₉₆ ordering
+Atlas.Model.sum(array); // Sum array of class indices
+Atlas.Model.product(array); // Product array of class indices
+Atlas.Model.max(array); // Maximum in ≡₉₆ ordering
+Atlas.Model.min(array); // Minimum in ≡₉₆ ordering
 
 // Loss-like operations
-Atlas.Model.l1Loss(pred, target) // L1 distance in ≡₉₆
-Atlas.Model.l2Loss(pred, target) // L2 distance in ≡₉₆
+Atlas.Model.l1Loss(pred, target); // L1 distance in ≡₉₆
+Atlas.Model.l2Loss(pred, target); // L2 distance in ≡₉₆
 ```
 
 **Implementation notes**:
+
 - These are **canonical forms** that the compiler produces
 - They operate on the 96-class structure
 - Each has a clear IR representation
@@ -126,6 +133,7 @@ interface ComposeOptions {
 ```
 
 **Implementation notes**:
+
 - This uses the 340,200 compositional symmetries
 - Compiler analyzes constraints from both models
 - Finds optimal fusion using exceptional symmetries
@@ -148,6 +156,7 @@ Atlas.Model.orbitMap(
 ```
 
 **Implementation notes**:
+
 - 32 triality orbits partition the 96 classes
 - Many operations naturally act on orbits
 - Compiler can optimize orbit-level operations
@@ -167,6 +176,7 @@ Atlas.Model.requiresFanoSymmetry(model: CompiledModel): boolean
 ```
 
 **Implementation notes**:
+
 - Fano plane is already in SGA module
 - These expose it at model level
 - Enables octonionic computations
@@ -187,6 +197,7 @@ Atlas.Model.beltDistance(addr1: number, addr2: number): number
 ```
 
 **Implementation notes**:
+
 - Belt provides extended address space
 - Pages 0-47 give 48× the basic 96 classes
 - Useful for larger computations
@@ -196,6 +207,7 @@ Atlas.Model.beltDistance(addr1: number, addr2: number): number
 ## Priority for Implementation
 
 ### Phase 1: Core Arithmetic (NEEDED NOW)
+
 These are essential for any practical use:
 
 1. ✅ `gcd96(a, b)` — GCD in ≡₉₆
@@ -208,6 +220,7 @@ These are essential for any practical use:
 **Why**: These enable basic computations within the 96-class structure.
 
 ### Phase 2: Factorization (CORE TO "DATA MODEL OF PRIMES")
+
 This is what makes Atlas the **data model of the primes**:
 
 1. ✅ `factor96(n)` — Prime factorization in ≡₉₆
@@ -218,6 +231,7 @@ This is what makes Atlas the **data model of the primes**:
 **Why**: This realizes "perfect factorization" within the Atlas structure.
 
 ### Phase 3: Activation & Loss (STDLIB COMPLETENESS)
+
 Standard ML operations compiled to canonical forms:
 
 1. ⚠️ `relu(x)` — max(0, x) in ≡₉₆
@@ -229,6 +243,7 @@ Standard ML operations compiled to canonical forms:
 **Why**: Makes Sigmatics usable for ML workloads with provable semantics.
 
 ### Phase 4: Composition (340,200 SYMMETRIES)
+
 Realizes the external compositional structure:
 
 1. ⚠️ `compose(model1, model2, options)` — Optimal composition
@@ -238,6 +253,7 @@ Realizes the external compositional structure:
 **Why**: This is where the 340,200 external symmetries appear in practice.
 
 ### Phase 5: Advanced (E₈ AND BEYOND)
+
 Future extensions toward Monster realization:
 
 1. 🔮 E₈ root lattice operations
@@ -260,6 +276,7 @@ Atlas's 96-class structure is **≡₉₆** — integers modulo 96. This structu
 ```
 
 The prime factorization of 96 itself reveals the structure:
+
 - **2⁵ = 32**: Powers of 2 (Clifford algebra structure)
 - **3 = triality**: Exceptional structure (ℤ₃)
 
@@ -281,24 +298,25 @@ Optimal factorization
 
 ```typescript
 // 60 in ≡₉₆
-const n = 60
+const n = 60;
 
 // Factor
-const factors = Atlas.Model.factor96(60).run({})
+const factors = Atlas.Model.factor96(60).run({});
 // → { factors: [2, 2, 3, 5], classIndices: [2, 2, 3, 5] }
 
 // GCD example
-const g = Atlas.Model.gcd96().run({ a: 60, b: 48 })
+const g = Atlas.Model.gcd96().run({ a: 60, b: 48 });
 // → { value: 12 }  (in ≡₉₆)
 
 // Verify
-const prod = Atlas.Model.product(factors).run({})
+const prod = Atlas.Model.product(factors).run({});
 // → { value: 60 }  ✓
 ```
 
 ### Why This is "Perfect"
 
 **Perfect factorization** means:
+
 1. Every element has a **unique** factorization in the canonical form
 2. The transforms (R, D, T, M) preserve this structure
 3. Composition uses the 340,200 symmetries to find **optimal** paths
@@ -314,11 +332,11 @@ This is impossible in standard arithmetic (where factorization is hard). Atlas m
 
 ```typescript
 // New IR atoms for stdlib operations
-export function gcd96(): IRNode
-export function lcm96(): IRNode
-export function factor96(): IRNode
-export function sum96(): IRNode
-export function product96(): IRNode
+export function gcd96(): IRNode;
+export function lcm96(): IRNode;
+export function factor96(): IRNode;
+export function sum96(): IRNode;
+export function product96(): IRNode;
 // ... etc
 ```
 
@@ -353,6 +371,7 @@ static Model = {
 ### Step 4: Implement Backends (compiler/lowering/)
 
 Each operation needs implementations in:
+
 - **Class backend**: Fast path for rank-1 elements
 - **SGA backend**: Full algebraic semantics
 
@@ -364,12 +383,14 @@ For composition operations, SGA backend handles full algebraic structure.
 ## Conclusion
 
 **Current stdlib** (v0.4.0):
+
 - ✅ Ring operations (add, sub, mul in ≡₉₆)
 - ✅ Transforms (RDTM)
 - ✅ Grade operations
 - ✅ Bridge (lift/project)
 
 **Missing for perfect factorization**:
+
 1. **Prime operations** (gcd, lcm, factor, isPrime) — **CRITICAL**
 2. **Reductions** (sum, product, max, min) — **NEEDED**
 3. **Activations** (relu, sigmoid, tanh) — **USEFUL**
