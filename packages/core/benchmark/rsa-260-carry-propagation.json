@@ -1,0 +1,5963 @@
+{
+  "metadata": {
+    "name": "RSA-260-Carry-Propagation-Constraint-Graph",
+    "timestamp": "2025-11-10T17:38:38.953Z",
+    "rsa_value": "2211282552952966643528108525502623092761208950247001539441374831912882294140664981690295237907262606923835005442126672024101081373265533949103140104799863550049096675743354459140624476609590597260471578285798804841674990973422287179817183286845865799508538793815835042257",
+    "total_digits": 137,
+    "computed_levels": 5
+  },
+  "target_digits": [
+    17,
+    58,
+    27,
+    31,
+    35
+  ],
+  "constraint_graph": [
+    {
+      "level": 0,
+      "target_digit": 17,
+      "candidate_count": 32,
+      "sample_candidates": [
+        {
+          "p_digits": [
+            1
+          ],
+          "q_digits": [
+            17
+          ],
+          "carry": 0
+        },
+        {
+          "p_digits": [
+            5
+          ],
+          "q_digits": [
+            61
+          ],
+          "carry": 3
+        },
+        {
+          "p_digits": [
+            7
+          ],
+          "q_digits": [
+            71
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            11
+          ],
+          "q_digits": [
+            19
+          ],
+          "carry": 2
+        },
+        {
+          "p_digits": [
+            13
+          ],
+          "q_digits": [
+            53
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            17
+          ],
+          "q_digits": [
+            1
+          ],
+          "carry": 0
+        },
+        {
+          "p_digits": [
+            19
+          ],
+          "q_digits": [
+            11
+          ],
+          "carry": 2
+        },
+        {
+          "p_digits": [
+            23
+          ],
+          "q_digits": [
+            55
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            25
+          ],
+          "q_digits": [
+            89
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            29
+          ],
+          "q_digits": [
+            37
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            31
+          ],
+          "q_digits": [
+            47
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            35
+          ],
+          "q_digits": [
+            91
+          ],
+          "carry": 33
+        },
+        {
+          "p_digits": [
+            37
+          ],
+          "q_digits": [
+            29
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            41
+          ],
+          "q_digits": [
+            73
+          ],
+          "carry": 31
+        },
+        {
+          "p_digits": [
+            43
+          ],
+          "q_digits": [
+            83
+          ],
+          "carry": 37
+        },
+        {
+          "p_digits": [
+            47
+          ],
+          "q_digits": [
+            31
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            49
+          ],
+          "q_digits": [
+            65
+          ],
+          "carry": 33
+        },
+        {
+          "p_digits": [
+            53
+          ],
+          "q_digits": [
+            13
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            55
+          ],
+          "q_digits": [
+            23
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            59
+          ],
+          "q_digits": [
+            67
+          ],
+          "carry": 41
+        },
+        {
+          "p_digits": [
+            61
+          ],
+          "q_digits": [
+            5
+          ],
+          "carry": 3
+        },
+        {
+          "p_digits": [
+            65
+          ],
+          "q_digits": [
+            49
+          ],
+          "carry": 33
+        },
+        {
+          "p_digits": [
+            67
+          ],
+          "q_digits": [
+            59
+          ],
+          "carry": 41
+        },
+        {
+          "p_digits": [
+            71
+          ],
+          "q_digits": [
+            7
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            73
+          ],
+          "q_digits": [
+            41
+          ],
+          "carry": 31
+        },
+        {
+          "p_digits": [
+            77
+          ],
+          "q_digits": [
+            85
+          ],
+          "carry": 68
+        },
+        {
+          "p_digits": [
+            79
+          ],
+          "q_digits": [
+            95
+          ],
+          "carry": 78
+        },
+        {
+          "p_digits": [
+            83
+          ],
+          "q_digits": [
+            43
+          ],
+          "carry": 37
+        },
+        {
+          "p_digits": [
+            85
+          ],
+          "q_digits": [
+            77
+          ],
+          "carry": 68
+        },
+        {
+          "p_digits": [
+            89
+          ],
+          "q_digits": [
+            25
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            91
+          ],
+          "q_digits": [
+            35
+          ],
+          "carry": 33
+        },
+        {
+          "p_digits": [
+            95
+          ],
+          "q_digits": [
+            79
+          ],
+          "carry": 78
+        }
+      ]
+    },
+    {
+      "level": 1,
+      "target_digit": 58,
+      "candidate_count": 128,
+      "sample_candidates": [
+        {
+          "p_digits": [
+            1,
+            1
+          ],
+          "q_digits": [
+            17,
+            41
+          ],
+          "carry": 0
+        },
+        {
+          "p_digits": [
+            1,
+            7
+          ],
+          "q_digits": [
+            17,
+            35
+          ],
+          "carry": 1
+        },
+        {
+          "p_digits": [
+            1,
+            13
+          ],
+          "q_digits": [
+            17,
+            29
+          ],
+          "carry": 2
+        },
+        {
+          "p_digits": [
+            1,
+            19
+          ],
+          "q_digits": [
+            17,
+            23
+          ],
+          "carry": 3
+        },
+        {
+          "p_digits": [
+            1,
+            25
+          ],
+          "q_digits": [
+            17,
+            17
+          ],
+          "carry": 4
+        },
+        {
+          "p_digits": [
+            1,
+            31
+          ],
+          "q_digits": [
+            17,
+            11
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            1,
+            37
+          ],
+          "q_digits": [
+            17,
+            5
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            43
+          ],
+          "q_digits": [
+            17,
+            95
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            49
+          ],
+          "q_digits": [
+            17,
+            89
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            55
+          ],
+          "q_digits": [
+            17,
+            83
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            61
+          ],
+          "q_digits": [
+            17,
+            77
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            67
+          ],
+          "q_digits": [
+            17,
+            71
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            73
+          ],
+          "q_digits": [
+            17,
+            65
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            79
+          ],
+          "q_digits": [
+            17,
+            59
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            85
+          ],
+          "q_digits": [
+            17,
+            53
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            91
+          ],
+          "q_digits": [
+            17,
+            47
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            11,
+            1
+          ],
+          "q_digits": [
+            19,
+            47
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            11,
+            7
+          ],
+          "q_digits": [
+            19,
+            89
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            11,
+            13
+          ],
+          "q_digits": [
+            19,
+            35
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            11,
+            19
+          ],
+          "q_digits": [
+            19,
+            77
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            11,
+            25
+          ],
+          "q_digits": [
+            19,
+            23
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            11,
+            31
+          ],
+          "q_digits": [
+            19,
+            65
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            11,
+            37
+          ],
+          "q_digits": [
+            19,
+            11
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            11,
+            43
+          ],
+          "q_digits": [
+            19,
+            53
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            11,
+            49
+          ],
+          "q_digits": [
+            19,
+            95
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            11,
+            55
+          ],
+          "q_digits": [
+            19,
+            41
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            11,
+            61
+          ],
+          "q_digits": [
+            19,
+            83
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            11,
+            67
+          ],
+          "q_digits": [
+            19,
+            29
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            11,
+            73
+          ],
+          "q_digits": [
+            19,
+            71
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            11,
+            79
+          ],
+          "q_digits": [
+            19,
+            17
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            11,
+            85
+          ],
+          "q_digits": [
+            19,
+            59
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            11,
+            91
+          ],
+          "q_digits": [
+            19,
+            5
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            17,
+            5
+          ],
+          "q_digits": [
+            1,
+            37
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            17,
+            11
+          ],
+          "q_digits": [
+            1,
+            31
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            17,
+            17
+          ],
+          "q_digits": [
+            1,
+            25
+          ],
+          "carry": 4
+        },
+        {
+          "p_digits": [
+            17,
+            23
+          ],
+          "q_digits": [
+            1,
+            19
+          ],
+          "carry": 3
+        },
+        {
+          "p_digits": [
+            17,
+            29
+          ],
+          "q_digits": [
+            1,
+            13
+          ],
+          "carry": 2
+        },
+        {
+          "p_digits": [
+            17,
+            35
+          ],
+          "q_digits": [
+            1,
+            7
+          ],
+          "carry": 1
+        },
+        {
+          "p_digits": [
+            17,
+            41
+          ],
+          "q_digits": [
+            1,
+            1
+          ],
+          "carry": 0
+        },
+        {
+          "p_digits": [
+            17,
+            47
+          ],
+          "q_digits": [
+            1,
+            91
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            17,
+            53
+          ],
+          "q_digits": [
+            1,
+            85
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            17,
+            59
+          ],
+          "q_digits": [
+            1,
+            79
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            17,
+            65
+          ],
+          "q_digits": [
+            1,
+            73
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            17,
+            71
+          ],
+          "q_digits": [
+            1,
+            67
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            17,
+            77
+          ],
+          "q_digits": [
+            1,
+            61
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            17,
+            83
+          ],
+          "q_digits": [
+            1,
+            55
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            17,
+            89
+          ],
+          "q_digits": [
+            1,
+            49
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            17,
+            95
+          ],
+          "q_digits": [
+            1,
+            43
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            19,
+            5
+          ],
+          "q_digits": [
+            11,
+            91
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            19,
+            11
+          ],
+          "q_digits": [
+            11,
+            37
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            19,
+            17
+          ],
+          "q_digits": [
+            11,
+            79
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            19,
+            23
+          ],
+          "q_digits": [
+            11,
+            25
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            19,
+            29
+          ],
+          "q_digits": [
+            11,
+            67
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            19,
+            35
+          ],
+          "q_digits": [
+            11,
+            13
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            19,
+            41
+          ],
+          "q_digits": [
+            11,
+            55
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            19,
+            47
+          ],
+          "q_digits": [
+            11,
+            1
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            19,
+            53
+          ],
+          "q_digits": [
+            11,
+            43
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            19,
+            59
+          ],
+          "q_digits": [
+            11,
+            85
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            19,
+            65
+          ],
+          "q_digits": [
+            11,
+            31
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            19,
+            71
+          ],
+          "q_digits": [
+            11,
+            73
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            19,
+            77
+          ],
+          "q_digits": [
+            11,
+            19
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            19,
+            83
+          ],
+          "q_digits": [
+            11,
+            61
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            19,
+            89
+          ],
+          "q_digits": [
+            11,
+            7
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            19,
+            95
+          ],
+          "q_digits": [
+            11,
+            49
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            77,
+            1
+          ],
+          "q_digits": [
+            85,
+            5
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            77,
+            7
+          ],
+          "q_digits": [
+            85,
+            47
+          ],
+          "carry": 44
+        },
+        {
+          "p_digits": [
+            77,
+            13
+          ],
+          "q_digits": [
+            85,
+            89
+          ],
+          "carry": 83
+        },
+        {
+          "p_digits": [
+            77,
+            19
+          ],
+          "q_digits": [
+            85,
+            35
+          ],
+          "carry": 45
+        },
+        {
+          "p_digits": [
+            77,
+            25
+          ],
+          "q_digits": [
+            85,
+            77
+          ],
+          "carry": 84
+        },
+        {
+          "p_digits": [
+            77,
+            31
+          ],
+          "q_digits": [
+            85,
+            23
+          ],
+          "carry": 46
+        },
+        {
+          "p_digits": [
+            77,
+            37
+          ],
+          "q_digits": [
+            85,
+            65
+          ],
+          "carry": 85
+        },
+        {
+          "p_digits": [
+            77,
+            43
+          ],
+          "q_digits": [
+            85,
+            11
+          ],
+          "carry": 47
+        },
+        {
+          "p_digits": [
+            77,
+            49
+          ],
+          "q_digits": [
+            85,
+            53
+          ],
+          "carry": 86
+        },
+        {
+          "p_digits": [
+            77,
+            55
+          ],
+          "q_digits": [
+            85,
+            95
+          ],
+          "carry": 125
+        },
+        {
+          "p_digits": [
+            77,
+            61
+          ],
+          "q_digits": [
+            85,
+            41
+          ],
+          "carry": 87
+        },
+        {
+          "p_digits": [
+            77,
+            67
+          ],
+          "q_digits": [
+            85,
+            83
+          ],
+          "carry": 126
+        },
+        {
+          "p_digits": [
+            77,
+            73
+          ],
+          "q_digits": [
+            85,
+            29
+          ],
+          "carry": 88
+        },
+        {
+          "p_digits": [
+            77,
+            79
+          ],
+          "q_digits": [
+            85,
+            71
+          ],
+          "carry": 127
+        },
+        {
+          "p_digits": [
+            77,
+            85
+          ],
+          "q_digits": [
+            85,
+            17
+          ],
+          "carry": 89
+        },
+        {
+          "p_digits": [
+            77,
+            91
+          ],
+          "q_digits": [
+            85,
+            59
+          ],
+          "carry": 128
+        },
+        {
+          "p_digits": [
+            79,
+            1
+          ],
+          "q_digits": [
+            95,
+            35
+          ],
+          "carry": 30
+        },
+        {
+          "p_digits": [
+            79,
+            7
+          ],
+          "q_digits": [
+            95,
+            29
+          ],
+          "carry": 31
+        },
+        {
+          "p_digits": [
+            79,
+            13
+          ],
+          "q_digits": [
+            95,
+            23
+          ],
+          "carry": 32
+        },
+        {
+          "p_digits": [
+            79,
+            19
+          ],
+          "q_digits": [
+            95,
+            17
+          ],
+          "carry": 33
+        },
+        {
+          "p_digits": [
+            79,
+            25
+          ],
+          "q_digits": [
+            95,
+            11
+          ],
+          "carry": 34
+        },
+        {
+          "p_digits": [
+            79,
+            31
+          ],
+          "q_digits": [
+            95,
+            5
+          ],
+          "carry": 35
+        },
+        {
+          "p_digits": [
+            79,
+            37
+          ],
+          "q_digits": [
+            95,
+            95
+          ],
+          "carry": 115
+        },
+        {
+          "p_digits": [
+            79,
+            43
+          ],
+          "q_digits": [
+            95,
+            89
+          ],
+          "carry": 116
+        },
+        {
+          "p_digits": [
+            79,
+            49
+          ],
+          "q_digits": [
+            95,
+            83
+          ],
+          "carry": 117
+        },
+        {
+          "p_digits": [
+            79,
+            55
+          ],
+          "q_digits": [
+            95,
+            77
+          ],
+          "carry": 118
+        },
+        {
+          "p_digits": [
+            79,
+            61
+          ],
+          "q_digits": [
+            95,
+            71
+          ],
+          "carry": 119
+        },
+        {
+          "p_digits": [
+            79,
+            67
+          ],
+          "q_digits": [
+            95,
+            65
+          ],
+          "carry": 120
+        },
+        {
+          "p_digits": [
+            79,
+            73
+          ],
+          "q_digits": [
+            95,
+            59
+          ],
+          "carry": 121
+        },
+        {
+          "p_digits": [
+            79,
+            79
+          ],
+          "q_digits": [
+            95,
+            53
+          ],
+          "carry": 122
+        },
+        {
+          "p_digits": [
+            79,
+            85
+          ],
+          "q_digits": [
+            95,
+            47
+          ],
+          "carry": 123
+        },
+        {
+          "p_digits": [
+            79,
+            91
+          ],
+          "q_digits": [
+            95,
+            41
+          ],
+          "carry": 124
+        },
+        {
+          "p_digits": [
+            85,
+            5
+          ],
+          "q_digits": [
+            77,
+            1
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            85,
+            11
+          ],
+          "q_digits": [
+            77,
+            43
+          ],
+          "carry": 47
+        },
+        {
+          "p_digits": [
+            85,
+            17
+          ],
+          "q_digits": [
+            77,
+            85
+          ],
+          "carry": 89
+        },
+        {
+          "p_digits": [
+            85,
+            23
+          ],
+          "q_digits": [
+            77,
+            31
+          ],
+          "carry": 46
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "target_digit": 27,
+      "candidate_count": 1344,
+      "sample_candidates": [
+        {
+          "p_digits": [
+            1,
+            1,
+            1
+          ],
+          "q_digits": [
+            17,
+            41,
+            65
+          ],
+          "carry": 1
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            7
+          ],
+          "q_digits": [
+            17,
+            41,
+            59
+          ],
+          "carry": 2
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13
+          ],
+          "q_digits": [
+            17,
+            41,
+            53
+          ],
+          "carry": 3
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            19
+          ],
+          "q_digits": [
+            17,
+            41,
+            47
+          ],
+          "carry": 4
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25
+          ],
+          "q_digits": [
+            17,
+            41,
+            41
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            31
+          ],
+          "q_digits": [
+            17,
+            41,
+            35
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37
+          ],
+          "q_digits": [
+            17,
+            41,
+            29
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            43
+          ],
+          "q_digits": [
+            17,
+            41,
+            23
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49
+          ],
+          "q_digits": [
+            17,
+            41,
+            17
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            55
+          ],
+          "q_digits": [
+            17,
+            41,
+            11
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            61
+          ],
+          "q_digits": [
+            17,
+            41,
+            5
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            67
+          ],
+          "q_digits": [
+            17,
+            41,
+            95
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            73
+          ],
+          "q_digits": [
+            17,
+            41,
+            89
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            79
+          ],
+          "q_digits": [
+            17,
+            41,
+            83
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            85
+          ],
+          "q_digits": [
+            17,
+            41,
+            77
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            91
+          ],
+          "q_digits": [
+            17,
+            41,
+            71
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            5
+          ],
+          "q_digits": [
+            17,
+            29,
+            43
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            11
+          ],
+          "q_digits": [
+            17,
+            29,
+            37
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            17
+          ],
+          "q_digits": [
+            17,
+            29,
+            31
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            23
+          ],
+          "q_digits": [
+            17,
+            29,
+            25
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            29
+          ],
+          "q_digits": [
+            17,
+            29,
+            19
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            35
+          ],
+          "q_digits": [
+            17,
+            29,
+            13
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            41
+          ],
+          "q_digits": [
+            17,
+            29,
+            7
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            47
+          ],
+          "q_digits": [
+            17,
+            29,
+            1
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            53
+          ],
+          "q_digits": [
+            17,
+            29,
+            91
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            59
+          ],
+          "q_digits": [
+            17,
+            29,
+            85
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            65
+          ],
+          "q_digits": [
+            17,
+            29,
+            79
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            71
+          ],
+          "q_digits": [
+            17,
+            29,
+            73
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            77
+          ],
+          "q_digits": [
+            17,
+            29,
+            67
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            83
+          ],
+          "q_digits": [
+            17,
+            29,
+            61
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            89
+          ],
+          "q_digits": [
+            17,
+            29,
+            55
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            13,
+            95
+          ],
+          "q_digits": [
+            17,
+            29,
+            49
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            1
+          ],
+          "q_digits": [
+            17,
+            17,
+            61
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            5
+          ],
+          "q_digits": [
+            17,
+            17,
+            89
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            7
+          ],
+          "q_digits": [
+            17,
+            17,
+            55
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            11
+          ],
+          "q_digits": [
+            17,
+            17,
+            83
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            13
+          ],
+          "q_digits": [
+            17,
+            17,
+            49
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            17
+          ],
+          "q_digits": [
+            17,
+            17,
+            77
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            19
+          ],
+          "q_digits": [
+            17,
+            17,
+            43
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            23
+          ],
+          "q_digits": [
+            17,
+            17,
+            71
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            25
+          ],
+          "q_digits": [
+            17,
+            17,
+            37
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            29
+          ],
+          "q_digits": [
+            17,
+            17,
+            65
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            31
+          ],
+          "q_digits": [
+            17,
+            17,
+            31
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            35
+          ],
+          "q_digits": [
+            17,
+            17,
+            59
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            37
+          ],
+          "q_digits": [
+            17,
+            17,
+            25
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            41
+          ],
+          "q_digits": [
+            17,
+            17,
+            53
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            43
+          ],
+          "q_digits": [
+            17,
+            17,
+            19
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            47
+          ],
+          "q_digits": [
+            17,
+            17,
+            47
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            49
+          ],
+          "q_digits": [
+            17,
+            17,
+            13
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            53
+          ],
+          "q_digits": [
+            17,
+            17,
+            41
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            55
+          ],
+          "q_digits": [
+            17,
+            17,
+            7
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            59
+          ],
+          "q_digits": [
+            17,
+            17,
+            35
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            61
+          ],
+          "q_digits": [
+            17,
+            17,
+            1
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            65
+          ],
+          "q_digits": [
+            17,
+            17,
+            29
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            67
+          ],
+          "q_digits": [
+            17,
+            17,
+            91
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            71
+          ],
+          "q_digits": [
+            17,
+            17,
+            23
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            73
+          ],
+          "q_digits": [
+            17,
+            17,
+            85
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            77
+          ],
+          "q_digits": [
+            17,
+            17,
+            17
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            79
+          ],
+          "q_digits": [
+            17,
+            17,
+            79
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            83
+          ],
+          "q_digits": [
+            17,
+            17,
+            11
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            85
+          ],
+          "q_digits": [
+            17,
+            17,
+            73
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            89
+          ],
+          "q_digits": [
+            17,
+            17,
+            5
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            91
+          ],
+          "q_digits": [
+            17,
+            17,
+            67
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            25,
+            95
+          ],
+          "q_digits": [
+            17,
+            17,
+            95
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            1
+          ],
+          "q_digits": [
+            17,
+            5,
+            11
+          ],
+          "carry": 2
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            7
+          ],
+          "q_digits": [
+            17,
+            5,
+            5
+          ],
+          "carry": 3
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            13
+          ],
+          "q_digits": [
+            17,
+            5,
+            95
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            19
+          ],
+          "q_digits": [
+            17,
+            5,
+            89
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            25
+          ],
+          "q_digits": [
+            17,
+            5,
+            83
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            31
+          ],
+          "q_digits": [
+            17,
+            5,
+            77
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            37
+          ],
+          "q_digits": [
+            17,
+            5,
+            71
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            43
+          ],
+          "q_digits": [
+            17,
+            5,
+            65
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            49
+          ],
+          "q_digits": [
+            17,
+            5,
+            59
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            55
+          ],
+          "q_digits": [
+            17,
+            5,
+            53
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            61
+          ],
+          "q_digits": [
+            17,
+            5,
+            47
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            67
+          ],
+          "q_digits": [
+            17,
+            5,
+            41
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            73
+          ],
+          "q_digits": [
+            17,
+            5,
+            35
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            79
+          ],
+          "q_digits": [
+            17,
+            5,
+            29
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            85
+          ],
+          "q_digits": [
+            17,
+            5,
+            23
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            37,
+            91
+          ],
+          "q_digits": [
+            17,
+            5,
+            17
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            5
+          ],
+          "q_digits": [
+            17,
+            95,
+            73
+          ],
+          "carry": 44
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            11
+          ],
+          "q_digits": [
+            17,
+            95,
+            67
+          ],
+          "carry": 45
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            17
+          ],
+          "q_digits": [
+            17,
+            95,
+            61
+          ],
+          "carry": 46
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            23
+          ],
+          "q_digits": [
+            17,
+            95,
+            55
+          ],
+          "carry": 47
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            29
+          ],
+          "q_digits": [
+            17,
+            95,
+            49
+          ],
+          "carry": 48
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            35
+          ],
+          "q_digits": [
+            17,
+            95,
+            43
+          ],
+          "carry": 49
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            41
+          ],
+          "q_digits": [
+            17,
+            95,
+            37
+          ],
+          "carry": 50
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            47
+          ],
+          "q_digits": [
+            17,
+            95,
+            31
+          ],
+          "carry": 51
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            53
+          ],
+          "q_digits": [
+            17,
+            95,
+            25
+          ],
+          "carry": 52
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            59
+          ],
+          "q_digits": [
+            17,
+            95,
+            19
+          ],
+          "carry": 53
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            65
+          ],
+          "q_digits": [
+            17,
+            95,
+            13
+          ],
+          "carry": 54
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            71
+          ],
+          "q_digits": [
+            17,
+            95,
+            7
+          ],
+          "carry": 55
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            77
+          ],
+          "q_digits": [
+            17,
+            95,
+            1
+          ],
+          "carry": 56
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            83
+          ],
+          "q_digits": [
+            17,
+            95,
+            91
+          ],
+          "carry": 58
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            89
+          ],
+          "q_digits": [
+            17,
+            95,
+            85
+          ],
+          "carry": 59
+        },
+        {
+          "p_digits": [
+            1,
+            43,
+            95
+          ],
+          "q_digits": [
+            17,
+            95,
+            79
+          ],
+          "carry": 60
+        },
+        {
+          "p_digits": [
+            1,
+            55,
+            1
+          ],
+          "q_digits": [
+            17,
+            83,
+            43
+          ],
+          "carry": 48
+        },
+        {
+          "p_digits": [
+            1,
+            55,
+            5
+          ],
+          "q_digits": [
+            17,
+            83,
+            71
+          ],
+          "carry": 49
+        },
+        {
+          "p_digits": [
+            1,
+            55,
+            7
+          ],
+          "q_digits": [
+            17,
+            83,
+            37
+          ],
+          "carry": 49
+        },
+        {
+          "p_digits": [
+            1,
+            55,
+            11
+          ],
+          "q_digits": [
+            17,
+            83,
+            65
+          ],
+          "carry": 50
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "target_digit": 31,
+      "candidate_count": 14240,
+      "sample_candidates": [
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31
+          ],
+          "carry": 2
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            11
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            25
+          ],
+          "carry": 3
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19
+          ],
+          "carry": 4
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            23
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            13
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            35
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            1
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            41
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            91
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            53
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            79
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            59
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            73
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            65
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            67
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            71
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            61
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            77
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            55
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            83
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            49
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            89
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            43
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            95
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            37
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            1
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            1
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            5
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            29
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            7
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            91
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            11
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            23
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            13
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            85
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            17
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            17
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            19
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            79
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            23
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            11
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            25
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            73
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            29
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            5
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            31
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            67
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            35
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            95
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            37
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            61
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            41
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            89
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            43
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            55
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            47
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            83
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            49
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            49
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            53
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            77
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            55
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            43
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            59
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            71
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            61
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            37
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            65
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            65
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            67
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            31
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            71
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            59
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            73
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            25
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            77
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            53
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            79
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            19
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            83
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            47
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            85
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            13
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            89
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            41
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            91
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            7
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            13,
+            95
+          ],
+          "q_digits": [
+            17,
+            41,
+            53,
+            35
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            1
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            95
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            7
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            89
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            13
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            83
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            19
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            77
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            25
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            71
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            31
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            65
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            37
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            59
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            43
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            53
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            49
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            47
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            55
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            41
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            61
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            35
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            67
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            29
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            73
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            23
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            79
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            17
+          ],
+          "carry": 25
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            85
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            11
+          ],
+          "carry": 26
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            25,
+            91
+          ],
+          "q_digits": [
+            17,
+            41,
+            41,
+            5
+          ],
+          "carry": 27
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            5
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            25
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            11
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            19
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            17
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            13
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            23
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            7
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            29
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            1
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            35
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            91
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            41
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            85
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            47
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            79
+          ],
+          "carry": 25
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            53
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            73
+          ],
+          "carry": 26
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            59
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            67
+          ],
+          "carry": 27
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            65
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            61
+          ],
+          "carry": 28
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            71
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            55
+          ],
+          "carry": 29
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            77
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            49
+          ],
+          "carry": 30
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            83
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            43
+          ],
+          "carry": 31
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            89
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            37
+          ],
+          "carry": 32
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            37,
+            95
+          ],
+          "q_digits": [
+            17,
+            41,
+            29,
+            31
+          ],
+          "carry": 33
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            1
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            91
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            5
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            23
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            7
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            85
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            11
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            17
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            13
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            79
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            17
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            11
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            19
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            73
+          ],
+          "carry": 25
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            23
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            5
+          ],
+          "carry": 25
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            25
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            67
+          ],
+          "carry": 26
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            29
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            95
+          ],
+          "carry": 27
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            31
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            61
+          ],
+          "carry": 27
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            35
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            89
+          ],
+          "carry": 28
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            37
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            55
+          ],
+          "carry": 28
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            41
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            83
+          ],
+          "carry": 29
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            43
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            49
+          ],
+          "carry": 29
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            47
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            77
+          ],
+          "carry": 30
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            49
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            43
+          ],
+          "carry": 30
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            53
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            71
+          ],
+          "carry": 31
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            55
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            37
+          ],
+          "carry": 31
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            49,
+            59
+          ],
+          "q_digits": [
+            17,
+            41,
+            17,
+            65
+          ],
+          "carry": 32
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "target_digit": 35,
+      "candidate_count": 152704,
+      "sample_candidates": [
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            5
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            31
+          ],
+          "carry": 4
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            11
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            25
+          ],
+          "carry": 5
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            17
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            19
+          ],
+          "carry": 6
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            23
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            13
+          ],
+          "carry": 7
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            29
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            7
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            35
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            1
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            41
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            91
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            47
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            85
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            53
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            79
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            59
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            73
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            65
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            67
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            71
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            61
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            77
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            55
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            83
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            49
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            89
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            43
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            5,
+            95
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            31,
+            37
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            1
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            1
+          ],
+          "carry": 8
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            5
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            29
+          ],
+          "carry": 9
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            7
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            91
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            11
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            23
+          ],
+          "carry": 10
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            13
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            85
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            17
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            17
+          ],
+          "carry": 11
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            19
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            79
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            23
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            11
+          ],
+          "carry": 12
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            25
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            73
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            29
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            5
+          ],
+          "carry": 13
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            31
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            67
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            35
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            95
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            37
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            61
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            41
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            89
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            43
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            55
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            47
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            83
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            49
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            49
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            53
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            77
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            55
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            43
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            59
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            71
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            61
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            37
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            65
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            65
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            67
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            31
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            71
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            59
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            73
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            25
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            77
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            53
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            79
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            19
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            83
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            47
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            85
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            13
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            89
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            41
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            91
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            7
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            17,
+            95
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            19,
+            35
+          ],
+          "carry": 25
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            1
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            95
+          ],
+          "carry": 14
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            7
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            89
+          ],
+          "carry": 15
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            13
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            83
+          ],
+          "carry": 16
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            19
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            77
+          ],
+          "carry": 17
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            25
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            71
+          ],
+          "carry": 18
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            31
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            65
+          ],
+          "carry": 19
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            37
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            59
+          ],
+          "carry": 20
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            43
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            53
+          ],
+          "carry": 21
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            49
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            47
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            55
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            41
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            61
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            35
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            67
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            29
+          ],
+          "carry": 25
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            73
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            23
+          ],
+          "carry": 26
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            79
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            17
+          ],
+          "carry": 27
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            85
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            11
+          ],
+          "carry": 28
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            29,
+            91
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            7,
+            5
+          ],
+          "carry": 29
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            1
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            43
+          ],
+          "carry": 22
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            5
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            71
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            7
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            37
+          ],
+          "carry": 23
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            11
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            65
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            13
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            31
+          ],
+          "carry": 24
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            17
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            59
+          ],
+          "carry": 25
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            19
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            25
+          ],
+          "carry": 25
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            23
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            53
+          ],
+          "carry": 26
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            25
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            19
+          ],
+          "carry": 26
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            29
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            47
+          ],
+          "carry": 27
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            31
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            13
+          ],
+          "carry": 27
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            35
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            41
+          ],
+          "carry": 28
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            37
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            7
+          ],
+          "carry": 28
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            41
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            35
+          ],
+          "carry": 29
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            43
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            1
+          ],
+          "carry": 29
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            47
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            29
+          ],
+          "carry": 30
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            49
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            91
+          ],
+          "carry": 31
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            53
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            23
+          ],
+          "carry": 31
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            55
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            85
+          ],
+          "carry": 32
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            59
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            17
+          ],
+          "carry": 32
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            61
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            79
+          ],
+          "carry": 33
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            65
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            11
+          ],
+          "carry": 33
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            67
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            73
+          ],
+          "carry": 34
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            71
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            5
+          ],
+          "carry": 34
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            73
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            67
+          ],
+          "carry": 35
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            77
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            95
+          ],
+          "carry": 36
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            79
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            61
+          ],
+          "carry": 36
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            83
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            89
+          ],
+          "carry": 37
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            85
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            55
+          ],
+          "carry": 37
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            89
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            83
+          ],
+          "carry": 38
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            91
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            49
+          ],
+          "carry": 38
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            47,
+            95
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            85,
+            77
+          ],
+          "carry": 39
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            59,
+            1
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            73,
+            41
+          ],
+          "carry": 27
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            59,
+            7
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            73,
+            35
+          ],
+          "carry": 28
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            59,
+            13
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            73,
+            29
+          ],
+          "carry": 29
+        },
+        {
+          "p_digits": [
+            1,
+            1,
+            1,
+            59,
+            19
+          ],
+          "q_digits": [
+            17,
+            41,
+            65,
+            73,
+            23
+          ],
+          "carry": 30
+        }
+      ]
+    }
+  ],
+  "pruning_efficiency": [
+    {
+      "level": 1,
+      "reduction_percent": "-300.00",
+      "cumulative_reduction_percent": "-300.00"
+    },
+    {
+      "level": 2,
+      "reduction_percent": "-950.00",
+      "cumulative_reduction_percent": "-4100.00"
+    },
+    {
+      "level": 3,
+      "reduction_percent": "-959.52",
+      "cumulative_reduction_percent": "-44400.00"
+    },
+    {
+      "level": 4,
+      "reduction_percent": "-972.36",
+      "cumulative_reduction_percent": "-477100.00"
+    }
+  ]
+}

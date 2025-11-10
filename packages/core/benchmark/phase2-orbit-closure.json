@@ -1,0 +1,980 @@
+{
+  "metadata": {
+    "name": "Phase-2-Orbit-Closure-Analysis",
+    "timestamp": "2025-11-10T17:46:41.717Z"
+  },
+  "orbit_factorizations": [
+    {
+      "element": 0,
+      "factors": [
+        0
+      ],
+      "orbitDistance": 9,
+      "complexity": 23.5
+    },
+    {
+      "element": 1,
+      "factors": [
+        1
+      ],
+      "orbitDistance": 8,
+      "complexity": 22
+    },
+    {
+      "element": 2,
+      "factors": [
+        2
+      ],
+      "orbitDistance": 9,
+      "complexity": 23.5
+    },
+    {
+      "element": 3,
+      "factors": [
+        3
+      ],
+      "orbitDistance": 8,
+      "complexity": 22
+    },
+    {
+      "element": 4,
+      "factors": [
+        4
+      ],
+      "orbitDistance": 9,
+      "complexity": 23.5
+    },
+    {
+      "element": 5,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 9,
+      "complexity": 23.5
+    },
+    {
+      "element": 6,
+      "factors": [
+        6
+      ],
+      "orbitDistance": 9,
+      "complexity": 23.5
+    },
+    {
+      "element": 7,
+      "factors": [
+        7
+      ],
+      "orbitDistance": 9,
+      "complexity": 23.5
+    },
+    {
+      "element": 8,
+      "factors": [
+        8
+      ],
+      "orbitDistance": 9,
+      "complexity": 23.5
+    },
+    {
+      "element": 9,
+      "factors": [
+        9
+      ],
+      "orbitDistance": 9,
+      "complexity": 23.5
+    },
+    {
+      "element": 10,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 11,
+      "factors": [
+        11
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 12,
+      "factors": [
+        12
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 13,
+      "factors": [
+        13
+      ],
+      "orbitDistance": 3,
+      "complexity": 14.5
+    },
+    {
+      "element": 14,
+      "factors": [
+        7
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 15,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 16,
+      "factors": [
+        16
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 17,
+      "factors": [
+        17
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 18,
+      "factors": [
+        18
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 19,
+      "factors": [
+        19
+      ],
+      "orbitDistance": 3,
+      "complexity": 14.5
+    },
+    {
+      "element": 20,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 21,
+      "factors": [
+        7
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 22,
+      "factors": [
+        11
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 23,
+      "factors": [
+        23
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 24,
+      "factors": [
+        24
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 25,
+      "factors": [
+        5,
+        5
+      ],
+      "orbitDistance": 7,
+      "complexity": 42.5
+    },
+    {
+      "element": 26,
+      "factors": [
+        13
+      ],
+      "orbitDistance": 7,
+      "complexity": 14.5
+    },
+    {
+      "element": 27,
+      "factors": [
+        27
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 28,
+      "factors": [
+        7
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 29,
+      "factors": [
+        29
+      ],
+      "orbitDistance": 2,
+      "complexity": 13
+    },
+    {
+      "element": 30,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 7,
+      "complexity": 23.5
+    },
+    {
+      "element": 31,
+      "factors": [
+        31
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 32,
+      "factors": [
+        32
+      ],
+      "orbitDistance": 3,
+      "complexity": 14.5
+    },
+    {
+      "element": 33,
+      "factors": [
+        11
+      ],
+      "orbitDistance": 7,
+      "complexity": 25
+    },
+    {
+      "element": 34,
+      "factors": [
+        17
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 35,
+      "factors": [
+        5,
+        7
+      ],
+      "orbitDistance": 10,
+      "complexity": 42.5
+    },
+    {
+      "element": 36,
+      "factors": [
+        36
+      ],
+      "orbitDistance": 6,
+      "complexity": 19
+    },
+    {
+      "element": 37,
+      "factors": [
+        37
+      ],
+      "orbitDistance": 0,
+      "complexity": 10
+    },
+    {
+      "element": 38,
+      "factors": [
+        19
+      ],
+      "orbitDistance": 1,
+      "complexity": 14.5
+    },
+    {
+      "element": 39,
+      "factors": [
+        13
+      ],
+      "orbitDistance": 3,
+      "complexity": 14.5
+    },
+    {
+      "element": 40,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 41,
+      "factors": [
+        41
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 42,
+      "factors": [
+        7
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 43,
+      "factors": [
+        43
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 44,
+      "factors": [
+        11
+      ],
+      "orbitDistance": 7,
+      "complexity": 25
+    },
+    {
+      "element": 45,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 1,
+      "complexity": 23.5
+    },
+    {
+      "element": 46,
+      "factors": [
+        23
+      ],
+      "orbitDistance": 6,
+      "complexity": 25
+    },
+    {
+      "element": 47,
+      "factors": [
+        47
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 48,
+      "factors": [
+        48
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 49,
+      "factors": [
+        7,
+        7
+      ],
+      "orbitDistance": 7,
+      "complexity": 42.5
+    },
+    {
+      "element": 50,
+      "factors": [
+        5,
+        5
+      ],
+      "orbitDistance": 7,
+      "complexity": 42.5
+    },
+    {
+      "element": 51,
+      "factors": [
+        17
+      ],
+      "orbitDistance": 7,
+      "complexity": 25
+    },
+    {
+      "element": 52,
+      "factors": [
+        13
+      ],
+      "orbitDistance": 3,
+      "complexity": 14.5
+    },
+    {
+      "element": 53,
+      "factors": [
+        53
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 54,
+      "factors": [
+        54
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 55,
+      "factors": [
+        5,
+        11
+      ],
+      "orbitDistance": 7,
+      "complexity": 44
+    },
+    {
+      "element": 56,
+      "factors": [
+        7
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 57,
+      "factors": [
+        19
+      ],
+      "orbitDistance": 7,
+      "complexity": 14.5
+    },
+    {
+      "element": 58,
+      "factors": [
+        29
+      ],
+      "orbitDistance": 2,
+      "complexity": 13
+    },
+    {
+      "element": 59,
+      "factors": [
+        59
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 60,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 7,
+      "complexity": 23.5
+    },
+    {
+      "element": 61,
+      "factors": [
+        61
+      ],
+      "orbitDistance": 1,
+      "complexity": 11.5
+    },
+    {
+      "element": 62,
+      "factors": [
+        31
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 63,
+      "factors": [
+        7
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 64,
+      "factors": [
+        64
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 65,
+      "factors": [
+        5,
+        13
+      ],
+      "orbitDistance": 7,
+      "complexity": 36.5
+    },
+    {
+      "element": 66,
+      "factors": [
+        11
+      ],
+      "orbitDistance": 7,
+      "complexity": 25
+    },
+    {
+      "element": 67,
+      "factors": [
+        67
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 68,
+      "factors": [
+        17
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 69,
+      "factors": [
+        23
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 70,
+      "factors": [
+        5,
+        7
+      ],
+      "orbitDistance": 7,
+      "complexity": 42.5
+    },
+    {
+      "element": 71,
+      "factors": [
+        71
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 72,
+      "factors": [
+        72
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 73,
+      "factors": [
+        73
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 74,
+      "factors": [
+        37
+      ],
+      "orbitDistance": 1,
+      "complexity": 10
+    },
+    {
+      "element": 75,
+      "factors": [
+        5,
+        5
+      ],
+      "orbitDistance": 10,
+      "complexity": 42.5
+    },
+    {
+      "element": 76,
+      "factors": [
+        19
+      ],
+      "orbitDistance": 10,
+      "complexity": 14.5
+    },
+    {
+      "element": 77,
+      "factors": [
+        7,
+        11
+      ],
+      "orbitDistance": 10,
+      "complexity": 44
+    },
+    {
+      "element": 78,
+      "factors": [
+        13
+      ],
+      "orbitDistance": 7,
+      "complexity": 14.5
+    },
+    {
+      "element": 79,
+      "factors": [
+        79
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 80,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 81,
+      "factors": [
+        81
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 82,
+      "factors": [
+        41
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 83,
+      "factors": [
+        83
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 84,
+      "factors": [
+        7
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 85,
+      "factors": [
+        5,
+        17
+      ],
+      "orbitDistance": 7,
+      "complexity": 44
+    },
+    {
+      "element": 86,
+      "factors": [
+        43
+      ],
+      "orbitDistance": 10,
+      "complexity": 20.5
+    },
+    {
+      "element": 87,
+      "factors": [
+        29
+      ],
+      "orbitDistance": 2,
+      "complexity": 13
+    },
+    {
+      "element": 88,
+      "factors": [
+        11
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 89,
+      "factors": [
+        89
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 90,
+      "factors": [
+        5
+      ],
+      "orbitDistance": 10,
+      "complexity": 23.5
+    },
+    {
+      "element": 91,
+      "factors": [
+        7,
+        13
+      ],
+      "orbitDistance": 10,
+      "complexity": 36.5
+    },
+    {
+      "element": 92,
+      "factors": [
+        23
+      ],
+      "orbitDistance": 10,
+      "complexity": 25
+    },
+    {
+      "element": 93,
+      "factors": [
+        31
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 94,
+      "factors": [
+        47
+      ],
+      "orbitDistance": 7,
+      "complexity": 20.5
+    },
+    {
+      "element": 95,
+      "factors": [
+        5,
+        19
+      ],
+      "orbitDistance": 7,
+      "complexity": 36.5
+    }
+  ],
+  "product_closures_summary": {
+    "total_pairs": 9216,
+    "avg_complexity_diff": -24.84982638888889,
+    "complexity_preserved_percent": 0.08680555555555555
+  },
+  "orbit_closure_bounds": {
+    "general": {
+      "epsilon": 10,
+      "example": {
+        "p": 11,
+        "q": 47,
+        "product": 37,
+        "d_p": 10,
+        "d_q": 7,
+        "d_product": 0
+      }
+    },
+    "prime_residues": {
+      "epsilon": 10,
+      "avg_distance": 7.375,
+      "avg_complexity": 26.40625,
+      "example": {
+        "p": 11,
+        "q": 47,
+        "product": 37,
+        "d_p": 10,
+        "d_q": 7,
+        "d_product": 0
+      }
+    }
+  },
+  "rsa_260_constraints": {
+    "d0": 17,
+    "F_17": [
+      17
+    ],
+    "d_17": 10,
+    "valid_pairs": [
+      {
+        "p0": 1,
+        "q0": 17,
+        "F_p0": [
+          1
+        ],
+        "F_q0": [
+          17
+        ],
+        "d_p0": 8,
+        "d_q0": 10,
+        "d_product": 10,
+        "complexity_p0": 22,
+        "complexity_q0": 25
+      },
+      {
+        "p0": 5,
+        "q0": 61,
+        "F_p0": [
+          5
+        ],
+        "F_q0": [
+          61
+        ],
+        "d_p0": 9,
+        "d_q0": 1,
+        "d_product": 10,
+        "complexity_p0": 23.5,
+        "complexity_q0": 11.5
+      },
+      {
+        "p0": 7,
+        "q0": 71,
+        "F_p0": [
+          7
+        ],
+        "F_q0": [
+          71
+        ],
+        "d_p0": 9,
+        "d_q0": 7,
+        "d_product": 10,
+        "complexity_p0": 23.5,
+        "complexity_q0": 20.5
+      },
+      {
+        "p0": 11,
+        "q0": 19,
+        "F_p0": [
+          11
+        ],
+        "F_q0": [
+          19
+        ],
+        "d_p0": 10,
+        "d_q0": 3,
+        "d_product": 10,
+        "complexity_p0": 25,
+        "complexity_q0": 14.5
+      },
+      {
+        "p0": 13,
+        "q0": 53,
+        "F_p0": [
+          13
+        ],
+        "F_q0": [
+          53
+        ],
+        "d_p0": 3,
+        "d_q0": 10,
+        "d_product": 10,
+        "complexity_p0": 14.5,
+        "complexity_q0": 25
+      },
+      {
+        "p0": 17,
+        "q0": 1,
+        "F_p0": [
+          17
+        ],
+        "F_q0": [
+          1
+        ],
+        "d_p0": 10,
+        "d_q0": 8,
+        "d_product": 10,
+        "complexity_p0": 25,
+        "complexity_q0": 22
+      },
+      {
+        "p0": 19,
+        "q0": 11,
+        "F_p0": [
+          19
+        ],
+        "F_q0": [
+          11
+        ],
+        "d_p0": 3,
+        "d_q0": 10,
+        "d_product": 10,
+        "complexity_p0": 14.5,
+        "complexity_q0": 25
+      },
+      {
+        "p0": 23,
+        "q0": 55,
+        "F_p0": [
+          23
+        ],
+        "F_q0": [
+          5,
+          11
+        ],
+        "d_p0": 10,
+        "d_q0": 7,
+        "d_product": 10,
+        "complexity_p0": 25,
+        "complexity_q0": 44
+      },
+      {
+        "p0": 25,
+        "q0": 89,
+        "F_p0": [
+          5,
+          5
+        ],
+        "F_q0": [
+          89
+        ],
+        "d_p0": 7,
+        "d_q0": 10,
+        "d_product": 10,
+        "complexity_p0": 42.5,
+        "complexity_q0": 25
+      },
+      {
+        "p0": 29,
+        "q0": 37,
+        "F_p0": [
+          29
+        ],
+        "F_q0": [
+          37
+        ],
+        "d_p0": 2,
+        "d_q0": 0,
+        "d_product": 10,
+        "complexity_p0": 13,
+        "complexity_q0": 10
+      }
+    ]
+  }
+}

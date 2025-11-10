@@ -1,0 +1,249 @@
+{
+  "metadata": {
+    "name": "RSA-260-Carry-Propagation-Analysis",
+    "timestamp": "2025-11-10T17:40:40.055Z"
+  },
+  "rsa_260": {
+    "value": "2211282552952966643528108525502623092761208950247001539441374831912882294140664981690295237907262606923835005442126672024101081373265533949103140104799863550049096675743354459140624476609590597260471578285798804841674990973422287179817183286845865799508538793815835042257",
+    "bits": 899,
+    "digits": 137,
+    "expected_p_digits": 69,
+    "expected_q_digits": 69
+  },
+  "modular_constraints": {
+    "d0_pairs": 32,
+    "d0_value": 17,
+    "carry_distribution": [
+      {
+        "carry": 0,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 1,
+            "q0": 17
+          },
+          {
+            "p0": 17,
+            "q0": 1
+          }
+        ]
+      },
+      {
+        "carry": 3,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 5,
+            "q0": 61
+          },
+          {
+            "p0": 61,
+            "q0": 5
+          }
+        ]
+      },
+      {
+        "carry": 5,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 7,
+            "q0": 71
+          },
+          {
+            "p0": 71,
+            "q0": 7
+          }
+        ]
+      },
+      {
+        "carry": 2,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 11,
+            "q0": 19
+          },
+          {
+            "p0": 19,
+            "q0": 11
+          }
+        ]
+      },
+      {
+        "carry": 7,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 13,
+            "q0": 53
+          },
+          {
+            "p0": 53,
+            "q0": 13
+          }
+        ]
+      },
+      {
+        "carry": 13,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 23,
+            "q0": 55
+          },
+          {
+            "p0": 55,
+            "q0": 23
+          }
+        ]
+      },
+      {
+        "carry": 23,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 25,
+            "q0": 89
+          },
+          {
+            "p0": 89,
+            "q0": 25
+          }
+        ]
+      },
+      {
+        "carry": 11,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 29,
+            "q0": 37
+          },
+          {
+            "p0": 37,
+            "q0": 29
+          }
+        ]
+      },
+      {
+        "carry": 15,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 31,
+            "q0": 47
+          },
+          {
+            "p0": 47,
+            "q0": 31
+          }
+        ]
+      },
+      {
+        "carry": 33,
+        "count": 4,
+        "examples": [
+          {
+            "p0": 35,
+            "q0": 91
+          },
+          {
+            "p0": 49,
+            "q0": 65
+          },
+          {
+            "p0": 65,
+            "q0": 49
+          }
+        ]
+      },
+      {
+        "carry": 31,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 41,
+            "q0": 73
+          },
+          {
+            "p0": 73,
+            "q0": 41
+          }
+        ]
+      },
+      {
+        "carry": 37,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 43,
+            "q0": 83
+          },
+          {
+            "p0": 83,
+            "q0": 43
+          }
+        ]
+      },
+      {
+        "carry": 41,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 59,
+            "q0": 67
+          },
+          {
+            "p0": 67,
+            "q0": 59
+          }
+        ]
+      },
+      {
+        "carry": 68,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 77,
+            "q0": 85
+          },
+          {
+            "p0": 85,
+            "q0": 77
+          }
+        ]
+      },
+      {
+        "carry": 78,
+        "count": 2,
+        "examples": [
+          {
+            "p0": 79,
+            "q0": 95
+          },
+          {
+            "p0": 95,
+            "q0": 79
+          }
+        ]
+      }
+    ]
+  },
+  "degrees_of_freedom": {
+    "prime_residues_count": 32,
+    "naive_search_space": "2^690",
+    "constrained_estimate": "2^345 (per-digit modular constraints)",
+    "note": "Additional constraints needed from orbit closure theory"
+  },
+  "carry_bounds": {
+    "max_carry_d0": 93,
+    "max_carry_d1": 189,
+    "growth_rate": "O(i) linear in digit index"
+  },
+  "next_phase": {
+    "phase": 2,
+    "goal": "Define orbit-consistent tensor product and closure bound",
+    "approach": "Combine modular constraints with E₇ orbit structure"
+  }
+}

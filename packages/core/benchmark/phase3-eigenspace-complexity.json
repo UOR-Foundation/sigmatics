@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "name": "Phase-3-Eigenspace-Complexity-Analysis",
+    "timestamp": "2025-11-10T17:52:25.969Z"
+  },
+  "unfactored_signatures": [
+    {
+      "name": "RSA-260",
+      "size": 260,
+      "bits": 862,
+      "digitCount": 137,
+      "entropy": 6.007540503007242,
+      "avgOrbitDistance": 6.481751824817518,
+      "maxOrbitDistance": 12,
+      "minOrbitDistance": 0,
+      "avgComplexity": 24.40875912408759,
+      "maxComplexity": 44,
+      "minComplexity": 10,
+      "complexityStdDev": 7.897199674175877,
+      "orbitDistanceStdDev": 2.5519484177252183,
+      "uniqueDigits": 73,
+      "primeDigitRatio": 0.25547445255474455,
+      "generator37Count": 2,
+      "d0": 17,
+      "d0_factors": [
+        17
+      ],
+      "d0_complexity": 25
+    },
+    {
+      "name": "RSA-270",
+      "size": 270,
+      "bits": 896,
+      "digitCount": 136,
+      "entropy": 6.00273458042187,
+      "avgOrbitDistance": 5.522058823529412,
+      "maxOrbitDistance": 12,
+      "minOrbitDistance": 0,
+      "avgComplexity": 24.102941176470587,
+      "maxComplexity": 44,
+      "minComplexity": 10,
+      "complexityStdDev": 7.23175128468883,
+      "orbitDistanceStdDev": 2.5752410274537345,
+      "uniqueDigits": 73,
+      "primeDigitRatio": 0.21323529411764705,
+      "generator37Count": 3,
+      "d0": 37,
+      "d0_factors": [
+        37
+      ],
+      "d0_complexity": 10
+    },
+    {
+      "name": "RSA-280",
+      "size": 280,
+      "bits": 928,
+      "digitCount": 136,
+      "entropy": 5.994313646394466,
+      "avgOrbitDistance": 5.904411764705882,
+      "maxOrbitDistance": 12,
+      "minOrbitDistance": 0,
+      "avgComplexity": 24.058823529411764,
+      "maxComplexity": 44,
+      "minComplexity": 10,
+      "complexityStdDev": 8.161526228630452,
+      "orbitDistanceStdDev": 2.799366200511729,
+      "uniqueDigits": 72,
+      "primeDigitRatio": 0.19117647058823528,
+      "generator37Count": 1,
+      "d0": 15,
+      "d0_factors": [
+        5
+      ],
+      "d0_complexity": 23.5
+    },
+    {
+      "name": "RSA-896",
+      "size": 270,
+      "bits": 896,
+      "digitCount": 131,
+      "entropy": 6.029233115876121,
+      "avgOrbitDistance": 6.450381679389313,
+      "maxOrbitDistance": 12,
+      "minOrbitDistance": 0,
+      "avgComplexity": 23.251908396946565,
+      "maxComplexity": 44,
+      "minComplexity": 10,
+      "complexityStdDev": 7.593280990806895,
+      "orbitDistanceStdDev": 2.9271400221517725,
+      "uniqueDigits": 72,
+      "primeDigitRatio": 0.2366412213740458,
+      "generator37Count": 1,
+      "d0": 3,
+      "d0_factors": [
+        3
+      ],
+      "d0_complexity": 22
+    }
+  ],
+  "comparison": {
+    "factored_avg_complexity": 24.131825146483205,
+    "unfactored_avg_complexity": 23.955608056729126
+  }
+}

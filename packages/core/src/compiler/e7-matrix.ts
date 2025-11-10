@@ -64,7 +64,7 @@ export function buildE7Matrix(): Matrix96 {
     ];
 
     // Remove duplicates (some transforms might map to same class)
-    const unique = [...new Set(reachable)];
+    const unique = Array.from(new Set(reachable));
 
     for (const j of unique) {
       // Set both directions to ensure symmetry (transforms are reversible)
