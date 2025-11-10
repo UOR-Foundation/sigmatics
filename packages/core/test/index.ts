@@ -30,6 +30,8 @@ import { runCacheTests } from './server/cache.test';
 import { runIRTests } from './compiler/ir.test';
 import { runFusionConstantTests } from './fusion-constant.test';
 import { runOrbitTableTests } from './orbit-tables.test';
+import { runHierarchicalTests } from './hierarchical.test';
+import { runE7MatrixTests } from './e7-matrix.test';
 import { runClassBackendTests } from './backend/class-backend.test';
 import { runSgaBackendRingTests } from './backend/sga-backend-ring.test';
 import { runUtilityFunctionsTests } from './helpers/utility-functions.test';
@@ -1170,6 +1172,8 @@ function runAllTests(): void {
     runStdlibOperationsTests(runTest);
     runFusionConstantTests();
     runOrbitTableTests();
+    runHierarchicalTests();
+    runE7MatrixTests();
 
     console.log('='.repeat(60));
     console.log(
