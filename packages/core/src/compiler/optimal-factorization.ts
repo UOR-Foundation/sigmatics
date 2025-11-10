@@ -28,11 +28,11 @@ export interface OptimalFactorization {
   /** Complexity score: α·|factors| + β·Σd(fᵢ) + γ·max d(fᵢ) */
   complexity: number;
   /** Optimal path from 37 to input */
-  path: ReadonlyArray<{
+  path: readonly {
     from: number;
     to: number;
     transform: 'R' | 'D' | 'T' | 'M' | 'I';
-  }>;
+  }[];
   /** Eigenspace distance from 37 */
   eigenspaceDistance: number;
 }
@@ -108,7 +108,7 @@ function buildBFSTree(
   const TModel = Atlas.Model.T(1);
   const MModel = Atlas.Model.M();
 
-  const queue: Array<{ node: number; parent: number; distance: number }> = [
+  const queue: { node: number; parent: number; distance: number }[] = [
     { node: source, parent: source, distance: 0 },
   ];
   visited.add(source);
@@ -151,8 +151,8 @@ function buildBFSTree(
 function extractPath(
   tree: Map<number, { parent: number; distance: number; transform: 'R' | 'D' | 'T' | 'M' | 'I' }>,
   target: number,
-): ReadonlyArray<{ from: number; to: number; transform: 'R' | 'D' | 'T' | 'M' | 'I' }> {
-  const path: Array<{ from: number; to: number; transform: 'R' | 'D' | 'T' | 'M' | 'I' }> = [];
+): readonly { from: number; to: number; transform: 'R' | 'D' | 'T' | 'M' | 'I' }[] {
+  const path: { from: number; to: number; transform: 'R' | 'D' | 'T' | 'M' | 'I' }[] = [];
   let current = target;
 
   while (true) {

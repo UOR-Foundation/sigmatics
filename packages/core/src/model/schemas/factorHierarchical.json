@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigmatics.org/schemas/models/factorHierarchical.json",
+  "title": "Hierarchical Factorization Model",
+  "description": "Hierarchical factorization of arbitrary integers using base-96 decomposition, orbit closure constraints, and generator composition",
+  "type": "object",
+  "required": ["name", "version", "namespace", "compiled", "runtime"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "factorHierarchical"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "namespace": {
+      "type": "string",
+      "const": "stdlib.factorization"
+    },
+    "compiled": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "string",
+          "description": "Optional compile-time constant (bigint string) for maximum fusion"
+        },
+        "beamWidth": {
+          "type": "number",
+          "description": "Beam search width for pruning (default: 32)"
+        },
+        "maxCarry": {
+          "type": "number",
+          "description": "Maximum carry value for 4D constraint tables (default: 20)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "n": {
+          "type": "string",
+          "description": "Integer to factorize (as bigint string)"
+        },
+        "options": {
+          "type": "object",
+          "properties": {
+            "beamWidth": {
+              "type": "number",
+              "description": "Beam search width"
+            },
+            "scoringFunction": {
+              "type": "string",
+              "enum": ["constraint_satisfaction", "orbit_distance", "hybrid"],
+              "description": "Candidate scoring function"
+            },
+            "adaptiveBeam": {
+              "type": "boolean",
+              "description": "Enable adaptive beam width"
+            },
+            "maxLevels": {
+              "type": "number",
+              "description": "Maximum levels to explore"
+            },
+            "useExtendedTable": {
+              "type": "boolean",
+              "description": "Use 4D constraint table (vs 3D)"
+            },
+            "parallel": {
+              "type": "boolean",
+              "description": "Enable parallel constraint checking"
+            },
+            "workerCount": {
+              "type": "number",
+              "description": "Number of parallel workers"
+            }
+          }
+        }
+      },
+      "required": ["n"],
+      "additionalProperties": false
+    },
+    "complexityHint": {
+      "type": "string",
+      "enum": ["C0", "C1", "C2", "C3"],
+      "description": "C0: compile-time constant, C1: runtime with bounded levels, C2: runtime with extended tables, C3: full general case"
+    },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": {
+          "type": "string",
+          "enum": ["class", "sga", "auto"],
+          "description": "Backend preference (class=96-class system, sga=full geometric algebra)"
+        },
+        "optimizations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "beam_search",
+              "parallel",
+              "belt_memory",
+              "extended_tables",
+              "precompute",
+              "cache"
+            ]
+          },
+          "description": "Enabled optimizations"
+        }
+      }
+    }
+  }
+}

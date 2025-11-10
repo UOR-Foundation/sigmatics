@@ -265,8 +265,8 @@ function split(
   d: number,
   candidate: Candidate,
   carry: number
-): Array<{ p: number; q: number; newCarry: number }> {
-  const branches: Array<{ p: number; q: number; newCarry: number }> = [];
+): { p: number; q: number; newCarry: number }[] {
+  const branches: { p: number; q: number; newCarry: number }[] = [];
 
   // Include 0 for zero-padding (when one factor is shorter)
   const digitChoices = [0, ...PRIME_RESIDUES];
@@ -300,9 +300,9 @@ function split(
  * Generator 4: EVALUATE - Check constraints
  */
 function evaluate(
-  branches: Array<{ p: number; q: number; newCarry: number }>,
+  branches: { p: number; q: number; newCarry: number }[],
   d: number
-): Array<{ p: number; q: number; newCarry: number }> {
+): { p: number; q: number; newCarry: number }[] {
   // console.log('[EVALUATE] Checking orbit closure constraints');
 
   const valid = branches.filter(({ p, q }) => {
@@ -320,7 +320,7 @@ function evaluate(
  */
 function merge(
   candidates: Candidate[],
-  validBranches: Array<{ p: number; q: number; newCarry: number }>,
+  validBranches: { p: number; q: number; newCarry: number }[],
   level: number
 ): Candidate[] {
   // console.log(`[MERGE] Combining ${candidates.length} candidates with ${validBranches.length} branches`);

@@ -396,7 +396,7 @@ const PRIMES_96 = [
  *
  * See docs/EXCEPTIONAL-FACTORIZATION-SUMMARY.md for research details.
  */
-const FACTOR96_TABLE: ReadonlyArray<readonly number[]> = [
+const FACTOR96_TABLE: readonly (readonly number[])[] = [
   [0], // 0
   [1], // 1
   [2], // 2

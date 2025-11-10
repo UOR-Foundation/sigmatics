@@ -21,7 +21,7 @@ import { ORBIT_DISTANCE_TABLE, computeOrbitPath, type OrbitTransform } from './o
  */
 export interface HierarchicalFactorization {
   /** Base-96 digit layers (least significant first) */
-  layers: Array<{
+  layers: {
     /** Digit value [0, 95] */
     digit: number;
     /** Prime factorization in ℤ₉₆ */
@@ -32,7 +32,7 @@ export interface HierarchicalFactorization {
     orbitDistance: number;
     /** Transform sequence from 37 to digit */
     orbitPath: OrbitTransform[];
-  }>;
+  }[];
   /** Compressed representation */
   compressed: CompressedForm;
   /** Original input value */
@@ -184,11 +184,11 @@ export function factorBigInt(n: bigint): HierarchicalFactorization {
  * @returns Compressed representation
  */
 export function compressFactorization(
-  layers: Array<{
+  layers: {
     digit: number;
     orbitDistance: number;
     orbitPath: OrbitTransform[];
-  }>,
+  }[],
   original: bigint,
 ): CompressedForm {
   const numDigits = layers.length;

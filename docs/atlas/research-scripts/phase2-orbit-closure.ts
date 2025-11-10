@@ -167,7 +167,7 @@ console.log('Part 4: Complexity Relationships\n');
 console.log('Analyzing: How does complexity(p×q) relate to complexity(p) and complexity(q)?\n');
 
 // Statistical analysis
-let complexity_correlation_sum = 0;
+const complexity_correlation_sum = 0;
 let complexity_diff_sum = 0;
 
 for (const closure of product_closures) {
