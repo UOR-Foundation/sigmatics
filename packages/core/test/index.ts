@@ -32,6 +32,7 @@ import { runFusionConstantTests } from './fusion-constant.test';
 import { runOrbitTableTests } from './orbit-tables.test';
 import { runHierarchicalTests } from './hierarchical.test';
 import { runE7MatrixTests } from './e7-matrix.test';
+import { runOptimalFactorizationTests } from './optimal-factorization.test';
 import { runClassBackendTests } from './backend/class-backend.test';
 import { runSgaBackendRingTests } from './backend/sga-backend-ring.test';
 import { runUtilityFunctionsTests } from './helpers/utility-functions.test';
@@ -1174,6 +1175,7 @@ function runAllTests(): void {
     runOrbitTableTests();
     runHierarchicalTests();
     runE7MatrixTests();
+    runOptimalFactorizationTests();
 
     console.log('='.repeat(60));
     console.log(

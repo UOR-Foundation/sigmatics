@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html class="client-nojs vector-feature-language-in-header-enabled vector-feature-language-in-main-page-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 vector-feature-night-mode-enabled skin-theme-clientpref-day vector-sticky-header-enabled vector-toc-not-available" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>RSA numbers - Wikipedia</title>
+<script>(function(){var className="client-js vector-feature-language-in-header-enabled vector-feature-language-in-main-page-header-disabled vector-feature-page-tools-pinned-disabled vector-feature-toc-pinned-clientpref-1 vector-feature-main-menu-pinned-disabled vector-feature-limited-width-clientpref-1 vector-feature-limited-width-content-enabled vector-feature-custom-font-size-clientpref-1 vector-feature-appearance-pinned-clientpref-1 vector-feature-night-mode-enabled skin-theme-clientpref-day vector-sticky-header-enabled vector-toc-not-available";var cookie=document.cookie.match(/(?:^|; )enwikimwclientpreferences=([^;]+)/);if(cookie){cookie[1].split('%2C').forEach(function(pref){className=className.replace(new RegExp('(^| )'+pref.replace(/-clientpref-\w+$|[^\w-]+/g,'')+'-clientpref-\\w+( |$)'),'$1'+pref+'$2');});}document.documentElement.className=className;}());RLCONF={"wgBreakFrames":false,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"a80506c1-d4dc-48d1-95e8-f77dc4bb6308","wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"RSA_numbers","wgTitle":"RSA numbers","wgCurRevisionId":1320797158,"wgRevisionId":1320797158,"wgArticleId":511379,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["CS1: unfit URL","CS1 maint: numeric names: authors list","Webarchive template wayback links","Articles with short description","Short description matches Wikidata","Use mdy dates from October 2023","Articles containing potentially dated statements from February 2020","All articles containing potentially dated statements","Integer factorization algorithms","Large integers","RSA Factoring Challenge"],"wgPageViewLanguage":"en","wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"RSA_numbers","wgRelevantArticleId":511379,"wgTempUserName":null,"wgIsProbablyEditable":true,"wgRelevantPageIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgNoticeProject":"wikipedia","wgFlaggedRevsParams":{"tags":{"status":{"levels":1}}},"wgConfirmEditCaptchaNeededForGenericEdit":false,"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgPopupsFlags":0,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":true,"watchlist":true,"tagline":false,"nearby":true},"wgWMESchemaEditAttemptStepOversample":false,"wgWMEPageLength":60000,"wgMetricsPlatformUserExperiments":{"active_experiments":[],"overrides":[],"enrolled":[],"assigned":[],"subject_ids":[],"sampling_units":[]},"wgEditSubmitButtonLabelPublish":true,"wgULSPosition":"interlanguage","wgULSisCompactLinksEnabled":false,"wgVector2022LanguageInHeader":true,"wgULSisLanguageSelectorEmpty":false,"wgWikibaseItemId":"Q1072840","wgCheckUserClientHintsHeadersJsApi":["brands","architecture","bitness","fullVersionList","mobile","model","platform","platformVersion"],"GEHomepageSuggestedEditsEnableTopics":true,"wgGESuggestedEditsTaskTypes":{"taskTypes":["copyedit","link-recommendation"],"unavailableTaskTypes":[]},"wgGETopicsMatchModeEnabled":false,"wgGELevelingUpEnabledForUser":false};
+RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"loading","ext.cite.styles":"ready","ext.wikimediamessages.styles":"ready","skins.vector.search.codex.styles":"ready","skins.vector.styles":"ready","skins.vector.icons":"ready","jquery.tablesorter.styles":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","wikibase.client.init":"ready"};RLPAGEMODULES=["ext.xLab","ext.cite.ux-enhancements","site","mediawiki.page.ready","jquery.tablesorter","skins.vector.js","ext.centralNotice.geoIP","ext.centralNotice.startUp","ext.gadget.ReferenceTooltips","ext.gadget.switcher","ext.urlShortener.toolbar","ext.centralauth.centralautologin","mmv.bootstrap","ext.popups","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.echo.centralauth","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.interface","ext.cx.eventlogging.campaigns","ext.cx.uls.quick.actions","wikibase.client.vector-2022","ext.checkUser.clientHints","ext.growthExperiments.SuggestedEditSession"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.impl(function(){return["user.options@12s5i",function($,jQuery,require,module){mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+}];});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.cite.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediamessages.styles%7Cjquery.tablesorter.styles%7Cskins.vector.icons%2Cstyles%7Cskins.vector.search.codex.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector-2022">
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector-2022"></script>
+<meta name="ResourceLoaderDynamicStyles" content="">
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector-2022">
+<meta name="generator" content="MediaWiki 1.46.0-wmf.1">
+<meta name="referrer" content="origin">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta name="robots" content="max-image-preview:standard">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=1120">
+<meta property="og:title" content="RSA numbers - Wikipedia">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="//upload.wikimedia.org">
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=RSA_numbers&amp;action=edit">
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png">
+<link rel="icon" href="/static/favicon/wikipedia.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="/w/rest.php/v1/search" title="Wikipedia (en)">
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd">
+<link rel="canonical" href="https://en.wikipedia.org/wiki/RSA_numbers">
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom">
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<link rel="dns-prefetch" href="auth.wikimedia.org">
+</head>
+<body class="skin--responsive skin-vector skin-vector-search-vue mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-RSA_numbers rootpage-RSA_numbers skin-vector-2022 action-view"><a class="mw-jump-link" href="#bodyContent">Jump to content</a>
+<div class="vector-header-container">
+	<header class="vector-header mw-header no-font-mode-scale">
+		<div class="vector-header-start">
+			<nav class="vector-main-menu-landmark" aria-label="Site">
+				
+<div id="vector-main-menu-dropdown" class="vector-dropdown vector-main-menu-dropdown vector-button-flush-left vector-button-flush-right"  title="Main menu" >
+	<input type="checkbox" id="vector-main-menu-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-main-menu-dropdown" class="vector-dropdown-checkbox "  aria-label="Main menu"  >
+	<label id="vector-main-menu-dropdown-label" for="vector-main-menu-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-menu mw-ui-icon-wikimedia-menu"></span>
+
+<span class="vector-dropdown-label-text">Main menu</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+				<div id="vector-main-menu-unpinned-container" class="vector-unpinned-container">
+		
+<div id="vector-main-menu" class="vector-main-menu vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-main-menu-pinnable-header vector-pinnable-header-unpinned"
+	data-feature-name="main-menu-pinned"
+	data-pinnable-element-id="vector-main-menu"
+	data-pinned-container-id="vector-main-menu-pinned-container"
+	data-unpinned-container-id="vector-main-menu-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Main menu</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-main-menu.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-main-menu.unpin">hide</button>
+</div>
+
+	
+<div id="p-navigation" class="vector-menu mw-portlet mw-portlet-navigation"  >
+	<div class="vector-menu-heading">
+		Navigation
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-mainpage-description" class="mw-list-item"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z"><span>Main page</span></a></li><li id="n-contents" class="mw-list-item"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia"><span>Contents</span></a></li><li id="n-currentevents" class="mw-list-item"><a href="/wiki/Portal:Current_events" title="Articles related to current events"><span>Current events</span></a></li><li id="n-randompage" class="mw-list-item"><a href="/wiki/Special:Random" title="Visit a randomly selected article [x]" accesskey="x"><span>Random article</span></a></li><li id="n-aboutsite" class="mw-list-item"><a href="/wiki/Wikipedia:About" title="Learn about Wikipedia and how it works"><span>About Wikipedia</span></a></li><li id="n-contactpage" class="mw-list-item"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia"><span>Contact us</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-interaction" class="vector-menu mw-portlet mw-portlet-interaction"  >
+	<div class="vector-menu-heading">
+		Contribute
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="n-help" class="mw-list-item"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia"><span>Help</span></a></li><li id="n-introduction" class="mw-list-item"><a href="/wiki/Help:Introduction" title="Learn how to edit Wikipedia"><span>Learn to edit</span></a></li><li id="n-portal" class="mw-list-item"><a href="/wiki/Wikipedia:Community_portal" title="The hub for editors"><span>Community portal</span></a></li><li id="n-recentchanges" class="mw-list-item"><a href="/wiki/Special:RecentChanges" title="A list of recent changes to Wikipedia [r]" accesskey="r"><span>Recent changes</span></a></li><li id="n-upload" class="mw-list-item"><a href="/wiki/Wikipedia:File_upload_wizard" title="Add images or other media for use on Wikipedia"><span>Upload file</span></a></li><li id="n-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages"><span>Special pages</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+</div>
+
+				</div>
+
+	</div>
+</div>
+
+		</nav>
+			
+<a href="/wiki/Main_Page" class="mw-logo">
+	<img class="mw-logo-icon" src="/static/images/icons/wikipedia.png" alt="" aria-hidden="true" height="50" width="50">
+	<span class="mw-logo-container skin-invert">
+		<img class="mw-logo-wordmark" alt="Wikipedia" src="/static/images/mobile/copyright/wikipedia-wordmark-en.svg" style="width: 7.5em; height: 1.125em;">
+		<img class="mw-logo-tagline" alt="The Free Encyclopedia" src="/static/images/mobile/copyright/wikipedia-tagline-en.svg" width="117" height="13" style="width: 7.3125em; height: 0.8125em;">
+	</span>
+</a>
+
+		</div>
+		<div class="vector-header-end">
+			
+<div id="p-search" role="search" class="vector-search-box-vue  vector-search-box-collapses vector-search-box-show-thumbnail vector-search-box-auto-expand-width vector-search-box">
+	<a href="/wiki/Special:Search" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only search-toggle" title="Search Wikipedia [f]" accesskey="f"><span class="vector-icon mw-ui-icon-search mw-ui-icon-wikimedia-search"></span>
+
+<span>Search</span>
+	</a>
+	<div class="vector-typeahead-search-container">
+		<div class="cdx-typeahead-search cdx-typeahead-search--show-thumbnail cdx-typeahead-search--auto-expand-width">
+			<form action="/w/index.php" id="searchform" class="cdx-search-input cdx-search-input--has-end-button">
+				<div id="simpleSearch" class="cdx-search-input__input-wrapper"  data-search-loc="header-moved">
+					<div class="cdx-text-input cdx-text-input--has-start-icon">
+						<input
+							class="cdx-text-input__input mw-searchInput" autocomplete="off"
+							 type="search" name="search" placeholder="Search Wikipedia" aria-label="Search Wikipedia" autocapitalize="sentences" spellcheck="false" title="Search Wikipedia [f]" accesskey="f" id="searchInput"
+							>
+						<span class="cdx-text-input__icon cdx-text-input__start-icon"></span>
+					</div>
+					<input type="hidden" name="title" value="Special:Search">
+				</div>
+				<button class="cdx-button cdx-search-input__end-button">Search</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+			<nav class="vector-user-links vector-user-links-wide" aria-label="Personal tools">
+	<div class="vector-user-links-main">
+	
+<div id="p-vector-user-menu-preferences" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-vector-user-menu-userpage" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	<nav class="vector-appearance-landmark" aria-label="Appearance">
+		
+<div id="vector-appearance-dropdown" class="vector-dropdown "  title="Change the appearance of the page&#039;s font size, width, and color" >
+	<input type="checkbox" id="vector-appearance-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-appearance-dropdown" class="vector-dropdown-checkbox "  aria-label="Appearance"  >
+	<label id="vector-appearance-dropdown-label" for="vector-appearance-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-appearance mw-ui-icon-wikimedia-appearance"></span>
+
+<span class="vector-dropdown-label-text">Appearance</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+			<div id="vector-appearance-unpinned-container" class="vector-unpinned-container">
+				
+			</div>
+		
+	</div>
+</div>
+
+	</nav>
+	
+<div id="p-vector-user-menu-notifications" class="vector-menu mw-portlet emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+	
+<div id="p-vector-user-menu-overflow" class="vector-menu mw-portlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			<li id="pt-sitesupport-2" class="user-links-collapsible-item mw-list-item user-links-collapsible-item"><a data-mw="interface" href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=en.wikipedia.org&amp;uselang=en" class=""><span>Donate</span></a>
+</li>
+<li id="pt-createaccount-2" class="user-links-collapsible-item mw-list-item user-links-collapsible-item"><a data-mw="interface" href="/w/index.php?title=Special:CreateAccount&amp;returnto=RSA+numbers" title="You are encouraged to create an account and log in; however, it is not mandatory" class=""><span>Create account</span></a>
+</li>
+<li id="pt-login-2" class="user-links-collapsible-item mw-list-item user-links-collapsible-item"><a data-mw="interface" href="/w/index.php?title=Special:UserLogin&amp;returnto=RSA+numbers" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o" class=""><span>Log in</span></a>
+</li>
+
+			
+		</ul>
+		
+	</div>
+</div>
+
+	</div>
+	
+<div id="vector-user-links-dropdown" class="vector-dropdown vector-user-menu vector-button-flush-right vector-user-menu-logged-out user-links-collapsible-item"  title="Log in and more options" >
+	<input type="checkbox" id="vector-user-links-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-user-links-dropdown" class="vector-dropdown-checkbox "  aria-label="Personal tools"  >
+	<label id="vector-user-links-dropdown-label" for="vector-user-links-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only " aria-hidden="true"  ><span class="vector-icon mw-ui-icon-ellipsis mw-ui-icon-wikimedia-ellipsis"></span>
+
+<span class="vector-dropdown-label-text">Personal tools</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+		
+<div id="p-personal" class="vector-menu mw-portlet mw-portlet-personal user-links-collapsible-item"  title="User menu" >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="pt-sitesupport" class="user-links-collapsible-item mw-list-item"><a href="https://donate.wikimedia.org/?wmf_source=donate&amp;wmf_medium=sidebar&amp;wmf_campaign=en.wikipedia.org&amp;uselang=en"><span>Donate</span></a></li><li id="pt-createaccount" class="user-links-collapsible-item mw-list-item"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=RSA+numbers" title="You are encouraged to create an account and log in; however, it is not mandatory"><span class="vector-icon mw-ui-icon-userAdd mw-ui-icon-wikimedia-userAdd"></span> <span>Create account</span></a></li><li id="pt-login" class="user-links-collapsible-item mw-list-item"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=RSA+numbers" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o"><span class="vector-icon mw-ui-icon-logIn mw-ui-icon-wikimedia-logIn"></span> <span>Log in</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+	
+	</div>
+</div>
+
+</nav>
+
+		</div>
+	</header>
+</div>
+<div class="mw-page-container">
+	<div class="mw-page-container-inner">
+		<div class="vector-sitenotice-container">
+			<div id="siteNotice"><!-- CentralNotice --></div>
+		</div>
+		<div class="vector-column-start">
+			<div class="vector-main-menu-container">
+		<div id="mw-navigation">
+			<nav id="mw-panel" class="vector-main-menu-landmark" aria-label="Site">
+				<div id="vector-main-menu-pinned-container" class="vector-pinned-container">
+				
+				</div>
+		</nav>
+		</div>
+	</div>
+</div>
+		<div class="mw-content-container">
+			<main id="content" class="mw-body">
+				<header class="mw-body-header vector-page-titlebar no-font-mode-scale">
+					<h1 id="firstHeading" class="firstHeading mw-first-heading"><span class="mw-page-title-main">RSA numbers</span></h1>
+							
+<div id="p-lang-btn" class="vector-dropdown mw-portlet mw-portlet-lang"  >
+	<input type="checkbox" id="p-lang-btn-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-p-lang-btn" class="vector-dropdown-checkbox mw-interlanguage-selector" aria-label="Go to an article in another language. Available in 7 languages"   >
+	<label id="p-lang-btn-label" for="p-lang-btn-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--action-progressive mw-portlet-lang-heading-7" aria-hidden="true"  ><span class="vector-icon mw-ui-icon-language-progressive mw-ui-icon-wikimedia-language-progressive"></span>
+
+<span class="vector-dropdown-label-text">7 languages</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+		<div class="vector-menu-content">
+			
+			<ul class="vector-menu-content-list">
+				
+				<li class="interlanguage-link interwiki-es mw-list-item"><a href="https://es.wikipedia.org/wiki/N%C3%BAmeros_RSA" title="Números RSA – Spanish" lang="es" hreflang="es" data-title="Números RSA" data-language-autonym="Español" data-language-local-name="Spanish" class="interlanguage-link-target"><span>Español</span></a></li><li class="interlanguage-link interwiki-fr mw-list-item"><a href="https://fr.wikipedia.org/wiki/Nombre_RSA" title="Nombre RSA – French" lang="fr" hreflang="fr" data-title="Nombre RSA" data-language-autonym="Français" data-language-local-name="French" class="interlanguage-link-target"><span>Français</span></a></li><li class="interlanguage-link interwiki-it mw-list-item"><a href="https://it.wikipedia.org/wiki/Numeri_RSA" title="Numeri RSA – Italian" lang="it" hreflang="it" data-title="Numeri RSA" data-language-autonym="Italiano" data-language-local-name="Italian" class="interlanguage-link-target"><span>Italiano</span></a></li><li class="interlanguage-link interwiki-he mw-list-item"><a href="https://he.wikipedia.org/wiki/%D7%9E%D7%A1%D7%A4%D7%A8%D7%99_RSA" title="מספרי RSA – Hebrew" lang="he" hreflang="he" data-title="מספרי RSA" data-language-autonym="עברית" data-language-local-name="Hebrew" class="interlanguage-link-target"><span>עברית</span></a></li><li class="interlanguage-link interwiki-pl mw-list-item"><a href="https://pl.wikipedia.org/wiki/Liczby_RSA" title="Liczby RSA – Polish" lang="pl" hreflang="pl" data-title="Liczby RSA" data-language-autonym="Polski" data-language-local-name="Polish" class="interlanguage-link-target"><span>Polski</span></a></li><li class="interlanguage-link interwiki-ru mw-list-item"><a href="https://ru.wikipedia.org/wiki/RSA-%D1%87%D0%B8%D1%81%D0%BB%D0%B0" title="RSA-числа – Russian" lang="ru" hreflang="ru" data-title="RSA-числа" data-language-autonym="Русский" data-language-local-name="Russian" class="interlanguage-link-target"><span>Русский</span></a></li><li class="interlanguage-link interwiki-zh mw-list-item"><a href="https://zh.wikipedia.org/wiki/RSA%E6%95%B0" title="RSA数 – Chinese" lang="zh" hreflang="zh" data-title="RSA数" data-language-autonym="中文" data-language-local-name="Chinese" class="interlanguage-link-target"><span>中文</span></a></li>
+			</ul>
+			<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q1072840#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>
+		</div>
+
+	</div>
+</div>
+</header>
+				<div class="vector-page-toolbar vector-feature-custom-font-size-clientpref--excluded">
+					<div class="vector-page-toolbar-container">
+						<div id="left-navigation">
+							<nav aria-label="Namespaces">
+								
+<div id="p-associated-pages" class="vector-menu vector-menu-tabs mw-portlet mw-portlet-associated-pages"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-nstab-main" class="selected vector-tab-noicon mw-list-item"><a href="/wiki/RSA_numbers" title="View the content page [c]" accesskey="c"><span>Article</span></a></li><li id="ca-talk" class="vector-tab-noicon mw-list-item"><a href="/wiki/Talk:RSA_numbers" rel="discussion" title="Discuss improvements to the content page [t]" accesskey="t"><span>Talk</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+								
+<div id="vector-variants-dropdown" class="vector-dropdown emptyPortlet"  >
+	<input type="checkbox" id="vector-variants-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-variants-dropdown" class="vector-dropdown-checkbox " aria-label="Change language variant"   >
+	<label id="vector-variants-dropdown-label" for="vector-variants-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet" aria-hidden="true"  ><span class="vector-dropdown-label-text">English</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+					
+<div id="p-variants" class="vector-menu mw-portlet mw-portlet-variants emptyPortlet"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			
+		</ul>
+		
+	</div>
+</div>
+
+				
+	</div>
+</div>
+
+							</nav>
+						</div>
+						<div id="right-navigation" class="vector-collapsible">
+							<nav aria-label="Views">
+								
+<div id="p-views" class="vector-menu vector-menu-tabs mw-portlet mw-portlet-views"  >
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-view" class="selected vector-tab-noicon mw-list-item"><a href="/wiki/RSA_numbers"><span>Read</span></a></li><li id="ca-edit" class="vector-tab-noicon mw-list-item"><a href="/w/index.php?title=RSA_numbers&amp;action=edit" title="Edit this page [e]" accesskey="e"><span>Edit</span></a></li><li id="ca-history" class="vector-tab-noicon mw-list-item"><a href="/w/index.php?title=RSA_numbers&amp;action=history" title="Past revisions of this page [h]" accesskey="h"><span>View history</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+							</nav>
+				
+							<nav class="vector-page-tools-landmark" aria-label="Page tools">
+								
+<div id="vector-page-tools-dropdown" class="vector-dropdown vector-page-tools-dropdown"  >
+	<input type="checkbox" id="vector-page-tools-dropdown-checkbox" role="button" aria-haspopup="true" data-event-name="ui.dropdown-vector-page-tools-dropdown" class="vector-dropdown-checkbox "  aria-label="Tools"  >
+	<label id="vector-page-tools-dropdown-label" for="vector-page-tools-dropdown-checkbox" class="vector-dropdown-label cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet" aria-hidden="true"  ><span class="vector-dropdown-label-text">Tools</span>
+	</label>
+	<div class="vector-dropdown-content">
+
+
+									<div id="vector-page-tools-unpinned-container" class="vector-unpinned-container">
+						
+<div id="vector-page-tools" class="vector-page-tools vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-page-tools-pinnable-header vector-pinnable-header-unpinned"
+	data-feature-name="page-tools-pinned"
+	data-pinnable-element-id="vector-page-tools"
+	data-pinned-container-id="vector-page-tools-pinned-container"
+	data-unpinned-container-id="vector-page-tools-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Tools</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-page-tools.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-page-tools.unpin">hide</button>
+</div>
+
+	
+<div id="p-cactions" class="vector-menu mw-portlet mw-portlet-cactions emptyPortlet vector-has-collapsible-items"  title="More options" >
+	<div class="vector-menu-heading">
+		Actions
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="ca-more-view" class="selected vector-more-collapsible-item mw-list-item"><a href="/wiki/RSA_numbers"><span>Read</span></a></li><li id="ca-more-edit" class="vector-more-collapsible-item mw-list-item"><a href="/w/index.php?title=RSA_numbers&amp;action=edit" title="Edit this page [e]" accesskey="e"><span>Edit</span></a></li><li id="ca-more-history" class="vector-more-collapsible-item mw-list-item"><a href="/w/index.php?title=RSA_numbers&amp;action=history"><span>View history</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-tb" class="vector-menu mw-portlet mw-portlet-tb"  >
+	<div class="vector-menu-heading">
+		General
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/RSA_numbers" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j"><span>What links here</span></a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/RSA_numbers" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k"><span>Related changes</span></a></li><li id="t-upload" class="mw-list-item"><a href="//en.wikipedia.org/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u"><span>Upload file</span></a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=RSA_numbers&amp;oldid=1320797158" title="Permanent link to this revision of this page"><span>Permanent link</span></a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=RSA_numbers&amp;action=info" title="More information about this page"><span>Page information</span></a></li><li id="t-cite" class="mw-list-item"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=RSA_numbers&amp;id=1320797158&amp;wpFormIdentifier=titleform" title="Information on how to cite this page"><span>Cite this page</span></a></li><li id="t-urlshortener" class="mw-list-item"><a href="/w/index.php?title=Special:UrlShortener&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FRSA_numbers"><span>Get shortened URL</span></a></li><li id="t-urlshortener-qrcode" class="mw-list-item"><a href="/w/index.php?title=Special:QrCode&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FRSA_numbers"><span>Download QR code</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-coll-print_export" class="vector-menu mw-portlet mw-portlet-coll-print_export"  >
+	<div class="vector-menu-heading">
+		Print/export
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="coll-download-as-rl" class="mw-list-item"><a href="/w/index.php?title=Special:DownloadAsPdf&amp;page=RSA_numbers&amp;action=show-download-screen" title="Download this page as a PDF file"><span>Download as PDF</span></a></li><li id="t-print" class="mw-list-item"><a href="/w/index.php?title=RSA_numbers&amp;printable=yes" title="Printable version of this page [p]" accesskey="p"><span>Printable version</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+<div id="p-wikibase-otherprojects" class="vector-menu mw-portlet mw-portlet-wikibase-otherprojects"  >
+	<div class="vector-menu-heading">
+		In other projects
+	</div>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list">
+			
+			<li id="t-wikibase" class="wb-otherproject-link wb-otherproject-wikibase-dataitem mw-list-item"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q1072840" title="Structured data on this page hosted by Wikidata [g]" accesskey="g"><span>Wikidata item</span></a></li>
+		</ul>
+		
+	</div>
+</div>
+
+</div>
+
+									</div>
+				
+	</div>
+</div>
+
+							</nav>
+						</div>
+					</div>
+				</div>
+				<div class="vector-column-end no-font-mode-scale">
+					<div class="vector-sticky-pinned-container">
+						<nav class="vector-page-tools-landmark" aria-label="Page tools">
+							<div id="vector-page-tools-pinned-container" class="vector-pinned-container">
+				
+							</div>
+		</nav>
+						<nav class="vector-appearance-landmark" aria-label="Appearance">
+							<div id="vector-appearance-pinned-container" class="vector-pinned-container">
+				<div id="vector-appearance" class="vector-appearance vector-pinnable-element">
+	<div
+	class="vector-pinnable-header vector-appearance-pinnable-header vector-pinnable-header-pinned"
+	data-feature-name="appearance-pinned"
+	data-pinnable-element-id="vector-appearance"
+	data-pinned-container-id="vector-appearance-pinned-container"
+	data-unpinned-container-id="vector-appearance-unpinned-container"
+>
+	<div class="vector-pinnable-header-label">Appearance</div>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-pin-button" data-event-name="pinnable-header.vector-appearance.pin">move to sidebar</button>
+	<button class="vector-pinnable-header-toggle-button vector-pinnable-header-unpin-button" data-event-name="pinnable-header.vector-appearance.unpin">hide</button>
+</div>
+
+
+</div>
+
+							</div>
+		</nav>
+					</div>
+				</div>
+				<div id="bodyContent" class="vector-body" aria-labelledby="firstHeading" data-mw-ve-target-container>
+					<div class="vector-body-before-content">
+							<div class="mw-indicators">
+		</div>
+
+						<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+					</div>
+					<div id="contentSub"><div id="mw-content-subtitle"></div></div>
+					
+					
+					<div id="mw-content-text" class="mw-body-content"><div class="mw-content-ltr mw-parser-output" lang="en" dir="ltr"><div class="shortdescription nomobile noexcerpt noprint searchaux" style="display:none">Set of large semiprimes</div>
+<p>
+In <a href="/wiki/Mathematics" title="Mathematics">mathematics</a>, the <b>RSA numbers</b> are a set of large <a href="/wiki/Semiprimes" class="mw-redirect" title="Semiprimes">semiprimes</a> (numbers with exactly two <a href="/wiki/Prime_factor" class="mw-redirect" title="Prime factor">prime factors</a>) that were part of the <a href="/wiki/RSA_Factoring_Challenge" title="RSA Factoring Challenge">RSA Factoring Challenge</a>. The challenge was to find the prime factors of each number. It was created by <a href="/wiki/RSA_Security" title="RSA Security">RSA Laboratories</a> in March 1991 to encourage research into <a href="/wiki/Computational_number_theory" title="Computational number theory">computational number theory</a> and the practical difficulty of <a href="/wiki/Integer_factorization" title="Integer factorization">factoring</a> large <a href="/wiki/Integer" title="Integer">integers</a>. The challenge was ended in 2007.<sup id="cite&#95;ref-RSAfactoring-challenge&#95;1-0" class="reference"><a href="#cite_note-RSAfactoring-challenge-1"><span class="cite-bracket">&#91;</span>1<span class="cite-bracket">&#93;</span></a></sup>
+</p><p><a href="/wiki/RSA_Laboratories" class="mw-redirect" title="RSA Laboratories">RSA Laboratories</a> (which is an <a href="/wiki/Initialism" class="mw-redirect" title="Initialism">initialism</a> of the creators of the technique; Rivest, Shamir and Adleman) published a number of semiprimes with 100 to 617 <a href="/wiki/Decimal" title="Decimal">decimal</a> digits. Cash prizes of varying size, up to <a href="/wiki/United_States_dollar" title="United States dollar">US$</a>200,000 (and prizes up to $20,000 awarded), were offered for factorization of some of them. The smallest RSA number was factored in a few days. Most of the numbers have still not been factored and many of them are expected to remain unfactored for many years to come. As of February&#160;2020<sup class="plainlinks noexcerpt noprint asof-tag update" style="display:none;"><a class="external text" href="https://en.wikipedia.org/w/index.php?title=RSA_numbers&amp;action=edit">&#91;update&#93;</a></sup>, the smallest 23 of the 54 listed numbers have been factored.
+</p><p>While the RSA challenge officially ended in 2007, people are still attempting to find the factorizations. According to RSA Laboratories, "Now that the industry has a considerably more advanced understanding of the cryptanalytic strength of common symmetric-key and public-key algorithms, these challenges are no longer active."<sup id="cite&#95;ref-RSAfactoring-challenge-faq&#95;2-0" class="reference"><a href="#cite_note-RSAfactoring-challenge-faq-2"><span class="cite-bracket">&#91;</span>2<span class="cite-bracket">&#93;</span></a></sup> Some of the smaller prizes had been awarded at the time. The remaining prizes were retracted.
+</p><p>The first RSA numbers generated, from RSA-100 to RSA-500, were labeled according to their number of decimal digits. Later, beginning with RSA-576, <a href="/wiki/Binary_numeral_system" class="mw-redirect" title="Binary numeral system">binary</a> digits are counted instead. An exception to this is RSA-617, which was created before the change in the numbering scheme. The numbers are listed in increasing order below.
+<style data-mw-deduplicate="TemplateStyles:r1305414688">@media screen and (min-width:640px){.mw-parser-output .sticky-header>thead>tr:first-child,.mw-parser-output .sticky-header>caption+tbody>tr:first-child,.mw-parser-output .sticky-header>tbody:first-child>tr:first-child,.mw-parser-output .sticky-header-multi>thead{position:sticky;top:0;z-index:10}body.skin-timeless .mw-parser-output .content-table-wrapper.overflowed .sticky-header>thead>tr:first-child,body.skin-timeless .mw-parser-output .content-table-wrapper.overflowed .sticky-header>caption+tbody>tr:first-child,body.skin-timeless .mw-parser-output .content-table-wrapper.overflowed .sticky-header>tbody:first-child>tr:first-child,body.skin-timeless .mw-parser-output .content-table-wrapper.overflowed .sticky-header-multi>thead{position:static}.mw-parser-output .sticky-header:not(.wikitable),.mw-parser-output .sticky-header-multi:not(.wikitable){background-color:var(--color-inverted,#fff)}.mw-parser-output .sticky-header:not(.wikitable)>*,.mw-parser-output .sticky-header:not(.wikitable)>thead>tr:first-child,.mw-parser-output .sticky-header:not(.wikitable)>caption+tbody>tr:first-child,.mw-parser-output .sticky-header:not(.wikitable)>tbody:first-child>tr:first-child,.mw-parser-output .sticky-header-multi:not(.wikitable)>thead,.mw-parser-output .sticky-header-multi>thead{background-color:inherit}.mw-parser-output .sticky-header.wikitable,.mw-parser-output .sticky-header-multi.wikitable{border-collapse:separate;border-spacing:0;border-width:0 1px 1px 0}.mw-parser-output .sticky-header.wikitable td,.mw-parser-output .sticky-header.wikitable th,.mw-parser-output .sticky-header-multi.wikitable td,.mw-parser-output .sticky-header-multi.wikitable th{border-width:1px 0 0 1px}body.skin-timeless .mw-parser-output .content-table-wrapper:not(.overflowed) .sticky-header.wikitable,body.skin-timeless .mw-parser-output .content-table-wrapper:not(.overflowed) .sticky-header-multi.wikitable{border-bottom-width:0.2em;padding:0}.mw-parser-output .sticky-header.static-row-numbers.wikitable tr::before,.mw-parser-output .sticky-header-multi.static-row-numbers.wikitable tr::before{border-left-width:1px}.mw-parser-output .sticky-header.static-row-numbers.wikitable>thead>tr:first-child::before,.mw-parser-output .sticky-header.static-row-numbers.wikitable>caption+tbody>tr:first-child::before,.mw-parser-output .sticky-header.static-row-numbers.wikitable>tbody:first-child>tr:first-child::before,.mw-parser-output .sticky-header-multi.static-row-numbers.wikitable>thead>tr:first-child::before,.mw-parser-output .sticky-header-multi.static-row-numbers.wikitable>caption+tbody>tr:first-child::before,.mw-parser-output .sticky-header-multi.static-row-numbers.wikitable>tbody:first-child>tr:first-child::before,.mw-parser-output .sticky-header.static-row-numbers.wikitable .sortbottom::before,.mw-parser-output .sticky-header-multi.static-row-numbers.wikitable .sortbottom::before{border-top-width:1px}.mw-parser-output .sticky-header.static-row-numbers.wikitable .sortbottom~.sortbottom::before,.mw-parser-output .sticky-header-multi.static-row-numbers.wikitable .sortbottom~.sortbottom::before{border-top-width:0}.mw-parser-output .sticky-header.static-row-numbers.wikitable>tbody:first-of-type>tr:not(.static-row-header)::before,.mw-parser-output .sticky-header-multi.static-row-numbers.wikitable>tbody:first-of-type>tr:not(.static-row-header)::before{border-bottom-width:0;border-right-width:0}body.skin-timeless .mw-parser-output .content-table-wrapper.overflowed .sticky-header.wikitable,body.skin-timeless .mw-parser-output .content-table-wrapper.overflowed .sticky-header-multi.wikitable{border-collapse:collapse;border-width:1px}}@media screen and (min-width:1120px){body.vector-sticky-header-visible .mw-parser-output .sticky-header>thead>tr:first-child,body.vector-sticky-header-visible .mw-parser-output .sticky-header>caption+tbody>tr:first-child,body.vector-sticky-header-visible .mw-parser-output .sticky-header>tbody:first-child>tr:first-child,body.vector-sticky-header-visible .mw-parser-output .sticky-header-multi>thead{top:3.125rem}}@media screen and (min-width:851px){body.skin-timeless .mw-parser-output .content-table-wrapper:not(.overflowed) .sticky-header>thead>tr:first-child,body.skin-timeless .mw-parser-output .content-table-wrapper:not(.overflowed) .sticky-header>caption+tbody>tr:first-child,body.skin-timeless .mw-parser-output .content-table-wrapper:not(.overflowed) .sticky-header>tbody:first-child>tr:first-child,body.skin-timeless .mw-parser-output .content-table-wrapper:not(.overflowed) .sticky-header-multi>thead{top:3.51em}}@media screen{.mw-parser-output .sticky-header.jquery-tablesorter>thead,.mw-parser-output .sticky-header.mw-sticky-header>thead{position:static;top:auto;z-index:auto}.mw-parser-output .sticky-header.jquery-tablesorter>tfoot,.mw-parser-output .sticky-header.mw-sticky-header>tfoot,.mw-parser-output .sticky-header-multi.jquery-tablesorter>tfoot,.mw-parser-output .sticky-header-multi.mw-sticky-header>tfoot{position:static;bottom:auto;z-index:auto}}@media screen and (min-width:1120px){body.skin-vector-2022.vector-sticky-header-visible .mw-parser-output .sticky-header.jquery-tablesorter>thead{top:auto}html.client-js.vector-sticky-header-enabled .mw-parser-output .sticky-header .mw-sticky-header-element{top:auto!important}}@media screen and (min-width:851px){body.skin-timeless .mw-parser-output .content-table-wrapper:not(.overflowed) .sticky-header.jquery-tablesorter>thead,body.skin-timeless .mw-parser-output .content-table-wrapper:not(.overflowed) .sticky-header.mw-sticky-header>thead{top:auto}}</style>
+</p><p>Note: until work on this article is finished, please check both the table and the list, since they include different values and different information.
+</p>
+<table class="wikitable sortable sticky-header-multi" style="table-layout: fixed; overflow-wrap: anywhere;">
+<caption>
+</caption>
+<tbody><tr>
+<th rowspan="2" style="width:5ch">name
+</th>
+<th rowspan="2" style="width:5ch">dec digits
+</th>
+<th colspan="4">first solver
+</th></tr>
+<tr>
+<th style="width:5ch">date
+</th>
+<th>algorithm
+</th>
+<th>compute power
+</th>
+<th>calendar time
+</th></tr>
+<tr>
+<td>RSA-100
+</td>
+<td>
+</td>
+<td>1991-04-01
+</td>
+<td><a href="/wiki/Quadratic_sieve#Implementations" title="Quadratic sieve">ppmpqs</a> by <a href="/w/index.php?title=Mark_Manasse&amp;action=edit&amp;redlink=1" class="new" title="Mark Manasse (page does not exist)">Mark Manasse</a> and <a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Arjen K. Lenstra</a>
+</td>
+<td>approx. 7 MIP-Years
+</td>
+<td>
+</td></tr>
+<tr>
+<td>RSA-110
+</td>
+<td>
+</td>
+<td>1992-04-14
+</td>
+<td>ppmpqs by Arjen K. Lenstra
+</td>
+<td>one month on 5/8 of a 16K <a href="/wiki/MasPar" title="MasPar">MasPar</a>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>RSA-120
+</td>
+<td>
+</td>
+<td>1993-06-09
+</td>
+<td>ppmpqs
+</td>
+<td>835 mips years run by Arjen K. Lenstra (45.503%), Bruce Dodson (30.271%), Thomas Denny (22.516%), Mark Manasse (1.658%), and Walter Lioen and <a href="/wiki/Herman_te_Riele" title="Herman te Riele">Herman te Riele</a> (0.049%)
+</td>
+<td>
+</td></tr>
+<tr>
+<td>RSA-129
+</td>
+<td>129
+</td>
+<td>1994-04-26
+</td>
+<td>ppmpqs
+</td>
+<td>approximately 5000 mips years run by Derek Atkins, Michael Graff, Arjen K. Lenstra, Paul Leyland, and more than 600 volunteers
+</td>
+<td>
+</td></tr>
+<tr>
+<td>RSA-130
+</td>
+<td>
+</td>
+<td>1996-04-10
+</td>
+<td><a href="/wiki/General_number_field_sieve" title="General number field sieve">General Number Field Sieve</a> with <a href="/wiki/Lattice_sieving" title="Lattice sieving">lattice sieving</a> implementations by Bellcore, <a href="/wiki/Centrum_Wiskunde_%26_Informatica" title="Centrum Wiskunde &amp; Informatica">CWI</a>, and Saarbruecken; and blocked <a href="/wiki/Lanczos_algorithm" title="Lanczos algorithm">Lanczos</a> and <a href="/wiki/Square_root_of_a_matrix" title="Square root of a matrix">square root</a> by <a href="/wiki/Peter_Montgomery_(mathematician)" title="Peter Montgomery (mathematician)">Peter L. Montgomery</a>
+</td>
+<td>sieving: estimated 500 mips years, run by Bruce Dodson (28.37%), Peter L. Montgomery and Marije Elkenbracht-Huizing (27.77%), Arjen K. Lenstra (19.11%), WWW contributors (17.17% ), Matt Fante (4.36%), Paul Leyland (1.66%), Damian Weber and Joerg Zayer (1.56%)
+<p>matrix (67.5 hours on the Cray-C90 at SARA, Amsterdam) and square root (48 hours per dependency on an SGI Challenge processor) run by Peter L. Montgomery and Marije Elkenbracht-Huizing
+</p>
+</td>
+<td>
+</td></tr>
+<tr>
+<td>RSA-140
+</td>
+<td>
+</td>
+<td>1999-02-02
+</td>
+<td><a href="/wiki/General_number_field_sieve" title="General number field sieve">GNFS</a> with line (by CWI; 45%) and lattice (by Arjen K. Lenstra; 55%) sieving, and a polynomial selection method by Brian Murphy and Peter L. Montgomery; and blocked <a href="/wiki/Lanczos_algorithm" title="Lanczos algorithm">Lanczos</a> and <a href="/wiki/Square_root_of_a_matrix" title="Square root of a matrix">square root</a> by <a href="/wiki/Peter_Montgomery_(mathematician)" title="Peter Montgomery (mathematician)">Peter L. Montgomery</a>
+</td>
+<td>polynomial selection: 2000 CPU hours on four 250 MHZ SGI Origin 2000 processors at CWI
+<p>sieving: 8.9 CPU-years on about 125 SGI and Sun workstations running at 175 MHZ on average, and on about 60 PCs running at 300 MHZ on average; approximately equivalent to 1500 mips years; run by Peter L. Montgomery, Stefania Cavallar, <a href="/wiki/Herman_te_Riele" title="Herman te Riele">Herman J.J. te Riele</a>, and Walter M. Lioen (36.8%), Paul Leyland (28.8%), Bruce Dodson (26.6%), Paul Zimmermann (5.4%), and Arjen K. Lenstra (2.5%).
+</p><p>matrix: 100 hours on the Cray-C916 at SARA, Amsterdam
+</p><p>square root: four different dependencies were run in parallel&#160;on four 250 MHZ SGI Origin 2000 processors at CWI; three of them found the factors of RSA-140 after 14.2, 19.0 and 19.0 CPU-hours
+</p>
+</td>
+<td>eleven weeks (including four weeks for polynomial selection, one month for sieving, one week for data filtering and matrix construction, five days for the matrix, and 14.2 hours to find the factors using the square root)
+</td></tr>
+<tr>
+<td>RSA-155
+</td>
+<td>
+</td>
+<td>1999-08-22
+</td>
+<td><a href="/wiki/General_number_field_sieve" title="General number field sieve">GNFS</a> with line (29%) and lattice (71%) sieving, and a polynomial selection method written by Brian Murphy and Peter L. Montgomery, ported by Arjen Lenstra to use his <a href="/wiki/Multiple-precision_arithmetic" class="mw-redirect" title="Multiple-precision arithmetic">multiple precision arithmetic</a> code (LIP); and blocked <a href="/wiki/Lanczos_algorithm" title="Lanczos algorithm">Lanczos</a> and <a href="/wiki/Square_root_of_a_matrix" title="Square root of a matrix">square root</a> by <a href="/wiki/Peter_Montgomery_(mathematician)" title="Peter Montgomery (mathematician)">Peter L. Montgomery</a>
+</td>
+<td>polynomial selection run by Brian Murphy, Peter Montgomery, Arjen Lenstra and Bruce Dodson; Dodson found the one that was used
+<p>sieving: 35.7 CPU-years in total, on about one hundred and sixty 175-400&#160;MHz SGI and Sun workstations, eight 250&#160;MHz SGI Origin 2000 processors, one hundred and twenty 300-450&#160;MHz Pentium II PCs, and four 500&#160;MHz Digital/Compaq boxes; approximately equivalent to 8000 mips years; run by Alec Muffett (20.1% of relations, 3057 CPU days), Paul Leyland (17.5%, 2092 CPU days), Peter L. Montgomery and Stefania Cavallar (14.6%, 1819 CPU days), Bruce Dodson (13.6%, 2222 CPU days), Francois Morain and Gerard Guillerm (13.0%, 1801 CPU days), Joel Marchand (6.4%, 576 CPU days), Arjen K. Lenstra (5.0%, 737 CPU days), Paul Zimmermann (4.5%, 252 CPU days), Jeff Gilchrist (4.0%, 366 CPU days), Karen Aardal (0.65%, 62 CPU days), and Chris and Craig Putnam (0.56%, 47 CPU days)
+</p><p>matrix: 224 hours on one CPU of the Cray-C916 at SARA, Amsterdam
+square root: four 300&#160;MHz R12000 processors of a 24-processor SGI Origin 2000 at CWI; the successful one took 39.4 CPU-hours and the others took 38.3, 41.9, and 61.6 CPU-hours
+</p>
+</td>
+<td>9 weeks for polynomial selection, plus 5.2 months for the rest (including 3.7 months for sieving, about 1 month for data filtering and matrix construction, and 10 days for the matrix)
+</td></tr></tbody></table>
+<table id="toc" class="toc" summary="Contents">
+
+<tbody><tr>
+<th colspan="6">Contents
+</th></tr>
+<tr>
+<td style="width:16%; vertical-align:top; padding-left: 6px; padding-right:6px">
+<ul><li><a href="#RSA-100">RSA-100</a></li>
+<li><a href="#RSA-110">RSA-110</a></li>
+<li><a href="#RSA-120">RSA-120</a></li>
+<li><a href="#RSA-129">RSA-129</a></li>
+<li><a href="#RSA-130">RSA-130</a></li>
+<li><a href="#RSA-140">RSA-140</a></li>
+<li><a href="#RSA-150">RSA-150</a></li>
+<li><a href="#RSA-155">RSA-155</a></li>
+<li><a href="#RSA-160">RSA-160</a></li></ul>
+</td>
+<td style="width:16%; vertical-align:top; padding-left: 6px; padding-right:6px">
+<ul><li><a href="#RSA-170">RSA-170</a></li>
+<li><a href="#RSA-576">RSA-576</a></li>
+<li><a href="#RSA-180">RSA-180</a></li>
+<li><a href="#RSA-190">RSA-190</a></li>
+<li><a href="#RSA-640">RSA-640</a></li>
+<li><a href="#RSA-200">RSA-200</a></li>
+<li><a href="#RSA-210">RSA-210</a></li>
+<li><a href="#RSA-704">RSA-704</a></li>
+<li><a href="#RSA-220">RSA-220</a></li></ul>
+</td>
+<td style="width:16%; vertical-align:top; padding-left: 6px; padding-right:6px">
+<ul><li><a href="#RSA-230">RSA-230</a></li>
+<li><a href="#RSA-232">RSA-232</a></li>
+<li><a href="#RSA-768">RSA-768</a></li>
+<li><a href="#RSA-240">RSA-240</a></li>
+<li><a href="#RSA-250">RSA-250</a></li>
+<li><a href="#RSA-260">RSA-260</a></li>
+<li><a href="#RSA-270">RSA-270</a></li>
+<li><a href="#RSA-896">RSA-896</a></li>
+<li><a href="#RSA-280">RSA-280</a></li></ul>
+</td>
+<td style="width:16%; vertical-align:top; padding-left: 6px; padding-right:6px">
+<ul><li><a href="#RSA-290">RSA-290</a></li>
+<li><a href="#RSA-300">RSA-300</a></li>
+<li><a href="#RSA-309">RSA-309</a></li>
+<li><a href="#RSA-1024">RSA-1024</a></li>
+<li><a href="#RSA-310">RSA-310</a></li>
+<li><a href="#RSA-320">RSA-320</a></li>
+<li><a href="#RSA-330">RSA-330</a></li>
+<li><a href="#RSA-340">RSA-340</a></li>
+<li><a href="#RSA-350">RSA-350</a></li></ul>
+</td>
+<td style="width:16%; vertical-align:top; padding-left: 6px; padding-right:6px">
+<ul><li><a href="#RSA-360">RSA-360</a></li>
+<li><a href="#RSA-370">RSA-370</a></li>
+<li><a href="#RSA-380">RSA-380</a></li>
+<li><a href="#RSA-390">RSA-390</a></li>
+<li><a href="#RSA-400">RSA-400</a></li>
+<li><a href="#RSA-410">RSA-410</a></li>
+<li><a href="#RSA-420">RSA-420</a></li>
+<li><a href="#RSA-430">RSA-430</a></li>
+<li><a href="#RSA-440">RSA-440</a></li></ul>
+</td>
+<td style="width:16%; vertical-align:top; padding-left: 6px; padding-right:6px">
+<ul><li><a href="#RSA-450">RSA-450</a></li>
+<li><a href="#RSA-460">RSA-460</a></li>
+<li><a href="#RSA-1536">RSA-1536</a></li>
+<li><a href="#RSA-470">RSA-470</a></li>
+<li><a href="#RSA-480">RSA-480</a></li>
+<li><a href="#RSA-490">RSA-490</a></li>
+<li><a href="#RSA-500">RSA-500</a></li>
+<li><a href="#RSA-617">RSA-617</a></li>
+<li><a href="#RSA-2048">RSA-2048</a></li></ul>
+</td></tr>
+<tr>
+<td colspan="6">&#160; <a href="#See_also">See also</a> &#160;&#160;&#160; <a href="#Notes">Notes</a> &#160;&#160;&#160; <a href="#References">References</a> &#160;&#160;&#160; <a href="#External_links">External links</a>
+</td></tr></tbody></table>
+<div class="mw-heading mw-heading2"><h2 id="RSA-100">RSA-100</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=1" title="Edit section: RSA-100"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-100 has 100 decimal digits (330 bits). Its factorization was announced on April 1, 1991, by <a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Arjen K. Lenstra</a>.<sup id="cite&#95;ref-RSA&#95;Honor&#95;Roll&#95;3-0" class="reference"><a href="#cite_note-RSA_Honor_Roll-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-Cryptowatch&#95;RSA&#95;pg.&#95;2&#95;4-0" class="reference"><a href="#cite_note-Cryptowatch_RSA_pg._2-4"><span class="cite-bracket">&#91;</span>4<span class="cite-bracket">&#93;</span></a></sup> Reportedly, the factorization took a few days using <a href="/wiki/Quadratic_sieve" title="Quadratic sieve">the multiple-polynomial quadratic sieve algorithm</a> on a <a href="/wiki/MasPar" title="MasPar">MasPar</a> parallel computer.<sup id="cite&#95;ref-Lenstra&#95;5-0" class="reference"><a href="#cite_note-Lenstra-5"><span class="cite-bracket">&#91;</span>5<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The value and factorization of RSA-100 are as follows:
+</p>
+<pre>RSA-100 = 1522605027922533360535618378132637429718068114961380688657908494580122963258952897654000350692006139
+</pre>
+<pre>RSA-100 = 37975227936943673922808872755445627854565536638199
+        × 40094690950920881030683735292761468389214899724061
+</pre>
+<p>It takes four hours to repeat this factorization using the program Msieve on a 2200&#160;MHz <a href="/wiki/Athlon_64" title="Athlon 64">Athlon 64</a> processor.
+</p><p>The number can be factorized in 72 minutes on overclocked to 3.5&#160;GHz Intel Core2 Quad q9300, using GGNFS and Msieve binaries running by distributed version of the factmsieve Perl script.<sup id="cite&#95;ref-mersenneforum.org&#95;6-0" class="reference"><a href="#cite_note-mersenneforum.org-6"><span class="cite-bracket">&#91;</span>6<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-110">RSA-110</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=2" title="Edit section: RSA-110"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-110 has 110 decimal digits (364 bits), and was factored in April 1992 by <a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Arjen K. Lenstra</a> and Mark S. Manasse in approximately one month.<sup id="cite&#95;ref-Cryptowatch&#95;RSA&#95;pg.&#95;2&#95;4-1" class="reference"><a href="#cite_note-Cryptowatch_RSA_pg._2-4"><span class="cite-bracket">&#91;</span>4<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-Lenstra&#95;5-1" class="reference"><a href="#cite_note-Lenstra-5"><span class="cite-bracket">&#91;</span>5<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The number can be factorized in less than four hours on overclocked to 3.5&#160;GHz Intel Core2 Quad q9300, using GGNFS and Msieve binaries running by distributed version of the factmsieve Perl script.<sup id="cite&#95;ref-mersenneforum.org&#95;6-1" class="reference"><a href="#cite_note-mersenneforum.org-6"><span class="cite-bracket">&#91;</span>6<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-110 = 35794234179725868774991807832568455403003778024228226193532908190484670252364677411513516111204504060317568667
+</pre>
+<pre>RSA-110 = 6122421090493547576937037317561418841225758554253106999
+        × 5846418214406154678836553182979162384198610505601062333
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-120">RSA-120</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=3" title="Edit section: RSA-120"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-120 has 120 decimal digits (397 bits), and was factored in June 1993 by Thomas Denny, Bruce Dodson, Arjen K. Lenstra, and Mark S. Manasse.<sup id="cite&#95;ref-7" class="reference"><a href="#cite_note-7"><span class="cite-bracket">&#91;</span>7<span class="cite-bracket">&#93;</span></a></sup>  The computation took under three months of actual computer time.
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-120 = 227010481295437363334259960947493668895875336466084780038173258247009162675779735389791151574049166747880487470296548479
+</pre>
+<pre>RSA-120 = 327414555693498015751146303749141488063642403240171463406883
+        × 693342667110830181197325401899700641361965863127336680673013
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-129">RSA-129</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=4" title="Edit section: RSA-129"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-129, having 129 decimal digits (426 bits), was not part of the 1991 RSA Factoring Challenge, but rather related to <a href="/wiki/Martin_Gardner" title="Martin Gardner">Martin Gardner</a>'s <a href="/wiki/Mathematical_Games_column" class="mw-redirect" title="Mathematical Games column">Mathematical Games column</a> in the August 1977 issue of <i><a href="/wiki/Scientific_American" title="Scientific American">Scientific American</a></i>.<sup id="cite&#95;ref-RSA&#95;Honor&#95;Roll&#95;3-1" class="reference"><a href="#cite_note-RSA_Honor_Roll-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>RSA-129 was factored in April 1994 by a team led by <a href="/wiki/Derek_Atkins" title="Derek Atkins">Derek Atkins</a>, <a href="/wiki/Michael_Graff" title="Michael Graff">Michael Graff</a>, <a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Arjen K. Lenstra</a> and <a href="/wiki/Paul_Leyland" title="Paul Leyland">Paul Leyland</a>, using approximately 1600 computers<sup id="cite&#95;ref-8" class="reference"><a href="#cite_note-8"><span class="cite-bracket">&#91;</span>8<span class="cite-bracket">&#93;</span></a></sup> from around 600 volunteers connected over the <a href="/wiki/Internet" title="Internet">Internet</a>.<sup id="cite&#95;ref-9" class="reference"><a href="#cite_note-9"><span class="cite-bracket">&#91;</span>9<span class="cite-bracket">&#93;</span></a></sup> A <a href="/wiki/United_States_dollar" title="United States dollar">US$</a>100 token prize was awarded by RSA Security for the factorization, which was donated to the <a href="/wiki/Free_Software_Foundation" title="Free Software Foundation">Free Software Foundation</a>.
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-129 = 114381625757888867669235779976146612010218296721242362562561842935706935245733897830597123563958705058989075147599290026879543541
+</pre>
+<pre>RSA-129 = 3490529510847650949147849619903898133417764638493387843990820577
+        × 32769132993266709549961988190834461413177642967992942539798288533
+</pre>
+<p>The factorization was found using the <a href="/wiki/Multiple_Polynomial_Quadratic_Sieve" class="mw-redirect" title="Multiple Polynomial Quadratic Sieve">Multiple Polynomial Quadratic Sieve</a> algorithm.
+</p><p>The factoring challenge included a message encrypted with RSA-129. When decrypted using the factorization the message was revealed to be "<a href="/wiki/The_Magic_Words_are_Squeamish_Ossifrage" title="The Magic Words are Squeamish Ossifrage">The Magic Words are Squeamish Ossifrage</a>".
+</p><p>In 2015, RSA-129 was factored in about one day, with the CADO-NFS open source implementation of number field sieve, using a commercial cloud computing service for about $30.<sup id="cite&#95;ref-10" class="reference"><a href="#cite_note-10"><span class="cite-bracket">&#91;</span>10<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-130">RSA-130</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=5" title="Edit section: RSA-130"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-130 has 130 decimal digits (430 bits), and was factored on April 10, 1996, by a team led by <a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Arjen K. Lenstra</a> and composed of <a href="/w/index.php?title=Jim_Cowie&amp;action=edit&amp;redlink=1" class="new" title="Jim Cowie (page does not exist)">Jim Cowie</a>, <a href="/w/index.php?title=Marije_Elkenbracht-Huizing&amp;action=edit&amp;redlink=1" class="new" title="Marije Elkenbracht-Huizing (page does not exist)">Marije Elkenbracht-Huizing</a>, <a href="/w/index.php?title=Wojtek_Furmanski&amp;action=edit&amp;redlink=1" class="new" title="Wojtek Furmanski (page does not exist)">Wojtek Furmanski</a>, <a href="/wiki/Peter_Montgomery_(mathematician)" title="Peter Montgomery (mathematician)">Peter L. Montgomery</a>, <a href="/w/index.php?title=Damian_Weber&amp;action=edit&amp;redlink=1" class="new" title="Damian Weber (page does not exist)">Damian Weber</a> and <a href="/w/index.php?title=Joerg_Zayer&amp;action=edit&amp;redlink=1" class="new" title="Joerg Zayer (page does not exist)">Joerg Zayer</a>.<sup id="cite&#95;ref-11" class="reference"><a href="#cite_note-11"><span class="cite-bracket">&#91;</span>11<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The factorization was found in the third trial.<sup id="cite&#95;ref-RSA&#95;Honor&#95;Roll&#95;3-2" class="reference"><a href="#cite_note-RSA_Honor_Roll-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-130 = 1807082088687404805951656164405905566278102516769401349170127021450056662540244048387341127590812303371781887966563182013214880557
+</pre>
+<pre>RSA-130 = 39685999459597454290161126162883786067576449112810064832555157243
+        × 45534498646735972188403686897274408864356301263205069600999044599
+</pre>
+<p>The factorization was found using the <a href="/wiki/Number_Field_Sieve" class="mw-redirect" title="Number Field Sieve">Number Field Sieve</a> algorithm and the <a href="/wiki/Polynomial" title="Polynomial">polynomial</a>
+</p>
+<pre>   5748302248738405200 x<sup>5</sup> +  9882261917482286102 x<sup>4</sup>
+- 13392499389128176685 x<sup>3</sup> + 16875252458877684989 x<sup>2</sup>
++  3759900174855208738 x<sup>1</sup> - 46769930553931905995
+</pre>
+<p>which has a root of 12574411168418005980468 modulo RSA-130.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-140">RSA-140</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=6" title="Edit section: RSA-140"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-140 has 140 decimal digits (463 bits), and was factored on February 2, 1999, by a team led by <a href="/wiki/Herman_te_Riele" title="Herman te Riele">Herman te Riele</a> and composed of <a href="/w/index.php?title=Stefania_Cavallar&amp;action=edit&amp;redlink=1" class="new" title="Stefania Cavallar (page does not exist)">Stefania Cavallar</a>, Bruce Dodson, <a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Arjen K. Lenstra</a>, Paul Leyland, <a href="/w/index.php?title=Walter_Lioen&amp;action=edit&amp;redlink=1" class="new" title="Walter Lioen (page does not exist)">Walter Lioen</a>, Peter L. Montgomery, <a href="/w/index.php?title=Brian_Murphy_(mathematician)&amp;action=edit&amp;redlink=1" class="new" title="Brian Murphy (mathematician) (page does not exist)">Brian Murphy</a> and <a href="/wiki/Paul_Zimmermann_(mathematician)" title="Paul Zimmermann (mathematician)">Paul Zimmermann</a>.<sup id="cite&#95;ref-12" class="reference"><a href="#cite_note-12"><span class="cite-bracket">&#91;</span>12<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-13" class="reference"><a href="#cite_note-13"><span class="cite-bracket">&#91;</span>13<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-140 = 21290246318258757547497882016271517497806703963277216278233383215381949984056495911366573853021918316783107387995317230889569230873441936471
+</pre>
+<pre>RSA-140 = 3398717423028438554530123627613875835633986495969597423490929302771479
+        × 6264200187401285096151654948264442219302037178623509019111660653946049
+</pre>
+<p>The factorization was found using the <a href="/wiki/Number_Field_Sieve" class="mw-redirect" title="Number Field Sieve">Number Field Sieve</a> algorithm and an estimated 2000 <a href="/w/index.php?title=MIPS-year&amp;action=edit&amp;redlink=1" class="new" title="MIPS-year (page does not exist)">MIPS-years</a> of computing time.
+</p><p>The matrix had 4671181 rows and 4704451 columns and weight 151141999 (32.36 nonzeros per row)<sup id="cite&#95;ref-RSA&#95;Honor&#95;Roll&#95;3-3" class="reference"><a href="#cite_note-RSA_Honor_Roll-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-150">RSA-150</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=7" title="Edit section: RSA-150"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-150 has 150 decimal digits (496 bits), and was withdrawn from the challenge by RSA Security. RSA-150 was eventually factored into two 75-digit primes by Aoki et al. in 2004 using the <a href="/wiki/General_number_field_sieve" title="General number field sieve">general number field sieve</a> (GNFS), years after bigger RSA numbers that were still part of the challenge had been solved.
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-150 = 155089812478348440509606754370011861770654545830995430655466945774312632703463465954363335027577729025391453996787414027003501631772186840890795964683
+</pre>
+<pre>RSA-150 = 348009867102283695483970451047593424831012817350385456889559637548278410717
+        × 445647744903640741533241125787086176005442536297766153493419724532460296199
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-155">RSA-155</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=8" title="Edit section: RSA-155"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-155 has 155 decimal digits (512 bits), and was factored on August 22, 1999, in a span of six months, by a team led by Herman te Riele and composed of Stefania Cavallar, Bruce Dodson, <a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Arjen K. Lenstra</a>, Walter Lioen, Peter L. Montgomery, Brian Murphy, <a href="/wiki/Karen_Aardal" title="Karen Aardal">Karen Aardal</a>, <a href="/w/index.php?title=Jeff_Gilchrist&amp;action=edit&amp;redlink=1" class="new" title="Jeff Gilchrist (page does not exist)">Jeff Gilchrist</a>, <a href="/w/index.php?title=Gerard_Guillerm&amp;action=edit&amp;redlink=1" class="new" title="Gerard Guillerm (page does not exist)">Gerard Guillerm</a>, Paul Leyland, <a href="/w/index.php?title=Joel_Marchand&amp;action=edit&amp;redlink=1" class="new" title="Joel Marchand (page does not exist)">Joel Marchand</a>, <a href="/w/index.php?title=Fran%C3%A7ois_Morain&amp;action=edit&amp;redlink=1" class="new" title="François Morain (page does not exist)">François Morain</a>, <a href="/wiki/Alec_Muffett" title="Alec Muffett">Alec Muffett</a>, Craig Putnam, <a href="/wiki/Chris_Putnam" class="mw-redirect" title="Chris Putnam">Chris Putnam</a> and Paul Zimmermann.<sup id="cite&#95;ref-14" class="reference"><a href="#cite_note-14"><span class="cite-bracket">&#91;</span>14<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-15" class="reference"><a href="#cite_note-15"><span class="cite-bracket">&#91;</span>15<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-155 = 10941738641570527421809707322040357612003732945449205990913842131476349984288934784717997257891267332497625752899781833797076537244027146743531593354333897
+</pre>
+<pre>RSA-155 = 1026395928297411057720541965739916759007165678080380668033419335217907113077
+          79
+        × 1066034883801684548209272203600128786792079585759892915222706082371930628086
+          43
+</pre>
+<p>The factorization was found using the <a href="/wiki/General_number_field_sieve" title="General number field sieve">general number field sieve</a> algorithm and an estimated 8000 <a href="/w/index.php?title=MIPS-year&amp;action=edit&amp;redlink=1" class="new" title="MIPS-year (page does not exist)">MIPS-years</a> of computing time.
+</p><p>The polynomials were 119377138320*x^5 - 80168937284997582*y*x^4 - 66269852234118574445*y^2*x^3 + 11816848430079521880356852*y^3*x^2 + 7459661580071786443919743056*y^4*x - 40679843542362159361913708405064*y^5 and x - 39123079721168000771313449081*y (this pair has a yield of relations approximately 13.5 times that of a random polynomial selection); 124722179 relations were collected in the sieving stage; the matrix had 6699191 rows and 6711336 columns and weight 417132631 (62.27 nonzeros per row).<sup id="cite&#95;ref-RSA&#95;Honor&#95;Roll&#95;3-4" class="reference"><a href="#cite_note-RSA_Honor_Roll-3"><span class="cite-bracket">&#91;</span>3<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-160">RSA-160</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=9" title="Edit section: RSA-160"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-160 has 160 decimal digits (530 bits), and was factored on April 1, 2003, by a team from the <a href="/wiki/University_of_Bonn" title="University of Bonn">University of Bonn</a> and the <a href="/wiki/Germany" title="Germany">German</a> <a href="/wiki/Federal_Office_for_Information_Security" title="Federal Office for Information Security">Federal Office for Information Security</a> (BSI). The team contained <a href="/wiki/Jens_Franke" title="Jens Franke">J. Franke</a>, F. Bahr, <a href="/w/index.php?title=Thorsten_Kleinjung&amp;action=edit&amp;redlink=1" class="new" title="Thorsten Kleinjung (page does not exist)">T. Kleinjung</a>, M. Lochter, and M. Böhm.<sup id="cite&#95;ref-16" class="reference"><a href="#cite_note-16"><span class="cite-bracket">&#91;</span>16<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-17" class="reference"><a href="#cite_note-17"><span class="cite-bracket">&#91;</span>17<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-160 = 2152741102718889701896015201312825429257773588845675980170497676778133145218859135673011059773491059602497907111585214302079314665202840140619946994927570407753
+</pre>
+<pre>RSA-160 = 4542789285848139407168619064973883165613714577846979325095998470925000415733
+          5359
+        × 4738809060383201619663383230378895197326892292104095794474135464881202849390
+          9367
+</pre>
+<p>The factorization was found using the <a href="/wiki/General_number_field_sieve" title="General number field sieve">general number field sieve</a> algorithm.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-170">RSA-170</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=10" title="Edit section: RSA-170"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-170 has 170 decimal digits (563 bits) and was first factored on December 29, 2009, by D. Bonenberger and M. Krone from <a href="/wiki/Fachhochschule_Braunschweig/Wolfenb%C3%BCttel" class="mw-redirect" title="Fachhochschule Braunschweig/Wolfenbüttel">Fachhochschule Braunschweig/Wolfenbüttel</a>.<sup id="cite&#95;ref-18" class="reference"><a href="#cite_note-18"><span class="cite-bracket">&#91;</span>18<span class="cite-bracket">&#93;</span></a></sup> An independent factorization was completed by S. A. Danilov and I. A. Popovyan two days later.<sup id="cite&#95;ref-19" class="reference"><a href="#cite_note-19"><span class="cite-bracket">&#91;</span>19<span class="cite-bracket">&#93;</span></a></sup>
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-170 = 26062623684139844921529879266674432197085925380486406416164785191859999628542069361450283931914514618683512198164805919882053057222974116478065095809832377336510711545759
+</pre>
+<pre>RSA-170 = 3586420730428501486799804587268520423291459681059978161140231860633948450858
+          040593963
+        × 7267029064107019078863797763923946264136137803856996670313708936002281582249
+          587494493
+</pre>
+<p>The factorization was found using the <a href="/wiki/General_number_field_sieve" title="General number field sieve">general number field sieve</a> algorithm.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-576">RSA-576</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=11" title="Edit section: RSA-576"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-576 has 174 decimal digits (576 bits), and was factored on December 3, 2003, by J. Franke and T. Kleinjung from the University of Bonn.<sup id="cite&#95;ref-20" class="reference"><a href="#cite_note-20"><span class="cite-bracket">&#91;</span>20<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-21" class="reference"><a href="#cite_note-21"><span class="cite-bracket">&#91;</span>21<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-22" class="reference"><a href="#cite_note-22"><span class="cite-bracket">&#91;</span>22<span class="cite-bracket">&#93;</span></a></sup> A cash prize of $10,000 was offered by RSA Security for a successful factorization.
+</p><p>The value and factorization are as follows:
+</p>
+<pre>RSA-576 = 188198812920607963838697239461650439807163563379417382700763356422988859715234665485319060606504743045317388011303396716199692321205734031879550656996221305168759307650257059
+</pre>
+<pre>RSA-576 = 3980750864240649373971255005503864911990643623425267084063851895759463889572
+          61768583317
+        × 4727721461074353025362230719730482246329146953020971164598521711305207112563
+          63590397527
+</pre>
+<p>The factorization was found using the <a href="/wiki/General_number_field_sieve" title="General number field sieve">general number field sieve</a> algorithm.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-180">RSA-180</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=12" title="Edit section: RSA-180"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-180 has 180 decimal digits (596 bits), and was factored on May 8, 2010, by S. A. Danilov and I. A. Popovyan from <a href="/wiki/Moscow_State_University" title="Moscow State University">Moscow State University</a>, Russia.<sup id="cite&#95;ref-23" class="reference"><a href="#cite_note-23"><span class="cite-bracket">&#91;</span>23<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-180 = 1911479277189866096892294666314546498129862462766673548641885036388072607034
+          3679905877620136513516127813425829612810920004670291298456875280033022177775
+          2773957404540495707851421041
+</pre>
+<pre>RSA-180 = 4007800823297508779525813391041005725268293178158071765648821789984975727719
+          50624613470377
+        × 4769396887386118369955354773570708579399020760277882320319897758246062255957
+          73435668861833
+</pre>
+<p>The factorization was found using the <a href="/wiki/General_number_field_sieve" title="General number field sieve">general number field sieve</a> algorithm implementation running on three Intel Core i7 PCs.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-190">RSA-190</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=13" title="Edit section: RSA-190"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-190 has 190 decimal digits (629 bits), and was factored on November 8, 2010, by I. A. Popovyan from Moscow State University, Russia, and A. Timofeev from <a href="/wiki/Centrum_Wiskunde_%26_Informatica" title="Centrum Wiskunde &amp; Informatica">CWI</a>, Netherlands.<sup id="cite&#95;ref-24" class="reference"><a href="#cite_note-24"><span class="cite-bracket">&#91;</span>24<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-190 = 1907556405060696491061450432646028861081179759533184460647975622318915025587
+          1841757540549761551215932934922604641526300932385092466032074171247261215808
+          58185985938946945490481721756401423481
+</pre>
+<pre>RSA-190 = 3171195257690152709485171289740475929805147316029450327784761927832793642798
+          1256542415724309619
+        × 6015260020444561641587641685526676183243543359471811072599763828083615704046
+          0481625355619404899
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-640">RSA-640</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=14" title="Edit section: RSA-640"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-640 has 193 decimal digits (640 bits). A cash prize of US$20,000 was offered by RSA Security for a successful factorization. On November 2, 2005, F. Bahr, M. Boehm, J. Franke and T. Kleinjung of the German Federal Office for Information Security announced that they had factorized the number using GNFS as follows:<sup id="cite&#95;ref-25" class="reference"><a href="#cite_note-25"><span class="cite-bracket">&#91;</span>25<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-26" class="reference"><a href="#cite_note-26"><span class="cite-bracket">&#91;</span>26<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-27" class="reference"><a href="#cite_note-27"><span class="cite-bracket">&#91;</span>27<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-640 = 3107418240490043721350750035888567930037346022842727545720161948823206440518
+          0815045563468296717232867824379162728380334154710731085019195485290073377248
+          22783525742386454014691736602477652346609
+</pre>
+<pre>RSA-640 = 1634733645809253848443133883865090859841783670033092312181110852389333100104
+          508151212118167511579
+        × 1900871281664822113126851573935413975471896789968515493666638539088027103802
+          104498957191261465571
+</pre>
+<p>The computation took five months on 80 2.2&#160;GHz <a href="/wiki/Advanced_Micro_Devices" class="mw-redirect" title="Advanced Micro Devices">AMD</a> <a href="/wiki/Opteron" title="Opteron">Opteron</a> <a href="/wiki/Central_processing_unit" title="Central processing unit">CPUs</a>.
+</p><p>The slightly larger RSA-200 was factored in May 2005 by the same team.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-200">RSA-200</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=15" title="Edit section: RSA-200"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<style data-mw-deduplicate="TemplateStyles:r1314755338">.mw-parser-output .side-box{margin:4px 0;box-sizing:border-box;border:1px solid #aaa;font-size:88%;line-height:1.25em;background-color:var(--background-color-interactive-subtle,#f8f9fa);color:inherit;display:flow-root}.mw-parser-output .infobox .side-box{font-size:100%}.mw-parser-output .side-box-abovebelow,.mw-parser-output .side-box-text{padding:0.25em 0.9em}.mw-parser-output .side-box-image{padding:2px 0 2px 0.9em;text-align:center}.mw-parser-output .side-box-imageright{padding:2px 0.9em 2px 0;text-align:center}@media(min-width:500px){.mw-parser-output .side-box-flex{display:flex;align-items:center}.mw-parser-output .side-box-text{flex:1;min-width:0}}@media(min-width:640px){.mw-parser-output .side-box{width:238px}.mw-parser-output .side-box-right{clear:right;float:right;margin-left:1em}.mw-parser-output .side-box-left{margin-right:1em}}</style><style data-mw-deduplicate="TemplateStyles:r1311551236">@media print{body.ns-0 .mw-parser-output .sistersitebox{display:none!important}}@media screen{html.skin-theme-clientpref-night .mw-parser-output .sistersitebox img[src*="Wiktionary-logo-en-v2.svg"]{filter:invert(1)brightness(55%)contrast(250%)hue-rotate(180deg)}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .sistersitebox img[src*="Wiktionary-logo-en-v2.svg"]{filter:invert(1)brightness(55%)contrast(250%)hue-rotate(180deg)}}</style><div class="side-box side-box-right plainlinks sistersitebox"><style data-mw-deduplicate="TemplateStyles:r1126788409">.mw-parser-output .plainlist ol,.mw-parser-output .plainlist ul{line-height:inherit;list-style:none;margin:0;padding:0}.mw-parser-output .plainlist ol li,.mw-parser-output .plainlist ul li{margin-bottom:0}</style>
+<div class="side-box-flex">
+<div class="side-box-image"><span class="noviewer" typeof="mw:File"><a href="/wiki/File:Wikinews-logo.svg" class="mw-file-description"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wikinews-logo.svg/40px-Wikinews-logo.svg.png" decoding="async" width="40" height="22" class="mw-file-element" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wikinews-logo.svg/60px-Wikinews-logo.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wikinews-logo.svg/120px-Wikinews-logo.svg.png 2x" data-file-width="759" data-file-height="415" /></a></span></div>
+<div class="side-box-text plainlist">Wikinews has related news:
+<div><ul><li><a href="https://en.wikinews.org/wiki/Two_hundred_digit_number_factored" class="extiw" title="wikinews:Two hundred digit number factored"> Two hundred digit number factored</a></li></ul></div></div></div>
+</div>
+<p>RSA-200 has 200 decimal digits (663 bits), and factors into the two 100-digit primes given below.
+</p><p>On May 9, 2005, F. Bahr, M. Boehm, J. Franke, and T. Kleinjung announced<sup id="cite&#95;ref-announce&#95;28-0" class="reference"><a href="#cite_note-announce-28"><span class="cite-bracket">&#91;</span>28<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-29" class="reference"><a href="#cite_note-29"><span class="cite-bracket">&#91;</span>29<span class="cite-bracket">&#93;</span></a></sup> that they had factorized the number using GNFS as follows:
+</p>
+<pre>RSA-200 = 2799783391122132787082946763872260162107044678695542853756000992932612840010
+          7609345671052955360856061822351910951365788637105954482006576775098580557613
+          579098734950144178863178946295187237869221823983
+</pre>
+<pre>RSA-200 = 3532461934402770121272604978198464368671197400197625023649303468776121253679
+          423200058547956528088349
+        × 7925869954478333033347085841480059687737975857364219960734330341455767872818
+          152135381409304740185467
+</pre>
+<p>The CPU time spent on finding these factors by a collection of parallel computers amounted &#8211; very approximately &#8211; to the equivalent of 75 years work for a single 2.2 <a href="/wiki/GHz" class="mw-redirect" title="GHz">GHz</a> <a href="/wiki/Opteron" title="Opteron">Opteron</a>-based computer.<sup id="cite&#95;ref-announce&#95;28-1" class="reference"><a href="#cite_note-announce-28"><span class="cite-bracket">&#91;</span>28<span class="cite-bracket">&#93;</span></a></sup> Note that while this approximation serves to suggest the scale of the effort, it leaves out many complicating factors; the announcement states it more precisely.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-210">RSA-210</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=16" title="Edit section: RSA-210"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-210 has 210 decimal digits (696 bits) and was factored in September 2013 by Ryan Propper:<sup id="cite&#95;ref-30" class="reference"><a href="#cite_note-30"><span class="cite-bracket">&#91;</span>30<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-210 = 2452466449002782119765176635730880184670267876783327597434144517150616008300
+          3858721695220839933207154910362682719167986407977672324300560059203563124656
+          1218465817904100131859299619933817012149335034875870551067
+</pre>
+<pre>RSA-210 = 4359585683259407917999519653872144063854709102652201963187054821445240853452
+          75999740244625255428455944579
+        × 5625457617268841037562770073044474817438769440075105451049468510945483965774
+          79473472146228550799322939273
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-704">RSA-704</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=17" title="Edit section: RSA-704"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-704 has 212 decimal digits (704 bits), and was factored by Shi Bai, Emmanuel Thomé and Paul Zimmermann.<sup id="cite&#95;ref-31" class="reference"><a href="#cite_note-31"><span class="cite-bracket">&#91;</span>31<span class="cite-bracket">&#93;</span></a></sup> The factorization was announced July 2, 2012.<sup id="cite&#95;ref-32" class="reference"><a href="#cite_note-32"><span class="cite-bracket">&#91;</span>32<span class="cite-bracket">&#93;</span></a></sup> A cash prize of US$30,000 was previously offered for a successful factorization.
+</p>
+<pre>RSA-704 = 7403756347956171282804679609742957314259318888923128908493623263897276503402
+          8266276891996419625117843995894330502127585370118968098286733173273108930900
+          552505116877063299072396380786710086096962537934650563796359
+</pre>
+<pre>RSA-704 = 9091213529597818878440658302600437485892608310328358720428512168960411528640
+          933367824950788367956756806141
+        × 8143859259110045265727809126284429335877899002167627883200914172429324360133
+          004116702003240828777970252499
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-220">RSA-220</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=18" title="Edit section: RSA-220"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-220 has 220 decimal digits (729 bits), and was factored by S. Bai, P. Gaudry, A. Kruppa, E. Thomé and P. Zimmermann. The factorization was announced on May 13, 2016.<sup id="cite&#95;ref-33" class="reference"><a href="#cite_note-33"><span class="cite-bracket">&#91;</span>33<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-220 = 2260138526203405784941654048610197513508038915719776718321197768109445641817
+          9666766085931213065825772506315628866769704480700018111497118630021124879281
+          99487482066070131066586646083327982803560379205391980139946496955261
+</pre>
+<pre>RSA-220 = 6863656412267566274382371499288437800130842239979164844621244993321541061441
+          4642667938213644208420192054999687
+        × 3292907439486349812049301549212935291916455196536233952462686051169290349309
+          4652463337824866390738191765712603
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-230">RSA-230</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=19" title="Edit section: RSA-230"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-230 has 230 decimal digits (762&#160;bits), and was factored by Samuel S. Gross on August 15, 2018.<sup id="cite&#95;ref-34" class="reference"><a href="#cite_note-34"><span class="cite-bracket">&#91;</span>34<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-230 = 1796949159794106673291612844957324615636756180801260007088891883553172646034
+          1490933493372247868650755230855864199929221814436684722874052065257937495694
+          3483892631711525225256544109808191706117425097024407180103648316382885188526
+          89
+</pre>
+<pre>RSA-230 = 4528450358010492026612439739120166758911246047493700040073956759261590397250
+          033699357694507193523000343088601688589
+        × 3968132623150957588532394439049887341769533966621957829426966084093049516953
+          598120833228447171744337427374763106901
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-232">RSA-232</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=20" title="Edit section: RSA-232"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-232 has 232 decimal digits (768 bits), and was factored on February 17, 2020, by N. L. Zamarashkin, D. A. Zheltkov and S. A. Matveev.<sup id="cite&#95;ref-rsa232&#95;35-0" class="reference"><a href="#cite_note-rsa232-35"><span class="cite-bracket">&#91;</span>35<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-rsa232paper&#95;36-0" class="reference"><a href="#cite_note-rsa232paper-36"><span class="cite-bracket">&#91;</span>36<span class="cite-bracket">&#93;</span></a></sup><sup id="cite&#95;ref-37" class="reference"><a href="#cite_note-37"><span class="cite-bracket">&#91;</span>37<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-232 = 1009881397871923546909564894309468582818233821955573955141120516205831021338
+          5285453743661097571543636649133800849170651699217015247332943892702802343809
+          6090980497644054071120196541074755382494867277137407501157718230539834060616
+          2079
+</pre>
+<pre>RSA-232 = 2966909333208360660361779924242630634742946262521852394401857157419437019472
+          3262390744910112571804274494074452751891
+        × 3403816175197563438006609498491521420547121760734723172735163413276050706174
+          8526506443144325148088881115083863017669
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-768">RSA-768</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=21" title="Edit section: RSA-768"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-768 has 232 decimal digits (768&#160;bits), and was factored on December 12, 2009, over the span of two years, by Thorsten Kleinjung, Kazumaro Aoki, Jens Franke, <a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Arjen K. Lenstra</a>, Emmanuel Thomé, Pierrick Gaudry, Alexander Kruppa, <a href="/wiki/Peter_Montgomery_(mathematician)" title="Peter Montgomery (mathematician)">Peter Montgomery</a>, Joppe W. Bos, Dag Arne Osvik, Herman te Riele, Andrey Timofeev, and <a href="/wiki/Paul_Zimmermann_(mathematician)" title="Paul Zimmermann (mathematician)">Paul Zimmermann</a>.<sup id="cite&#95;ref-rsa768&#95;38-0" class="reference"><a href="#cite_note-rsa768-38"><span class="cite-bracket">&#91;</span>38<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-768 = 1230186684530117755130494958384962720772853569595334792197322452151726400507
+          2636575187452021997864693899564749427740638459251925573263034537315482685079
+          1702612214291346167042921431160222124047927473779408066535141959745985690214
+          3413
+</pre>
+<pre>RSA-768 = 3347807169895689878604416984821269081770479498371376856891243138898288379387
+          8002287614711652531743087737814467999489
+        × 3674604366679959042824463379962795263227915816434308764267603228381573966651
+          1279233373417143396810270092798736308917
+</pre>
+<p>The CPU time spent on finding these factors by a collection of parallel computers amounted approximately to the equivalent of almost 2000 years of computing on a single-core 2.2&#160;GHz AMD Opteron-based computer.<sup id="cite&#95;ref-rsa768&#95;38-1" class="reference"><a href="#cite_note-rsa768-38"><span class="cite-bracket">&#91;</span>38<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-240">RSA-240</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=22" title="Edit section: RSA-240"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-240 has 240 decimal digits (795 bits), and was factored in November 2019 by Fabrice Boudot, Pierrick Gaudry, Aurore Guillevic, Nadia Heninger, Emmanuel Thomé and Paul Zimmermann.<sup id="cite&#95;ref-39" class="reference"><a href="#cite_note-39"><span class="cite-bracket">&#91;</span>39<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<pre>RSA-240 = 1246203667817187840658350446081065904348203746516788057548187888832896668011
+          8821085503603957027250874750986476843845862105486553797025393057189121768431
+          8286362846948405301614416430468066875699415246993185704183030512549594371372
+          159029236099
+</pre>
+<pre>RSA-240 = 5094359522858399145550510235808437141326483820241114731866602965218212064697
+          46700620316443478873837606252372049619334517
+        × 2446242088383181505678131390240028966538020925789314014520412213365584770951
+          78155258218897735030590669041302045908071447
+</pre>
+<p>The CPU time spent on finding these factors amounted to approximately 900 core-years on a 2.1&#160;GHz Intel Xeon Gold 6130 CPU. Compared to the factorization of RSA-768, the authors estimate that better algorithms sped their calculations by a factor of 3–4 and faster computers sped their calculation by a factor of 1.25–1.67.
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-250">RSA-250</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=23" title="Edit section: RSA-250"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-250 has 250 decimal digits (829 bits), and was factored in February 2020 by Fabrice Boudot, Pierrick Gaudry, Aurore Guillevic, Nadia Heninger, Emmanuel Thomé, and Paul Zimmermann. The announcement of the factorization occurred on February 28, 2020.
+</p>
+<pre>RSA-250 = 2140324650240744961264423072839333563008614715144755017797754920881418023447
+          1401366433455190958046796109928518724709145876873962619215573630474547705208
+          0511905649310668769159001975940569345745223058932597669747168173806936489469
+          9871578494975937497937
+</pre>
+<pre>RSA-250 = 6413528947707158027879019017057738908482501474294344720811685963202453234463
+          0238623598752668347708737661925585694639798853367
+        × 3337202759497815655622601060535511422794076034476755466678452098702384172921
+          0037080257448673296881877565718986258036932062711
+</pre>
+<p>The factorisation of RSA-250 utilised approximately 2700 CPU core-years, using a 2.1&#160;GHz Intel Xeon Gold 6130 CPU as a reference. The computation was performed with the Number Field Sieve algorithm, using the open source CADO-NFS software.
+</p><p>The team dedicated the computation to <a href="/wiki/Peter_Montgomery_(mathematician)" title="Peter Montgomery (mathematician)">Peter Montgomery</a>, an American mathematician known for his contributions to <a href="/wiki/Computational_number_theory" title="Computational number theory">computational number theory</a> and <a href="/wiki/Cryptography" title="Cryptography">cryptography</a> who died on February 18, 2020, and had contributed to factoring RSA-768.<sup id="cite&#95;ref-40" class="reference"><a href="#cite_note-40"><span class="cite-bracket">&#91;</span>40<span class="cite-bracket">&#93;</span></a></sup>
+</p>
+<div class="mw-heading mw-heading2"><h2 id="RSA-260">RSA-260</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=24" title="Edit section: RSA-260"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-260 has 260 decimal digits (862 bits), and has not been factored so far.
+</p>
+<pre>RSA-260 = 2211282552952966643528108525502623092761208950247001539441374831912882294140
+          2001986512729726569746599085900330031400051170742204560859276357953757185954
+          2988389587092292384910067030341246205457845664136645406842143612930176940208
+          46391065875914794251435144458199
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-270">RSA-270</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=25" title="Edit section: RSA-270"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-270 has 270 decimal digits (895 bits), and has not been factored so far.
+</p>
+<pre>RSA-270 = 2331085303444075445276376569106805241456198124803054490429486119684959182451
+          3578286788836931857711641821391926857265831491306067262691135402760979316634
+          1626693946596196427744273886601876896313468704059066746903123910748277606548
+          649151920812699309766587514735456594993207
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-896">RSA-896</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=26" title="Edit section: RSA-896"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-896 has 270 decimal digits (896 bits), and has not been factored so far. A cash prize of $75,000 was previously offered for a successful factorization.
+</p>
+<pre>RSA-896 = 4120234369866595438555313653325759481798116998443279828454556264338764455652
+          4842619809887042316184187926142024718886949256093177637503342113098239748515
+          0944909106910269861031862704114880866970564902903653658867433731720813104105
+          190864254793282601391257624033946373269391
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-280">RSA-280</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=27" title="Edit section: RSA-280"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-280 has 280 decimal digits (928 bits), and has not been factored so far.
+</p>
+<pre>RSA-280 = 1790707753365795418841729699379193276395981524363782327873718589639655966058
+          5783742549640396449103593468573113599487089842785784500698716853446786525536
+          5503525160280656363736307175332772875499505341538927978510751699922197178159
+          7724733184279534477239566789173532366357270583106789
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-290">RSA-290</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=28" title="Edit section: RSA-290"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-290 has 290 decimal digits (962 bits), and has not been factored so far.
+</p>
+<pre>RSA-290 = 3050235186294003157769199519894966400298217959748768348671526618673316087694
+          3419156362946151249328917515864630224371171221716993844781534383325603218163
+          2549201100649908073932858897185243836002511996505765970769029474322210394327
+          60575157628357292075495937664206199565578681309135044121854119
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-300">RSA-300</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=29" title="Edit section: RSA-300"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-300 has 300 decimal digits (995 bits), and has not been factored so far.
+</p>
+<pre>RSA-300 = 2769315567803442139028689061647233092237608363983953254005036722809375824714
+          9473946190060218756255124317186573105075074546238828817121274630072161346956
+          4396741836389979086904304472476001839015983033451909174663464663867829125664
+          459895575157178816900228792711267471958357574416714366499722090015674047
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-309">RSA-309</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=30" title="Edit section: RSA-309"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-309 has 309 decimal digits (1,024 bits), and has not been factored so far.
+</p>
+<pre>RSA-309 = 1332943998825757583801437794588036586217112243226684602854588261917276276670
+          5425540467426933349195015527349334314071822840746357352800368666521274057591
+          1870128339157499072351179666739658503429931021985160714113146720277365006623
+          6927218079163559142755190653347914002967258537889160429597714204365647842739
+          10949
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-1024">RSA-1024</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=31" title="Edit section: RSA-1024"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-1024 has 309 decimal digits (1,024 bits), and has not been factored so far. $100,000 was previously offered for factorization.
+</p>
+<pre>RSA-1024 = 135066410865995223349603216278805969938881475605667027524485143851526510604
+           859533833940287150571909441798207282164471551373680419703964191743046496589
+           274256239341020864383202110372958725762358509643110564073501508187510676594
+           629205563685529475213500852879416377328533906109750544334999811150056977236
+           890927563
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-310">RSA-310</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=32" title="Edit section: RSA-310"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-310 has 310 decimal digits (1,028 bits), and has not been factored so far.
+</p>
+<pre>RSA-310 = 1848210397825850670380148517702559371400899745254512521925707445580334710601
+          4125276757082979328578439013881047668984294331264191394626965245834649837246
+          5163148188847336415136873623631778358751846501708714541673402642461569061162
+          0116380982484120857688483676576094865930188367141388795454378671343386258291
+          687641
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-320">RSA-320</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=33" title="Edit section: RSA-320"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-320 has 320 decimal digits (1,061 bits), and has not been factored so far.
+</p>
+<pre>RSA-320 = 2136810696410071796012087414500377295863767938372793352315068620363196552357
+          8837094085435000951700943373838321997220564166302488321590128061531285010636
+          8571638978998117122840139210685346167726847173232244364004850978371121744321
+          8270343654835754061017503137136489303437996367224915212044704472299799616089
+          2591129924218437
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-330">RSA-330</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=34" title="Edit section: RSA-330"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-330 has 330 decimal digits (1,094 bits), and has not been factored so far.
+</p>
+<pre>RSA-330 = 1218708633106058693138173980143325249157710686226055220408666600017481383238
+          1352456802425903555880722805261111079089882303717632638856140900933377863089
+          0634828167900405006112727432172179976427017137792606951424995281839383708354
+          6364684839261149319768449396541020909665209789862312609604983709923779304217
+          01862444655244698696759267
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-340">RSA-340</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=35" title="Edit section: RSA-340"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-340 has 340 decimal digits (1,128 bits), and has not been factored so far.
+</p>
+<pre>RSA-340 = 2690987062294695111996484658008361875931308730357496490239672429933215694995
+          2758588771223263308836649715112756731997946779608413232406934433532048898585
+          9176676580752231563884394807622076177586625973975236127522811136600110415063
+          0004691128152106812042872285697735145105026966830649540003659922618399694276
+          990464815739966698956947129133275233
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-350">RSA-350</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=36" title="Edit section: RSA-350"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-350 has 350 decimal digits (1,161 bits), and has not been factored so far.
+</p>
+<pre>RSA-350 = 2650719995173539473449812097373681101529786464211583162467454548229344585504
+          3495841191504413349124560193160478146528433707807716865391982823061751419151
+          6068496555750496764686447379170711424873128631468168019548127029171231892127
+          2886825928263239383444398948209649800021987837742009498347263667908976501360
+          3382322972552204068806061829535529820731640151
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-360">RSA-360</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=37" title="Edit section: RSA-360"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-360 has 360 decimal digits (1,194 bits), and has not been factored so far.
+</p>
+<pre>RSA-360 = 2186820202343172631466406372285792654649158564828384065217121866374227745448
+          7764963889680817334211643637752157994969516984539482486678141304751672197524
+          0052350576247238785129338002757406892629970748212734663781952170745916609168
+          9358372359962787832802257421757011302526265184263565623426823456522539874717
+          61591019113926725623095606566457918240614767013806590649
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-370">RSA-370</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=38" title="Edit section: RSA-370"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-370 has 370 decimal digits (1,227 bits), and has not been factored so far.
+</p>
+<pre>RSA-370 = 1888287707234383972842703127997127272470910519387718062380985523004987076701
+          7212819937261952549039800018961122586712624661442288502745681454363170484690
+          7379449525034797494321694352146271320296579623726631094822493455672541491544
+          2700993152879235272779266578292207161032746297546080025793864030543617862620
+          878802244305286292772467355603044265985905970622730682658082529621
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-380">RSA-380</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=39" title="Edit section: RSA-380"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-380 has 380 decimal digits (1,261 bits), and has not been factored so far.
+</p>
+<pre>RSA-380 = 3013500443120211600356586024101276992492167997795839203528363236610578565791
+          8270750937407901898070219843622821090980641477056850056514799336625349678549
+          2187941807116344787358312651772858878058620717489800725333606564197363165358
+          2237779263423501952646847579678711825720733732734169866406145425286581665755
+          6977260763553328252421574633011335112031733393397168350585519524478541747311
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-390">RSA-390</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=40" title="Edit section: RSA-390"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-390 has 390 decimal digits (1,294 bits), and has not been factored so far.
+</p>
+<pre>RSA-390 = 2680401941182388454501037079346656065366941749082852678729822424397709178250
+          4623002472848967604282562331676313645413672467684996118812899734451228212989
+          1630084759485063423604911639099585186833094019957687550377834977803400653628
+          6955344904367437281870253414058414063152368812498486005056223028285341898040
+          0795447435865033046248751475297412398697088084321037176392288312785544402209
+          1083492089
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-400">RSA-400</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=41" title="Edit section: RSA-400"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-400 has 400 decimal digits (1,327 bits), and has not been factored so far.
+</p>
+<pre>RSA-400 = 2014096878945207511726700485783442547915321782072704356103039129009966793396
+          1419850865094551022604032086955587930913903404388675137661234189428453016032
+          6191193056768564862615321256630010268346471747836597131398943140685464051631
+          7519403149294308737302321684840956395183222117468443578509847947119995373645
+          3607109795994713287610750434646825511120586422993705980787028106033008907158
+          74500584758146849481
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-410">RSA-410</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=42" title="Edit section: RSA-410"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-410 has 410 decimal digits (1,360 bits), and has not been factored so far.
+</p>
+<pre>RSA-410 = 1965360147993876141423945274178745707926269294439880746827971120992517421770
+          1079138139324539033381077755540830342989643633394137538983355218902490897764
+          4412968474332754608531823550599154905901691559098706892516477785203855688127
+          0635069372091564594333528156501293924133186705141485137856845741766150159437
+          6063244163040088180887087028771717321932252992567756075264441680858665410918
+          431223215368025334985424358839
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-420">RSA-420</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=43" title="Edit section: RSA-420"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-420 has 420 decimal digits (1,393 bits), and has not been factored so far.
+</p>
+<pre>RSA-420 = 2091366302476510731652556423163330737009653626605245054798522959941292730258
+          1898373570076188752609749648953525484925466394800509169219344906273145413634
+          2427186266197097846022969248579454916155633686388106962365337549155747268356
+          4666583846809964354191550136023170105917441056517493690125545320242581503730
+          3405952887826925813912683942756431114820292313193705352716165790132673270514
+          3817744164107601735413785886836578207979
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-430">RSA-430</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=44" title="Edit section: RSA-430"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-430 has 430 decimal digits (1,427 bits), and has not been factored so far.
+</p>
+<pre>RSA-430 = 3534635645620271361541209209607897224734887106182307093292005188843884213420
+          6950355315163258889704268733101305820000124678051064321160104990089741386777
+          2424190744453885127173046498565488221441242210687945185565975582458031351338
+          2070785777831859308900851761495284515874808406228585310317964648830289141496
+          3289966226854692560410075067278840383808716608668377947047236323168904650235
+          70092246473915442026549955865931709542468648109541
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-440">RSA-440</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=45" title="Edit section: RSA-440"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-440 has 440 decimal digits (1,460 bits), and has not been factored so far.
+</p>
+<pre>RSA-440 = 2601428211955602590070788487371320550539810804595235289423508589663391270837
+          4310252674800592426746319007978890065337573160541942868114065643853327229484
+          5029942332226171123926606357523257736893667452341192247905168387893684524818
+          0307729497304959710847337973805145673263119916483529703607405432752966630781
+          2234597766390750441445314408171802070904072739275930410299359006059619305590
+          701939627725296116299946059898442103959412221518213407370491
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-450">RSA-450</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=46" title="Edit section: RSA-450"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-450 has 450 decimal digits (1,493 bits), and has not been factored so far.
+</p>
+<pre>RSA-450 = 1984634237142836623497230721861131427789462869258862089878538009871598692569
+          0078791591684242367262529704652673686711493985446003494265587358393155378115
+          8032447061155145160770580926824366573211993981662614635734812647448360573856
+          3132247491715526997278115514905618953253443957435881503593414842367096046182
+          7643434794849824315251510662855699269624207451365738384255497823390996283918
+          3287667419172988072221996532403300258906083211160744508191024837057033
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-460">RSA-460</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=47" title="Edit section: RSA-460"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-460 has 460 decimal digits (1,526 bits), and has not been factored so far.
+</p>
+<pre>RSA-460 = 1786856020404004433262103789212844585886400086993882955081051578507634807524
+          1464078819812169681394445771476334608488687746254318292828603396149562623036
+          3564554675355258128655971003201417831521222464468666642766044146641933788836
+          8932452217321354860484353296131403821175862890998598653858373835628654351880
+          4806362231643082386848731052350115776715521149453708868428108303016983133390
+          0416365515466857004900847501644808076825638918266848964153626486460448430073
+          4909
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-1536">RSA-1536</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=48" title="Edit section: RSA-1536"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-1536 has 463 decimal digits (1,536 bits), and has not been factored so far. $150,000 was previously offered for successful factorization.
+</p>
+<pre>RSA-1536 = 184769970321174147430683562020016440301854933866341017147178577491065169671
+           116124985933768430543574458561606154457179405222971773252466096064694607124
+           962372044202226975675668737842756238950876467844093328515749657884341508847
+           552829818672645133986336493190808467199043187438128336350279547028265329780
+           293491615581188104984490831954500984839377522725705257859194499387007369575
+           568843693381277961308923039256969525326162082367649031603655137144791393234
+           7169566988069
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-470">RSA-470</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=49" title="Edit section: RSA-470"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-470 has 470 decimal digits (1,559 bits), and has not been factored so far.
+</p>
+<pre>RSA-470 = 1705147378468118520908159923888702802518325585214915968358891836980967539803
+          6897711442383602526314519192366612270595815510311970886116763177669964411814
+          0957486602388713064698304619191359016382379244440741228665455229545368837485
+          5874455212895044521809620818878887632439504936237680657994105330538621759598
+          4047709603954312447692725276887594590658792939924609261264788572032212334726
+          8553025718835659126454325220771380103576695555550710440908570895393205649635
+          76770285413369
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-480">RSA-480</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=50" title="Edit section: RSA-480"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-480 has 480 decimal digits (1,593 bits), and has not been factored so far.
+</p>
+<pre>RSA-480 = 3026570752950908697397302503155918035891122835769398583955296326343059761445
+          7144169659817040125185215913853345598217234371231338324773210726853524776378
+          4105186549246199888070331088462855743520880671299302895546822695492968577380
+          7067958428022008294111984222973260208233693152589211629901686973933487362360
+          8129660418514569063995282978176790149760521395548532814196534676974259747930
+          6858645849268328985687423881853632604706175564461719396117318298679820785491
+          875674946700413680932103
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-490">RSA-490</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=51" title="Edit section: RSA-490"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-490 has 490 decimal digits (1,626 bits), and has not been factored so far.
+</p>
+<pre>RSA-490 = 1860239127076846517198369354026076875269515930592839150201028353837031025971
+          3738522164743327949206433999068225531855072554606782138800841162866037393324
+          6578171804201717222449954030315293547871401362961501065002486552688663415745
+          9758925793594165651020789220067311416926076949777767604906107061937873540601
+          5942747316176193775374190713071154900658503269465516496828568654377183190586
+          9537640698044932638893492457914750855858980849190488385315076922453755527481
+          1376719096144119390052199027715691
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-500">RSA-500</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=52" title="Edit section: RSA-500"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-500 has 500 decimal digits (1,659 bits) and has not been factored so far.
+</p>
+<pre>RSA-500 = 1897194133748626656330534743317202527237183591953428303184581123062450458870
+          7687605943212347625766427494554764419515427586743205659317254669946604982419
+          7301601038125215285400688031516401611623963128370629793265939405081077581694
+          4786041721411024641038040278701109808664214800025560454687625137745393418221
+          5494821277335671735153472656328448001134940926442438440198910908603252678814
+          7850601132077287172819942445113232019492229554237898606631074891074722425617
+          39680319169243814676235712934292299974411361
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-617">RSA-617</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=53" title="Edit section: RSA-617"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-617 has 617 decimal digits (2,048 bits) and has not been factored so far.
+</p>
+<pre>RSA-617 = 2270180129378501419358040512020458674106123596276658390709402187921517148311
+          9139894870133091111044901683400949483846818299518041763507948922590774925466
+          0881718792594659210265970467004498198990968620394600177430944738110569912941
+          2854289188085536270740767072259373777266697344097736124333639730805176309150
+          6836310795312607239520365290032105848839507981452307299417185715796297454995
+          0235053160409198591937180233074148804462179228008317660409386563445710347785
+          5345712108053073639453592393265186603051504106096643731332367283153932350006
+          7937107541955437362433248361242525945868802353916766181532375855504886901432
+          221349733
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="RSA-2048">RSA-2048</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=54" title="Edit section: RSA-2048"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<p>RSA-2048 has 617 decimal digits (2,048 bits). It is the largest of the RSA numbers and carried the largest cash prize for its factorization, $200,000.
+</p>
+<pre>RSA-2048 = 2519590847565789349402718324004839857142928212620403202777713783604366202070
+           7595556264018525880784406918290641249515082189298559149176184502808489120072
+           8449926873928072877767359714183472702618963750149718246911650776133798590957
+           0009733045974880842840179742910064245869181719511874612151517265463228221686
+           9987549182422433637259085141865462043576798423387184774447920739934236584823
+           8242811981638150106748104516603773060562016196762561338441436038339044149526
+           3443219011465754445417842402092461651572335077870774981712577246796292638635
+           6373289912154831438167899885040445364023527381951378636564391212010397122822
+           120720357
+</pre>
+<div class="mw-heading mw-heading2"><h2 id="See_also">See also</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=55" title="Edit section: See also"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="/wiki/Integer_factorization_records" title="Integer factorization records">Integer factorization records</a></li>
+<li><a href="/wiki/RSA_Factoring_Challenge" title="RSA Factoring Challenge">RSA Factoring Challenge</a> (includes table with size and status of all numbers)</li>
+<li><a href="/wiki/RSA_Secret-Key_Challenge" title="RSA Secret-Key Challenge">RSA Secret-Key Challenge</a></li></ul>
+<div style="clear:both;" class=""></div>
+<div class="mw-heading mw-heading2"><h2 id="Notes">Notes</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=56" title="Edit section: Notes"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<style data-mw-deduplicate="TemplateStyles:r1239543626">.mw-parser-output .reflist{margin-bottom:0.5em;list-style-type:decimal}@media screen{.mw-parser-output .reflist{font-size:90%}}.mw-parser-output .reflist .references{font-size:100%;margin-bottom:0;list-style-type:inherit}.mw-parser-output .reflist-columns-2{column-width:30em}.mw-parser-output .reflist-columns-3{column-width:25em}.mw-parser-output .reflist-columns{margin-top:0.3em}.mw-parser-output .reflist-columns ol{margin-top:0}.mw-parser-output .reflist-columns li{page-break-inside:avoid;break-inside:avoid-column}.mw-parser-output .reflist-upper-alpha{list-style-type:upper-alpha}.mw-parser-output .reflist-upper-roman{list-style-type:upper-roman}.mw-parser-output .reflist-lower-alpha{list-style-type:lower-alpha}.mw-parser-output .reflist-lower-greek{list-style-type:lower-greek}.mw-parser-output .reflist-lower-roman{list-style-type:lower-roman}</style><div class="reflist reflist-columns references-column-width" style="column-width: 30em;">
+<ol class="references">
+<li id="cite&#95;note-RSAfactoring-challenge-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-RSAfactoring-challenge_1-0">^</a></b></span> <span class="reference-text"><style data-mw-deduplicate="TemplateStyles:r1238218222">.mw-parser-output cite.citation{font-style:inherit;word-wrap:break-word}.mw-parser-output .citation q{quotes:"\"""\"""'""'"}.mw-parser-output .citation:target{background-color:rgba(0,127,255,0.133)}.mw-parser-output .id-lock-free.id-lock-free a{background:url("//upload.wikimedia.org/wikipedia/commons/6/65/Lock-green.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-limited.id-lock-limited a,.mw-parser-output .id-lock-registration.id-lock-registration a{background:url("//upload.wikimedia.org/wikipedia/commons/d/d6/Lock-gray-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .id-lock-subscription.id-lock-subscription a{background:url("//upload.wikimedia.org/wikipedia/commons/a/aa/Lock-red-alt-2.svg")right 0.1em center/9px no-repeat}.mw-parser-output .cs1-ws-icon a{background:url("//upload.wikimedia.org/wikipedia/commons/4/4c/Wikisource-logo.svg")right 0.1em center/12px no-repeat}body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-free a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-limited a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-registration a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .id-lock-subscription a,body:not(.skin-timeless):not(.skin-minerva) .mw-parser-output .cs1-ws-icon a{background-size:contain;padding:0 1em 0 0}.mw-parser-output .cs1-code{color:inherit;background:inherit;border:none;padding:inherit}.mw-parser-output .cs1-hidden-error{display:none;color:var(--color-error,#d33)}.mw-parser-output .cs1-visible-error{color:var(--color-error,#d33)}.mw-parser-output .cs1-maint{display:none;color:#085;margin-left:0.3em}.mw-parser-output .cs1-kern-left{padding-left:0.2em}.mw-parser-output .cs1-kern-right{padding-right:0.2em}.mw-parser-output .citation .mw-selflink{font-weight:inherit}@media screen{.mw-parser-output .cs1-format{font-size:95%}html.skin-theme-clientpref-night .mw-parser-output .cs1-maint{color:#18911f}}@media screen and (prefers-color-scheme:dark){html.skin-theme-clientpref-os .mw-parser-output .cs1-maint{color:#18911f}}</style><cite id="CITEREFRSA&#95;Laboratories" class="citation web cs1 cs1-prop-unfit">RSA Laboratories. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20130921043459/http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-factoring-challenge.htm">"RSA Factoring Challenge"</a>. Archived from the original on September 21, 2013<span class="reference-accessdate">. Retrieved <span class="nowrap">August 5,</span> 2008</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=RSA+Factoring+Challenge&amp;rft.au=RSA+Laboratories&amp;rft&#95;id=http%3A%2F%2Fwww.emc.com%2Femc-plus%2Frsa-labs%2Fhistorical%2Fthe-rsa-factoring-challenge.htm&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-RSAfactoring-challenge-faq-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-RSAfactoring-challenge-faq_2-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFRSA&#95;Laboratories" class="citation web cs1 cs1-prop-unfit">RSA Laboratories. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20130921043454/http://www.emc.com/emc-plus/rsa-labs/historical/the-rsa-factoring-challenge-faq.htm">"The RSA Factoring Challenge FAQ"</a>. Archived from the original on September 21, 2013<span class="reference-accessdate">. Retrieved <span class="nowrap">August 5,</span> 2008</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=The+RSA+Factoring+Challenge+FAQ&amp;rft.au=RSA+Laboratories&amp;rft&#95;id=http%3A%2F%2Fwww.emc.com%2Femc-plus%2Frsa-labs%2Fhistorical%2Fthe-rsa-factoring-challenge-faq.htm&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-RSA&#95;Honor&#95;Roll-3"><span class="mw-cite-backlink">^ <a href="#cite_ref-RSA_Honor_Roll_3-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-RSA_Honor_Roll_3-1"><sup><i><b>b</b></i></sup></a> <a href="#cite_ref-RSA_Honor_Roll_3-2"><sup><i><b>c</b></i></sup></a> <a href="#cite_ref-RSA_Honor_Roll_3-3"><sup><i><b>d</b></i></sup></a> <a href="#cite_ref-RSA_Honor_Roll_3-4"><sup><i><b>e</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFRSA&#95;Factoring&#95;Challenge&#95;Administrator&#95;(challenge-administrator@majordomo.rsasecurity.com)2002" class="citation mailinglist cs1">RSA Factoring Challenge Administrator (challenge-administrator@majordomo.rsasecurity.com) (January 30, 2002) [March 5, 1999]. <a rel="nofollow" class="external text" href="http://www.ontko.com/pub/rayo/primes/hr_rsa.txt">"RSA Honor Roll"</a>. <i>challenge-rsa-honor-roll@rsa.com</i> (Mailing list). <a rel="nofollow" class="external text" href="https://web.archive.org/web/20230909141925/http://www.ontko.com/pub/rayo/primes/hr_rsa.txt">Archived</a> from the original on September 9, 2023 &#8211; via Ray Ontko.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=RSA+Honor+Roll&amp;rft.date=2002-01-30&amp;rft.au=RSA+Factoring+Challenge+Administrator+%28challenge-administrator%40majordomo.rsasecurity.com%29&amp;rft&#95;id=http%3A%2F%2Fwww.ontko.com%2Fpub%2Frayo%2Fprimes%2Fhr&#95;rsa.txt&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-Cryptowatch&#95;RSA&#95;pg.&#95;2-4"><span class="mw-cite-backlink">^ <a href="#cite_ref-Cryptowatch_RSA_pg._2_4-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Cryptowatch_RSA_pg._2_4-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://web.archive.org/web/20090108141629/http://cryptnet.net/people/vab/blogs/cryptowatch/category/rsa/page/2/">"Archive for the 'RSA' Category"</a>. <i>Cryptography Watch</i>. July 9, 1993. p.&#160;2. Archived from <a rel="nofollow" class="external text" href="http://cryptnet.net/people/vab/blogs/cryptowatch/category/rsa/page/2/">the original</a> on January 8, 2009.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Cryptography+Watch&amp;rft.atitle=Archive+for+the+%27RSA%27+Category&amp;rft.pages=2&amp;rft.date=1993-07-09&amp;rft&#95;id=http%3A%2F%2Fcryptnet.net%2Fpeople%2Fvab%2Fblogs%2Fcryptowatch%2Fcategory%2Frsa%2Fpage%2F2%2F&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-Lenstra-5"><span class="mw-cite-backlink">^ <a href="#cite_ref-Lenstra_5-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-Lenstra_5-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFDixonLenstra1994" class="citation book cs1">Dixon, Brandon; Lenstra, Arjen K. (1994). <a rel="nofollow" class="external text" href="https://link.springer.com/chapter/10.1007/3-540-48285-7_3">"Factoring Integers Using SIMD Sieves"</a>. In Helleseth, Tor (ed.). <a rel="nofollow" class="external text" href="http://infoscience.epfl.ch/record/149472"><i>Advances in Cryptology — EUROCRYPT '93</i></a>. Lecture Notes in Computer Science. Vol.&#160;765. Berlin, Heidelberg: Springer (published July 13, 2001). pp.&#160;<span class="nowrap">28–</span>39. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1007%2F3-540-48285-7_3">10.1007/3-540-48285-7_3</a>. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-3-540-48285-7" title="Special:BookSources/978-3-540-48285-7"><bdi>978-3-540-48285-7</bdi></a>. <a href="/wiki/S2CID_(identifier)" class="mw-redirect" title="S2CID (identifier)">S2CID</a>&#160;<a rel="nofollow" class="external text" href="https://api.semanticscholar.org/CorpusID:21157010">21157010</a> &#8211; via SpringerLink.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=Factoring+Integers+Using+SIMD+Sieves&amp;rft.btitle=Advances+in+Cryptology+%E2%80%94+EUROCRYPT+%2793&amp;rft.place=Berlin%2C+Heidelberg&amp;rft.series=Lecture+Notes+in+Computer+Science&amp;rft.pages=28-39&amp;rft.pub=Springer&amp;rft.date=1994&amp;rft&#95;id=https%3A%2F%2Fapi.semanticscholar.org%2FCorpusID%3A21157010%23id-name%3DS2CID&amp;rft&#95;id=info%3Adoi%2F10.1007%2F3-540-48285-7&#95;3&amp;rft.isbn=978-3-540-48285-7&amp;rft.aulast=Dixon&amp;rft.aufirst=Brandon&amp;rft.au=Lenstra%2C+Arjen+K.&amp;rft&#95;id=https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%2F3-540-48285-7&#95;3&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-mersenneforum.org-6"><span class="mw-cite-backlink">^ <a href="#cite_ref-mersenneforum.org_6-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-mersenneforum.org_6-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFchris2be82012" class="citation web cs1">chris2be8 (March 27, 2012). <a rel="nofollow" class="external text" href="http://mersenneforum.org/showpost.php?p=294403&amp;postcount=13/">"Distributed polynomial selection"</a>. <i>mersenneforum.org</i>. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20230702220137/https://mersenneforum.org/showpost.php?p=294403&amp;postcount=13/">Archived</a> from the original on July 2, 2023<span class="reference-accessdate">. Retrieved <span class="nowrap">June 8,</span> 2015</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=mersenneforum.org&amp;rft.atitle=Distributed+polynomial+selection.&amp;rft.date=2012-03-27&amp;rft.au=chris2be8&amp;rft&#95;id=http%3A%2F%2Fmersenneforum.org%2Fshowpost.php%3Fp%3D294403%26postcount%3D13%2F&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span><span class="cs1-maint citation-comment"><code class="cs1-code">{{<a href="/wiki/Template:Cite_web" title="Template:Cite web">cite web</a>}}</code>:  CS1 maint: numeric names: authors list (<a href="/wiki/Category:CS1_maint:_numeric_names:_authors_list" title="Category:CS1 maint: numeric names: authors list">link</a>)</span></span>
+</li>
+<li id="cite&#95;note-7"><span class="mw-cite-backlink"><b><a href="#cite_ref-7">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFDennyDodsonLenstraManasse1994" class="citation book cs1">Denny, T.; Dodson, B.; Lenstra, A. K.; Manasse, M. S. (1994). <a rel="nofollow" class="external text" href="https://link.springer.com/chapter/10.1007/3-540-48329-2_15">"On the factorization of RSA-120"</a>. In Stinson, Douglas R. (ed.). <i>Advances in Cryptology — CRYPTO' 93</i>. Lecture Notes in Computer Science. Vol.&#160;773. Berlin, Heidelberg: Springer (published July 13, 2001). pp.&#160;<span class="nowrap">166–</span>174. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1007%2F3-540-48329-2_15">10.1007/3-540-48329-2_15</a>. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-3-540-48329-8" title="Special:BookSources/978-3-540-48329-8"><bdi>978-3-540-48329-8</bdi></a> &#8211; via SpringerLink.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=On+the+factorization+of+RSA-120&amp;rft.btitle=Advances+in+Cryptology+%E2%80%94+CRYPTO%27+93&amp;rft.place=Berlin%2C+Heidelberg&amp;rft.series=Lecture+Notes+in+Computer+Science&amp;rft.pages=166-174&amp;rft.pub=Springer&amp;rft.date=1994&amp;rft&#95;id=info%3Adoi%2F10.1007%2F3-540-48329-2&#95;15&amp;rft.isbn=978-3-540-48329-8&amp;rft.aulast=Denny&amp;rft.aufirst=T.&amp;rft.au=Dodson%2C+B.&amp;rft.au=Lenstra%2C+A.+K.&amp;rft.au=Manasse%2C+M.+S.&amp;rft&#95;id=https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%2F3-540-48329-2&#95;15&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-8"><span class="mw-cite-backlink"><b><a href="#cite_ref-8">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFAtkinsGraffLenstraLeyland" class="citation web cs1">Atkins, Derek; Graff, Michael; Lenstra, Arjen K.; Leyland, Paul C. <a rel="nofollow" class="external text" href="http://web.mit.edu/warlord/www/rsa129.ps">"The Magic Words Are Squeamish Ossifrage"</a>. <i>Derek Atkins</i> (PostScript document). <a rel="nofollow" class="external text" href="https://web.archive.org/web/20230909141922/http://web.mit.edu/warlord/www/rsa129.ps">Archived</a> from the original on September 9, 2023<span class="reference-accessdate">. Retrieved <span class="nowrap">November 24,</span> 2009</span> &#8211; via Massachusetts Institute of Technology.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Derek+Atkins&amp;rft.atitle=The+Magic+Words+Are+Squeamish+Ossifrage&amp;rft.aulast=Atkins&amp;rft.aufirst=Derek&amp;rft.au=Graff%2C+Michael&amp;rft.au=Lenstra%2C+Arjen+K.&amp;rft.au=Leyland%2C+Paul+C.&amp;rft&#95;id=http%3A%2F%2Fweb.mit.edu%2Fwarlord%2Fwww%2Frsa129.ps&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-9"><span class="mw-cite-backlink"><b><a href="#cite_ref-9">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFJaneba1994" class="citation web cs1">Janeba, Mark (1994) [links and formatting updated September 24, 2002]. <a rel="nofollow" class="external text" href="https://willamette.edu/~mjaneba/rsa129.html">"Factoring Challenge Conquered - With a Little Help From Willamette"</a>. <i>Prof. Mark Janeba's Framed Home Page</i>. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20230902110801/https://willamette.edu/~mjaneba/rsa129.html">Archived</a> from the original on September 2, 2023<span class="reference-accessdate">. Retrieved <span class="nowrap">March 10,</span> 2008</span> &#8211; via Willamette University.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Prof.+Mark+Janeba%27s+Framed+Home+Page&amp;rft.atitle=Factoring+Challenge+Conquered+-+With+a+Little+Help+From+Willamette&amp;rft.date=1994&amp;rft.aulast=Janeba&amp;rft.aufirst=Mark&amp;rft&#95;id=https%3A%2F%2Fwillamette.edu%2F~mjaneba%2Frsa129.html&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-10"><span class="mw-cite-backlink"><b><a href="#cite_ref-10">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFMcHugh2015" class="citation web cs1">McHugh, Nathaniel (March 26, 2015). <a rel="nofollow" class="external text" href="https://natmchugh.blogspot.com/2015/03/the-magic-words-are-squeamish-ossifrage.html">"The Magic Words are Squeamish Ossifrage - factoring RSA-129 using CADO-NFS"</a>. <i>Nat McHugh: Transient Random-Noise Bursts with Announcements</i>. Sheffield, South Yorkshire, UK. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20230902110041/https://natmchugh.blogspot.com/2015/03/the-magic-words-are-squeamish-ossifrage.html">Archived</a> from the original on September 2, 2023<span class="reference-accessdate">. Retrieved <span class="nowrap">May 25,</span> 2016</span> &#8211; via Blogger.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Nat+McHugh%3A+Transient+Random-Noise+Bursts+with+Announcements&amp;rft.atitle=The+Magic+Words+are+Squeamish+Ossifrage+-+factoring+RSA-129+using+CADO-NFS&amp;rft.date=2015-03-26&amp;rft.aulast=McHugh&amp;rft.aufirst=Nathaniel&amp;rft&#95;id=https%3A%2F%2Fnatmchugh.blogspot.com%2F2015%2F03%2Fthe-magic-words-are-squeamish-ossifrage.html&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-11"><span class="mw-cite-backlink"><b><a href="#cite_ref-11">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFLenstraCowieElkenbracht-HuizingFurmanski1996" class="citation mailinglist cs1"><a href="/wiki/Arjen_Lenstra" title="Arjen Lenstra">Lenstra, Arjen K.</a>; Cowie, Jim; Elkenbracht-Huizing, Marije; Furmanski, Wojtek; Montgomery, Peter L.; Weber, Damian; Zayer, Joerg (April 12, 1996) [April 11, 1996]. Caldwell, Chris (ed.). <a rel="nofollow" class="external text" href="https://t5k.org/notes/rsa130.html">"Factorization of RSA-130"</a>. <i>NMBRTHRY</i> (Mailing list). PrimePages: prime number research records and results. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20230902110041/https://t5k.org/notes/rsa130.html">Archived</a> from the original on September 2, 2023<span class="reference-accessdate">. Retrieved <span class="nowrap">March 10,</span> 2008</span> &#8211; via Notes, Proofs and other Comments.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Factorization+of+RSA-130&amp;rft.pub=PrimePages%3A+prime+number+research+records+and+results&amp;rft.date=1996-04-12&amp;rft.aulast=Lenstra&amp;rft.aufirst=Arjen+K.&amp;rft.au=Cowie%2C+Jim&amp;rft.au=Elkenbracht-Huizing%2C+Marije&amp;rft.au=Furmanski%2C+Wojtek&amp;rft.au=Montgomery%2C+Peter+L.&amp;rft.au=Weber%2C+Damian&amp;rft.au=Zayer%2C+Joerg&amp;rft&#95;id=https%3A%2F%2Ft5k.org%2Fnotes%2Frsa130.html&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-12"><span class="mw-cite-backlink"><b><a href="#cite_ref-12">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFRieleCavallarDodsonLenstra1999" class="citation mailinglist cs1"><a href="/wiki/Herman_te_Riele" title="Herman te Riele">Riele, Herman te</a>; Cavallar, Stefania; Dodson, Bruce; Lenstra, Arjen; Leyland, Paul; Lioen, Walter; Montgomery, Peter; Murphy, Brian; Zimmermann, Paul (February 4, 1999) [February 3, 1999]. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20041208075604/http://listserv.nodak.edu/scripts/wa.exe?A2=ind9902&amp;L=nmbrthry&amp;P=302">"Factorization of RSA-140 using the Number Field Sieve"</a>. <i>Number Theory List &lt;NMBRTHRY@LISTSERV.NODAK.EDU&gt;</i> (Mailing list). North Dakota University System. Archived from <a rel="nofollow" class="external text" href="http://listserv.nodak.edu/scripts/wa.exe?A2=ind9902&amp;L=nmbrthry&amp;P=302">the original</a> on December 8, 2004<span class="reference-accessdate">. Retrieved <span class="nowrap">March 10,</span> 2008</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Factorization+of+RSA-140+using+the+Number+Field+Sieve&amp;rft.pub=North+Dakota+University+System&amp;rft.date=1999-02-04&amp;rft.aulast=Riele&amp;rft.aufirst=Herman+te&amp;rft.au=Cavallar%2C+Stefania&amp;rft.au=Dodson%2C+Bruce&amp;rft.au=Lenstra%2C+Arjen&amp;rft.au=Leyland%2C+Paul&amp;rft.au=Lioen%2C+Walter&amp;rft.au=Montgomery%2C+Peter&amp;rft.au=Murphy%2C+Brian&amp;rft.au=Zimmermann%2C+Paul&amp;rft&#95;id=http%3A%2F%2Flistserv.nodak.edu%2Fscripts%2Fwa.exe%3FA2%3Dind9902%26L%3Dnmbrthry%26P%3D302&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-13"><span class="mw-cite-backlink"><b><a href="#cite_ref-13">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://web.archive.org/web/20061230233737/http://www.rsasecurity.com/rsalabs/node.asp?id=2099">"RSA-140 is factored!"</a>. Other Activities: Cryptographic Challenges: The RSA Factoring Challenge. <i>RSA Laboratories</i>. RSA Security. Archived from <a rel="nofollow" class="external text" href="http://www.rsasecurity.com/rsalabs/node.asp?id=2099">the original</a> on December 30, 2006<span class="reference-accessdate">. Retrieved <span class="nowrap">March 10,</span> 2008</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=RSA+Laboratories&amp;rft.atitle=RSA-140+is+factored%21&amp;rft&#95;id=http%3A%2F%2Fwww.rsasecurity.com%2Frsalabs%2Fnode.asp%3Fid%3D2099&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-14"><span class="mw-cite-backlink"><b><a href="#cite_ref-14">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFRiele1999" class="citation mailinglist cs1"><a href="/wiki/Herman_te_Riele" title="Herman te Riele">Riele, Herman te</a> (August 26, 1999). <a rel="nofollow" class="external text" href="https://web.archive.org/web/20041231230220/http://listserv.nodak.edu/scripts/wa.exe?A2=ind9908&amp;L=nmbrthry&amp;P=1905">"New factorization record: Factorization of a 512-bits RSA key using the Number Field Sieve"</a>. <i>Number Theory List &lt;NMBRTHRY@LISTSERV.NODAK.EDU&gt;</i> (Mailing list). North Dakota University System. Archived from <a rel="nofollow" class="external text" href="http://listserv.nodak.edu/scripts/wa.exe?A2=ind9908&amp;L=nmbrthry&amp;P=1905">the original</a> on December 31, 2004<span class="reference-accessdate">. Retrieved <span class="nowrap">March 10,</span> 2008</span>. <q>On August 22, 1999, we found that the 512-bits number RSA-155 ...</q></cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=New+factorization+record%3A+Factorization+of+a+512-bits+RSA+key+using+the+Number+Field+Sieve&amp;rft.pub=North+Dakota+University+System&amp;rft.date=1999-08-26&amp;rft.aulast=Riele&amp;rft.aufirst=Herman+te&amp;rft&#95;id=http%3A%2F%2Flistserv.nodak.edu%2Fscripts%2Fwa.exe%3FA2%3Dind9908%26L%3Dnmbrthry%26P%3D1905&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-15"><span class="mw-cite-backlink"><b><a href="#cite_ref-15">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://web.archive.org/web/20061230233723/http://www.rsasecurity.com/rsalabs/node.asp?id=2098">"RSA-155 is factored!"</a>. Other Activities: Cryptographic Challenges: The RSA Factoring Challenge. <i>RSA Laboratories</i>. RSA Security. Archived from <a rel="nofollow" class="external text" href="http://www.rsasecurity.com/rsalabs/node.asp?id=2098">the original</a> on December 30, 2006<span class="reference-accessdate">. Retrieved <span class="nowrap">March 10,</span> 2008</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=RSA+Laboratories&amp;rft.atitle=RSA-155+is+factored%21&amp;rft&#95;id=http%3A%2F%2Fwww.rsasecurity.com%2Frsalabs%2Fnode.asp%3Fid%3D2098&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-16"><span class="mw-cite-backlink"><b><a href="#cite_ref-16">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFBahrFrankeKleinjungLochter2003" class="citation web cs1">Bahr, F.; Franke, J.; Kleinjung, T.; Lochter, M.; Böhm, M. (April 1, 2003). Franke, Jens (ed.). <a rel="nofollow" class="external text" href="https://members.loria.fr/PZimmermann/records/rsa160">"RSA-160"</a>. <i>Paul Zimmermann, Laboratoire Lorrain de Recherche en Informatique et ses Applications</i>. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20230902110111/https://members.loria.fr/PZimmermann/records/rsa160">Archived</a> from the original on September 2, 2023<span class="reference-accessdate">. Retrieved <span class="nowrap">March 10,</span> 2008</span>. <q>We have factored RSA160 by gnfs.</q></cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=Paul+Zimmermann%2C+Laboratoire+Lorrain+de+Recherche+en+Informatique+et+ses+Applications&amp;rft.atitle=RSA-160&amp;rft.date=2003-04-01&amp;rft.aulast=Bahr&amp;rft.aufirst=F.&amp;rft.au=Franke%2C+J.&amp;rft.au=Kleinjung%2C+T.&amp;rft.au=Lochter%2C+M.&amp;rft.au=B%C3%B6hm%2C+M.&amp;rft&#95;id=https%3A%2F%2Fmembers.loria.fr%2FPZimmermann%2Frecords%2Frsa160&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-17"><span class="mw-cite-backlink"><b><a href="#cite_ref-17">^</a></b></span> <span class="reference-text">
+RSA Laboratories, <a rel="nofollow" class="external text" href="http://www.rsasecurity.com/rsalabs/node.asp?id=2097">RSA-160 is factored!</a> <a rel="nofollow" class="external text" href="https://web.archive.org/web/20061230233713/http://www.rsasecurity.com/rsalabs/node.asp?id=2097">Archived</a> 2006-12-30 at the <a href="/wiki/Wayback_Machine" title="Wayback Machine">Wayback Machine</a>. Retrieved on 2008-03-10.</span>
+</li>
+<li id="cite&#95;note-18"><span class="mw-cite-backlink"><b><a href="#cite_ref-18">^</a></b></span> <span class="reference-text">D. Bonenberger and M. Krone, <a rel="nofollow" class="external text" href="http://public.rz.fh-wolfenbuettel.de/~kronema/pdf/rsa170.pdf">RSA-170</a> <a rel="nofollow" class="external text" href="https://web.archive.org/web/20110719004557/http://public.rz.fh-wolfenbuettel.de/~kronema/pdf/rsa170.pdf">Archived</a> 2011-07-19 at the <a href="/wiki/Wayback_Machine" title="Wayback Machine">Wayback Machine</a>  Retrieved on 2010-03-08.</span>
+</li>
+<li id="cite&#95;note-19"><span class="mw-cite-backlink"><b><a href="#cite_ref-19">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFDanilovPopovyan2010" class="citation journal cs1">Danilov, S. A.; Popovyan, I. A. (May 9, 2010). <a rel="nofollow" class="external text" href="https://eprint.iacr.org/2010/270.pdf">"Factorization of RSA-180"</a> <span class="cs1-format">(PDF)</span>. <i>Cryptology ePrint Archive</i>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Cryptology+ePrint+Archive&amp;rft.atitle=Factorization+of+RSA-180&amp;rft.date=2010-05-09&amp;rft.aulast=Danilov&amp;rft.aufirst=S.+A.&amp;rft.au=Popovyan%2C+I.+A.&amp;rft&#95;id=https%3A%2F%2Feprint.iacr.org%2F2010%2F270.pdf&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-20"><span class="mw-cite-backlink"><b><a href="#cite_ref-20">^</a></b></span> <span class="reference-text">Jens Franke (2003-12-03), <a rel="nofollow" class="external text" href="https://archive.today/20120714094412/http://groups.yahoo.com/group/primenumbers/message/14113">RSA576</a> (repost of announcement of the factorization). Retrieved on 2008-03-10.</span>
+</li>
+<li id="cite&#95;note-21"><span class="mw-cite-backlink"><b><a href="#cite_ref-21">^</a></b></span> <span class="reference-text"><a href="/wiki/Eric_W._Weisstein" title="Eric W. Weisstein">Eric W. Weisstein</a> (2005-12-05), <a rel="nofollow" class="external text" href="https://mathworld.wolfram.com/news/2003-12-05/rsa/">RSA-576 Factored</a> at <a href="/wiki/MathWorld" title="MathWorld">MathWorld</a>. Retrieved on 2008-03-10.</span>
+</li>
+<li id="cite&#95;note-22"><span class="mw-cite-backlink"><b><a href="#cite_ref-22">^</a></b></span> <span class="reference-text">RSA Laboratories, <a rel="nofollow" class="external text" href="http://www.rsasecurity.com/rsalabs/node.asp?id=2096">RSA-576 is factored!</a> <a rel="nofollow" class="external text" href="https://web.archive.org/web/20061224002937/http://www.rsasecurity.com/rsalabs/node.asp?id=2096">Archived</a> 2006-12-24 at the <a href="/wiki/Wayback_Machine" title="Wayback Machine">Wayback Machine</a>. Retrieved on 2008-03-10.</span>
+</li>
+<li id="cite&#95;note-23"><span class="mw-cite-backlink"><b><a href="#cite_ref-23">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFDanilovPopovyan2010" class="citation journal cs1">Danilov, S. A.; Popovyan, I. A. (2010). <a rel="nofollow" class="external text" href="https://eprint.iacr.org/2010/270">"Factorization of RSA-180"</a>. <i>Cryptology ePrint Archive</i><span class="reference-accessdate">. Retrieved <span class="nowrap">May 12,</span> 2010</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Cryptology+ePrint+Archive&amp;rft.atitle=Factorization+of+RSA-180&amp;rft.date=2010&amp;rft.aulast=Danilov&amp;rft.aufirst=S.+A.&amp;rft.au=Popovyan%2C+I.+A.&amp;rft&#95;id=https%3A%2F%2Feprint.iacr.org%2F2010%2F270&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-24"><span class="mw-cite-backlink"><b><a href="#cite_ref-24">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFI.&#95;Popovyan,&#95;A.&#95;Timofeev2010" class="citation web cs1">I. Popovyan, A. Timofeev (November 8, 2010). <a rel="nofollow" class="external text" href="https://mersenneforum.org/showpost.php?p=236114&amp;postcount=1">"RSA-190 factored"</a>. <i>mersenneforum.org</i><span class="reference-accessdate">. Retrieved <span class="nowrap">November 10,</span> 2010</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=mersenneforum.org&amp;rft.atitle=RSA-190+factored&amp;rft.date=2010-11-08&amp;rft.au=I.+Popovyan%2C+A.+Timofeev&amp;rft&#95;id=https%3A%2F%2Fmersenneforum.org%2Fshowpost.php%3Fp%3D236114%26postcount%3D1&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-25"><span class="mw-cite-backlink"><b><a href="#cite_ref-25">^</a></b></span> <span class="reference-text">RSA Laboratories, <a rel="nofollow" class="external text" href="http://www.rsasecurity.com/rsalabs/node.asp?id=2964">RSA-640 is factored!</a> <a rel="nofollow" class="external text" href="https://web.archive.org/web/20070104090822/http://www.rsasecurity.com/rsalabs/node.asp?id=2964">Archived</a> 2007-01-04 at the <a href="/wiki/Wayback_Machine" title="Wayback Machine">Wayback Machine</a>. Retrieved on 2008-03-10.</span>
+</li>
+<li id="cite&#95;note-26"><span class="mw-cite-backlink"><b><a href="#cite_ref-26">^</a></b></span> <span class="reference-text">Jens Franke (2005-11-04), <a rel="nofollow" class="external text" href="http://www.crypto-world.com/announcements/rsa640.txt">We have factored RSA640 by GNFS</a> <a rel="nofollow" class="external text" href="https://web.archive.org/web/20080616132829/http://www.crypto-world.com/announcements/rsa640.txt">Archived</a> 2008-06-16 at the <a href="/wiki/Wayback_Machine" title="Wayback Machine">Wayback Machine</a>. Retrieved on 2008-03-10.</span>
+</li>
+<li id="cite&#95;note-27"><span class="mw-cite-backlink"><b><a href="#cite_ref-27">^</a></b></span> <span class="reference-text">Eric W. Weisstein (2005-11-08), <a rel="nofollow" class="external text" href="https://mathworld.wolfram.com/news/2005-11-08/rsa-640/">RSA-640 Factored</a> at MathWorld. Retrieved on 2008-03-10.</span>
+</li>
+<li id="cite&#95;note-announce-28"><span class="mw-cite-backlink">^ <a href="#cite_ref-announce_28-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-announce_28-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><a href="/w/index.php?title=Thorsten_Kleinjung&amp;action=edit&amp;redlink=1" class="new" title="Thorsten Kleinjung (page does not exist)">Thorsten Kleinjung</a> (2005-05-09), <a rel="nofollow" class="external text" href="http://www.crypto-world.com/announcements/rsa200.txt">We have factored RSA200 by GNFS</a> <a rel="nofollow" class="external text" href="https://web.archive.org/web/20080322125316/http://www.crypto-world.com/announcements/rsa200.txt">Archived</a> 2008-03-22 at the <a href="/wiki/Wayback_Machine" title="Wayback Machine">Wayback Machine</a>. Retrieved on 2008-03-10.</span>
+</li>
+<li id="cite&#95;note-29"><span class="mw-cite-backlink"><b><a href="#cite_ref-29">^</a></b></span> <span class="reference-text">RSA Laboratories, <a rel="nofollow" class="external text" href="https://www.emc.com/emc-plus/rsa-labs/historical/rsa-200-factored.htm">RSA-200 is factored!</a>. Retrieved on 2017-01-25.</span>
+</li>
+<li id="cite&#95;note-30"><span class="mw-cite-backlink"><b><a href="#cite_ref-30">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://www.mersenneforum.org/showpost.php?p=354259">"mersenneforum.org - View Single Post - RSA-210 factored"</a>. <i>www.mersenneforum.org</i><span class="reference-accessdate">. Retrieved <span class="nowrap">February 10,</span> 2024</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=www.mersenneforum.org&amp;rft.atitle=mersenneforum.org+-+View+Single+Post+-+RSA-210+factored&amp;rft&#95;id=https%3A%2F%2Fwww.mersenneforum.org%2Fshowpost.php%3Fp%3D354259&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-31"><span class="mw-cite-backlink"><b><a href="#cite_ref-31">^</a></b></span> <span class="reference-text"><a rel="nofollow" class="external text" href="http://maths.anu.edu.au/~bai/paper/rsa704.pdf">Factorisation of RSA-704 with CADO-NFS</a> <a rel="nofollow" class="external text" href="https://web.archive.org/web/20120702130253/http://maths.anu.edu.au/~bai/paper/rsa704.pdf">Archived</a> 2012-07-02 at the <a href="/wiki/Wayback_Machine" title="Wayback Machine">Wayback Machine</a>.</span>
+</li>
+<li id="cite&#95;note-32"><span class="mw-cite-backlink"><b><a href="#cite_ref-32">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFBai2012" class="citation mailinglist cs1">Bai, Shi (July 2, 2012). <a rel="nofollow" class="external text" href="https://listserv.nodak.edu/cgi-bin/wa.exe?A2=NMBRTHRY;612109bb.1207">"Factorization of RSA704"</a>. <i>NMBRTHRY</i> (Mailing list)<span class="reference-accessdate">. Retrieved <span class="nowrap">July 3,</span> 2012</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Factorization+of+RSA704&amp;rft.date=2012-07-02&amp;rft.aulast=Bai&amp;rft.aufirst=Shi&amp;rft&#95;id=https%3A%2F%2Flistserv.nodak.edu%2Fcgi-bin%2Fwa.exe%3FA2%3DNMBRTHRY%3B612109bb.1207&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-33"><span class="mw-cite-backlink"><b><a href="#cite_ref-33">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFZimmermann2016" class="citation mailinglist cs1"><a href="/wiki/Paul_Zimmermann_(mathematician)" title="Paul Zimmermann (mathematician)">Zimmermann, Paul</a> (May 13, 2016). <a rel="nofollow" class="external text" href="https://web.archive.org/web/20210721044359/https://lists.gforge.inria.fr/pipermail/cado-nfs-discuss/2016-May/000626.html">"Factorisation of RSA-220 with CADO-NFS"</a>. <i>Cado-nfs-discuss</i> (Mailing list). Archived from <a rel="nofollow" class="external text" href="http://lists.gforge.inria.fr/pipermail/cado-nfs-discuss/2016-May/000626.html">the original</a> on July 21, 2021<span class="reference-accessdate">. Retrieved <span class="nowrap">May 13,</span> 2016</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Factorisation+of+RSA-220+with+CADO-NFS&amp;rft.date=2016-05-13&amp;rft.aulast=Zimmermann&amp;rft.aufirst=Paul&amp;rft&#95;id=http%3A%2F%2Flists.gforge.inria.fr%2Fpipermail%2Fcado-nfs-discuss%2F2016-May%2F000626.html&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-34"><span class="mw-cite-backlink"><b><a href="#cite_ref-34">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFGross" class="citation web cs1">Gross, Samuel. <a rel="nofollow" class="external text" href="https://web.archive.org/web/20180823080136/https://lists.gforge.inria.fr/pipermail/cado-nfs-discuss/2018-August/000926.html">"The Factorization of RSA-230"</a>. <i>cado-nfs-discuss</i>. Archived from <a rel="nofollow" class="external text" href="https://lists.gforge.inria.fr/pipermail/cado-nfs-discuss/2018-August/000926.html">the original</a> on August 23, 2018<span class="reference-accessdate">. Retrieved <span class="nowrap">August 17,</span> 2018</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=unknown&amp;rft.jtitle=cado-nfs-discuss&amp;rft.atitle=The+Factorization+of+RSA-230&amp;rft.aulast=Gross&amp;rft.aufirst=Samuel&amp;rft&#95;id=https%3A%2F%2Flists.gforge.inria.fr%2Fpipermail%2Fcado-nfs-discuss%2F2018-August%2F000926.html&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-rsa232-35"><span class="mw-cite-backlink"><b><a href="#cite_ref-rsa232_35-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://www.inm.ras.ru/math_center_en/rsa-232-number-has-been-factored-5/">"RSA-232 number has been factored – ИВМ РАН"</a>. February 17, 2020<span class="reference-accessdate">. Retrieved <span class="nowrap">February 10,</span> 2024</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=RSA-232+number+has+been+factored+%E2%80%93+%D0%98%D0%92%D0%9C+%D0%A0%D0%90%D0%9D&amp;rft.date=2020-02-17&amp;rft&#95;id=https%3A%2F%2Fwww.inm.ras.ru%2Fmath&#95;center&#95;en%2Frsa-232-number-has-been-factored-5%2F&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-rsa232paper-36"><span class="mw-cite-backlink"><b><a href="#cite_ref-rsa232paper_36-0">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFZheltkovZamarashkinMatveev2023" class="citation book cs1">Zheltkov, Dmitry; Zamarashkin, Nikolai; Matveev, Sergey (2023). <a rel="nofollow" class="external text" href="https://link.springer.com/chapter/10.1007/978-3-031-49432-1_9">"How to Make Lanczos-Montgomery Fast on Modern Supercomputers?"</a>. In Voevodin, Vladimir; Sobolev, Sergey; Yakobovskiy, Mikhail; Shagaliev, Rashit (eds.). <i>Supercomputing</i>. Lecture Notes in Computer Science. Cham: Springer Nature Switzerland. pp.&#160;<span class="nowrap">114–</span>128. <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1007%2F978-3-031-49432-1_9">10.1007/978-3-031-49432-1_9</a>. <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-3-031-49432-1" title="Special:BookSources/978-3-031-49432-1"><bdi>978-3-031-49432-1</bdi></a>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=bookitem&amp;rft.atitle=How+to+Make+Lanczos-Montgomery+Fast+on+Modern+Supercomputers%3F&amp;rft.btitle=Supercomputing&amp;rft.place=Cham&amp;rft.series=Lecture+Notes+in+Computer+Science&amp;rft.pages=114-128&amp;rft.pub=Springer+Nature+Switzerland&amp;rft.date=2023&amp;rft&#95;id=info%3Adoi%2F10.1007%2F978-3-031-49432-1&#95;9&amp;rft.isbn=978-3-031-49432-1&amp;rft.aulast=Zheltkov&amp;rft.aufirst=Dmitry&amp;rft.au=Zamarashkin%2C+Nikolai&amp;rft.au=Matveev%2C+Sergey&amp;rft&#95;id=https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%2F978-3-031-49432-1&#95;9&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-37"><span class="mw-cite-backlink"><b><a href="#cite_ref-37">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFZheltkovZamarashkinMatveev2023" class="citation cs2">Zheltkov, Dmitry; Zamarashkin, Nikolai; Matveev, Sergey (2023), Voevodin, Vladimir; Sobolev, Sergey; Yakobovskiy, Mikhail; Shagaliev, Rashit (eds.), <span class="id-lock-subscription" title="Paid subscription required"><a rel="nofollow" class="external text" href="https://link.springer.com/10.1007/978-3-031-49432-1_9">"How to Make Lanczos-Montgomery Fast on Modern Supercomputers?"</a></span>, <i>Supercomputing</i>, vol.&#160;14388, Cham: Springer Nature Switzerland, pp.&#160;<span class="nowrap">114–</span>128, <a href="/wiki/Doi_(identifier)" class="mw-redirect" title="Doi (identifier)">doi</a>:<a rel="nofollow" class="external text" href="https://doi.org/10.1007%2F978-3-031-49432-1_9">10.1007/978-3-031-49432-1_9</a>, <a href="/wiki/ISBN_(identifier)" class="mw-redirect" title="ISBN (identifier)">ISBN</a>&#160;<a href="/wiki/Special:BookSources/978-3-031-49431-4" title="Special:BookSources/978-3-031-49431-4"><bdi>978-3-031-49431-4</bdi></a><span class="reference-accessdate">, retrieved <span class="nowrap">February 10,</span> 2024</span></cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.jtitle=Supercomputing&amp;rft.atitle=How+to+Make+Lanczos-Montgomery+Fast+on+Modern+Supercomputers%3F&amp;rft.volume=14388&amp;rft.pages=114-128&amp;rft.date=2023&amp;rft&#95;id=info%3Adoi%2F10.1007%2F978-3-031-49432-1&#95;9&amp;rft.isbn=978-3-031-49431-4&amp;rft.aulast=Zheltkov&amp;rft.aufirst=Dmitry&amp;rft.au=Zamarashkin%2C+Nikolai&amp;rft.au=Matveev%2C+Sergey&amp;rft&#95;id=https%3A%2F%2Flink.springer.com%2F10.1007%2F978-3-031-49432-1&#95;9&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-rsa768-38"><span class="mw-cite-backlink">^ <a href="#cite_ref-rsa768_38-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-rsa768_38-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite id="CITEREFKleinjungAokiFrankeLenstra2010" class="citation cs2">Kleinjung, Thorsten; Aoki, Kazumaro; Franke, Jens; Lenstra, Arjen; Thomé, Emmanuel; Bos, Joppe; Gaudry, Pierrick; Kruppa, Alexander; Montgomery, Peter (2010), <a rel="nofollow" class="external text" href="https://eprint.iacr.org/2010/006"><i>Factorization of a 768-bit RSA modulus</i></a><span class="reference-accessdate">, retrieved <span class="nowrap">February 10,</span> 2024</span></cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=book&amp;rft.btitle=Factorization+of+a+768-bit+RSA+modulus&amp;rft.date=2010&amp;rft.aulast=Kleinjung&amp;rft.aufirst=Thorsten&amp;rft.au=Aoki%2C+Kazumaro&amp;rft.au=Franke%2C+Jens&amp;rft.au=Lenstra%2C+Arjen&amp;rft.au=Thom%C3%A9%2C+Emmanuel&amp;rft.au=Bos%2C+Joppe&amp;rft.au=Gaudry%2C+Pierrick&amp;rft.au=Kruppa%2C+Alexander&amp;rft.au=Montgomery%2C+Peter&amp;rft&#95;id=https%3A%2F%2Feprint.iacr.org%2F2010%2F006&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-39"><span class="mw-cite-backlink"><b><a href="#cite_ref-39">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://web.archive.org/web/20191203150058/https://lists.gforge.inria.fr/pipermail/cado-nfs-discuss/2019-December/001139.html">"&#91;Cado-NFS-discuss&#93; 795-bit factoring and discrete logarithms"</a>. Archived from <a rel="nofollow" class="external text" href="https://lists.gforge.inria.fr/pipermail/cado-nfs-discuss/2019-December/001139.html">the original</a> on December 3, 2019<span class="reference-accessdate">. Retrieved <span class="nowrap">December 2,</span> 2019</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=%26%2391%3BCado-NFS-discuss%26%2393%3B+795-bit+factoring+and+discrete+logarithms&amp;rft&#95;id=https%3A%2F%2Flists.gforge.inria.fr%2Fpipermail%2Fcado-nfs-discuss%2F2019-December%2F001139.html&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+<li id="cite&#95;note-40"><span class="mw-cite-backlink"><b><a href="#cite_ref-40">^</a></b></span> <span class="reference-text"><link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://web.archive.org/web/20200228234716/https://lists.gforge.inria.fr/pipermail/cado-nfs-discuss/2020-February/001166.html">"&#91;Cado-NFS-discuss&#93; Factorization of RSA-250"</a>. Archived from <a rel="nofollow" class="external text" href="https://lists.gforge.inria.fr/pipermail/cado-nfs-discuss/2020-February/001166.html">the original</a> on February 28, 2020<span class="reference-accessdate">. Retrieved <span class="nowrap">February 28,</span> 2020</span>.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=%26%2391%3BCado-NFS-discuss%26%2393%3B+Factorization+of+RSA-250&amp;rft&#95;id=https%3A%2F%2Flists.gforge.inria.fr%2Fpipermail%2Fcado-nfs-discuss%2F2020-February%2F001166.html&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></span>
+</li>
+</ol></div>
+<div class="mw-heading mw-heading2"><h2 id="References">References</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=57" title="Edit section: References"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li>RSA Factoring Challenge Administrator (1997-10-12), <a rel="nofollow" class="external text" href="http://www.ontko.com/pub/rayo/primes/rsa_fact.html">RSA Challenge List</a></li>
+<li>RSA Laboratories, <a rel="nofollow" class="external text" href="https://web.archive.org/web/20061209135708/http://www.rsasecurity.com/rsalabs/node.asp?id=2093">The RSA Challenge Numbers</a> (archived by the <a href="/wiki/Internet_Archive" title="Internet Archive">Internet Archive</a> in 2006, before the RSA challenge ended)</li>
+<li>RSA Laboratories, <link rel="mw-deduplicated-inline-style" href="mw-data:TemplateStyles:r1238218222" /><cite class="citation web cs1"><a rel="nofollow" class="external text" href="https://web.archive.org/web/20130521030319/https://www.rsa.com/rsalabs/challenges/factoring/challengenumbers.txt">"Challenge numbers in text format"</a>. Archived from <a rel="nofollow" class="external text" href="http://www.rsa.com/rsalabs/challenges/factoring/challengenumbers.txt">the original</a> on May 21, 2013.</cite><span title="ctx&#95;ver=Z39.88-2004&amp;rft&#95;val&#95;fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&amp;rft.genre=unknown&amp;rft.btitle=Challenge+numbers+in+text+format&amp;rft&#95;id=http%3A%2F%2Fwww.rsa.com%2Frsalabs%2Fchallenges%2Ffactoring%2Fchallengenumbers.txt&amp;rfr&#95;id=info%3Asid%2Fen.wikipedia.org%3ARSA+numbers" class="Z3988"></span></li>
+<li>Kazumaro Aoki, Yuji Kida, Takeshi Shimoyama, Hiroki Ueda, <a rel="nofollow" class="external text" href="https://eprint.iacr.org/2004/095">GNFS Factoring Statistics of RSA-100, 110, ..., 150</a>, Cryptology ePrint Archive, Report 2004/095, 2004</li></ul>
+<div class="mw-heading mw-heading2"><h2 id="External_links">External links</h2><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=RSA_numbers&amp;action=edit&amp;section=58" title="Edit section: External links"><span>edit</span></a><span class="mw-editsection-bracket">]</span></span></div>
+<ul><li><a href="/wiki/Steven_Levy" title="Steven Levy">Steven Levy</a> (March 1996), <a rel="nofollow" class="external text" href="https://www.wired.com/1996/03/crackers/">Wisecrackers</a> in <a href="/wiki/Wired_News" class="mw-redirect" title="Wired News">Wired News</a>. coverage on RSA-129</li></ul>
+<!-- 
+NewPP limit report
+Parsed by mw‐api‐int.codfw.main‐64b9894948‐44wxr
+Cached time: 20251106204727
+Cache expiry: 2592000
+Reduced expiry: false
+Complications: [vary‐revision‐sha1, no‐toc]
+CPU time usage: 0.520 seconds
+Real time usage: 0.572 seconds
+Preprocessor visited node count: 2974/1000000
+Revision size: 64707/2097152 bytes
+Post‐expand include size: 68488/2097152 bytes
+Template argument size: 1332/2097152 bytes
+Highest expansion depth: 23/100
+Expensive parser function count: 3/500
+Unstrip recursion depth: 1/20
+Unstrip post‐expand size: 126585/5000000 bytes
+Lua time usage: 0.279/10.000 seconds
+Lua memory usage: 6363433/52428800 bytes
+Number of Wikibase entities loaded: 0/500
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%  491.783      1 -total
+ 61.77%  303.793      1 Template:Reflist
+ 31.65%  155.658     17 Template:Cite_web
+ 12.32%   60.601      1 Template:Short_description
+ 11.04%   54.272      1 Template:Sticky_header
+ 10.42%   51.256      6 Template:Cite_mailing_list
+  7.27%   35.735      2 Template:Pagetype
+  5.80%   28.508      1 Template:Wikinews
+  5.69%   27.985      3 Template:Cite_book
+  5.48%   26.960      1 Template:Sister_project
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:511379:|#|:idhash:canonical and timestamp 20251106204727 and revision id 1320797158. Rendering was triggered because: api-parse
+ -->
+</div><noscript><img src="https://en.wikipedia.org/wiki/Special:CentralAutoLogin/start?useformat=desktop&amp;type=1x1&amp;usesul3=1" alt="" width="1" height="1" style="border: none; position: absolute;"></noscript>
+<div class="printfooter" data-nosnippet="">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=RSA_numbers&amp;oldid=1320797158">https://en.wikipedia.org/w/index.php?title=RSA_numbers&amp;oldid=1320797158</a>"</div></div>
+					<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Integer_factorization_algorithms" title="Category:Integer factorization algorithms">Integer factorization algorithms</a></li><li><a href="/wiki/Category:Large_integers" title="Category:Large integers">Large integers</a></li><li><a href="/wiki/Category:RSA_Factoring_Challenge" title="Category:RSA Factoring Challenge">RSA Factoring Challenge</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:CS1:_unfit_URL" title="Category:CS1: unfit URL">CS1: unfit URL</a></li><li><a href="/wiki/Category:CS1_maint:_numeric_names:_authors_list" title="Category:CS1 maint: numeric names: authors list">CS1 maint: numeric names: authors list</a></li><li><a href="/wiki/Category:Webarchive_template_wayback_links" title="Category:Webarchive template wayback links">Webarchive template wayback links</a></li><li><a href="/wiki/Category:Articles_with_short_description" title="Category:Articles with short description">Articles with short description</a></li><li><a href="/wiki/Category:Short_description_matches_Wikidata" title="Category:Short description matches Wikidata">Short description matches Wikidata</a></li><li><a href="/wiki/Category:Use_mdy_dates_from_October_2023" title="Category:Use mdy dates from October 2023">Use mdy dates from October 2023</a></li><li><a href="/wiki/Category:Articles_containing_potentially_dated_statements_from_February_2020" title="Category:Articles containing potentially dated statements from February 2020">Articles containing potentially dated statements from February 2020</a></li><li><a href="/wiki/Category:All_articles_containing_potentially_dated_statements" title="Category:All articles containing potentially dated statements">All articles containing potentially dated statements</a></li></ul></div></div>
+				</div>
+			</main>
+			
+		</div>
+		<div class="mw-footer-container">
+			
+<footer id="footer" class="mw-footer" >
+	<ul id="footer-info">
+	<li id="footer-info-lastmod"> This page was last edited on 6 November 2025, at 20:47<span class="anonymous-show">&#160;(UTC)</span>.</li>
+	<li id="footer-info-copyright">Text is available under the <a href="/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License" title="Wikipedia:Text of the Creative Commons Attribution-ShareAlike 4.0 International License">Creative Commons Attribution-ShareAlike 4.0 License</a>;
+additional terms may apply. By using this site, you agree to the <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use" class="extiw" title="foundation:Special:MyLanguage/Policy:Terms of Use">Terms of Use</a> and <a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy" class="extiw" title="foundation:Special:MyLanguage/Policy:Privacy policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a rel="nofollow" class="external text" href="https://wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+</ul>
+
+	<ul id="footer-places">
+	<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy">Privacy policy</a></li>
+	<li id="footer-places-about"><a href="/wiki/Wikipedia:About">About Wikipedia</a></li>
+	<li id="footer-places-disclaimers"><a href="/wiki/Wikipedia:General_disclaimer">Disclaimers</a></li>
+	<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+	<li id="footer-places-wm-codeofconduct"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Universal_Code_of_Conduct">Code of Conduct</a></li>
+	<li id="footer-places-developers"><a href="https://developer.wikimedia.org">Developers</a></li>
+	<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+	<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement">Cookie statement</a></li>
+	<li id="footer-places-mobileview"><a href="//en.wikipedia.org/w/index.php?title=RSA_numbers&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+</ul>
+
+	<ul id="footer-icons" class="noprint">
+	<li id="footer-copyrightico"><a href="https://www.wikimedia.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/static/images/footer/wikimedia-button.svg" width="84" height="29"><img src="/static/images/footer/wikimedia.svg" width="25" height="25" alt="Wikimedia Foundation" lang="en" loading="lazy"></picture></a></li>
+	<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/" class="cdx-button cdx-button--fake-button cdx-button--size-large cdx-button--fake-button--enabled"><picture><source media="(min-width: 500px)" srcset="/w/resources/assets/poweredby_mediawiki.svg" width="88" height="31"><img src="/w/resources/assets/mediawiki_compact.svg" alt="Powered by MediaWiki" lang="en" width="25" height="25" loading="lazy"></picture></a></li>
+</ul>
+
+</footer>
+
+		</div>
+	</div> 
+</div> 
+<div class="vector-header-container vector-sticky-header-container no-font-mode-scale">
+	<div id="vector-sticky-header" class="vector-sticky-header">
+		<div class="vector-sticky-header-start">
+			<div class="vector-sticky-header-icon-start vector-button-flush-left vector-button-flush-right" aria-hidden="true">
+				<button class="cdx-button cdx-button--weight-quiet cdx-button--icon-only vector-sticky-header-search-toggle" tabindex="-1" data-event-name="ui.vector-sticky-search-form.icon"><span class="vector-icon mw-ui-icon-search mw-ui-icon-wikimedia-search"></span>
+
+<span>Search</span>
+			</button>
+		</div>
+			
+		<div role="search" class="vector-search-box-vue  vector-search-box-show-thumbnail vector-search-box">
+			<div class="vector-typeahead-search-container">
+				<div class="cdx-typeahead-search cdx-typeahead-search--show-thumbnail">
+					<form action="/w/index.php" id="vector-sticky-search-form" class="cdx-search-input cdx-search-input--has-end-button">
+						<div  class="cdx-search-input__input-wrapper"  data-search-loc="header-moved">
+							<div class="cdx-text-input cdx-text-input--has-start-icon">
+								<input
+									class="cdx-text-input__input mw-searchInput" autocomplete="off"
+									
+									type="search" name="search" placeholder="Search Wikipedia">
+								<span class="cdx-text-input__icon cdx-text-input__start-icon"></span>
+							</div>
+							<input type="hidden" name="title" value="Special:Search">
+						</div>
+						<button class="cdx-button cdx-search-input__end-button">Search</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="vector-sticky-header-context-bar">
+				<div class="vector-sticky-header-context-bar-primary" aria-hidden="true" ><span class="mw-page-title-main">RSA numbers</span></div>
+			</div>
+		</div>
+		<div class="vector-sticky-header-end" aria-hidden="true">
+			<div class="vector-sticky-header-icons">
+				<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-talk-sticky-header" tabindex="-1" data-event-name="talk-sticky-header"><span class="vector-icon mw-ui-icon-speechBubbles mw-ui-icon-wikimedia-speechBubbles"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-subject-sticky-header" tabindex="-1" data-event-name="subject-sticky-header"><span class="vector-icon mw-ui-icon-article mw-ui-icon-wikimedia-article"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-history-sticky-header" tabindex="-1" data-event-name="history-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-history mw-ui-icon-wikimedia-wikimedia-history"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only mw-watchlink" id="ca-watchstar-sticky-header" tabindex="-1" data-event-name="watch-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-star mw-ui-icon-wikimedia-wikimedia-star"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only reading-lists-bookmark" id="ca-bookmark-sticky-header" tabindex="-1" data-event-name="watch-sticky-bookmark"><span class="vector-icon mw-ui-icon-wikimedia-bookmarkOutline mw-ui-icon-wikimedia-wikimedia-bookmarkOutline"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-edit-sticky-header" tabindex="-1" data-event-name="wikitext-edit-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-wikiText mw-ui-icon-wikimedia-wikimedia-wikiText"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-ve-edit-sticky-header" tabindex="-1" data-event-name="ve-edit-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-edit mw-ui-icon-wikimedia-wikimedia-edit"></span>
+
+<span></span>
+			</a>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--icon-only" id="ca-viewsource-sticky-header" tabindex="-1" data-event-name="ve-edit-protected-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-editLock mw-ui-icon-wikimedia-wikimedia-editLock"></span>
+
+<span></span>
+			</a>
+		</div>
+			<div class="vector-sticky-header-buttons">
+				<button class="cdx-button cdx-button--weight-quiet mw-interlanguage-selector" id="p-lang-btn-sticky-header" tabindex="-1" data-event-name="ui.dropdown-p-lang-btn-sticky-header"><span class="vector-icon mw-ui-icon-wikimedia-language mw-ui-icon-wikimedia-wikimedia-language"></span>
+
+<span>7 languages</span>
+			</button>
+			<a href="#" class="cdx-button cdx-button--fake-button cdx-button--fake-button--enabled cdx-button--weight-quiet cdx-button--action-progressive" id="ca-addsection-sticky-header" tabindex="-1" data-event-name="addsection-sticky-header"><span class="vector-icon mw-ui-icon-speechBubbleAdd-progressive mw-ui-icon-wikimedia-speechBubbleAdd-progressive"></span>
+
+<span>Add topic</span>
+			</a>
+		</div>
+			<div class="vector-sticky-header-icon-end">
+				<div class="vector-user-links">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="mw-portlet mw-portlet-dock-bottom emptyPortlet" id="p-dock-bottom">
+	<ul>
+		
+	</ul>
+</div>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgHostname":"mw-web.codfw.canary-786c4459db-zmnhs","wgBackendResponseTime":133,"wgPageParseReport":{"limitreport":{"cputime":"0.520","walltime":"0.572","ppvisitednodes":{"value":2974,"limit":1000000},"revisionsize":{"value":64707,"limit":2097152},"postexpandincludesize":{"value":68488,"limit":2097152},"templateargumentsize":{"value":1332,"limit":2097152},"expansiondepth":{"value":23,"limit":100},"expensivefunctioncount":{"value":3,"limit":500},"unstrip-depth":{"value":1,"limit":20},"unstrip-size":{"value":126585,"limit":5000000},"entityaccesscount":{"value":0,"limit":500},"timingprofile":["100.00%  491.783      1 -total"," 61.77%  303.793      1 Template:Reflist"," 31.65%  155.658     17 Template:Cite_web"," 12.32%   60.601      1 Template:Short_description"," 11.04%   54.272      1 Template:Sticky_header"," 10.42%   51.256      6 Template:Cite_mailing_list","  7.27%   35.735      2 Template:Pagetype","  5.80%   28.508      1 Template:Wikinews","  5.69%   27.985      3 Template:Cite_book","  5.48%   26.960      1 Template:Sister_project"]},"scribunto":{"limitreport-timeusage":{"value":"0.279","limit":"10.000"},"limitreport-memusage":{"value":6363433,"limit":52428800}},"cachereport":{"origin":"mw-api-int.codfw.main-64b9894948-44wxr","timestamp":"20251106204727","ttl":2592000,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"RSA numbers","url":"https:\/\/en.wikipedia.org\/wiki\/RSA_numbers","sameAs":"http:\/\/www.wikidata.org\/entity\/Q1072840","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q1072840","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2004-03-07T22:27:33Z","dateModified":"2025-11-06T20:47:24Z","headline":"set of large semiprimes"}</script>
+</body>
+</html>
