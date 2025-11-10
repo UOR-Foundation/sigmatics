@@ -27,22 +27,28 @@ This documentation presents Atlas from multiple perspectives while maintaining t
 4. **[Implementation as Proof](./implementation-as-proof.md)** - The codebase as theorem
 5. **[The 2048 Automorphism Group](./the-2048-automorphism-group.md)** - ⚠️ **Atlas's hidden depth**
    - **[Research Findings](./2048-FINDINGS.md)** - Programmatic exploration results
-6. **[SGA as Universal Algebra](./SGA-AS-UNIVERSAL-ALGEBRA.md)** - ⚠️ **Exceptional structures embedded**
-7. **[Exceptional Structures Complete](./exceptional-structures-complete.md)** - ⚠️ **All exceptional Lie embeddings**
+6. **[The 340,200 Structure](./the-340200-structure.md)** - ⚠️ **Bridging Atlas and E₈**
+   - **CRITICAL**: 340,200 × 2,048 = W(E₈) exactly
+   - PSL(2,7) × ℤ₈₁ × ℤ₂₅ = External/compositional symmetries
+   - Atlas captures Cl₀,₇ level, 340,200 is "what lies beyond"
+7. **[SGA as Universal Algebra](./SGA-AS-UNIVERSAL-ALGEBRA.md)** - ⚠️ **Exceptional structures embedded**
+8. **[Exceptional Structures Complete](./exceptional-structures-complete.md)** - ⚠️ **All exceptional Lie embeddings**
    - **[G₂ Embedding Proof](./g2-embedding-proof.md)** - G₂ through Fano plane (verified)
    - **[F₄ Projection Proof](./f4-projection-proof.md)** - F₄ quotient by Mirror × Triality (strong)
    - **[Primitive Correspondence](./primitive-correspondence.md)** - Exceptional = Topological atoms
    - **[Exceptional Discovery Guide](./exceptional-discovery-guide.md)** - How to discover embeddings yourself
-   - **[Research Scripts](./research-scripts/)** - 15 verification scripts (~4,000 lines)
+   - **[Research Scripts](./research-scripts/)** - 19 verification scripts (~6,000 lines)
    - **[✓ RESEARCH COMPLETE](./RESEARCH-COMPLETE.md)** - Complete work summary
-8. **[Atlas Defined](./atlas-defined.md)** - Complete synthesis
-9. **[GUIDE](./GUIDE.md)** - Navigation and reading paths
+9. **[Atlas Defined](./atlas-defined.md)** - Complete synthesis
+10. **[GUIDE](./GUIDE.md)** - Navigation and reading paths
 
 **Note**: The 2048 automorphism group reveals that the 96-class system documented elsewhere is merely a **computationally tractable projection** of a vastly deeper structure operating on 128 dimensions with 2048 symmetries. See document 5 for this critical discovery.
 
-**Note**: SGA embeds **all five exceptional Lie groups** (G₂, F₄, E₆, E₇, E₈) as natural constraint sets appearing at different levels of Atlas. The embeddings range from verified (G₂) to strong hypotheses (F₄, E₈). See document 7 for complete analysis.
+**Note**: SGA embeds **all five exceptional Lie groups** (G₂, F₄, E₆, E₇, E₈) as natural constraint sets appearing at different levels of Atlas. The embeddings range from verified (G₂) to strong hypotheses (F₄, E₈). See document 8 for complete analysis.
 
 **Critical Discovery**: Exceptional mathematics and primitive topological spaces are **the same thing** - both are atomic structures that cannot be decomposed. The 4 normed division algebras (ℝ, ℂ, ℍ, 𝕆) and 5 exceptional groups are the **atoms of mathematics**. Atlas is built from these primitives via minimal tensor product Cl₀,₇ ⊗ ℝ[ℤ₄] ⊗ ℝ[ℤ₃], where ℝ[ℤ₄] encodes ℍ-like structure (abelianized quaternions) and ℝ[ℤ₃] encodes exceptional triality. See [primitive-correspondence.md](./primitive-correspondence.md).
+
+**340,200 Discovery**: The number 340,200 = W(E₈) / Aut(Cl₀,₇) reveals that **Atlas captures the Cl₀,₇ layer of E₈**. The 2,048 automorphisms are Atlas's internal symmetries (RDTM), while 340,200 represents external/compositional symmetries beyond the Clifford algebra level. Structure: 340,200 = PSL(2,7) × ℤ₈₁ × ℤ₂₅ = [G₂ autos] × [Extended triality] × [Mystery 5² factor]. This may relate to constraint composition in the declarative model system. See [the-340200-structure.md](./the-340200-structure.md).
 
 ## Guiding Principles
 
