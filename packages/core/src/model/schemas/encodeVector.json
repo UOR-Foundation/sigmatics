@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigmatics.org/schemas/models/encodeVector.json",
+  "title": "Vector Encoding Model",
+  "description": "Encode vector (array) to multiple ℤ₉₆ classes - foundation for neural networks",
+  "type": "object",
+  "required": ["name", "version", "namespace", "compiled", "runtime"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "encodeVector"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "namespace": {
+      "type": "string",
+      "const": "stdlib.encoding"
+    },
+    "compiled": {
+      "type": "object",
+      "properties": {
+        "dimension": {
+          "type": "number",
+          "description": "Input vector dimension (e.g., 784 for 28×28 MNIST)"
+        },
+        "chunkSize": {
+          "type": "number",
+          "description": "Number of elements per class (e.g., 8 pixels → 1 class)",
+          "default": 8
+        },
+        "aggregation": {
+          "type": "string",
+          "enum": ["sum", "product", "max", "hash"],
+          "description": "How to combine elements within chunk",
+          "default": "sum"
+        },
+        "min": {
+          "type": "number",
+          "description": "Minimum value in input range"
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value in input range"
+        },
+        "mapping": {
+          "type": "string",
+          "enum": ["linear", "logarithmic"],
+          "description": "Encoding strategy",
+          "default": "linear"
+        },
+        "structureHint": {
+          "type": "string",
+          "enum": ["scope", "modality", "context", "none"],
+          "description": "Which coordinate to preserve structure in",
+          "default": "context"
+        }
+      },
+      "required": ["dimension"],
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "vector": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "Input vector to encode"
+        }
+      },
+      "required": ["vector"],
+      "additionalProperties": false
+    },
+    "complexityHint": {
+      "type": "string",
+      "enum": ["C1", "C2"],
+      "description": "C1 if dimension known, C2 for dynamic"
+    },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": {
+          "type": "string",
+          "enum": ["class", "auto"]
+        },
+        "categoricalInvariants": {
+          "type": "object",
+          "properties": {
+            "preserveLocality": {
+              "type": "boolean",
+              "description": "Nearby vector elements → nearby classes",
+              "default": true
+            },
+            "useParallelComposition": {
+              "type": "boolean",
+              "description": "Encode chunks via ⊗ (parallel)",
+              "default": true
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "const": "Multi-dimensional input encoding for entanglement networks"
+        },
+        "composable": {
+          "type": "boolean",
+          "const": true
+        },
+        "outputShape": {
+          "type": "string",
+          "description": "Output is array of ℤ₉₆ classes: length = ⌈dimension / chunkSize⌉"
+        }
+      }
+    }
+  }
+}

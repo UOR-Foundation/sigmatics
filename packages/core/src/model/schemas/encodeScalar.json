@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigmatics.org/schemas/models/encodeScalar.json",
+  "title": "Scalar Encoding Model",
+  "description": "Encode scalar values (float/int) to ℤ₉₆ with categorical constraints",
+  "type": "object",
+  "required": ["name", "version", "namespace", "compiled", "runtime"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "encodeScalar"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "namespace": {
+      "type": "string",
+      "const": "stdlib.encoding"
+    },
+    "compiled": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number",
+          "description": "Minimum value of input range"
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value of input range"
+        },
+        "mapping": {
+          "type": "string",
+          "enum": ["linear", "logarithmic", "categorical"],
+          "description": "Mapping strategy from value to ℤ₉₆",
+          "default": "linear"
+        },
+        "clamp": {
+          "type": "boolean",
+          "description": "Clamp out-of-range values instead of wrapping",
+          "default": true
+        },
+        "preserveZero": {
+          "type": "boolean",
+          "description": "Ensure 0 maps to class 0 (identity)",
+          "default": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "description": "Scalar value to encode"
+        }
+      },
+      "required": ["value"],
+      "additionalProperties": false
+    },
+    "complexityHint": {
+      "type": "string",
+      "enum": ["C0", "C1"],
+      "description": "C0 if range known at compile time, C1 otherwise"
+    },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": {
+          "type": "string",
+          "enum": ["class", "sga", "auto"]
+        },
+        "categoricalInvariants": {
+          "type": "object",
+          "properties": {
+            "preserveMonotonicity": {
+              "type": "boolean",
+              "description": "Preserve ordering: a < b ⇒ encode(a) ≤ encode(b) mod orbit"
+            },
+            "minimizeOrbitDistance": {
+              "type": "boolean",
+              "description": "Choose encoding that minimizes orbit distance"
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "const": "Input encoding for entanglement networks"
+        },
+        "composable": {
+          "type": "boolean",
+          "const": true,
+          "description": "Can be composed with ∘, ⊗, ⊕"
+        },
+        "inverse": {
+          "type": "string",
+          "const": "decodeScalar",
+          "description": "Inverse model for decoding"
+        }
+      }
+    }
+  }
+}

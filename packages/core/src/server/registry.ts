@@ -23,6 +23,7 @@ import { project } from '../bridge/project';
 import { lift } from '../bridge/lift';
 import { validateDescriptor } from '../model/schema-loader';
 import * as cache from './cache';
+import type { SemiprimeFactorization, FactorizationOptions } from '../compiler/factor-hierarchical-semiprime';
 
 /**
  * Compile a model descriptor to an executable plan
@@ -212,6 +213,32 @@ function buildIR(descriptor: ModelDescriptor): IRNode {
 
     // Fallback: runtime lookup
     return IR.factor96();
+  }
+
+  if (name === 'factorHierarchical') {
+    // FUSION: If 'n' is provided as compiled parameter, fold at compile time
+    if ('n' in compiled && typeof compiled.n === 'string') {
+      // Import hierarchical factorization implementation
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const backend = require('../compiler/factor-hierarchical-semiprime');
+      const nVal = BigInt(compiled.n as string);
+      const options: FactorizationOptions = {
+        beamWidth: compiled.beamWidth as number | undefined,
+        epsilon: compiled.epsilon as number | undefined,
+        maxLevels: compiled.maxLevels as number | undefined,
+        scoringFunction: compiled.scoringFunction as 'constraint_satisfaction' | 'orbit_distance' | 'hybrid' | undefined,
+        adaptiveBeam: compiled.adaptiveBeam as boolean | undefined,
+        validateF4: compiled.validateF4 as boolean | undefined,
+        pruningStrategy: compiled.pruningStrategy as 'aggressive' | 'conservative' | 'categorical' | undefined,
+      };
+      const result = backend.factorSemiprime(nVal, options);
+
+      // Return constant result IR node - this is the fusion!
+      return IR.constant(result);
+    }
+
+    // Fallback: runtime execution
+    return IR.factorHierarchical();
   }
 
   if (name === 'isPrime96') {
@@ -447,6 +474,76 @@ export const StdlibModels = {
       runtime: { n: 0 },
       complexityHint: 'C1',
       loweringHints: { prefer: 'class' },
+    });
+  },
+
+  /**
+   * Hierarchical semiprime factorization
+   * Uses base-96 decomposition with categorical invariants
+   * Optimal for 40-100 bit semiprimes
+   */
+  factorHierarchical: (n?: string, options?: FactorizationOptions) => {
+    if (n !== undefined) {
+      // Compile-time constant with options: FUSION enabled!
+      const fused = compileModel<Record<string, never>, SemiprimeFactorization>({
+        name: 'factorHierarchical',
+        version: '1.0.0',
+        namespace: 'stdlib.factorization',
+        compiled: {
+          n,
+          beamWidth: options?.beamWidth ?? 32, // φ(96), proven optimal
+          epsilon: options?.epsilon ?? 10, // Universal invariant
+          maxLevels: options?.maxLevels,
+          scoringFunction: options?.scoringFunction ?? 'hybrid',
+          adaptiveBeam: options?.adaptiveBeam ?? false,
+          validateF4: options?.validateF4 ?? true,
+          pruningStrategy: options?.pruningStrategy ?? 'categorical',
+        },
+        runtime: {},
+        complexityHint: 'C0', // Fully compiled when n is constant
+        loweringHints: {
+          prefer: 'class',
+          categoricalInvariants: {
+            useEpsilonBound: true,
+            useOrbitClosure: true,
+            useF4Structure: true,
+            useMonoidalComposition: true,
+          },
+        },
+      });
+      return fused as unknown as CompiledModel<
+        { n: string; options?: FactorizationOptions },
+        SemiprimeFactorization
+      >;
+    }
+
+    // Runtime parameter: standard path
+    return compileModel<
+      { n: string; options?: FactorizationOptions },
+      SemiprimeFactorization
+    >({
+      name: 'factorHierarchical',
+      version: '1.0.0',
+      namespace: 'stdlib.factorization',
+      compiled: {
+        beamWidth: options?.beamWidth ?? 32,
+        epsilon: options?.epsilon ?? 10,
+        scoringFunction: options?.scoringFunction ?? 'hybrid',
+        adaptiveBeam: options?.adaptiveBeam ?? false,
+        validateF4: options?.validateF4 ?? true,
+        pruningStrategy: options?.pruningStrategy ?? 'categorical',
+      },
+      runtime: { n: '0', options },
+      complexityHint: 'C1', // Runtime n parameter
+      loweringHints: {
+        prefer: 'auto',
+        categoricalInvariants: {
+          useEpsilonBound: true,
+          useOrbitClosure: true,
+          useF4Structure: true,
+          useMonoidalComposition: true,
+        },
+      },
     });
   },
 

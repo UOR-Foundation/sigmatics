@@ -17,15 +17,24 @@ import { lift } from '../../bridge/lift';
  * Lower IR to class backend plan
  */
 export function lowerToClassBackend(node: IRNode): ClassPlan {
-  // Check for constantArray fusion: if the IR is just a constant, store it
-  if (node.kind === 'atom' && node.op.type === 'constantArray') {
-    // Store the constant value directly in the plan
-    // We'll handle this specially in execution
-    return {
-      kind: 'class',
-      operations: [],
-      constantValue: node.op.value,
-    } as ClassPlan & { constantValue?: readonly number[] };
+  // Check for constant fusion: if the IR is just a constant, store it
+  if (node.kind === 'atom') {
+    if (node.op.type === 'constantArray') {
+      // Store the constant array directly in the plan
+      return {
+        kind: 'class',
+        operations: [],
+        constantValue: node.op.value,
+      } as ClassPlan & { constantValue?: readonly number[] | unknown };
+    }
+    if (node.op.type === 'constantValue') {
+      // Store the constant value directly in the plan
+      return {
+        kind: 'class',
+        operations: [],
+        constantValue: node.op.value,
+      } as ClassPlan & { constantValue?: unknown };
+    }
   }
 
   const operations = collectClassOperations(node);
@@ -54,6 +63,10 @@ function collectClassOperations(node: IRNode): ClassOperation[] {
             break;
           case 'constantArray':
             // Compile-time constant array - no operation needed
+            // Value is returned directly during execution
+            break;
+          case 'constantValue':
+            // Compile-time constant value - no operation needed
             // Value is returned directly during execution
             break;
           case 'lift':
@@ -88,6 +101,9 @@ function collectClassOperations(node: IRNode): ClassOperation[] {
             break;
           case 'factor96':
             ops.push({ type: 'factor96' });
+            break;
+          case 'factorHierarchical':
+            ops.push({ type: 'factorHierarchical' });
             break;
           case 'isPrime96':
             ops.push({ type: 'isPrime96' });
@@ -284,6 +300,15 @@ export function executeClassPlan(plan: ClassPlan, inputs: Record<string, unknown
       case 'factor96': {
         const nVal: number = ((inputs.n as number) ?? state ?? 0) % 96;
         return computeFactor96(nVal);
+      }
+
+      case 'factorHierarchical': {
+        // Import hierarchical factorization implementation
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const backend = require('../factor-hierarchical-semiprime');
+        const nVal = BigInt(inputs.n as string);
+        const options = inputs.options as Record<string, unknown> | undefined;
+        return backend.factorSemiprime(nVal, options);
       }
 
       case 'isPrime96': {

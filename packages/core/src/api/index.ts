@@ -331,6 +331,7 @@ export class Atlas {
 
     // Factorization operations (Phase 2)
     factor96: StdlibModels.factor96,
+    factorHierarchical: StdlibModels.factorHierarchical,
     isPrime96: StdlibModels.isPrime96,
   };
 

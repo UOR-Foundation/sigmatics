@@ -55,6 +55,13 @@ export interface ModelDescriptor {
   /** Backend selection hint */
   loweringHints?: {
     prefer?: BackendPreference;
+    categoricalInvariants?: {
+      useEpsilonBound?: boolean;
+      useOrbitClosure?: boolean;
+      useF4Structure?: boolean;
+      useMonoidalComposition?: boolean;
+    };
+    optimizations?: string[];
   };
 }
 
@@ -74,6 +81,7 @@ export type AtomOp =
   | { type: 'classLiteral'; value: number } // c<i>
   | { type: 'param'; name: string } // Runtime parameter reference
   | { type: 'constantArray'; value: readonly number[] } // Precomputed array constant
+  | { type: 'constantValue'; value: unknown } // Precomputed value constant (for fusion)
   | { type: 'lift'; classIndex: number } // lift(i)
   | { type: 'project'; grade: number } // project(k) - Clifford grade projection
   | { type: 'projectClass'; child: IRNode } // projectClass(x) - SGA → class index
@@ -87,6 +95,7 @@ export type AtomOp =
   | { type: 'max' } // Maximum in ≡₉₆
   | { type: 'min' } // Minimum in ≡₉₆
   | { type: 'factor96' } // Prime factorization in ≡₉₆
+  | { type: 'factorHierarchical' } // Hierarchical semiprime factorization
   | { type: 'isPrime96' }; // Primality test in ≡₉₆
 
 /**
@@ -128,6 +137,7 @@ export type ClassOperation =
   | { type: 'max' }
   | { type: 'min' }
   | { type: 'factor96' }
+  | { type: 'factorHierarchical' }
   | { type: 'isPrime96' };
 
 /**

@@ -45,6 +45,7 @@ import { runRegistryBranchTests } from './server/registry-branches.test';
 import { runSchemaRegistryBranchTests } from './model/schema-registry-branches.test';
 import { runSgaBackendBranchTests } from './backend/sga-backend-branches.test';
 import { runStdlibOperationsTests } from './stdlib-operations.test';
+import { runFactorHierarchicalTests } from './model/factor-hierarchical.test';
 
 // ============================================================================
 // Test Utilities
@@ -1176,6 +1177,7 @@ function runAllTests(): void {
     runHierarchicalTests();
     runE7MatrixTests();
     runOptimalFactorizationTests();
+    runFactorHierarchicalTests();
 
     console.log('='.repeat(60));
     console.log(

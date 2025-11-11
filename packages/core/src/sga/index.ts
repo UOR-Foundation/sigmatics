@@ -129,3 +129,79 @@ export {
   verifyNormMultiplicativity,
   randomOctonion,
 } from './octonion';
+
+// Leech Lattice
+export type { LeechVector, LeechPoint, AtlasToLeechMap } from './leech';
+export {
+  atlasClassToLeech,
+  leechToAtlasClass,
+  leechNorm,
+  leechInnerProduct,
+  leechAdd,
+  leechSubtract,
+  leechScale,
+  constructAtlasToLeechMap,
+  isInLeech,
+  leechMinimalNorm,
+  LEECH_DIMENSION,
+  LEECH_KISSING_NUMBER,
+  LEECH_MINIMAL_NORM,
+  GRIESS_DIMENSION,
+  GRIESS_CORRECTION,
+} from './leech';
+
+// Conway Group
+export type { ConwayMatrix, ConwayOperation } from './conway';
+export {
+  conwayIdentity,
+  conwayApply,
+  conwayCompose,
+  conwayDeterminant,
+  atlasR_toConway,
+  atlasD_toConway,
+  atlasT_toConway,
+  atlasM_toConway,
+  isConwayElement,
+  generateAtlasConwayGenerators,
+  computeAtlasConwaySubgroup,
+  CONWAY_GROUP_ORDER,
+  CONWAY_GROUP_FACTORIZATION,
+} from './conway';
+
+// E₈ Root System
+export type { E8Root, E8RootInfo, E8Point } from './e8';
+export {
+  e8Norm,
+  e8InnerProduct,
+  e8Add,
+  e8Scale,
+  generateE8Roots,
+  verifyE8RootSystem,
+  isE8Root,
+  generateE8SimpleRoots,
+  computeE8CartanMatrix,
+  weylReflection,
+  isInE8Lattice,
+  E8_DIMENSION,
+  E8_ROOT_COUNT,
+  E8_ROOT_NORM,
+  E8_WEYL_GROUP_ORDER,
+} from './e8';
+
+// E₈³ (E₈ ⊕ E₈ ⊕ E₈)
+export type { E8TripleVector, E8TripleStructured } from './e8-triple';
+export {
+  createE8Triple,
+  decomposeE8Triple,
+  e8TripleNorm,
+  isE8TripleRoot,
+  generateE8TripleRoots,
+  applyTriality,
+  e8TripleToLeech,
+  verifyLeechRootlessProperty,
+  atlasClassToE8Triple,
+  verifyAtlasE8LeechChain,
+  E8_TRIPLE_DIMENSION,
+  E8_TRIPLE_ROOT_COUNT,
+  E8_TRIPLE_BLOCKS,
+} from './e8-triple';

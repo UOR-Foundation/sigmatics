@@ -191,6 +191,26 @@ export function isPrime96(): IRNode {
 }
 
 /**
+ * Create a constantValue IR node (for compile-time fusion of complex values)
+ */
+export function constant<T = unknown>(value: T): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'constantValue', value },
+  };
+}
+
+/**
+ * Create a factorHierarchical IR node
+ */
+export function factorHierarchical(): IRNode {
+  return {
+    kind: 'atom',
+    op: { type: 'factorHierarchical' },
+  };
+}
+
+/**
  * Sequential composition (∘)
  */
 export function seq(left: IRNode, right: IRNode): IRNode {

@@ -57,6 +57,11 @@
       "require": "./dist/types/index.js",
       "default": "./dist/types/index.js"
     },
+    "./sga": {
+      "types": "./dist/sga/index.d.ts",
+      "require": "./dist/sga/index.js",
+      "default": "./dist/sga/index.js"
+    },
     "./package.json": "./package.json"
   },
   "scripts": {

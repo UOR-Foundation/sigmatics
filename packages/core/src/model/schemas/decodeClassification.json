@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sigmatics.org/schemas/models/decodeClassification.json",
+  "title": "Classification Decoding Model",
+  "description": "Decode ℤ₉₆[] to probability distribution over classes - neural network output layer",
+  "type": "object",
+  "required": ["name", "version", "namespace", "compiled", "runtime"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "const": "decodeClassification"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "namespace": {
+      "type": "string",
+      "const": "stdlib.decoding"
+    },
+    "compiled": {
+      "type": "object",
+      "properties": {
+        "numClasses": {
+          "type": "number",
+          "description": "Number of output classes (e.g., 10 for MNIST digits)"
+        },
+        "strategy": {
+          "type": "string",
+          "enum": ["argmax", "softmax", "orbit_distance"],
+          "description": "Decoding strategy",
+          "default": "softmax"
+        },
+        "temperature": {
+          "type": "number",
+          "description": "Softmax temperature (lower = more confident)",
+          "default": 1.0
+        },
+        "useOrbitDistance": {
+          "type": "boolean",
+          "description": "Use orbit distance for probability weighting",
+          "default": false
+        }
+      },
+      "required": ["numClasses"],
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "logits": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "Array of ℤ₉₆ class indices (pre-softmax scores)"
+        }
+      },
+      "required": ["logits"],
+      "additionalProperties": false
+    },
+    "complexityHint": {
+      "type": "string",
+      "enum": ["C1"],
+      "description": "C1 - linear in number of classes"
+    },
+    "loweringHints": {
+      "type": "object",
+      "properties": {
+        "prefer": {
+          "type": "string",
+          "enum": ["class", "auto"]
+        },
+        "categoricalInvariants": {
+          "type": "object",
+          "properties": {
+            "preserveConfidence": {
+              "type": "boolean",
+              "description": "Higher orbit distance → lower confidence",
+              "default": true
+            },
+            "normalizeByEpsilon": {
+              "type": "boolean",
+              "description": "Normalize probabilities by ε bound",
+              "default": true
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "const": "Output decoding for entanglement network classification"
+        },
+        "composable": {
+          "type": "boolean",
+          "const": true
+        },
+        "inverse": {
+          "type": "string",
+          "const": "encodeVector",
+          "description": "Inverse operation (approximately)"
+        }
+      }
+    }
+  }
+}
