@@ -205,3 +205,23 @@ export {
   E8_TRIPLE_ROOT_COUNT,
   E8_TRIPLE_BLOCKS,
 } from './e8-triple';
+
+// Binary Golay Code
+export type { GolayCodeword, GolayInfo } from './golay';
+export {
+  encodeGolay,
+  generateAllGolayCodewords,
+  hammingWeight,
+  codewordsEqual,
+  complementCodeword,
+  getCodewordsByWeight,
+  getOctads,
+  getDodecads,
+  analyzeWeightDistribution,
+  verifyGolayCode,
+  GOLAY_CODE_LENGTH,
+  GOLAY_CODE_DIMENSION,
+  GOLAY_CODE_MIN_DISTANCE,
+  GOLAY_CODE_SIZE,
+  GOLAY_WEIGHT_DISTRIBUTION,
+} from './golay';
