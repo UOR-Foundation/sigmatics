@@ -225,3 +225,29 @@ export {
   GOLAY_CODE_SIZE,
   GOLAY_WEIGHT_DISTRIBUTION,
 } from './golay';
+
+// Leech Kissing Sphere
+export {
+  generateType1Vectors,
+  generateType2Vectors,
+  generateType3Vectors,
+  generateKissingSphere,
+  verifyKissingSphere,
+} from './leech-kissing';
+
+// J-Invariant and Modular Functions
+export type { PowerSeries } from './j-invariant';
+export {
+  sigmaPower,
+  precomputeSigma,
+  eisensteinE4,
+  dedekindEta24,
+  multiplyPowerSeries,
+  powerSeriesToPower,
+  dividePowerSeries,
+  scalePowerSeries,
+  jInvariant,
+  extractJCoefficients,
+  validateJInvariant,
+  KNOWN_J_COEFFICIENTS,
+} from './j-invariant';
